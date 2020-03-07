@@ -11,9 +11,11 @@ private:
 	Animation animation;
 	float speed;
 	bool canJump;
-	bool canClimb;
 	float jumpHeight;
 public:	
+
+		bool canClimb;
+
 	Player() = default;
 	Player(const sf::Texture& temp);
 	~Player();

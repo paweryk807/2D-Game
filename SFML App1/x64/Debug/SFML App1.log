@@ -12,9 +12,9 @@
        Właściwość „LangID” jest właściwością globalną i nie może być modyfikowana.
        Właściwość „SolutionDir” jest właściwością globalną i nie może być modyfikowana.
        Ponowne przypisanie właściwości: $(MSBuildAllProjects)=„;B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj;B:\Visual Studio 2019\MSBuild\Current\Bin\Microsoft.Common.targets;B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj.user” (poprzednia wartość: „;B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj;B:\Visual Studio 2019\MSBuild\Current\Bin\Microsoft.Common.targets”) w B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.Cpp.Default.props (171,5)
-       Ponowne przypisanie właściwości: $(UseDebugLibraries)=„true” (poprzednia wartość: „false”) w B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj (44,5)
-       Ponowne przypisanie właściwości: $(PlatformToolset)=„v142” (poprzednia wartość: „v100”) w B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj (45,5)
-       Ponowne przypisanie właściwości: $(CharacterSet)=„Unicode” (poprzednia wartość: „NotSet”) w B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj (46,5)
+       Ponowne przypisanie właściwości: $(UseDebugLibraries)=„true” (poprzednia wartość: „false”) w B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj (45,5)
+       Ponowne przypisanie właściwości: $(PlatformToolset)=„v142” (poprzednia wartość: „v100”) w B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj (46,5)
+       Ponowne przypisanie właściwości: $(CharacterSet)=„Unicode” (poprzednia wartość: „NotSet”) w B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj (47,5)
        Ponowne przypisanie właściwości: $(DotNetSdkRoot)=„C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\” (poprzednia wartość: „”) w C:\Program Files (x86)\Windows Kits\10\DesignTime\CommonConfiguration\Neutral\UAP\10.0.18362.0\UAP.props (8,6)
        Ponowne przypisanie właściwości: $(TargetExt)=„.exe” (poprzednia wartość: „”) w B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.Cpp.Common.props (28,5)
        Ponowne przypisanie właściwości: $(VC_ExecutablePath_Loc)=„B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\bin\HostX64\x64\1045;B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\bin\HostX64\x86\1045;;;” (poprzednia wartość: „B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\bin\HostX64\x86\1045;;”) w B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.Cpp.Common.props (88,5)
@@ -30,10 +30,10 @@
        Ponowne przypisanie właściwości: $(MsvcAnalysisToolsPath)=„B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\bin\HostX86\x64” (poprzednia wartość: „B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\bin\HostX64\x86”) w B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.Cpp.Analysis.props (29,5)
        Ponowne przypisanie właściwości: $(_PropertySheetDisplayName)=„Unicode Support” (poprzednia wartość: „Core Windows Libraries”) w B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.Cpp.unicodesupport.props (15,5)
        Ponowne przypisanie właściwości: $(_PropertySheetDisplayName)=„Application” (poprzednia wartość: „Unicode Support”) w B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.Cpp.Application.props (15,5)
-       Ponowne przypisanie właściwości: $(IncludePath)=„B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\include;;B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\atlmfc\include;;B:\Visual Studio 2019\VC\Auxiliary\VS\include;;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt;;;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\winrt;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\cppwinrt;C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\Include\um;\include” (poprzednia wartość: „B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\include;;B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\atlmfc\include;;B:\Visual Studio 2019\VC\Auxiliary\VS\include;;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt;;;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\winrt;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\cppwinrt;C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\Include\um;”) w B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj (80,5)
-       Ponowne przypisanie właściwości: $(LibraryPath)=„B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\lib\x64;;B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\atlmfc\lib\x64;;B:\Visual Studio 2019\VC\Auxiliary\VS\lib\x64;;C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\ucrt\x64;;;C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64;C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\lib\um\x64;;Lib\um\x64;\lib” (poprzednia wartość: „B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\lib\x64;;B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\atlmfc\lib\x64;;B:\Visual Studio 2019\VC\Auxiliary\VS\lib\x64;;C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\ucrt\x64;;;C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64;C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\lib\um\x64;;Lib\um\x64”) w B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj (81,5)
+       Ponowne przypisanie właściwości: $(IncludePath)=„B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\include;;B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\atlmfc\include;;B:\Visual Studio 2019\VC\Auxiliary\VS\include;;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt;;;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\winrt;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\cppwinrt;C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\Include\um;\include” (poprzednia wartość: „B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\include;;B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\atlmfc\include;;B:\Visual Studio 2019\VC\Auxiliary\VS\include;;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt;;;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\winrt;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\cppwinrt;C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\Include\um;”) w B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj (81,5)
+       Ponowne przypisanie właściwości: $(LibraryPath)=„B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\lib\x64;;B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\atlmfc\lib\x64;;B:\Visual Studio 2019\VC\Auxiliary\VS\lib\x64;;C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\ucrt\x64;;;C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64;C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\lib\um\x64;;Lib\um\x64;\lib” (poprzednia wartość: „B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\lib\x64;;B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\atlmfc\lib\x64;;B:\Visual Studio 2019\VC\Auxiliary\VS\lib\x64;;C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\ucrt\x64;;;C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64;C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\lib\um\x64;;Lib\um\x64”) w B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj (82,5)
        Właściwość „SolutionExt” jest właściwością globalną i nie może być modyfikowana.
-       Ponowne przypisanie właściwości: $(ExtensionsToDeleteOnClean)=„*.cdf;*.cache;*.obj;*.obj.enc;*.ilk;*.ipdb;*.iobj;*.resources;*.tlb;*.tli;*.tlh;*.tmp;*.rsp;*.pgc;*.pgd;*.meta;*.tlog;*.manifest;*.res;*.pch;*.exp;*.idb;*.rep;*.xdc;*.pdb;*_manifest.rc;*.bsc;*.sbr;*.xml;*.metagen;*.bi;B:\GitHub\2D-Game\x64\Debug\SFML App1.exe.manifest;B:\GitHub\2D-Game\x64\Debug\SFML App1.tlb;B:\GitHub\2D-Game\x64\Debug\SFML App1.pdb;B:\GitHub\2D-Game\x64\Debug\SFML App1.exe;B:\GitHub\2D-Game\x64\Debug\SFML App1.bsc;B:\GitHub\2D-Game\x64\Debug\SFML App1.ilk;B:\GitHub\2D-Game\x64\Debug\SFML App1.exe.intermediate.manifest” (poprzednia wartość: „*.cdf;*.cache;*.obj;*.obj.enc;*.ilk;*.ipdb;*.iobj;*.resources;*.tlb;*.tli;*.tlh;*.tmp;*.rsp;*.pgc;*.pgd;*.meta;*.tlog;*.manifest;*.res;*.pch;*.exp;*.idb;*.rep;*.xdc;*.pdb;*_manifest.rc;*.bsc;*.sbr;*.xml;*.metagen;*.bi”) w B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppCommon.targets (35,5)
+       Ponowne przypisanie właściwości: $(ExtensionsToDeleteOnClean)=„*.cdf;*.cache;*.obj;*.obj.enc;*.ilk;*.ipdb;*.iobj;*.resources;*.tlb;*.tli;*.tlh;*.tmp;*.rsp;*.pgc;*.pgd;*.meta;*.tlog;*.manifest;*.res;*.pch;*.exp;*.idb;*.rep;*.xdc;*.pdb;*_manifest.rc;*.bsc;*.sbr;*.xml;*.metagen;*.bi;B:\GitHub\2D-Game\x64\Debug\2D-Game.exe.manifest;B:\GitHub\2D-Game\x64\Debug\2D-Game.tlb;B:\GitHub\2D-Game\x64\Debug\2D-Game.pdb;B:\GitHub\2D-Game\x64\Debug\2D-Game.exe;B:\GitHub\2D-Game\x64\Debug\2D-Game.bsc;B:\GitHub\2D-Game\x64\Debug\2D-Game.ilk;B:\GitHub\2D-Game\x64\Debug\2D-Game.exe.intermediate.manifest” (poprzednia wartość: „*.cdf;*.cache;*.obj;*.obj.enc;*.ilk;*.ipdb;*.iobj;*.resources;*.tlb;*.tli;*.tlh;*.tmp;*.rsp;*.pgc;*.pgd;*.meta;*.tlog;*.manifest;*.res;*.pch;*.exp;*.idb;*.rep;*.xdc;*.pdb;*_manifest.rc;*.bsc;*.sbr;*.xml;*.metagen;*.bi”) w B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppCommon.targets (35,5)
        Ścieżki wyszukiwania dla elementu $(MSBuildExtensionsPath): B:\Visual Studio 2019\MSBuild;$(MSBuildProgramFiles32)\MSBuild
        Ścieżki wyszukiwania dla elementu $(MSBuildExtensionsPath): B:\Visual Studio 2019\MSBuild;$(MSBuildProgramFiles32)\MSBuild
        Ścieżki wyszukiwania dla elementu $(MSBuildExtensionsPath): B:\Visual Studio 2019\MSBuild;$(MSBuildProgramFiles32)\MSBuild
@@ -905,7 +905,7 @@
        Zastępowanie elementu docelowego „GetNativeManifest” w projekcie „B:\Visual Studio 2019\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets” elementem docelowym „GetNativeManifest” z projektu „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppCommon.targets”.
        Zastępowanie elementu docelowego „GetTargetPathWithTargetPlatformMoniker” w projekcie „B:\Visual Studio 2019\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets” elementem docelowym „GetTargetPathWithTargetPlatformMoniker” z projektu „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.Cpp.DesignTime.targets”.
        Element docelowy „CoreCompile” wymieniony w atrybucie BeforeTargets na pozycji „B:\Visual Studio 2019\MSBuild\Microsoft\VisualStudio\v16.0\CodeAnalysis\Microsoft.CodeAnalysis.targets (57,12)” nie istnieje w projekcie, dlatego będzie ignorowany.
-Kompilacja rozpoczęła się 06.03.2020 16:52:25.
+Kompilacja rozpoczęła się 06.03.2020 18:23:25.
 Szczegółowość rejestrowania została ustawiona na: Detailed.     1>Projekt „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” w węźle 2 (elementy docelowe: Build).
      1>Kompilowanie przy użyciu wersji narzędzi „Current”.
        Pominięto element docelowy „EnableIntermediateOutputPathMismatchWarning” z powodu fałszywego warunku; ('$(RestoreProjectStyle)' == 'PackageReference') oszacowano jako ('' == 'PackageReference').
@@ -929,10 +929,10 @@ Szczegółowość rejestrowania została ustawiona na: Detailed.     1>Projekt �
      1>Element docelowy „SetTelemetryEnvironmentVariables” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.Cpp.DesignTime.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „Build”):
        Używanie zadania „SetEnv” z zestawu „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.Build.CppTasks.Common.dll”.
        Zadanie „SetEnv”
-         VSTEL_SolutionSessionID={38670FD3-A500-4981-9698-9D26B5396B1A}
+         VSTEL_SolutionSessionID={4DF8EFC8-E003-49F9-807E-0146DD5EE211}
        Wykonywanie zadania „SetEnv” zakończone.
        Zadanie „SetEnv”
-         VSTEL_CurrentSolutionBuildID=343912375
+         VSTEL_CurrentSolutionBuildID=349373343
        Wykonywanie zadania „SetEnv” zakończone.
        Zadanie „SetEnv”
          VSTEL_ProjectID={afa4ede4-58ee-451f-a90c-ee70ebd285bf}
@@ -944,7 +944,7 @@ Szczegółowość rejestrowania została ustawiona na: Detailed.     1>Projekt �
      1>Element docelowy „_PrepareForReferenceResolution” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „ResolveReferences”):
        Pominięto zadanie „Message” z powodu fałszywego warunku; ('$(_REFERENCE_DEBUG)'=='true') oszacowano jako (''=='true').
      1>Wykonano kompilowanie elementu docelowego „_PrepareForReferenceResolution” w projekcie „SFML App1.vcxproj”.
-       Pominięto element docelowy „ComputeCrtSDKReference” z powodu fałszywego warunku; ('@(ClCompile)'!='' and '$(WindowsAppContainer)'=='true' and '$(UseCrtSDKReference)' != 'false') oszacowano jako ('Animation.cpp;Collider.cpp;Functions.cpp;Game.cpp;Platform.cpp;Player.cpp;main.cpp'!='' and 'false'=='true' and '' != 'false').
+       Pominięto element docelowy „ComputeCrtSDKReference” z powodu fałszywego warunku; ('@(ClCompile)'!='' and '$(WindowsAppContainer)'=='true' and '$(UseCrtSDKReference)' != 'false') oszacowano jako ('Animation.cpp;Collider.cpp;Functions.cpp;Game.cpp;Level.cpp;Platform.cpp;Player.cpp;main.cpp'!='' and 'false'=='true' and '' != 'false').
      1>Element docelowy „BeforeResolveReferences” w pliku „B:\Visual Studio 2019\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „ResolveReferences”):
      1>Wykonano kompilowanie elementu docelowego „BeforeResolveReferences” w projekcie „SFML App1.vcxproj”.
      1>Element docelowy „AssignProjectConfiguration” w pliku „B:\Visual Studio 2019\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „ResolveReferences”):
@@ -987,7 +987,7 @@ Szczegółowość rejestrowania została ustawiona na: Detailed.     1>Projekt �
      1>Wykonano kompilowanie elementu docelowego „GetReferenceAssemblyPaths” w projekcie „SFML App1.vcxproj”.
      1>Element docelowy „SetBuildDefaultEnvironmentVariables” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.Cpp.Current.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „PrepareForBuild”):
        Zadanie „SetEnv”
-         PATH=B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\bin\HostX86\x64;B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\bin\HostX86\x86;C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\x86;;B:\Visual Studio 2019\Common7\tools;B:\Visual Studio 2019\Common7\ide;C:\Program Files (x86)\HTML Help Workshop;;B:\Visual Studio 2019\MSBuild\Current\Bin;C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\;;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\TortoiseGit\bin;C:\Program Files\Git\cmd;B:\doxygen\bin;C:\MinGW\bin;;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;B:\Visual Leak Detector\bin\Win32;B:\Visual Leak Detector\bin\Win64;C:\Program Files\dotnet\;C:\Users\bambe\AppData\Local\Microsoft\WindowsApps;C:\MinGW\bin;"C:\MinGW\bin;";C:\Users\bambe\AppData\Local\Programs\Microsoft VS Code\bin;B:\miktex\miktex\bin\x64\;C:\Users\bambe\AppData\Local\GitHubDesktop\bin;
+         PATH=B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\bin\HostX86\x64;B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\bin\HostX86\x86;C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\x86;;B:\Visual Studio 2019\Common7\tools;B:\Visual Studio 2019\Common7\ide;C:\Program Files (x86)\HTML Help Workshop;;B:\Visual Studio 2019\MSBuild\Current\Bin;C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\;;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Git\cmd;B:\doxygen\bin;C:\MinGW\bin;;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;B:\Visual Leak Detector\bin\Win32;B:\Visual Leak Detector\bin\Win64;C:\Program Files\dotnet\;C:\Program Files\TortoiseGit\bin;C:\Users\bambe\AppData\Local\Microsoft\WindowsApps;C:\MinGW\bin;"C:\MinGW\bin;";C:\Users\bambe\AppData\Local\Programs\Microsoft VS Code\bin;B:\miktex\miktex\bin\x64\;C:\Users\bambe\AppData\Local\GitHubDesktop\bin;
        Wykonywanie zadania „SetEnv” zakończone.
        Zadanie „SetEnv”
          LIB=B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\lib\x64;;B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\atlmfc\lib\x64;;B:\Visual Studio 2019\VC\Auxiliary\VS\lib\x64;;C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\ucrt\x64;;;C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64;C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\lib\um\x64;;Lib\um\x64;\lib
@@ -1050,13 +1050,16 @@ Szczegółowość rejestrowania została ustawiona na: Detailed.     1>Projekt �
        Pominięto zadanie „VCMessage” z powodu fałszywego warunku; ('$(DesignTimeBuild)'!='true' and '$(IntDirTrailingSlashWarning)'=='true') oszacowano jako (''!='true' and ''=='true').
        Pominięto zadanie „VCMessage” z powodu fałszywego warunku; ('$(DesignTimeBuild)'!='true' and '$(OutDirTrailingSlashWarning)'=='true') oszacowano jako (''!='true' and ''=='true').
        Pominięto zadanie „VCMessage” z powodu fałszywego warunku; ('%(CompatibilityIssues.Identity)' != '' and '$(DesignTimeBuild)'!='true') oszacowano jako ('' != '' and ''!='true').
-       Pominięto zadanie „VCMessage” z powodu fałszywego warunku; ('$(IgnoreWarnIntDirSharingDetected)' != 'true' and '$(IntDirSharingDetected)' == 'true') oszacowano jako ('' != 'true' and '' == 'true').
+       Używanie zadania „VCMessage” z zestawu „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.Build.CppTasks.Common.dll”.
+       Zadanie „VCMessage”
+     1>B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(459,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (SFML App1.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+       Wykonywanie zadania „VCMessage” zakończone.
        Pominięto zadanie „VCMessage” z powodu fałszywego warunku; ('$(DesignTimeBuild)'!='true' and '$(IgnoreWarnIntDirInTempDetected)' != 'true' and ('$(_IntDirFullpath.StartsWith($(Tmp), true, null))' == 'true' or '$(_IntDirFullpath.StartsWith($(Temp), true, null))' == 'true' or '$(_OutDirFullpath.StartsWith($(Tmp), true, null))' == 'true' or '$(_OutDirFullpath.StartsWith($(Temp), true, null))' == 'true')) oszacowano jako (''!='true' and '' != 'true' and ('False' == 'true' or 'False' == 'true' or 'False' == 'true' or 'False' == 'true')).
        Zadanie „MakeDir”
        Wykonywanie zadania „MakeDir” zakończone.
      1>Wykonano kompilowanie elementu docelowego „PrepareForBuild” w projekcie „SFML App1.vcxproj”.
        Pominięto element docelowy „_PrepareForReferenceResolution”. Wcześniejsza kompilacja powiodła się.
-       Pominięto element docelowy „ComputeCrtSDKReference” z powodu fałszywego warunku; ('@(ClCompile)'!='' and '$(WindowsAppContainer)'=='true' and '$(UseCrtSDKReference)' != 'false') oszacowano jako ('Animation.cpp;Collider.cpp;Functions.cpp;Game.cpp;Platform.cpp;Player.cpp;main.cpp'!='' and 'false'=='true' and '' != 'false').
+       Pominięto element docelowy „ComputeCrtSDKReference” z powodu fałszywego warunku; ('@(ClCompile)'!='' and '$(WindowsAppContainer)'=='true' and '$(UseCrtSDKReference)' != 'false') oszacowano jako ('Animation.cpp;Collider.cpp;Functions.cpp;Game.cpp;Level.cpp;Platform.cpp;Player.cpp;main.cpp'!='' and 'false'=='true' and '' != 'false').
        Pominięto element docelowy „GetInstalledSDKLocations” z powodu fałszywego warunku; ('@(SDKReference)' != '') oszacowano jako ('' != '').
      1>Element docelowy „ResolveSDKReferences” w pliku „B:\Visual Studio 2019\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „ResolveAssemblyReferences”):
        Pominięto zadanie „ResolveSDKReference” z powodu fałszywego warunku; ('@(SDKReference)'!='') oszacowano jako (''!='').
@@ -1080,7 +1083,7 @@ Szczegółowość rejestrowania została ustawiona na: Detailed.     1>Projekt �
      1>Wykonano kompilowanie elementu docelowego „ResolveAssemblyReferences” w projekcie „SFML App1.vcxproj”.
        Pominięto element docelowy „GenerateBindingRedirects” z powodu fałszywego warunku; ('$(AutoGenerateBindingRedirects)' == 'true' and '$(GenerateBindingRedirectsOutputType)' == 'true') oszacowano jako ('' == 'true' and 'true' == 'true').
        Pominięto element docelowy „_RemoveZipFileSuggestedRedirect” z powodu fałszywego warunku; ('$(_TargetFrameworkVersionWithoutV)' >= '4.7.1' And '$(AllowZipFileRedirect)' != 'true') oszacowano jako ('4.0' >= '4.7.1' And '' != 'true').
-       Pominięto element docelowy „GenerateBindingRedirectsUpdateAppConfig” z powodu fałszywego warunku; ('$(AutoGenerateBindingRedirects)' == 'true' and '$(GenerateBindingRedirectsOutputType)' == 'true' and Exists('$(_GenerateBindingRedirectsIntermediateAppConfig)')) oszacowano jako ('' == 'true' and 'true' == 'true' and Exists('x64\Debug\SFML App1.exe.config')).
+       Pominięto element docelowy „GenerateBindingRedirectsUpdateAppConfig” z powodu fałszywego warunku; ('$(AutoGenerateBindingRedirects)' == 'true' and '$(GenerateBindingRedirectsOutputType)' == 'true' and Exists('$(_GenerateBindingRedirectsIntermediateAppConfig)')) oszacowano jako ('' == 'true' and 'true' == 'true' and Exists('x64\Debug\2D-Game.exe.config')).
        Pominięto element docelowy „ResolveComReferences” z powodu fałszywego warunku; ('@(COMReference)'!='' or '@(COMFileReference)'!='') oszacowano jako (''!='' or ''!='').
      1>Element docelowy „AfterResolveReferences” w pliku „B:\Visual Studio 2019\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „ResolveReferences”):
      1>Wykonano kompilowanie elementu docelowego „AfterResolveReferences” w projekcie „SFML App1.vcxproj”.
@@ -1099,7 +1102,7 @@ Szczegółowość rejestrowania została ustawiona na: Detailed.     1>Projekt �
        Wykonywanie zadania „WriteLinesToFile” zakończone.
        Używanie zadania „Touch” z zestawu „Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a”.
        Zadanie „Touch”
-         Trwa tworzenie „x64\Debug\SFML App1.tlog\unsuccessfulbuild”, ponieważ określono "AlwaysCreate".
+         Trwa tworzenie „x64\Debug\2D-Game.tlog\unsuccessfulbuild”, ponieważ określono "AlwaysCreate".
        Wykonywanie zadania „Touch” zakończone.
      1>Wykonano kompilowanie elementu docelowego „InitializeBuildStatus” w projekcie „SFML App1.vcxproj”.
        Pominięto element docelowy „PrepareProjectReferences”. Wcześniejsza kompilacja powiodła się.
@@ -1190,6 +1193,7 @@ Szczegółowość rejestrowania została ustawiona na: Detailed.     1>Projekt �
        Pominięto zadanie „VCMessage” z powodu fałszywego warunku; ('%(ClCompile.ExcludedFromBuild)' != 'true' and '%(Filename)%(Extension)' != '@(ClCompile->'%(Filename)%(Extension)')' and '%(ObjectFileName)' == '@(ClCompile->Metadata(ObjectFileName)->Distinct())') oszacowano jako ('' != 'true' and 'Collider.cpp' != 'Collider.cpp' and 'x64\Debug\' == 'x64\Debug\').
        Pominięto zadanie „VCMessage” z powodu fałszywego warunku; ('%(ClCompile.ExcludedFromBuild)' != 'true' and '%(Filename)%(Extension)' != '@(ClCompile->'%(Filename)%(Extension)')' and '%(ObjectFileName)' == '@(ClCompile->Metadata(ObjectFileName)->Distinct())') oszacowano jako ('' != 'true' and 'Functions.cpp' != 'Functions.cpp' and 'x64\Debug\' == 'x64\Debug\').
        Pominięto zadanie „VCMessage” z powodu fałszywego warunku; ('%(ClCompile.ExcludedFromBuild)' != 'true' and '%(Filename)%(Extension)' != '@(ClCompile->'%(Filename)%(Extension)')' and '%(ObjectFileName)' == '@(ClCompile->Metadata(ObjectFileName)->Distinct())') oszacowano jako ('' != 'true' and 'Game.cpp' != 'Game.cpp' and 'x64\Debug\' == 'x64\Debug\').
+       Pominięto zadanie „VCMessage” z powodu fałszywego warunku; ('%(ClCompile.ExcludedFromBuild)' != 'true' and '%(Filename)%(Extension)' != '@(ClCompile->'%(Filename)%(Extension)')' and '%(ObjectFileName)' == '@(ClCompile->Metadata(ObjectFileName)->Distinct())') oszacowano jako ('' != 'true' and 'Level.cpp' != 'Level.cpp' and 'x64\Debug\' == 'x64\Debug\').
        Pominięto zadanie „VCMessage” z powodu fałszywego warunku; ('%(ClCompile.ExcludedFromBuild)' != 'true' and '%(Filename)%(Extension)' != '@(ClCompile->'%(Filename)%(Extension)')' and '%(ObjectFileName)' == '@(ClCompile->Metadata(ObjectFileName)->Distinct())') oszacowano jako ('' != 'true' and 'Platform.cpp' != 'Platform.cpp' and 'x64\Debug\' == 'x64\Debug\').
        Pominięto zadanie „VCMessage” z powodu fałszywego warunku; ('%(ClCompile.ExcludedFromBuild)' != 'true' and '%(Filename)%(Extension)' != '@(ClCompile->'%(Filename)%(Extension)')' and '%(ObjectFileName)' == '@(ClCompile->Metadata(ObjectFileName)->Distinct())') oszacowano jako ('' != 'true' and 'Player.cpp' != 'Player.cpp' and 'x64\Debug\' == 'x64\Debug\').
        Pominięto zadanie „VCMessage” z powodu fałszywego warunku; ('%(ClCompile.ExcludedFromBuild)' != 'true' and '%(Filename)%(Extension)' != '@(ClCompile->'%(Filename)%(Extension)')' and '%(ObjectFileName)' == '@(ClCompile->Metadata(ObjectFileName)->Distinct())') oszacowano jako ('' != 'true' and 'main.cpp' != 'main.cpp' and 'x64\Debug\' == 'x64\Debug\').
@@ -1210,7 +1214,7 @@ Szczegółowość rejestrowania została ustawiona na: Detailed.     1>Projekt �
      1>Element docelowy „SelectClCompile” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „ClCompile”):
      1>Wykonano kompilowanie elementu docelowego „SelectClCompile” w projekcie „SFML App1.vcxproj”.
        Pominięto element docelowy „GenerateTargetFrameworkMonikerAttribute” z powodu fałszywego warunku; ('$(GenerateTargetFrameworkAttribute)' == 'true') oszacowano jako ('false' == 'true').
-       Pominięto element docelowy „ManagedIncrementalBuildPreProcessDependencyGraph” z powodu fałszywego warunku; ('@(ClCompile)' != '' and '$(EnableManagedIncrementalBuild)' == 'True') oszacowano jako ('Animation.cpp;Collider.cpp;Functions.cpp;Game.cpp;Platform.cpp;Player.cpp;main.cpp' != '' and 'false' == 'True').
+       Pominięto element docelowy „ManagedIncrementalBuildPreProcessDependencyGraph” z powodu fałszywego warunku; ('@(ClCompile)' != '' and '$(EnableManagedIncrementalBuild)' == 'True') oszacowano jako ('Animation.cpp;Collider.cpp;Functions.cpp;Game.cpp;Level.cpp;Platform.cpp;Player.cpp;main.cpp' != '' and 'false' == 'True').
      1>Element docelowy „ClCompile” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppCommon.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_ClCompile”):
        Pominięto zadanie „Delete” z powodu fałszywego warunku; ('%(ClCompile.DebugInformationFormat)' != '' and '%(ClCompile.DebugInformationFormat)' != 'None' and '%(ClCompile.DebugInformationFormat)' != 'OldStyle' and '%(ClCompile.ProgramDataBaseFileName)' != '' and !Exists(%(ClCompile.ProgramDataBaseFileName))) oszacowano jako ('EditAndContinue' != '' and 'EditAndContinue' != 'None' and 'EditAndContinue' != 'OldStyle' and 'x64\Debug\vc142.pdb' != '' and !Exists(x64\Debug\vc142.pdb)).
        Pominięto zadanie „MultiToolTask” z powodu fałszywego warunku; ('%(ClCompile.ExcludedFromBuild)' != 'true' and '%(ClCompile.CompilerIteration)' == '' and '$(MultiProcCL)' == 'true') oszacowano jako ('' != 'true' and '' == '' and 'false' == 'true').
@@ -1218,71 +1222,369 @@ Szczegółowość rejestrowania została ustawiona na: Detailed.     1>Projekt �
        Używanie zadania „CL” z zestawu „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.Build.CppTasks.Common.dll”.
        Zadanie „CL”
          Dzienniki śledzenia odczytów:
-         	x64\Debug\SFML App1.tlog\CL.read.1.tlog
-         Dane wyjściowe dla B:\GITHUB\2D-GAME\SFML APP1\ANIMATION.CPP|B:\GITHUB\2D-GAME\SFML APP1\COLLIDER.CPP|B:\GITHUB\2D-GAME\SFML APP1\FUNCTIONS.CPP|B:\GITHUB\2D-GAME\SFML APP1\GAME.CPP|B:\GITHUB\2D-GAME\SFML APP1\MAIN.CPP|B:\GITHUB\2D-GAME\SFML APP1\PLATFORM.CPP|B:\GITHUB\2D-GAME\SFML APP1\PLAYER.CPP:
+         	x64\Debug\2D-Game.tlog\CL.read.1.tlog
+         Dane wyjściowe dla B:\GITHUB\2D-GAME\SFML APP1\ANIMATION.CPP|B:\GITHUB\2D-GAME\SFML APP1\COLLIDER.CPP|B:\GITHUB\2D-GAME\SFML APP1\FUNCTIONS.CPP|B:\GITHUB\2D-GAME\SFML APP1\GAME.CPP|B:\GITHUB\2D-GAME\SFML APP1\LEVEL.CPP|B:\GITHUB\2D-GAME\SFML APP1\MAIN.CPP|B:\GITHUB\2D-GAME\SFML APP1\PLATFORM.CPP|B:\GITHUB\2D-GAME\SFML APP1\PLAYER.CPP:
          	B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\ANIMATION.OBJ
          	B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\COLLIDER.OBJ
          	B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\FUNCTIONS.OBJ
          	B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\GAME.OBJ
+         	B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\LEVEL.OBJ
          	B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\PLATFORM.OBJ
          	B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\PLAYER.OBJ
          	B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\MAIN.OBJ
-         Plik Animation.cpp zostanie skompilowany, ponieważ nie odnaleziono go w dzienniku śledzenia.
-         Plik Collider.cpp zostanie skompilowany, ponieważ nie odnaleziono go w dzienniku śledzenia.
-         Plik Functions.cpp zostanie skompilowany, ponieważ nie odnaleziono go w dzienniku śledzenia.
-         Plik Game.cpp zostanie skompilowany, ponieważ nie odnaleziono go w dzienniku śledzenia.
-         Plik Platform.cpp zostanie skompilowany, ponieważ nie odnaleziono go w dzienniku śledzenia.
-         Plik Player.cpp zostanie skompilowany, ponieważ nie odnaleziono go w dzienniku śledzenia.
-         Plik main.cpp zostanie skompilowany, ponieważ nie odnaleziono go w dzienniku śledzenia.
-         W dzienniku śledzenia nie znaleziono żadnych danych wyjściowych dla B:\GITHUB\2D-GAME\SFML APP1\ANIMATION.CPP|B:\GITHUB\2D-GAME\SFML APP1\COLLIDER.CPP|B:\GITHUB\2D-GAME\SFML APP1\FUNCTIONS.CPP|B:\GITHUB\2D-GAME\SFML APP1\GAME.CPP|B:\GITHUB\2D-GAME\SFML APP1\MAIN.CPP|B:\GITHUB\2D-GAME\SFML APP1\PLATFORM.CPP|B:\GITHUB\2D-GAME\SFML APP1\PLAYER.CPP; wymagana jest kompilacja źródłowa.
+         Plik Game.cpp zostanie skompilowany, ponieważ element B:\GITHUB\2D-GAME\SFML APP1\LEVEL.H został zmodyfikowany w 06.03.2020 18:23:22.
+         Plik Level.cpp zostanie skompilowany, ponieważ element B:\GitHub\2D-Game\SFML App1\Level.cpp został zmodyfikowany w 06.03.2020 18:23:24.
+         Plik main.cpp zostanie skompilowany, ponieważ element B:\GITHUB\2D-GAME\SFML APP1\LEVEL.H został zmodyfikowany w 06.03.2020 18:23:22.
+         W dzienniku śledzenia nie znaleziono żadnych danych wyjściowych dla B:\GITHUB\2D-GAME\SFML APP1\GAME.CPP|B:\GITHUB\2D-GAME\SFML APP1\LEVEL.CPP|B:\GITHUB\2D-GAME\SFML APP1\MAIN.CPP; wymagana jest kompilacja źródłowa.
          Dzienniki śledzenia zapisów:
-         	x64\Debug\SFML App1.tlog\CL.write.1.tlog
+         	x64\Debug\2D-Game.tlog\CL.write.1.tlog
          Zmienna środowiskowa przekazana do narzędzia:
-           VS_UNICODE_OUTPUT=1308
-         B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\bin\HostX86\x64\CL.exe /c /I"c:\SFML-2.5.1\include" /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /D SFML_STATIC /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc142.pdb" /Gd /TP /FC /errorReport:prompt Animation.cpp Collider.cpp Functions.cpp Game.cpp Platform.cpp Player.cpp main.cpp
+           VS_UNICODE_OUTPUT=968
+         B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\bin\HostX86\x64\CL.exe /c /I"c:\SFML-2.5.1\include" /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /D SFML_STATIC /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc142.pdb" /Gd /TP /FC /errorReport:prompt Game.cpp Level.cpp main.cpp
          Tracking command:
-         B:\Visual Studio 2019\MSBuild\Current\Bin\Tracker.exe /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i "B:\GitHub\2D-Game\SFML App1\x64\Debug\SFML App1.tlog" /r "B:\GITHUB\2D-GAME\SFML APP1\ANIMATION.CPP|B:\GITHUB\2D-GAME\SFML APP1\COLLIDER.CPP|B:\GITHUB\2D-GAME\SFML APP1\FUNCTIONS.CPP|B:\GITHUB\2D-GAME\SFML APP1\GAME.CPP|B:\GITHUB\2D-GAME\SFML APP1\MAIN.CPP|B:\GITHUB\2D-GAME\SFML APP1\PLATFORM.CPP|B:\GITHUB\2D-GAME\SFML APP1\PLAYER.CPP" /b MSBuildConsole_CancelEvent490afb48f9a14a458256e9a39903aa16  /c "B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\bin\HostX86\x64\CL.exe"  /c /I"c:\SFML-2.5.1\include" /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /D SFML_STATIC /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc142.pdb" /Gd /TP /FC /errorReport:prompt Animation.cpp Collider.cpp Functions.cpp Game.cpp Platform.cpp Player.cpp main.cpp
-         Animation.cpp
-         Collider.cpp
-         Functions.cpp
+         B:\Visual Studio 2019\MSBuild\Current\Bin\Tracker.exe /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i "B:\GitHub\2D-Game\SFML App1\x64\Debug\2D-Game.tlog" /r "B:\GITHUB\2D-GAME\SFML APP1\GAME.CPP|B:\GITHUB\2D-GAME\SFML APP1\LEVEL.CPP|B:\GITHUB\2D-GAME\SFML APP1\MAIN.CPP" /b MSBuildConsole_CancelEvent975c52d39f2e4098bc7b3fc8d47c53f8  /c "B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\bin\HostX86\x64\CL.exe"  /c /I"c:\SFML-2.5.1\include" /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /D SFML_STATIC /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc142.pdb" /Gd /TP /FC /errorReport:prompt Game.cpp Level.cpp main.cpp
          Game.cpp
-         Platform.cpp
-         Player.cpp
-     1>B:\GitHub\2D-Game\SFML App1\Player.cpp(15,14): warning C4305: "=": obcięcie z "double" do "float"
-     1>B:\GitHub\2D-Game\SFML App1\Player.cpp(16,20): warning C4305: "=": obcięcie z "double" do "float"
-     1>B:\GitHub\2D-Game\SFML App1\Player.cpp(67,27): warning C4305: "=": obcięcie z "double" do "T"
-                 with
-                 [
-                     T=float
-                 ]
+     1>B:\GitHub\2D-Game\SFML App1\Game.cpp(14,32): warning C4101: "e": lokalna zmienna, do której nie istnieje odwołanie
+     1>B:\GitHub\2D-Game\SFML App1\Game.cpp(60,52): warning C4305: "argument": obcięcie z "double" do "float"
+     1>B:\GitHub\2D-Game\SFML App1\Game.cpp(60,53): warning C4305: "argument": obcięcie z "double" do "float"
+     1>B:\GitHub\2D-Game\SFML App1\Game.cpp(63,53): warning C4305: "argument": obcięcie z "double" do "float"
+         Level.cpp
          main.cpp
-     1>B:\GitHub\2D-Game\SFML App1\main.cpp(62,13): error C2065: "climb": niezadeklarowany identyfikator
-     1>B:\GitHub\2D-Game\SFML App1\main.cpp(81,52): warning C4305: "argument": obcięcie z "double" do "float"
-     1>B:\GitHub\2D-Game\SFML App1\main.cpp(81,53): warning C4305: "argument": obcięcie z "double" do "float"
-     1>B:\GitHub\2D-Game\SFML App1\main.cpp(84,53): warning C4305: "argument": obcięcie z "double" do "float"
          Generowanie kodu...
-         Polecenie zostało zakończone z kodem 2.
-       Wykonywanie zadania „CL” zakończone — NIEPOWODZENIE.
-     1>Wykonano kompilowanie elementu docelowego „ClCompile” w projekcie „SFML App1.vcxproj” — NIEPOWODZENIE.
-     1>Kompilowanie projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” wykonane (elementy docelowe: Build) — NIEPOWODZENIE.
+       Wykonywanie zadania „CL” zakończone.
+     1>Wykonano kompilowanie elementu docelowego „ClCompile” w projekcie „SFML App1.vcxproj”.
+       Pominięto element docelowy „RunSelectedFileNativeCodeAnalysis” z powodu fałszywego warunku; ('$(RunMsvcAnalysis)'=='true' and '$(SelectedFiles)'!='') oszacowano jako ('false'=='true' and ''!='').
+       Pominięto element docelowy „ManagedIncrementalBuildPostProcessDependencyGraph” z powodu fałszywego warunku; ('@(ClCompile)' != '' and '$(EnableManagedIncrementalBuild)' == 'True') oszacowano jako ('Animation.cpp;Collider.cpp;Functions.cpp;Game.cpp;Level.cpp;Platform.cpp;Player.cpp;main.cpp' != '' and 'false' == 'True').
+       Pominięto element docelowy „NoAnalysisToolEnabledWarning” z powodu fałszywego warunku; ('$(RunCppAnalysis)'=='true' AND '$(EnableMicrosoftCodeAnalysis)'=='false' AND '$(EnableClangTidyCodeAnalysis)'=='false') oszacowano jako ('false'=='true' AND 'true'=='false' AND 'false'=='false').
+       Pominięto element docelowy „RunSelectedFileClangTidy” z powodu fałszywego warunku; ('$(RunClangCppAnalysis)'=='true' AND '$(SelectedFiles)'!='') oszacowano jako ('false'=='true' AND ''!='').
+       Pominięto element docelowy „MicrosoftAnalysisIncompatiableWithClangCl” z powodu fałszywego warunku; ('$(RunCppAnalysis)'=='true' AND '$(EnableMicrosoftCodeAnalysis)'=='true' AND '$(UseClangCl)'=='true') oszacowano jako ('false'=='true' AND 'true'=='true' AND ''=='true').
+     1>Element docelowy „AfterClCompile” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_ClCompile”):
+     1>Wykonano kompilowanie elementu docelowego „AfterClCompile” w projekcie „SFML App1.vcxproj”.
+     1>Element docelowy „_ClCompile” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_BuildCompileAction”):
+     1>Wykonano kompilowanie elementu docelowego „_ClCompile” w projekcie „SFML App1.vcxproj”.
+       Pominięto element docelowy „_ResGen” z powodu fałszywego warunku; ('@(EmbeddedResource)'!='') oszacowano jako (''!='').
+     1>Element docelowy „BeforeResourceCompile” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_ResourceCompile”):
+     1>Wykonano kompilowanie elementu docelowego „BeforeResourceCompile” w projekcie „SFML App1.vcxproj”.
+     1>Element docelowy „MakeDirsForResourceCompile” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_ResourceCompile”):
+       Zadanie „MakeDir”
+       Wykonywanie zadania „MakeDir” zakończone.
+     1>Wykonano kompilowanie elementu docelowego „MakeDirsForResourceCompile” w projekcie „SFML App1.vcxproj”.
+       Pominięto element docelowy „ResourceCompile” z powodu fałszywego warunku; ('@(ResourceCompile)' != '') oszacowano jako ('' != '').
+     1>Element docelowy „AfterResourceCompile” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_ResourceCompile”):
+     1>Wykonano kompilowanie elementu docelowego „AfterResourceCompile” w projekcie „SFML App1.vcxproj”.
+     1>Element docelowy „_ResourceCompile” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_BuildCompileAction”):
+     1>Wykonano kompilowanie elementu docelowego „_ResourceCompile” w projekcie „SFML App1.vcxproj”.
+       Pominięto element docelowy „_ImpLib” z powodu fałszywego warunku; ('$(ImpLibCompiled)' == 'true') oszacowano jako ('' == 'true').
+       Pominięto element docelowy „_Lib” z powodu fałszywego warunku; ('$(LibCompiled)' == 'true') oszacowano jako ('' == 'true').
+     1>Element docelowy „AfterBuildCompileEvent” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_BuildCompileAction”):
+     1>Wykonano kompilowanie elementu docelowego „AfterBuildCompileEvent” w projekcie „SFML App1.vcxproj”.
+     1>Element docelowy „_BuildCompileAction” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „BuildCompile”):
+     1>Wykonano kompilowanie elementu docelowego „_BuildCompileAction” w projekcie „SFML App1.vcxproj”.
+     1>Element docelowy „BuildCompile” w pliku „B:\Visual Studio 2019\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „Build”):
+     1>Wykonano kompilowanie elementu docelowego „BuildCompile” w projekcie „SFML App1.vcxproj”.
+       Pominięto element docelowy „PrepareProjectReferences”. Wcześniejsza kompilacja powiodła się.
+     1>Element docelowy „BuildLinkTraverse” w pliku „B:\Visual Studio 2019\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „BuildLink”):
+       Pominięto zadanie „MSBuild” z powodu fałszywego warunku; ('$(BuildPassReferences)' == 'true' and '@(ProjectReferenceWithConfiguration)' != '' and '@(_MSBuildProjectReferenceExistent)' != ''  and '%(_MSBuildProjectReferenceExistent.BuildReference)' == 'true') oszacowano jako ('' == 'true' and '' != '' and '' != ''  and '' == 'true').
+     1>Wykonano kompilowanie elementu docelowego „BuildLinkTraverse” w projekcie „SFML App1.vcxproj”.
+       Pominięto element docelowy „PrepareForBuild”. Wcześniejsza kompilacja powiodła się.
+       Pominięto element docelowy „ResolveReferences”. Wcześniejsza kompilacja powiodła się.
+     1>Element docelowy „ComputeLegacyManifestEmbedding” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_BuildLinkAction”):
+       Pominięto zadanie „VCMessage” z powodu fałszywego warunku; ('$(RevertManifestEmbedding)' == 'true' and '$(_LegacyManifestEmbeddingDebug)' == 'true') oszacowano jako ('' == 'true' and '' == 'true').
+     1>Wykonano kompilowanie elementu docelowego „ComputeLegacyManifestEmbedding” w projekcie „SFML App1.vcxproj”.
+     1>Element docelowy „BeforeLink” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_Link”):
+     1>Wykonano kompilowanie elementu docelowego „BeforeLink” w projekcie „SFML App1.vcxproj”.
+     1>Element docelowy „ComputeRCOutputs” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „ComputeRCGeneratedLinkInputs”):
+     1>Wykonano kompilowanie elementu docelowego „ComputeRCOutputs” w projekcie „SFML App1.vcxproj”.
+     1>Element docelowy „ComputeRCGeneratedLinkInputs” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_Link”):
+     1>Wykonano kompilowanie elementu docelowego „ComputeRCGeneratedLinkInputs” w projekcie „SFML App1.vcxproj”.
+     1>Element docelowy „ComputeManifestGeneratedLinkerInputs” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_Link”):
+     1>Wykonano kompilowanie elementu docelowego „ComputeManifestGeneratedLinkerInputs” w projekcie „SFML App1.vcxproj”.
+       Pominięto element docelowy „ComputeCustomBuildOutput”. Wcześniejsza kompilacja powiodła się.
+       Pominięto element docelowy „ComputeMIDLGeneratedCompileInputs”. Wcześniejsza kompilacja powiodła się.
+       Pominięto element docelowy „ComputeCLInputPDBName”. Wcześniejsza kompilacja powiodła się.
+       Pominięto element docelowy „ComputeReferenceCLInput”. Wcześniejsza kompilacja powiodła się.
+       Pominięto element docelowy „WarnCompileDuplicatedFilename”. Wcześniejsza kompilacja powiodła się.
+       Pominięto element docelowy „FixupCLCompileOptions”. Wcześniejsza kompilacja powiodła się.
+     1>Element docelowy „ComputeCLOutputs” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „ComputeCLGeneratedLinkInputs”):
+     1>Wykonano kompilowanie elementu docelowego „ComputeCLOutputs” w projekcie „SFML App1.vcxproj”.
+     1>Element docelowy „ComputeCLGeneratedLinkInputs” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_Link”):
+     1>Wykonano kompilowanie elementu docelowego „ComputeCLGeneratedLinkInputs” w projekcie „SFML App1.vcxproj”.
+     1>Element docelowy „ComputeLinkInputsFromProject” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_Link”):
+     1>Wykonano kompilowanie elementu docelowego „ComputeLinkInputsFromProject” w projekcie „SFML App1.vcxproj”.
+       Pominięto element docelowy „ComputeReferenceLinkInputs” z powodu fałszywego warunku; (@(ProjectReference) != '') oszacowano jako ( != '').
+     1>Element docelowy „ComputeManifestInputsTargets” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_Link”):
+     1>Wykonano kompilowanie elementu docelowego „ComputeManifestInputsTargets” w projekcie „SFML App1.vcxproj”.
+       Pominięto element docelowy „ManifestResourceCompile” z powodu fałszywego warunku; ('$(EmbedManifestBy)' == 'LINK' and '@(Manifest)' != '') oszacowano jako ('LINK' == 'LINK' and '' != '').
+       Pominięto element docelowy „AssignWinFXEmbeddedResource” z powodu fałszywego warunku; ('@(WinFXEmbeddedResource)' != '') oszacowano jako ('' != '').
+     1>Element docelowy „AssignTargetPaths” w pliku „B:\Visual Studio 2019\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „PrepareResourceNames”):
+       Używanie zadania „AssignTargetPath” z zestawu „Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a”.
+       Zadanie „AssignTargetPath”
+       Wykonywanie zadania „AssignTargetPath” zakończone.
+       Zadanie „AssignTargetPath”
+       Wykonywanie zadania „AssignTargetPath” zakończone.
+       Zadanie „AssignTargetPath”
+       Wykonywanie zadania „AssignTargetPath” zakończone.
+       Zadanie „AssignTargetPath”
+       Wykonywanie zadania „AssignTargetPath” zakończone.
+       Pominięto zadanie „AssignTargetPath” z powodu fałszywego warunku; ('@(_DeploymentBaseManifestWithTargetPath)'=='' and '%(None.Extension)'=='.manifest') oszacowano jako (''=='' and ''=='.manifest').
+     1>Wykonano kompilowanie elementu docelowego „AssignTargetPaths” w projekcie „SFML App1.vcxproj”.
+       Pominięto element docelowy „AssignTargetPaths”. Wcześniejsza kompilacja powiodła się.
+     1>Element docelowy „SplitResourcesByCulture” w pliku „B:\Visual Studio 2019\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „PrepareResourceNames”):
+       Pominięto zadanie „Warning” z powodu fałszywego warunku; ('@(ResxWithNoCulture)'!='') oszacowano jako (''!='').
+       Pominięto zadanie „Warning” z powodu fałszywego warunku; ('@(ResxWithCulture)'!='') oszacowano jako (''!='').
+       Pominięto zadanie „Warning” z powodu fałszywego warunku; ('@(NonResxWithCulture)'!='') oszacowano jako (''!='').
+       Pominięto zadanie „Warning” z powodu fałszywego warunku; ('@(NonResxWithNoCulture)'!='') oszacowano jako (''!='').
+       Używanie zadania „AssignCulture” z zestawu „Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a”.
+       Zadanie „AssignCulture”
+       Wykonywanie zadania „AssignCulture” zakończone.
+     1>Wykonano kompilowanie elementu docelowego „SplitResourcesByCulture” w projekcie „SFML App1.vcxproj”.
+       Pominięto element docelowy „CreateManifestResourceNames” z powodu fałszywego warunku; ('@(EmbeddedResource)' != '') oszacowano jako ('' != '').
+     1>Element docelowy „CreateCustomManifestResourceNames” w pliku „B:\Visual Studio 2019\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „PrepareResourceNames”):
+     1>Wykonano kompilowanie elementu docelowego „CreateCustomManifestResourceNames” w projekcie „SFML App1.vcxproj”.
+     1>Element docelowy „PrepareResourceNames” w pliku „B:\Visual Studio 2019\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_Link”):
+     1>Wykonano kompilowanie elementu docelowego „PrepareResourceNames” w projekcie „SFML App1.vcxproj”.
+     1>Element docelowy „MakeDirsForLink” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_Link”):
+       Zadanie „MakeDir”
+       Wykonywanie zadania „MakeDir” zakończone.
+     1>Wykonano kompilowanie elementu docelowego „MakeDirsForLink” w projekcie „SFML App1.vcxproj”.
+     1>Element docelowy „DoLinkOutputFilesMatch” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_Link”):
+       Pominięto zadanie „VCMessage” z powodu fałszywego warunku; ('@(_OutputFileFromLink)' == '') oszacowano jako ('B:\GitHub\2D-Game\x64\Debug\2D-Game.exe' == '').
+       Pominięto zadanie „VCMessage” z powodu fałszywego warunku; ('@(_OutputFileFromLink)' != '' and '%(_OutputFileFromLink.FullPath)' != '$([System.IO.Path]::GetFullPath($(TargetPath)))') oszacowano jako ('B:\GitHub\2D-Game\x64\Debug\2D-Game.exe' != '' and 'B:\GitHub\2D-Game\x64\Debug\2D-Game.exe' != 'B:\GitHub\2D-Game\x64\Debug\2D-Game.exe').
+       Pominięto zadanie „VCMessage” z powodu fałszywego warunku; ('@(_OutputFileFromLink)' != '' and '%(_OutputFileFromLink.Extension)' != '' and '%(_OutputFileFromLink.Extension)' != '$(TargetExt)') oszacowano jako ('B:\GitHub\2D-Game\x64\Debug\2D-Game.exe' != '' and '.exe' != '' and '.exe' != '.exe').
+       Pominięto zadanie „VCMessage” z powodu fałszywego warunku; ('@(_OutputFileFromLink)' != '' and '%(_OutputFileFromLink.Filename)' != '' and '%(_OutputFileFromLink.Filename)' != '$(TargetName)') oszacowano jako ('B:\GitHub\2D-Game\x64\Debug\2D-Game.exe' != '' and '2D-Game' != '' and '2D-Game' != '2D-Game').
+       Pominięto zadanie „VCMessage” z powodu fałszywego warunku; ('%(Link.MinimumRequiredVersion)' != '' and ('%(Link.Subsystem)' == '' or '%(Link.Subsystem)' == 'NotSet')) oszacowano jako ('' != '' and ('Console' == '' or 'Console' == 'NotSet')).
+     1>Wykonano kompilowanie elementu docelowego „DoLinkOutputFilesMatch” w projekcie „SFML App1.vcxproj”.
+     1>Element docelowy „PreLinkEvent” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppCommon.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_Link”):
+       Pominięto zadanie „Message” z powodu fałszywego warunku; ('%(PreLinkEvent.Message)' != '' and '%(PreLinkEvent.Command)' != '') oszacowano jako ('' != '' and '' != '').
+       Pominięto zadanie „Exec” z powodu fałszywego warunku; ('%(PreLinkEvent.Command)' != '') oszacowano jako ('' != '').
+     1>Wykonano kompilowanie elementu docelowego „PreLinkEvent” w projekcie „SFML App1.vcxproj”.
+     1>Element docelowy „ComputeLinkSwitches” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppCommon.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „Link”):
+     1>Wykonano kompilowanie elementu docelowego „ComputeLinkSwitches” w projekcie „SFML App1.vcxproj”.
+     1>Element docelowy „Link” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppCommon.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_Link”):
+       Używanie zadania „Link” z zestawu „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.Build.CppTasks.Common.dll”.
+       Zadanie „Link”
+         Dzienniki śledzenia zapisów:
+         	x64\Debug\2D-Game.tlog\link.write.1.tlog
+         Dzienniki śledzenia odczytów:
+         	x64\Debug\2D-Game.tlog\link.read.1.tlog
+         Dane wyjściowe dla B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\ANIMATION.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\COLLIDER.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\FUNCTIONS.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\GAME.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\LEVEL.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\MAIN.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\PLATFORM.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\PLAYER.OBJ:
+         	B:\GITHUB\2D-GAME\X64\DEBUG\2D-GAME.EXE
+         	B:\GITHUB\2D-GAME\X64\DEBUG\2D-GAME.ILK
+         	B:\GITHUB\2D-GAME\X64\DEBUG\2D-GAME.PDB
+         Dane wejściowe dla B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\ANIMATION.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\COLLIDER.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\FUNCTIONS.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\GAME.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\LEVEL.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\MAIN.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\PLATFORM.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\PLAYER.OBJ:
+         	C:\SFML-2.5.1\LIB\SFML-MAIN-D.LIB
+         	C:\SFML-2.5.1\LIB\SFML-AUDIO-S-D.LIB
+         	C:\SFML-2.5.1\LIB\SFML-GRAPHICS-S-D.LIB
+         	C:\SFML-2.5.1\LIB\SFML-NETWORK-S-D.LIB
+         	C:\SFML-2.5.1\LIB\SFML-SYSTEM-S-D.LIB
+         	C:\SFML-2.5.1\LIB\SFML-WINDOW-S-D.LIB
+         	C:\SFML-2.5.1\LIB\FLAC.LIB
+         	C:\SFML-2.5.1\LIB\FREETYPE.LIB
+         	C:\SFML-2.5.1\LIB\OGG.LIB
+         	C:\SFML-2.5.1\LIB\OPENAL32.LIB
+         	C:\SFML-2.5.1\LIB\VORBIS.LIB
+         	C:\SFML-2.5.1\LIB\VORBISENC.LIB
+         	C:\SFML-2.5.1\LIB\VORBISFILE.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.18362.0\UM\X64\OPENGL32.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.18362.0\UM\X64\WINMM.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.18362.0\UM\X64\WS2_32.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.18362.0\UM\X64\KERNEL32.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.18362.0\UM\X64\USER32.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.18362.0\UM\X64\GDI32.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.18362.0\UM\X64\WINSPOOL.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.18362.0\UM\X64\COMDLG32.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.18362.0\UM\X64\ADVAPI32.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.18362.0\UM\X64\SHELL32.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.18362.0\UM\X64\OLE32.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.18362.0\UM\X64\OLEAUT32.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.18362.0\UM\X64\UUID.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.18362.0\UM\X64\ODBC32.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.18362.0\UM\X64\ODBCCP32.LIB
+         	B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\ANIMATION.OBJ
+         	B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\COLLIDER.OBJ
+         	B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\FUNCTIONS.OBJ
+         	B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\GAME.OBJ
+         	B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\LEVEL.OBJ
+         	B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\PLATFORM.OBJ
+         	B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\PLAYER.OBJ
+         	B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\MAIN.OBJ
+         	C:\WINDOWS\SYSTEM32\TZRES.DLL
+         	C:\WINDOWS\GLOBALIZATION\SORTING\SORTDEFAULT.NLS
+         	B:\VISUAL STUDIO 2019\VC\TOOLS\MSVC\14.24.28314\LIB\X64\MSVCPRTD.LIB
+         	B:\VISUAL STUDIO 2019\VC\TOOLS\MSVC\14.24.28314\LIB\X64\MSVCRTD.LIB
+         	B:\VISUAL STUDIO 2019\VC\TOOLS\MSVC\14.24.28314\LIB\X64\OLDNAMES.LIB
+         	B:\VISUAL STUDIO 2019\VC\TOOLS\MSVC\14.24.28314\LIB\X64\VCRUNTIMED.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.18362.0\UCRT\X64\UCRTD.LIB
+         	B:\VISUAL STUDIO 2019\VC\TOOLS\MSVC\14.24.28314\BIN\HOSTX86\X64\CVTRES.EXE
+         Wymagana jest kompilacja źródłowa: dane wejściowe B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\GAME.OBJ są nowsze niż dane wyjściowe B:\GITHUB\2D-GAME\X64\DEBUG\2D-GAME.EXE.
+         Zmienna środowiskowa przekazana do narzędzia:
+           VS_UNICODE_OUTPUT=1776
+         B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\bin\HostX86\x64\link.exe /ERRORREPORT:PROMPT /OUT:"B:\GitHub\2D-Game\x64\Debug\2D-Game.exe" /INCREMENTAL /NOLOGO /LIBPATH:"c:\SFML-2.5.1\lib" "sfml-main-d.lib" "sfml-audio-s-d.lib" "sfml-graphics-s-d.lib" "sfml-network-s-d.lib" "sfml-system-s-d.lib" "sfml-window-s-d.lib" flac.lib freetype.lib ogg.lib openal32.lib vorbis.lib vorbisenc.lib vorbisfile.lib opengl32.lib Winmm.lib ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG:FASTLINK /PDB:"B:\GitHub\2D-Game\x64\Debug\2D-Game.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"B:\GitHub\2D-Game\x64\Debug\2D-Game.lib" /MACHINE:X64 x64\Debug\Animation.obj
+         x64\Debug\Collider.obj
+         x64\Debug\Functions.obj
+         x64\Debug\Game.obj
+         x64\Debug\Level.obj
+         x64\Debug\Platform.obj
+         x64\Debug\Player.obj
+         x64\Debug\main.obj
+         Tracking command:
+         B:\Visual Studio 2019\MSBuild\Current\Bin\Tracker.exe /a /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i "B:\GitHub\2D-Game\SFML App1\x64\Debug\2D-Game.tlog" /r "B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\ANIMATION.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\COLLIDER.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\FUNCTIONS.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\GAME.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\LEVEL.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\MAIN.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\PLATFORM.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\PLAYER.OBJ" /b MSBuildConsole_CancelEvent41c58bdd01064375b295b81b69950e82  /c "B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\bin\HostX86\x64\link.exe"  /ERRORREPORT:PROMPT /OUT:"B:\GitHub\2D-Game\x64\Debug\2D-Game.exe" /INCREMENTAL /NOLOGO /LIBPATH:"c:\SFML-2.5.1\lib" "sfml-main-d.lib" "sfml-audio-s-d.lib" "sfml-graphics-s-d.lib" "sfml-network-s-d.lib" "sfml-system-s-d.lib" "sfml-window-s-d.lib" flac.lib freetype.lib ogg.lib openal32.lib vorbis.lib vorbisenc.lib vorbisfile.lib opengl32.lib Winmm.lib ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG:FASTLINK /PDB:"B:\GitHub\2D-Game\x64\Debug\2D-Game.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"B:\GitHub\2D-Game\x64\Debug\2D-Game.lib" /MACHINE:X64 x64\Debug\Animation.obj
+         x64\Debug\Collider.obj
+         x64\Debug\Functions.obj
+         x64\Debug\Game.obj
+         x64\Debug\Level.obj
+         x64\Debug\Platform.obj
+         x64\Debug\Player.obj
+         x64\Debug\main.obj
+       Wykonywanie zadania „Link” zakończone.
+       Zadanie „Message”
+         SFML App1.vcxproj -> B:\GitHub\2D-Game\x64\Debug\2D-Game.exe
+       Wykonywanie zadania „Message” zakończone.
+       Pominięto zadanie „VCMessage” z powodu fałszywego warunku; (('$(EmbedManifestBy)' != 'LINK' or '$(LegacyManifestEmbedding)' != 'true' or '$(LinkSkippedExecution)' == 'true') and
+                    %(Link.GenerateDebugInformation) == 'DebugFastLink' and %(Link.ProgramDataBaseFileName) != '') oszacowano jako (('LINK' != 'LINK' or '' != 'true' or 'False' == 'true') and
+                    DebugFastLink == 'DebugFastLink' and  != '').
+       Pominięto zadanie „VCMessage” z powodu fałszywego warunku; (('$(EmbedManifestBy)' != 'LINK' or '$(LegacyManifestEmbedding)' != 'true' or '$(LinkSkippedExecution)' == 'true') and
+                    %(Link.GenerateDebugInformation) == 'true' and %(Link.ProgramDataBaseFileName) != '') oszacowano jako (('LINK' != 'LINK' or '' != 'true' or 'False' == 'true') and
+                    DebugFastLink == 'true' and  != '').
+     1>Wykonano kompilowanie elementu docelowego „Link” w projekcie „SFML App1.vcxproj”.
+       Pominięto element docelowy „MetaGenInputsOutputs” z powodu fałszywego warunku; ('$(EnableManagedIncrementalBuild)' == 'True') oszacowano jako ('false' == 'True').
+       Pominięto element docelowy „ComputeMetaGenInputs” z powodu fałszywego warunku; ('$(CLRSupport)'!='' and '$(CLRSupport)'!='false' and '$(CLRSupport)'!='NetCore') oszacowano jako ('false'!='' and 'false'!='false' and 'false'!='NetCore').
+       Pominięto element docelowy „MetaGen” z powodu fałszywego warunku; ('@(MetaGen)' != '') oszacowano jako ('' != '').
+     1>Element docelowy „ComputeLinkImportLibraryOutputsForClean” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_Link”):
+       Pominięto zadanie „WriteLinesToFile” z powodu fałszywego warunku; ('@(_LinkSecondaryOutput)' != '') oszacowano jako ('' != '').
+     1>Wykonano kompilowanie elementu docelowego „ComputeLinkImportLibraryOutputsForClean” w projekcie „SFML App1.vcxproj”.
+     1>Element docelowy „AfterLink” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_Link”):
+     1>Wykonano kompilowanie elementu docelowego „AfterLink” w projekcie „SFML App1.vcxproj”.
+     1>Element docelowy „_Link” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_BuildLinkAction”):
+     1>Wykonano kompilowanie elementu docelowego „_Link” w projekcie „SFML App1.vcxproj”.
+     1>Element docelowy „_ALink” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_BuildLinkAction”):
+     1>Wykonano kompilowanie elementu docelowego „_ALink” w projekcie „SFML App1.vcxproj”.
+       Pominięto element docelowy „ComputeLegacyManifestEmbedding”. Wcześniejsza kompilacja powiodła się.
+     1>Element docelowy „_Manifest” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_BuildLinkAction”):
+       Pominięto zadanie „CallTarget” z powodu fałszywego warunku; ('$(LegacyManifestEmbedding)' == 'true') oszacowano jako ('' == 'true').
+     1>Wykonano kompilowanie elementu docelowego „_Manifest” w projekcie „SFML App1.vcxproj”.
+     1>Element docelowy „RegisterOutput” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppCommon.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_BuildLinkAction”):
+       Pominięto zadanie „Exec” z powodu fałszywego warunku; ('$(ConfigurationType)'=='DynamicLibrary' and '%(Link.RegisterOutput)'=='true' and '%(Link.PerUserRedirection)'!='true') oszacowano jako ('Application'=='DynamicLibrary' and 'false'=='true' and 'false'!='true').
+       Pominięto zadanie „Exec” z powodu fałszywego warunku; ('$(ConfigurationType)'=='DynamicLibrary' and '%(Link.RegisterOutput)'=='true' and '%(Link.PerUserRedirection)'=='true') oszacowano jako ('Application'=='DynamicLibrary' and 'false'=='true' and 'false'=='true').
+       Pominięto zadanie „Exec” z powodu fałszywego warunku; ('$(ConfigurationType)'=='Application' and '%(Link.RegisterOutput)'=='true' and '%(Link.PerUserRedirection)'!='true') oszacowano jako ('Application'=='Application' and 'false'=='true' and 'false'!='true').
+       Pominięto zadanie „Exec” z powodu fałszywego warunku; ('$(ConfigurationType)'=='Application' and '%(Link.RegisterOutput)'=='true' and '%(Link.PerUserRedirection)'=='true') oszacowano jako ('Application'=='Application' and 'false'=='true' and 'false'=='true').
+       Pominięto zadanie „VCMessage” z powodu fałszywego warunku; ('$(_RegisterOutputExitCode)' != '' and '$(_RegisterOutputExitCode)' != '0') oszacowano jako ('' != '' and '' != '0').
+     1>Wykonano kompilowanie elementu docelowego „RegisterOutput” w projekcie „SFML App1.vcxproj”.
+       Pominięto element docelowy „PrepareForBuild”. Wcześniejsza kompilacja powiodła się.
+       Pominięto element docelowy „ResolveReferences”. Wcześniejsza kompilacja powiodła się.
+     1>Element docelowy „ResolvedXDCMake” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_XdcMake”):
+       Pominięto zadanie „MSBuild” z powodu fałszywego warunku; ('%(_MSBuildProjectReferenceExistent.Extension)' == '.vcxproj' and '@(ProjectReferenceWithConfiguration)' != '' and '@(_MSBuildProjectReferenceExistent)' != '' and '$(_ClCompileGenerateXMLDocumentationFiles)' == 'true') oszacowano jako ('' == '.vcxproj' and '' != '' and '' != '' and '' == 'true').
+     1>Wykonano kompilowanie elementu docelowego „ResolvedXDCMake” w projekcie „SFML App1.vcxproj”.
+     1>Element docelowy „ComputeCLCompileGeneratedXDCFiles” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_XdcMake”):
+     1>Wykonano kompilowanie elementu docelowego „ComputeCLCompileGeneratedXDCFiles” w projekcie „SFML App1.vcxproj”.
+     1>Element docelowy „MakeDirsForXdcMake” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_XdcMake”):
+       Zadanie „MakeDir”
+       Wykonywanie zadania „MakeDir” zakończone.
+     1>Wykonano kompilowanie elementu docelowego „MakeDirsForXdcMake” w projekcie „SFML App1.vcxproj”.
+       Pominięto element docelowy „XdcMake” z powodu fałszywego warunku; ('@(XdcMake)' != '') oszacowano jako ('' != '').
+     1>Element docelowy „_XdcMake” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_BuildLinkAction”):
+     1>Wykonano kompilowanie elementu docelowego „_XdcMake” w projekcie „SFML App1.vcxproj”.
+     1>Element docelowy „ComputeCLCompileGeneratedSbrFiles” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_BscMake”):
+     1>Wykonano kompilowanie elementu docelowego „ComputeCLCompileGeneratedSbrFiles” w projekcie „SFML App1.vcxproj”.
+     1>Element docelowy „MakeDirsForBscMake” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_BscMake”):
+       Zadanie „MakeDir”
+       Wykonywanie zadania „MakeDir” zakończone.
+     1>Wykonano kompilowanie elementu docelowego „MakeDirsForBscMake” w projekcie „SFML App1.vcxproj”.
+       Pominięto element docelowy „BscMake” z powodu fałszywego warunku; ('@(BscMake)' != '') oszacowano jako ('' != '').
+       Pominięto element docelowy „CustomBuildStep” z powodu fałszywego warunku; ('@(CustomBuildStep)' != '' and '$(SelectedFiles)'=='') oszacowano jako ('' != '' and ''=='').
+     1>Element docelowy „_BscMake” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_BuildLinkAction”):
+     1>Wykonano kompilowanie elementu docelowego „_BscMake” w projekcie „SFML App1.vcxproj”.
+     1>Element docelowy „_GenerateSatelliteAssemblyInputs” w pliku „B:\Visual Studio 2019\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „CreateSatelliteAssemblies”):
+       Pominięto zadanie „Warning” z powodu fałszywego warunku; ('@(ManifestResourceWithCulture)'!='' and '%(ManifestResourceWithCulture.EmittedForCompatibilityOnly)'=='') oszacowano jako (''!='' and ''=='').
+       Pominięto zadanie „Warning” z powodu fałszywego warunku; ('@(ManifestNonResxWithCultureOnDisk)'!='' and '%(ManifestNonResxWithCultureOnDisk.EmittedForCompatibilityOnly)'=='') oszacowano jako (''!='' and ''=='').
+     1>Wykonano kompilowanie elementu docelowego „_GenerateSatelliteAssemblyInputs” w projekcie „SFML App1.vcxproj”.
+       Pominięto element docelowy „ComputeIntermediateSatelliteAssemblies” z powodu fałszywego warunku; (@(ReferenceSatellitePaths->'%(DestinationSubDirectory)') != '') oszacowano jako ( != '').
+       Pominięto element docelowy „GenerateSatelliteAssemblies” z powodu fałszywego warunku; ('@(_SatelliteAssemblyResourceInputs)' != '') oszacowano jako ('' != '').
+     1>Element docelowy „CreateSatelliteAssemblies” w pliku „B:\Visual Studio 2019\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_BuildLinkAction”):
+     1>Wykonano kompilowanie elementu docelowego „CreateSatelliteAssemblies” w projekcie „SFML App1.vcxproj”.
+     1>Element docelowy „_Appverifier” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_BuildLinkAction”):
+     1>Wykonano kompilowanie elementu docelowego „_Appverifier” w projekcie „SFML App1.vcxproj”.
+     1>Element docelowy „_Deploy” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_BuildLinkAction”):
+     1>Wykonano kompilowanie elementu docelowego „_Deploy” w projekcie „SFML App1.vcxproj”.
+       Pominięto element docelowy „ComputeIntermediateSatelliteAssemblies” z powodu fałszywego warunku; (@(ReferenceSatellitePaths->'%(DestinationSubDirectory)') != '') oszacowano jako ( != '').
+       Pominięto element docelowy „_CopyFilesMarkedCopyLocal” z powodu fałszywego warunku; ('@(ReferenceCopyLocalPaths)' != '') oszacowano jako ('' != '').
+       Pominięto element docelowy „AssignTargetPaths”. Wcześniejsza kompilacja powiodła się.
+       Pominięto element docelowy „_SplitProjectReferencesByFileExistence”. Wcześniejsza kompilacja powiodła się.
+       Pominięto element docelowy „_GetProjectReferenceTargetFrameworkProperties”. Wcześniejsza kompilacja powiodła się.
+     1>Element docelowy „GetCopyToOutputDirectoryXamlAppDefs” w pliku „C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\Microsoft.Xaml.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „GetCopyToOutputDirectoryItems”):
+       Zadanie „AssignTargetPath”
+       Wykonywanie zadania „AssignTargetPath” zakończone.
+     1>Wykonano kompilowanie elementu docelowego „GetCopyToOutputDirectoryXamlAppDefs” w projekcie „SFML App1.vcxproj”.
+     1>Element docelowy „GetCopyToOutputDirectoryItems” w pliku „B:\Visual Studio 2019\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_CopySourceItemsToOutputDirectory”):
+       Pominięto zadanie „MSBuild” z powodu fałszywego warunku; ('@(_MSBuildProjectReferenceExistent)' != '' and '$(_GetChildProjectCopyToOutputDirectoryItems)' == 'true' and '%(_MSBuildProjectReferenceExistent.Private)' != 'false' and '$(UseCommonOutputDirectory)' != 'true') oszacowano jako ('' != '' and 'true' == 'true' and '' != 'false' and 'false' != 'true').
+       Zadanie „AssignTargetPath”
+       Wykonywanie zadania „AssignTargetPath” zakończone.
+     1>Wykonano kompilowanie elementu docelowego „GetCopyToOutputDirectoryItems” w projekcie „SFML App1.vcxproj”.
+       Pominięto element docelowy „_CopyOutOfDateSourceItemsToOutputDirectory” z powodu fałszywego warunku; ( '@(_SourceItemsToCopyToOutputDirectory)' != '' ) oszacowano jako ( '' != '' ).
+       Pominięto element docelowy „_CopyOutOfDateSourceItemsToOutputDirectoryAlways” z powodu fałszywego warunku; ( '@(_SourceItemsToCopyToOutputDirectoryAlways)' != '' ) oszacowano jako ( '' != '' ).
+     1>Element docelowy „_CopySourceItemsToOutputDirectory” w pliku „B:\Visual Studio 2019\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „CopyFilesToOutputDirectory”):
+     1>Wykonano kompilowanie elementu docelowego „_CopySourceItemsToOutputDirectory” w projekcie „SFML App1.vcxproj”.
+       Pominięto element docelowy „_CopyAppConfigFile” z powodu fałszywego warunku; ( '@(AppConfigWithTargetPath)' != '' ) oszacowano jako ( '' != '' ).
+       Pominięto element docelowy „_CopyManifestFiles” z powodu fałszywego warunku; ( '$(_DeploymentCopyApplicationManifest)'=='true' or '$(GenerateClickOnceManifests)'=='true' ) oszacowano jako ( ''=='true' or ''=='true' ).
+     1>Element docelowy „_CheckForCompileOutputs” w pliku „B:\Visual Studio 2019\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „CopyFilesToOutputDirectory”):
+     1>Wykonano kompilowanie elementu docelowego „_CheckForCompileOutputs” w projekcie „SFML App1.vcxproj”.
+       Pominięto element docelowy „_SGenCheckForOutputs” z powodu fałszywego warunku; ('$(_SGenGenerateSerializationAssembliesConfig)' == 'On' or ('@(WebReferenceUrl)'!='' and '$(_SGenGenerateSerializationAssembliesConfig)' == 'Auto')) oszacowano jako ('Off' == 'On' or (''!='' and 'Off' == 'Auto')).
+     1>Element docelowy „CopyFilesToOutputDirectory” w pliku „B:\Visual Studio 2019\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „PrepareForRun”):
+       Pominięto zadanie „Copy” z powodu fałszywego warunku; ('$(CopyBuildOutputToOutputDirectory)' == 'true' and '$(SkipCopyBuildProduct)' != 'true') oszacowano jako ('true' == 'true' and 'true' != 'true').
+       Pominięto zadanie „CopyRefAssembly” z powodu fałszywego warunku; ('$(ProduceReferenceAssembly)' == 'true' and '$(CopyBuildOutputToOutputDirectory)' == 'true' and '$(SkipCopyBuildProduct)' != 'true') oszacowano jako ('false' == 'true' and 'true' == 'true' and 'true' != 'true').
+       Pominięto zadanie „Message” z powodu fałszywego warunku; ('$(CopyBuildOutputToOutputDirectory)' == 'true' and '$(SkipCopyBuildProduct)'!='true') oszacowano jako ('true' == 'true' and 'true'!='true').
+       Pominięto zadanie „Copy” z powodu fałszywego warunku; ('@(AddModules)' != '') oszacowano jako ('' != '').
+       Pominięto zadanie „Copy” z powodu fałszywego warunku; ('$(_SGenDllCreated)'=='true') oszacowano jako ('false'=='true').
+       Pominięto zadanie „Copy” z powodu fałszywego warunku; ('$(_DebugSymbolsProduced)'=='true' and '$(SkipCopyingSymbolsToOutputDirectory)' != 'true' and '$(CopyOutputSymbolsToOutputDirectory)'=='true') oszacowano jako ('false'=='true' and '' != 'true' and 'true'=='true').
+       Pominięto zadanie „Copy” z powodu fałszywego warunku; ('$(_DocumentationFileProduced)'=='true' and '$(CopyDocumentationFileToOutputDirectory)'=='true') oszacowano jako ('false'=='true' and 'true'=='true').
+       Pominięto zadanie „Copy” z powodu fałszywego warunku; ('@(IntermediateSatelliteAssembliesWithTargetPath)' != '') oszacowano jako ('' != '').
+       Pominięto zadanie „Copy” z powodu fałszywego warunku; ('@(ReferenceComWrappersToCopyLocal)' != '' or '@(ResolvedIsolatedComModules)' != '' or '@(_DeploymentLooseManifestFile)' != '' or '@(NativeReferenceFile)' != '' ) oszacowano jako ('' != '' or '' != '' or '' != '' or '' != '' ).
+       Pominięto zadanie „Copy” z powodu fałszywego warunku; ('$(SkipCopyWinMDArtifact)' != 'true' and '@(WinMDExpArtifacts)' != '') oszacowano jako ('' != 'true' and '' != '').
+       Pominięto zadanie „Message” z powodu fałszywego warunku; ('$(SkipCopyWinMDArtifact)' != 'true' and '$(_WindowsMetadataOutputPath)' != '') oszacowano jako ('' != 'true' and '' != '').
+     1>Wykonano kompilowanie elementu docelowego „CopyFilesToOutputDirectory” w projekcie „SFML App1.vcxproj”.
+     1>Element docelowy „PrepareForRun” w pliku „B:\Visual Studio 2019\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_BuildLinkAction”):
+     1>Wykonano kompilowanie elementu docelowego „PrepareForRun” w projekcie „SFML App1.vcxproj”.
+       Pominięto element docelowy „CustomBuildStep” z powodu fałszywego warunku; ('@(CustomBuildStep)' != '' and '$(SelectedFiles)'=='') oszacowano jako ('' != '' and ''=='').
+     1>Element docelowy „PostBuildEvent” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppCommon.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „_BuildLinkAction”):
+       Pominięto zadanie „Message” z powodu fałszywego warunku; ('%(PostBuildEvent.Message)' != '' and '%(PostBuildEvent.Command)' != '') oszacowano jako ('' != '' and '' != '').
+       Pominięto zadanie „Exec” z powodu fałszywego warunku; ('%(PostBuildEvent.Command)' != '') oszacowano jako ('' != '').
+     1>Wykonano kompilowanie elementu docelowego „PostBuildEvent” w projekcie „SFML App1.vcxproj”.
+     1>Element docelowy „_BuildLinkAction” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „BuildLink”):
+     1>Wykonano kompilowanie elementu docelowego „_BuildLinkAction” w projekcie „SFML App1.vcxproj”.
+     1>Element docelowy „BuildLink” w pliku „B:\Visual Studio 2019\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „Build”):
+     1>Wykonano kompilowanie elementu docelowego „BuildLink” w projekcie „SFML App1.vcxproj”.
+     1>Element docelowy „AfterBuild” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.BuildSteps.Targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „Build”):
+     1>Wykonano kompilowanie elementu docelowego „AfterBuild” w projekcie „SFML App1.vcxproj”.
+     1>Element docelowy „FinalizeBuildStatus” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „Build”):
+       Używanie zadania „Delete” z zestawu „Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a”.
+       Zadanie „Delete”
+         Usuwanie pliku „x64\Debug\2D-Game.tlog\unsuccessfulbuild”.
+       Wykonywanie zadania „Delete” zakończone.
+       Zadanie „Touch”
+         Modyfikowanie „x64\Debug\2D-Game.tlog\2D-Game.lastbuildstate”.
+       Wykonywanie zadania „Touch” zakończone.
+     1>Wykonano kompilowanie elementu docelowego „FinalizeBuildStatus” w projekcie „SFML App1.vcxproj”.
+       Pominięto element docelowy „_CheckForInvalidConfigurationAndPlatform”. Wcześniejsza kompilacja powiodła się.
+       Pominięto element docelowy „_CheckForInvalidConfigurationAndPlatform”. Wcześniejsza kompilacja powiodła się.
+     1>Element docelowy „Build” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.BuildSteps.Targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (punkt wejścia):
+     1>Wykonano kompilowanie elementu docelowego „Build” w projekcie „SFML App1.vcxproj”.
+     1>Kompilowanie projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” wykonane (elementy docelowe: Build).
 
-Kompilacja NIE POWIODŁA SIĘ.
+Kompilacja powiodła się.
+
+       „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (element docelowy Build) (1) ->
+       (element docelowy PrepareForBuild) -> 
+         B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(459,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (SFML App1.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+
 
        „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (element docelowy Build) (1) ->
        (element docelowy ClCompile) -> 
-         B:\GitHub\2D-Game\SFML App1\Player.cpp(15,14): warning C4305: "=": obcięcie z "double" do "float"
-         B:\GitHub\2D-Game\SFML App1\Player.cpp(16,20): warning C4305: "=": obcięcie z "double" do "float"
-         B:\GitHub\2D-Game\SFML App1\Player.cpp(67,27): warning C4305: "=": obcięcie z "double" do "T"
-         B:\GitHub\2D-Game\SFML App1\main.cpp(81,52): warning C4305: "argument": obcięcie z "double" do "float"
-         B:\GitHub\2D-Game\SFML App1\main.cpp(81,53): warning C4305: "argument": obcięcie z "double" do "float"
-         B:\GitHub\2D-Game\SFML App1\main.cpp(84,53): warning C4305: "argument": obcięcie z "double" do "float"
+         B:\GitHub\2D-Game\SFML App1\Game.cpp(14,32): warning C4101: "e": lokalna zmienna, do której nie istnieje odwołanie
+         B:\GitHub\2D-Game\SFML App1\Game.cpp(60,52): warning C4305: "argument": obcięcie z "double" do "float"
+         B:\GitHub\2D-Game\SFML App1\Game.cpp(60,53): warning C4305: "argument": obcięcie z "double" do "float"
+         B:\GitHub\2D-Game\SFML App1\Game.cpp(63,53): warning C4305: "argument": obcięcie z "double" do "float"
 
+    Ostrzeżenia: 5
+    Liczba błędów: 0
 
-       „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (element docelowy Build) (1) ->
-       (element docelowy ClCompile) -> 
-         B:\GitHub\2D-Game\SFML App1\main.cpp(62,13): error C2065: "climb": niezadeklarowany identyfikator
-
-    Ostrzeżenia: 6
-    Liczba błędów: 1
-
-Czas, który upłynął: 00:00:08.86
+Czas, który upłynął: 00:00:03.66
