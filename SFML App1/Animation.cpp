@@ -33,6 +33,33 @@ bool Animation::oY(int width, int leftStart, int leftEnd, sf::RectangleShape& sp
 	return 0;
 }
 
+bool Animation::jump(int width, int leftStart, int leftEnd, sf::RectangleShape& sprite, sf::Vector2f velocity) {
+	if (rect != sf::IntRect(0, 0, 0, 0)) {
+		if (animClock.getElapsedTime() > animTime) {
+			if (rect.left <= leftEnd) {
+				if (velocity.y > 0.0f) { // wznosi sie
+					rect.left = leftStart;
+				}
+				else if (velocity.y == 0.0f) { // bedzie zaraz opadac 
+					rect.left += width;
+
+				}
+				else {
+					rect.left += width;
+
+				}
+			}
+			else {
+				rect.left = leftStart;
+			}
+			sprite.setTextureRect(rect);
+			animClock.restart();
+		}
+		return 1;
+	}
+	return 0;
+}
+
 bool Animation::rotateSprite(sf::RectangleShape& sprite, const char& direction) {
 	if (sprite.getScale() != sf::Vector2f(1, 1) && direction == 'r') {
 		sprite.setScale(sf::Vector2f(1, 1));
@@ -44,6 +71,7 @@ bool Animation::rotateSprite(sf::RectangleShape& sprite, const char& direction) 
 	}
 	return 0;
 }
+
 
 void Animation::setAnimTime(sf::Time animT) {
 	this->animTime = animT;

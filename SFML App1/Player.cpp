@@ -15,6 +15,7 @@ Player::Player(const sf::Texture& temp) {
 	speed = 2.20;
 	jumpHeight = 10.20;
 	canJump = true;
+	onAir = false;
 	canClimb = false;
 }
 
@@ -32,6 +33,7 @@ void Player::moveUp() {
 void Player::jump() {
 	if (canJump) {
 		velocity.y = -sqrtf(2.0f * 9.81f * jumpHeight);
+		animation.jump(32, 6 * 32, 8 * 32, sprite, velocity);
 		canJump = false;
 	}	
 }
@@ -43,13 +45,16 @@ void Player::moveDown() {
 
 void Player::moveRight() {
 	velocity.x = speed;
-	animation.oX(32,0,128, sprite);
-
+	if (!onAir) {
+		animation.oX(32, 0, 128, sprite);
+	}
 }
 
 void Player::moveLeft() {
 	velocity.x = -speed;
-	animation.oX(32,0,128, sprite);
+	if (!onAir) {
+		animation.oX(32, 0, 128, sprite);
+	}
 }
 
 void Player::refresh() {
@@ -60,6 +65,14 @@ void Player::refresh() {
 	}
 	if(velocity.x < 0.0f) {
 		animation.rotateSprite(sprite, 'l');
+	}
+	if (velocity.y > 0.0f) {
+		onAir = true;
+		animation.jump(32, 6 * 32, 8 * 32, sprite, velocity);
+	}
+	if(velocity.y  < 0.0f) {
+		onAir = true;
+		animation.jump(32, 6 * 32, 8 * 32, sprite, velocity);
 	}
 	velocity.x = 0.0f;
 	velocity.y += 0.9810f * 1.0f;
@@ -78,6 +91,7 @@ void Player::onCollision(sf::Vector2f direction) {
 	}
 	if (direction.y < 0.0f) {
 		velocity.y = 0.0f;
+		onAir = false;
 		canJump = true;
 	}
 	else if (direction.y > 0.0f) {

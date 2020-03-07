@@ -10,6 +10,7 @@ private:
 	sf::IntRect rect;
 	Animation animation;
 	float speed;
+	bool onAir;
 	bool canJump;
 	float jumpHeight;
 public:	
