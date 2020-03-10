@@ -9,10 +9,22 @@ Game::Game(sf::View& view, const std::string& playerTexture, const std::string& 
     window = std::unique_ptr<sf::RenderWindow>{ new sf::RenderWindow(sf::VideoMode(1024, 512), "The 2D-Game!", sf::Style::Close | sf::Style::Resize) };
     window->setKeyRepeatEnabled(false);
     window->setFramerateLimit(60);
+
+
+       
 }
 
 void Game::start() {
     bool esc = false;
+	
+
+    //BACKGROUND APLHA 
+    sf::RectangleShape background;
+    sf::Texture backText;
+    backText.loadFromFile("images/background.jpg");
+    sf::Vector2f s(1920, 1080);
+    background.setSize(s);
+    background.setTexture(&backText);
     while (window->isOpen())
     {
         sf::Event event;
@@ -30,8 +42,13 @@ void Game::start() {
             }
         }
         window->clear();
-        view.setCenter(player.getPosition());
+        view.setCenter(sf::Vector2f(1920.0/2, 1080.0/2)); //(player.getPosition());
+        view.setSize(sf::Vector2f(1920.0, 1080.0));
         window->setView(view);
+
+
+        //BACKGROUND ALPHA 
+		  window->draw(background);
 
         if (player.canClimb) {
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {

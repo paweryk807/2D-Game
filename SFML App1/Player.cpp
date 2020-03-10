@@ -9,7 +9,6 @@ Player::Player(const sf::Texture& temp) {
 
 	rect = sf::IntRect(64, 32, 32, 32);
 	sprite.setTextureRect(rect);
-
 	animation = CharacterAnimation(rect, sf::seconds(0.125));
 	velocity = sf::Vector2f(0.0f, 0.0f);
 	speed = 2.20;

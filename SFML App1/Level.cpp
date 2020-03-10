@@ -3,7 +3,7 @@
 Level::Level(sf::Vector2i size, sf::Texture& platformTexture) {
 	if (size.x > 0 && size.y > 0) {
 		this->size = size;
-		platforms.push_back(Platform(&platformTexture, sf::Vector2f(140.0f, 40.0f), sf::Vector2f(600.0f, 400.0f)));
+		platforms.push_back(Platform(&platformTexture, sf::Vector2f(19000.0f, 40.0f), sf::Vector2f(10.0f, 400.0f)));
 		platforms.push_back(Platform(&platformTexture, sf::Vector2f(140.0f, 40.0f), sf::Vector2f(700.0f, 360.0f)));
 		platforms.push_back(Platform(&platformTexture, sf::Vector2f(140.0f, 40.0f), sf::Vector2f(480.0f, 360.0f)));
 		platforms.push_back(Platform(&platformTexture, sf::Vector2f(140.0f, 40.0f), sf::Vector2f(900.0f, 300.0f)));
