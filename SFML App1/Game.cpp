@@ -2,18 +2,13 @@
 #include <stdexcept>
 
 Game::Game(sf::View& view, const std::string& playerTexture, const std::string& platformTexture) : view(view) {
-	try {
-		loadPlatformTexture(platformTexture);
-		loadPlayerTexture(playerTexture);
-		player = Player(this->playerTexture);
-		window = std::unique_ptr<sf::RenderWindow> { new sf::RenderWindow(sf::VideoMode(1024, 512), "The 2D-Game!", sf::Style::Close | sf::Style::Resize) };
-        level = std::unique_ptr<Level>{ new Level(this->platformTexture) };
-		window->setKeyRepeatEnabled(false);
-        window->setFramerateLimit(60);
-	}
-	catch (std::invalid_argument& e) {
-		std::cerr << "Tekstury nie zostaly wczytane poprawnie" << std::endl;
-	}
+    loadPlatformTexture(platformTexture);
+    loadPlayerTexture(playerTexture);
+    level = std::unique_ptr<Level>{ new Level(sf::Vector2i(1920,1080),this->platformTexture) };
+    player = Player(this->playerTexture);
+    window = std::unique_ptr<sf::RenderWindow>{ new sf::RenderWindow(sf::VideoMode(1024, 512), "The 2D-Game!", sf::Style::Close | sf::Style::Resize) };
+    window->setKeyRepeatEnabled(false);
+    window->setFramerateLimit(60);
 }
 
 void Game::start() {
@@ -65,6 +60,9 @@ void Game::start() {
         player.refresh();
 
         sf::Vector2f direction;
+        if (!level->checkPosition(player)) {
+            player.correctPosition(level->getSize());
+        }
         level->checkCollision(direction, player);  
         level->draw(*window.get());
         window->draw(player.getSprite());
@@ -74,8 +72,8 @@ void Game::start() {
 bool Game::loadPlatformTexture(const std::string texture)
 {
 	if (!platformTexture.loadFromFile(texture)) {
-		return 0;
-		throw std::invalid_argument("unable to open texture file");
+		throw std::exception("unable to open texture file");
+        return 0;
     }
 	return 1;
 }
@@ -83,12 +81,11 @@ bool Game::loadPlatformTexture(const std::string texture)
 bool Game::loadPlayerTexture(const std::string texture)
 {
 	if (!playerTexture.loadFromFile(texture)) {
-		throw std::invalid_argument("unable to open texture file");
+		throw std::exception("unable to open texture file");
 		return 0;
 	}
 	return 1;	
 }
 
 Game::~Game() {
-
-}
+}  

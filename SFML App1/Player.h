@@ -1,14 +1,14 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "Collider.h"
-#include "Animation.h"
+#include "CharacterAnimation.h"
 class Player
 {
 private:
 	sf::RectangleShape sprite; 
 	sf::Vector2f velocity;
 	sf::IntRect rect;
-	Animation animation;
+	CharacterAnimation animation;
 	float speed;
 	bool onAir;
 	bool canJump;
@@ -29,6 +29,7 @@ public:
 	void refresh();
 	void onCollision(sf::Vector2f direction);
 	void setSpeed(float, sf::Time);
+	void correctPosition(sf::Vector2i);
 	sf::Vector2f getPosition() const;
 	sf::RectangleShape getSprite() const;
 	Collider getCollider();

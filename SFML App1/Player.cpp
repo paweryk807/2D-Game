@@ -10,7 +10,7 @@ Player::Player(const sf::Texture& temp) {
 	rect = sf::IntRect(64, 32, 32, 32);
 	sprite.setTextureRect(rect);
 
-	animation = Animation(rect, sf::seconds(0.125));
+	animation = CharacterAnimation(rect, sf::seconds(0.125));
 	velocity = sf::Vector2f(0.0f, 0.0f);
 	speed = 2.20;
 	jumpHeight = 10.20;
@@ -102,6 +102,23 @@ void Player::setSpeed(float temp, sf::Time tempAnim) //Sprint Speed
 {
 	speed = temp;
     animation.setAnimTime(tempAnim);
+}
+
+void Player::correctPosition(sf::Vector2i size) {
+	int x = getPosition().x;
+	int y = getPosition().y;
+	if (x < 0) {
+		sprite.setPosition(0, y);
+	}
+	else if (x > size.x) {
+		sprite.setPosition(size.x, y);
+	}
+	if(y < 0) {
+		sprite.setPosition(sprite.getPosition().x, 0);
+	}
+	else if(y > size.y) {
+		sprite.setPosition(sprite.getPosition().x, size.y);
+	}
 }
 
 Collider Player::getCollider() {
