@@ -179,7 +179,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="CharacterAnimation.cpp" />
+    <ClCompile Include="CharacterCollider.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Functions.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -190,7 +192,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="CharacterAnimation.h" />
+    <ClInclude Include="CharacterCollider.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="Functions.h" />
     <ClInclude Include="Game.h" />

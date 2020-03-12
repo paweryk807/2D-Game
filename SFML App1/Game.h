@@ -1,9 +1,12 @@
 #pragma once
 #include <time.h>
 #include <iostream>
+#include <stdexcept>
 #include "Player.h"
+#include "Menu.h"
 #include "Functions.h"
 #include "Level.h"
+
 
 class Game
 {
@@ -17,6 +20,8 @@ class Game
 
 public:
 	Game(sf::View& view, const std::string& playerTexture, const std::string& platform);
+	bool showMenu();
+	bool hideMenu();
 	~Game();
 	
 	bool loadPlatformTexture(const std::string texture);

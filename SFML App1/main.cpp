@@ -6,6 +6,25 @@
 #include "Platform.h"
 #include "Game.h"
 
+
+
+
+/*
+Ograniczenie czasowe na bossow i jak nie wyrobimy sie w konkretnym czasie to np tracimy zycie
+
+ukrycie konsoli 
+
+instalator 
+
+zmienna szybkosc gry (postaci) 
+randomizacja 
+el. zaskoczenia 
+timer 
+
+rozrysowac diagram klas 
+draw.io 
+
+*/
 int main()
 {
 	//sf::View view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(VIEW_HEIGHT, VIEW_HEIGHT));

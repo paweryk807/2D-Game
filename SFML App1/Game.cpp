@@ -1,5 +1,5 @@
 #include "Game.h"
-#include <stdexcept>
+
 
 Game::Game(sf::View& view, const std::string& playerTexture, const std::string& platformTexture) : view(view) {
     loadPlatformTexture(platformTexture);
@@ -15,8 +15,8 @@ Game::Game(sf::View& view, const std::string& playerTexture, const std::string& 
 }
 
 void Game::start() {
-    bool esc = false;
-	
+    bool pause = false;
+
 
     //BACKGROUND APLHA 
     sf::RectangleShape background;
@@ -26,7 +26,8 @@ void Game::start() {
     background.setSize(s);
     background.setTexture(&backText);
     while (window->isOpen())
-    {
+    {    
+       
         sf::Event event;
 
         while (window->pollEvent(event))
@@ -36,55 +37,72 @@ void Game::start() {
             case sf::Event::Closed:
                 window->close();
                 break;
+            case sf::Event::KeyReleased:
+                if (event.key.code == sf::Keyboard::Escape) {
+                    if (!pause) {
+                        pause = true;
+                        showMenu();
+                    }
+                    else {
+                        pause = false;
+                        hideMenu();
+                    }
+                }
+                break;
             case sf::Event::Resized:
                 ResizeView(*window.get(), view);
                 break;
             }
         }
-        window->clear();
-        view.setCenter(sf::Vector2f(1920.0/2, 1080.0/2)); //(player.getPosition());
+        window->clear(); 
+     
+        view.setCenter(sf::Vector2f(1920.0 / 2, 1080.0 / 2)); //(player.getPosition());
         view.setSize(sf::Vector2f(1920.0, 1080.0));
         window->setView(view);
 
-
         //BACKGROUND ALPHA 
-		  window->draw(background);
-
-        if (player.canClimb) {
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-                player.moveUp();
+        window->draw(background);
+        if (!pause)
+        {
+            if (player.canClimb) {
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+                    player.moveUp();
+                }
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+                    player.moveDown();
+                }
             }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-                player.moveDown();
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+                player.moveLeft();
             }
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-            player.moveLeft();
-        }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-            player.moveRight();
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-            player.jump();
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+                player.moveRight();
+            }
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+                player.jump();
+
+            }
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift)) {
+                player.setSpeed(2.65, sf::seconds(0.075));
+            }
+            else {
+                player.setSpeed(2.20, sf::seconds(0.125));
+            }
+            player.refresh();
+
+            sf::Vector2f direction;
+            if (!level->checkPosition(player)) {
+                player.correctPosition(level->getSize());
+            }
+            level->checkCollision(direction, player);
+
 
         }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift)) {
-            player.setSpeed(2.65, sf::seconds(0.075));
-        }
-        else {
-            player.setSpeed(2.20, sf::seconds(0.125));
-        }
-        player.refresh();
-
-        sf::Vector2f direction;
-        if (!level->checkPosition(player)) {
-            player.correctPosition(level->getSize());
-        }
-        level->checkCollision(direction, player);  
         level->draw(*window.get());
-        window->draw(player.getSprite());
+        window->draw(player.getSprite());  
         window->display();
     }
+      
 }
 bool Game::loadPlatformTexture(const std::string texture)
 {
@@ -102,6 +120,16 @@ bool Game::loadPlayerTexture(const std::string texture)
 		return 0;
 	}
 	return 1;	
+}
+
+bool Game::showMenu() {
+    Menu menu;
+   // window->clear();
+    menu.handle(window.get());
+    return 1;
+}
+bool Game::hideMenu() {
+    return 0;
 }
 
 Game::~Game() {
