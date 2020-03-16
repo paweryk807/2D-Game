@@ -1,37 +1,27 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Collider.h"
-#include "CharacterAnimation.h"
-class Player
+#include "Character.h"
+class Player : public Character
 {
 private:
-	sf::RectangleShape sprite; 
-	sf::Vector2f velocity;
-	sf::IntRect rect;
-	CharacterAnimation animation;
-	float speed;
-	bool onAir;
-	bool canJump;
-	float jumpHeight;
+	float exp;
+	int level;
+	float atackSpeed; 
+	float strength;
+
+
 public:	
-
-		bool canClimb;
-
 	Player() = default;
 	Player(const sf::Texture& temp);
-	~Player();
+	void setExp(float nExp);
+	void setLevel(int lvl);
+	void setAtackSpeed(float aSpd);
+	void setStrength(float str);
+	float getStrength();
+	float getAtackSpeed();
+	float getExp();
+	int getLevel();
+	~Player() = default;
 
-	void moveUp();
-	void jump();
-	void moveDown();
-	void moveLeft();
-	void moveRight();
-	void refresh();
-	void onCollision(sf::Vector2f direction);
-	void setSpeed(float, sf::Time);
-	void correctPosition(sf::Vector2i);
-	sf::Vector2f getPosition() const;
-	sf::RectangleShape getSprite() const;
-	Collider getCollider();
 };
 

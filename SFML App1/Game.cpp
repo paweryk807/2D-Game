@@ -5,7 +5,7 @@ Game::Game(sf::View& view, const std::string& playerTexture, const std::string& 
     loadPlatformTexture(platformTexture);
     loadPlayerTexture(playerTexture);
     level = std::unique_ptr<Level>{ new Level(sf::Vector2i(1920,1080),this->platformTexture) };
-    player = Player(this->playerTexture);
+    player = Character(this->playerTexture);
     window = std::unique_ptr<sf::RenderWindow>{ new sf::RenderWindow(sf::VideoMode(1920, 1080), "The 2D-Game!", sf::Style::Fullscreen | sf::Style::Resize) };
     window->setKeyRepeatEnabled(false);
     window->setFramerateLimit(60);
@@ -18,7 +18,7 @@ Game::Game(sf::View& view, const std::string& playerTexture, const std::string& 
 }
 
 void Game::restart() {
-    player = Player(playerTexture);
+    player = Character(playerTexture);
     started = true;
     // RESET WORLD 
 }
@@ -86,7 +86,7 @@ void Game::start() {
 }
 
 void Game::getActionFromUser() {
-    if (player.canClimb) {
+    if (player.getCanClimb()) {
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
             player.moveUp();
         }
@@ -113,10 +113,10 @@ void Game::getActionFromUser() {
     player.refresh();
 
     sf::Vector2f direction;
-    if (!level->checkPosition(player)) {
+    if (!level->checkPosition(&player)) {
         player.correctPosition(level->getSize());
     }
-    level->checkCollision(direction, player);
+    level->checkCollision(direction, &player);
 
 }
 bool Game::loadPlatformTexture(const std::string texture)

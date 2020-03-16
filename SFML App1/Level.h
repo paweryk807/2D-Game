@@ -1,6 +1,6 @@
 #pragma once
 #include "Platform.h"
-#include "Player.h"
+#include "Character.h"
 #include "SFML/Graphics.hpp"
 class Level
 {	
@@ -11,8 +11,8 @@ class Level
 public:
 	Level() = delete;
 	Level(sf::Vector2i size, sf::Texture& platformTexture);
-	bool checkCollision(sf::Vector2f direction, Player& player);
-	bool checkPosition(const Player& player);
+	bool checkCollision(sf::Vector2f direction, Character* character);
+	bool checkPosition(Character* character);
 	void draw(sf::RenderWindow& window);
 	sf::Vector2i getSize();
 	~Level();

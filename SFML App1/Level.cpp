@@ -14,12 +14,12 @@ Level::Level(sf::Vector2i size, sf::Texture& platformTexture) {
 
 Level::~Level() {}
 
-bool Level::checkCollision(sf::Vector2f direction, Player& player)
+bool Level::checkCollision(sf::Vector2f direction, Character* character)
 {
 	bool collision = false;
 	for (Platform& platform : platforms) {
-		if (platform.getCollider().checkCollision(player.getCollider(), direction, 1.0f)) {
-			player.onCollision(direction);
+		if (platform.getCollider().checkCollision(character->getCollider(), direction, 1.0f)) {
+			character->onCollision(direction);
 			collision = true;
 		}
 		else collision = false;
@@ -27,12 +27,12 @@ bool Level::checkCollision(sf::Vector2f direction, Player& player)
 	return collision;
 }
 
-bool Level::checkPosition(const Player& player)
+bool Level::checkPosition(Character* character)
 {
-	if (player.getPosition().x > size.x || player.getPosition().x < 0) {
+	if (character->getPosition().x > size.x || character->getPosition().x < 0) {
 		return false;
 	}
-	else if (player.getPosition().y > size.x || player.getPosition().y < 0) {
+	else if (character->getPosition().y > size.x || character->getPosition().y < 0) {
 		return false;
 	}
 	return true;

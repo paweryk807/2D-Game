@@ -1,129 +1,57 @@
 #include "Player.h"
 
-Player::Player(const sf::Texture& temp) {
+Player::Player(const sf::Texture& temp) : Character(temp) {}
 
-	sprite.setSize(sf::Vector2f(32.0f, 32.0f));
-	sprite.setOrigin(sprite.getSize() / 2.0f);
-	sprite.setTexture(&temp);
-	sprite.setPosition(600, 350);
-
-	rect = sf::IntRect(64, 32, 32, 32);
-	sprite.setTextureRect(rect);
-	animation = CharacterAnimation(rect, sf::seconds(0.125));
-	velocity = sf::Vector2f(0.0f, 0.0f);
-	speed = 2.20;
-	jumpHeight = 10.20;
-	canJump = true;
-	onAir = false;
-	canClimb = false;
-}
-
-Player::~Player() {}
-
-sf::RectangleShape Player::getSprite() const {
-	return sprite;
-}
-
-void Player::moveUp() {
-	velocity.y = -speed;
-	animation.oY(32, 19 * 32, 22 * 32, sprite);
-}
-
-void Player::jump() {
-	if (canJump) {
-		velocity.y = -sqrtf(2.0f * 9.81f * jumpHeight);
-		animation.jump(32, 6 * 32, 8 * 32, sprite, velocity);
-		canJump = false;
-	}	
-}
-
-void Player::moveDown() {
-	velocity.y = speed;
-	animation.oY(32, 19 * 32, 22 * 32, sprite);
-}
-
-void Player::moveRight() {
-	velocity.x = speed;
-	if (!onAir) {
-		animation.oX(32, 0, 128, sprite);
+void Player::setLevel(int lvl) {
+	if (lvl > 0) {
+		level = level;
+	}
+	else {
+		level = 0;
 	}
 }
 
-void Player::moveLeft() {
-	velocity.x = -speed;
-	if (!onAir) {
-		animation.oX(32, 0, 128, sprite);
+void Player::setAtackSpeed(float aSpd) {
+	if (aSpd > 0) {
+		atackSpeed = aSpd;
+	}
+	else {
+		atackSpeed = 0;
 	}
 }
 
-void Player::refresh() {
-	
-	sprite.move(velocity.x, velocity.y);
-	if (velocity.x > 0.0f) {
-		animation.rotateSprite(sprite, 'r');
+void Player::setStrength(float str) {
+	if (str > 0) {
+		strength = str;
 	}
-	if(velocity.x < 0.0f) {
-		animation.rotateSprite(sprite, 'l');
-	}
-	if (velocity.y > 0.0f) {
-		onAir = true;
-		animation.jump(32, 6 * 32, 8 * 32, sprite, velocity);
-	}
-	if(velocity.y  < 0.0f) {
-		onAir = true;
-		animation.jump(32, 6 * 32, 8 * 32, sprite, velocity);
-	}
-	velocity.x = 0.0f;
-	velocity.y += 0.9810f * 1.0f;
-	if (velocity.y > 17.0f) {
-		velocity.y = 9.81 * 1.6f;
-	}
-	
-}
-
-void Player::onCollision(sf::Vector2f direction) {
-	if (direction.x < 0.0f) {
-		velocity.x = 0.0f;
-	}
-	else if (direction.x > 0.0f) {
-		velocity.x = 0.0f;
-	}
-	if (direction.y < 0.0f) {
-		velocity.y = 0.0f;
-		onAir = false;
-		canJump = true;
-	}
-	else if (direction.y > 0.0f) {
-		velocity.y = 0.0f;
-	}
-}
-void Player::setSpeed(float temp, sf::Time tempAnim) //Sprint Speed
-{
-	speed = temp;
-    animation.setAnimTime(tempAnim);
-}
-
-void Player::correctPosition(sf::Vector2i size) {
-	int x = getPosition().x;
-	int y = getPosition().y;
-	if (x < 0) {
-		sprite.setPosition(0, y);
-	}
-	else if (x > size.x) {
-		sprite.setPosition(size.x, y);
-	}
-	if(y < 0) {
-		sprite.setPosition(sprite.getPosition().x, 0);
-	}
-	else if(y > size.y) {
-		sprite.setPosition(sprite.getPosition().x, size.y);
+	else {
+		strength = 0;
 	}
 }
 
-Collider Player::getCollider() {
-	return Collider(sprite);
+float Player::getStrength() {
+	return strength;
 }
 
-sf::Vector2f Player::getPosition() const {
-	return sprite.getPosition();
+float Player::getAtackSpeed() {
+	return atackSpeed;
 }
+
+float Player::getExp() {
+	return exp;
+}
+
+int Player::getLevel() {
+	return level;
+}
+
+void Player::setExp(float nExp) {
+	if (nExp > 0) {
+	exp = nExp;
+	}
+	else {
+		exp = 0;
+	}
+}
+
+

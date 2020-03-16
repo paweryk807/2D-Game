@@ -12,7 +12,7 @@ class Game
 {
 	std::unique_ptr<sf::RenderWindow> window;
 	std::unique_ptr<Level> level;
-	Player player;
+	Character player;
 	sf::View view;
 	sf::Texture playerTexture;
 	sf::Texture platformTexture;
