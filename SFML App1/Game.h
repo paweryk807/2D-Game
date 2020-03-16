@@ -16,16 +16,23 @@ class Game
 	sf::View view;
 	sf::Texture playerTexture;
 	sf::Texture platformTexture;
+	Menu menu;
+	bool started;
+	bool pause;
 	
 
 public:
 	Game(sf::View& view, const std::string& playerTexture, const std::string& platform);
+	void restart();
+	void run();
 	bool showMenu();
 	bool hideMenu();
-	~Game();
+
 	
 	bool loadPlatformTexture(const std::string texture);
 	bool loadPlayerTexture(const std::string texture);
-	bool getActionFromUser();
+	void getActionFromUser();
 	void start();
+
+	~Game();
 };

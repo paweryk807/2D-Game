@@ -2,16 +2,21 @@
 
 Menu::Menu() {
 	try {
+		restart = false;
 		current = 0;
 		loadFont(FONT_PATH);
-		std::string firstOptions[NUMBER_OF_ITEMS] = { "Start", "Options", "Scoreboard", "Quit" };
-		for (int i = 0; i < NUMBER_OF_ITEMS; i++) {
-			text[i].setFont(font);
-			text[i].setString(firstOptions[i]);
-			text[i].setPosition(sf::Vector2f(WIDTH/2, ((HEIGHT/2)/(NUMBER_OF_ITEMS + 1) * (i + 1))));
-			text[i].setFillColor(sf::Color::White);
+		std::string firstOptions[5] = { "Resume", "Start", "Options", "Scoreboard", "Quit" };
+		for (int i = 0; i < 5; i++) {
+			sf::Text object;
+			object.setFont(font);
+			object.setString(firstOptions[i]);
+			object.setPosition(sf::Vector2f(WIDTH/2 - firstOptions[i].length()*10, ((HEIGHT/2)/6 * (i + 1)))); // /6 dla symetrii
+			object.setFillColor(sf::Color::White);
+			menu.push_back(object);
+
 		}
-		text[current].setFillColor(sf::Color::Magenta);
+		current = 1;
+		menu[current].setFillColor(sf::Color::Magenta);
 	}
 	catch (std::exception e) {
 		std::cerr << e.what() << std::endl;
@@ -26,17 +31,49 @@ bool Menu::loadFont(const std::string& fontPath) {
 	return 1;
 }
 
-void Menu::draw(sf::RenderWindow*window) {
-	for (int i = 0; i < NUMBER_OF_ITEMS; i++) {
-		window->draw(text[i]);
+bool Menu::restarted() {
+	if (restart) {
+		restart = false;
+		return true;
 	}
+	return restart;
+}
+void Menu::drawMenu(sf::RenderWindow& window) {
+	for (int i = 1; i < menu.size(); i++) {
+		window.draw(menu[i]);
+	}
+}
+
+void Menu::drawInGameMenu(sf::RenderWindow& window) {
+	for(auto elem : menu){
+		window.draw(elem);
+	}
+}
+
+void Menu::gameStarted() {
+	if (!restart) {
+		
+	}
+}
+
+void Menu::gameRunning() {
+}
+
+void Menu::drawOptions(sf::RenderWindow& window) {
+	std::string optionsMenu = { };
+
+
+}
+
+void Menu::drawScoreboard(sf::RenderWindow& window) {
+
 }
 
 bool Menu::moveUp() {
 	if (current > 0) {
-		text[current].setFillColor(sf::Color::White);
+		menu[current].setFillColor(sf::Color::White);
 		current--;
-		text[current].setFillColor(sf::Color::Magenta);
+		menu[current].setFillColor(sf::Color::Magenta);
 		return true;
 	}
 	return false;
@@ -44,23 +81,23 @@ bool Menu::moveUp() {
 }
 
 bool Menu::moveDown() {
-	if (current < NUMBER_OF_ITEMS) {
-		text[current].setFillColor(sf::Color::White);
+	if (current < menu.size() - 1) {
+		menu[current].setFillColor(sf::Color::White);
 		current++;
-		text[current].setFillColor(sf::Color::Magenta);
+		menu[current].setFillColor(sf::Color::Magenta);
 		return true;
 	}
 	return false;
 
 }
 
-bool Menu::handle(sf::RenderWindow* window) {
+bool Menu::handle(sf::RenderWindow& window, sf::View view, bool started) {
 	bool esc = false;
-	while (!esc && window->isOpen())
+	restart = esc;
+	while (!esc && window.isOpen())
 	{
 		sf::Event event;
-
-		while (window->pollEvent(event))
+		while (window.pollEvent(event))
 		{
 			switch (event.type)
 			{
@@ -73,21 +110,67 @@ bool Menu::handle(sf::RenderWindow* window) {
 					moveUp();
 					break;
 				case sf::Keyboard::Escape:
-					esc = true;
+					if (started) {
+						return true;
+					}
+					if (!started) {
+						window.close();
+					}
 					break;
 				case sf::Keyboard::Enter:
-					/// if(!instruction(current)){ return 0; }
+					if(instruction(window)) {
+						window.close();	
+						esc = true;
+					}
+					else {
+						return true;
+					}
 					break;
 				}
 				break;
 			case sf::Event::Closed:
-				window->close();
+				window.close();
 				break;
+			case sf::Event::Resized:
+                ResizeView(window, view);
+            break;
 			}
 		}
-		window->clear();
-		draw(window);
-		window->display();
+		window.clear();
+		if (!started) {
+			drawMenu(window);
+		}
+		else {
+			drawInGameMenu(window);
+		}
+
+		window.display();
 	}
 	return 1;
+}
+
+bool Menu::instruction(sf::RenderWindow& window) {
+	switch (current) {
+	case 0:
+		break;
+	case 1:
+		restart = true;
+		break;
+	case 2:
+		while (window.isOpen()) {
+			drawOptions(window);
+
+		}
+		break;
+	case 3:
+		while (window.isOpen()) {
+			drawScoreboard(window);
+		}
+		break;
+	case 4:
+		return true;
+		break;
+
+	}
+	return false;
 }

@@ -32,7 +32,7 @@ int main()
     std::unique_ptr<Game> giera;//{ new Level(sf::Vector2i(1920,1080),this->platformTexture) };
     try {
         giera = std::unique_ptr<Game>{ new Game(view, "images/characters.png", "images/sheet.png") };
-        giera->start();
+        giera->run();
     }
     catch (std::exception & e) {
         std::cerr << "Cos poszlo nie tak ;(\n";

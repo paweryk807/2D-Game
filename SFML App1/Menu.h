@@ -1,25 +1,40 @@
 #pragma once
 #include<string>
 #include<iostream>
+#include "Functions.h"
 #include<SFML/Graphics.hpp>
-#include"Settings.h"
+
+
 #define FONT_PATH  "fonts/Schaeffer.ttf"
+#define SCOREBOARD_PATH "scoreboard.txt"
 #define WIDTH  1920
 #define HEIGHT  1080
-#define NUMBER_OF_ITEMS 4 // game->characterSelect  options->difficult->hard/normal/easy  scoreboard 
+
+
 
 class Menu
 {
-	sf::Text text[NUMBER_OF_ITEMS]; // 
+	std::vector<sf::Text>menu;
+	std::vector<sf::Text> options;
 	sf::Font font;
 	int current;
+	bool restart;
 public:
 	Menu();
-	void draw(sf::RenderWindow*window);
+	bool restarted();
+	void drawMenu(sf::RenderWindow& window);
+	void changeMenu(bool started, bool change);
+	void drawInGameMenu(sf::RenderWindow& window);
+	void drawScoreboard(sf::RenderWindow& window);
+	void gameRunning();
+	void gameStarted();
+	void drawOptions(sf::RenderWindow& window);
 	bool moveUp();
 	bool moveDown();
+
 	bool loadFont(const std::string& fontPath);
-	bool handle(sf::RenderWindow* window);
+	bool handle(sf::RenderWindow& window, sf::View view, bool started);
+	bool instruction(sf::RenderWindow& window);
 	~Menu() = default;
 };
 
