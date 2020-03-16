@@ -39,6 +39,23 @@ bool Character::getOnAir() {
 	return onAir;
 }
 
+float Character::getJumpHeight() {
+	return jumpHeight;
+}
+
+float Character::getSpeed() {
+	return speed;
+}
+
+void Character::setJumpHeight(float height){
+	if (height >= 0) {
+		jumpHeight = height;
+	}
+	else {
+		jumpHeight = 0.0;
+	}
+}
+
 void Character::setCanClimb(bool climb) {
 	canClimb = climb;
 }
