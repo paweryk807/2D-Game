@@ -48,17 +48,19 @@ float Enemy::getAtackSpeed() {
 	return atackSpeed;
 }
 
-void Enemy::refresh(Player player) {
+void Enemy::refresh(Player player, bool lvlColision) {
+	// ZROBIC SPRAWDZANIE POPRZEDNIEJ POZYCJI  JESLI JEST TAKA SAMA LUB MINIMALNIE WIEKSZA TO ZEBY SKAKAL BO MOZE SIE ZABLOKOWAL PO PROSTU 
 
+	if((abs(player.getPosition().x - getPosition().x) < 120 && (player.getPosition().y < getPosition().y))) {
+		jump();
+	}
 	if (player.getPosition().x > getPosition().x) {
 		velocity.x++;
 	}
 	else if (player.getPosition().x < getPosition().x) {
 		velocity.x--;
 	}
-	if (player.getPosition().y < getPosition().y&& getCanJump()) {
-		jump();
-	}
+
 	
 	sprite.move(velocity.x, velocity.y);
 	if (velocity.x > 0.0f) {

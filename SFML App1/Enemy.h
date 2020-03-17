@@ -12,7 +12,7 @@ public:
 	void setStrength(float str);
 	float getStrength();
 	float getAtackSpeed();
-	void refresh(Player player);
+	void refresh(Player player, bool lvlColision);
 	~Enemy() = default;
 };
 

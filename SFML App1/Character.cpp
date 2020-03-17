@@ -144,11 +144,13 @@ void Character::onCollision(sf::Vector2f direction) {
 	}
 	else if (direction.x > 0.0f) {
 		velocity.x = 0.0f;
+
 	}
 	if (direction.y < 0.0f) {
 		velocity.y = 0.0f;
 		onAir = false;
 		canJump = true;
+
 	}
 	else if (direction.y > 0.0f) {
 		velocity.y = 0.0f;

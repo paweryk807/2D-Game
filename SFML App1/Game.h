@@ -14,7 +14,8 @@ class Game
 	std::unique_ptr<sf::RenderWindow> window;
 	std::unique_ptr<Level> level;
 	Player player;
-	std::vector<Enemy> enemies;
+	std::vector<Enemy> enemiesTypes;
+	std::vector<Enemy> enemiesToSpawn;
 	std::vector<sf::Texture> enemiesTextures;
 	sf::View view;
 	sf::Texture playerTexture;

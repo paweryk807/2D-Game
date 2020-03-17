@@ -1,5 +1,13 @@
 #include "Game.h"
 
+//   cooldown do strzelania 
+//   ogarnac podazanie  -------- moze za poprzednia pozycja a nie za aktualna (byloby oporowo plynniej)
+//   skakanie postaci tylko wtedy gdy poprzednia jej poprzednia pozycja jest taka sama jak aktualna ( w sensie ze moze sie o cos zablokowala 
+//   dodac pasek zycia postaci 
+//   wyswietlac damage zadane postacia 
+//   
+//
+
 
 Game::Game(sf::View& view, std::vector<std::string>& enemiesTextures, const std::string& playerTexture, const std::string& platformTexture) : view(view) {
     loadPlatformTexture(platformTexture); // MOZE ZWROCIC NIMI WARTOSC SF::TEXTURE  ------- MNIEJ KODU 
@@ -20,7 +28,10 @@ Game::Game(sf::View& view, std::vector<std::string>& enemiesTextures, const std:
 
 void Game::restart() {
     player = Player(playerTexture);
+    enemiesToSpawn.clear();
+    enemiesToSpawn = addEnemies(50, 0); // Test jednego dziada 
     started = true;
+    pause = false;
     // RESET WORLD 
 }
 
@@ -35,20 +46,20 @@ std::vector<Enemy> Game::addEnemies(const int enemiesToSpawn, const int type) {
     for (int i = 0; i < enemiesToSpawn; i++) {
         switch (type) {
         case 0:
-            toSpawn.push_back(enemies[0]);
+            toSpawn.push_back(enemiesTypes[0]);
             toSpawn[i].correctPosition(sf::Vector2i(toSpawn[i].getPosition().x - i * 32, toSpawn[i].getPosition().y));
             break;        
         case 1:
-            toSpawn.push_back(enemies[1]);
+            toSpawn.push_back(enemiesTypes[1]);
             break;        
         case 2:
-            toSpawn.push_back(enemies[2]);
+            toSpawn.push_back(enemiesTypes[2]);
             break;        
         case 3:
-            toSpawn.push_back(enemies[3]);
+            toSpawn.push_back(enemiesTypes[3]);
             break;
         case 4:
-            toSpawn.push_back(enemies[4]);
+            toSpawn.push_back(enemiesTypes[4]);
             break;
         default:
             throw std::exception("Bad enemy type");
@@ -63,7 +74,8 @@ std::vector<Enemy> Game::addEnemies(const int enemiesToSpawn, const int type) {
 void Game::start() {
 
     started = true;
-    std::vector<Enemy> enemiesToSpawn;
+    enemiesToSpawn = addEnemies(50, 0); // Test jednego dziada 
+
     //BACKGROUND APLHA 
     sf::RectangleShape background;
     sf::Texture backText;
@@ -72,7 +84,6 @@ void Game::start() {
     background.setSize(s);
     background.setTexture(&backText);
     //
-    enemiesToSpawn = addEnemies(20, 0); // Test jednego dziada 
     while (window->isOpen())
     {
         sf::Event event;
@@ -108,9 +119,25 @@ void Game::start() {
         if (!pause) { 
             getActionFromUser();
             for (int i = 0; i < enemiesToSpawn.size(); i++) {
-                enemiesToSpawn[i].refresh(player);// bedzie trzeba je refreshowac jeszcze ... powinny biegac w strone gracza 
                 if (!level->checkPosition(&enemiesToSpawn[i])) {
-                     enemiesToSpawn[i].correctPosition(level->getSize());
+                     enemiesToSpawn[i].correctPosition(level->getSize());  
+                     enemiesToSpawn[i].refresh(player, false);// bedzie trzeba je refreshowac jeszcze ... powinny biegac w strone gracza 
+                }
+                else {
+                    enemiesToSpawn[i].refresh(player, true);// bedzie trzeba je refreshowac jeszcze ... powinny biegac w strone gracza 
+                }
+                if (enemiesToSpawn[i].getCollider().checkCollision(player.getCollider(), direction, 0.2f)) {
+                    player.setHealth(player.getHealth() - 0.5);
+                    if (player.getHealth() == 0) {
+                        pause = true;
+                        menu.handle(*window.get(), view, false);
+                        break;
+                    }
+                }
+                for (int n = i; n < enemiesToSpawn.size(); n++) {
+                    if (n != i) {
+                       enemiesToSpawn[i].getCollider().checkCollision(enemiesToSpawn[n].getCollider(), direction, 0.1f);
+                    }
                 }
                level->checkCollision(direction, & enemiesToSpawn[i]);
             }
@@ -187,7 +214,7 @@ bool Game::loadEnemiesTextures(std::vector<std::string>& textures, const int typ
             throw std::exception("unable to open texture file");
             return 0;
         }
-        enemies.push_back(playerTexture);//Enemy(texture));
+        enemiesTypes.push_back(playerTexture);//Enemy(texture));
     }
     return 1;
 }
