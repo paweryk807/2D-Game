@@ -11,7 +11,6 @@ public:
 	bool oY(int width, int leftStart, int leftEnd, sf::RectangleShape& sprite);
 	bool jump(int width, int leftStart, int leftEnd, sf::RectangleShape& sprite,  sf::Vector2f velocity);
 
-	 
 	~CharacterAnimation();
 };
 

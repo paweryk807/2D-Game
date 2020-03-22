@@ -1,6 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "Character.h"
+
+#define DEFAULT_PATH "images/characters.png"
 class Player : public Character
 {
 private:
@@ -12,7 +14,7 @@ private:
 
 public:	
 	Player() = default;
-	Player(const sf::Texture& temp);
+	Player(const sf::Texture &temp);
 	void setExp(float nExp);
 	void setLevel(int lvl);
 	void setAtackSpeed(float aSpd);

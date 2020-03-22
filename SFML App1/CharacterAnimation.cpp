@@ -7,13 +7,13 @@ CharacterAnimation::CharacterAnimation(sf::IntRect rect, sf::Time time) {
 bool CharacterAnimation::oX(int width, int leftStart, int leftEnd, sf::RectangleShape& sprite)
 {
 	if (rect != sf::IntRect(0, 0, 0, 0)) {
-		if (animClock.getElapsedTime() > animTime) {
+		if (animationCooldown.elapsed()) {
 			if (rect.left >= leftEnd) {
 				rect.left = leftStart;
 			}
 			sprite.setTextureRect(rect);
 			rect.left += width;
-			animClock.restart();
+			animationCooldown.restartCooldown();
 		}
 		return 1;
 	}
@@ -23,13 +23,13 @@ bool CharacterAnimation::oX(int width, int leftStart, int leftEnd, sf::Rectangle
 bool CharacterAnimation::oY(int width, int leftStart, int leftEnd, sf::RectangleShape& sprite)
 {
 	if (rect != sf::IntRect(0, 0, 0, 0)) {
-		if (animClock.getElapsedTime() > animTime) {
+		if (animationCooldown.elapsed()) {
 			if (rect.left <= leftStart || rect.left >= leftEnd) {
 				rect.left = 19 * width;
 			}
 			sprite.setTextureRect(rect);
 			rect.left += width;
-			animClock.restart();
+			animationCooldown.restartCooldown();
 		}
 		return 1;
 	}
@@ -38,7 +38,7 @@ bool CharacterAnimation::oY(int width, int leftStart, int leftEnd, sf::Rectangle
 
 bool CharacterAnimation::jump(int width, int leftStart, int leftEnd, sf::RectangleShape& sprite, sf::Vector2f velocity) {
 	if (rect != sf::IntRect(0, 0, 0, 0)) {
-		if (animClock.getElapsedTime() > animTime) {
+		if (animationCooldown.elapsed()) {
 			if (rect.left <= leftEnd) {
 				if (velocity.y > 0.0f) { // wznosi sie
 					rect.left = leftStart;
@@ -56,11 +56,13 @@ bool CharacterAnimation::jump(int width, int leftStart, int leftEnd, sf::Rectang
 				rect.left = leftStart;
 			}
 			sprite.setTextureRect(rect);
-			animClock.restart();
+			animationCooldown.restartCooldown();
 		}
 		return 1;
 	}
 	return 0;
 }
+
+
 
 CharacterAnimation::~CharacterAnimation() {}

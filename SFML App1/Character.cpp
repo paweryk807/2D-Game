@@ -1,26 +1,35 @@
 #include "Character.h"
 
-Character::Character(const sf::Texture& temp) {
+Character::Character() {
+	try {
 
-	sprite.setSize(sf::Vector2f(32.0f, 32.0f));
-	sprite.setOrigin(sprite.getSize() / 2.0f);
-	sprite.setTexture(&temp);
-	sprite.setPosition(600, 350);
+		sprite.setSize(sf::Vector2f(32.0f, 32.0f));
+		sprite.setOrigin(sprite.getSize() / 2.0f);
+		sprite.setPosition(600, 350);
 
-	rect = sf::IntRect(64, 32, 32, 32);
-	sprite.setTextureRect(rect);
-	animation = CharacterAnimation(rect, sf::seconds(0.125));
-	velocity = sf::Vector2f(0.0f, 0.0f);
 	
-	health = 100.0;
-	speed = 2.20;
-	jumpHeight = 10.20;
-	canJump = true;
-	onAir = false;
-	canClimb = false;
+		animation = CharacterAnimation(rect, sf::seconds(0.125));
+		///
+		velocity = sf::Vector2f(0.0f, 0.0f);
+
+		health = 100.0;
+		speed = 2.20;
+		jumpHeight = 10.20;
+		canJump = true;
+		onAir = false;
+		canClimb = false;
+		colid = std::unique_ptr<Collider>(new Collider(sprite));
+	}
+	catch (std::exception e) {
+		std::cerr << e.what();
+	}
 }
 
 Character::~Character() {}
+
+sf::IntRect Character::getIntRect() {
+	return rect;
+}
 
 bool Character::getCanClimb() {
 	return canClimb;
@@ -30,6 +39,15 @@ float Character::getHealth() {
 	return health;
 }
 
+void Character::reset() {
+	    sprite.setPosition(600, 350);
+		health = 100.0;
+		speed = 2.20;
+		jumpHeight = 10.20;
+		canJump = true;
+		onAir = false;
+		canClimb = false;
+}
 
 bool Character::getCanJump() {
 	return canJump;
@@ -41,6 +59,18 @@ bool Character::getOnAir() {
 
 float Character::getJumpHeight() {
 	return jumpHeight;
+}
+
+sf::Vector2f Character::getVelocity() {
+	return velocity;
+}
+
+void Character::setSprite(sf::RectangleShape& sprite) {
+	this->sprite = sprite;
+}
+
+CharacterAnimation Character::getAnimation() {
+	return animation;
 }
 
 float Character::getSpeed() {
@@ -162,6 +192,14 @@ void Character::setSpeed(float temp, sf::Time tempAnim) //Sprint Speed
     animation.setAnimTime(tempAnim);
 }
 
+void Character::setVelocity(sf::Vector2f vel) {
+	velocity = vel;
+}
+
+void Character::setAnimation(CharacterAnimation& a) {
+	animation = a;
+}
+
 void Character::correctPosition(sf::Vector2i size) {
 	int x = getPosition().x;
 	int y = getPosition().y;
@@ -180,7 +218,7 @@ void Character::correctPosition(sf::Vector2i size) {
 }
 
 Collider Character::getCollider() {
-	return Collider(sprite);
+	return *colid;
 }
 
 sf::Vector2f Character::getPosition() const {

@@ -5,6 +5,7 @@
 #include "Functions.h"
 #include "Platform.h"
 #include "Game.h"
+//#include "vld.h"
 
 
 
@@ -25,6 +26,8 @@ rozrysowac diagram klas
 draw.io 
 
 */
+
+
 int main()
 {
 	//sf::View view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(VIEW_HEIGHT, VIEW_HEIGHT));

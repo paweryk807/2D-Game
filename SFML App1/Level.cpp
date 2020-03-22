@@ -27,6 +27,15 @@ bool Level::checkCollision(sf::Vector2f direction, Character* character)
 	return collision;
 }
 
+bool Level::wall(Character* character) {
+	for (Platform& platform : platforms) {
+		if (platform.getCollider().checkCollisionX(character->getCollider())) {
+			return true;
+		}
+	}
+	return false;
+}
+
 bool Level::checkPosition(Character* character)
 {
 	if (character->getPosition().x > size.x || character->getPosition().x < 0) {

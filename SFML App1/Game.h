@@ -2,25 +2,25 @@
 #include <time.h>
 #include <iostream>
 #include <stdexcept>
-#include "Player.h"
 #include "Enemy.h"
 #include "Menu.h"
 #include "Functions.h"
 #include "Level.h"
-
+#include "bullet.h"
 
 class Game
 {
 	std::unique_ptr<sf::RenderWindow> window;
 	std::unique_ptr<Level> level;
-	Player player;
-	std::vector<Enemy> enemiesTypes;
-	std::vector<Enemy> enemiesToSpawn;
+	Player* player;
+	std::vector<Enemy*> enemiesToSpawn;
 	std::vector<sf::Texture> enemiesTextures;
+	std::vector<Bullet> bullets;
 	sf::View view;
 	sf::Texture playerTexture;
 	sf::Texture platformTexture;
 	Menu menu;
+	bool shot;
 	bool started;
 	bool pause;
 	
@@ -30,10 +30,9 @@ public:
 	void restart();
 	void run();
 
-	std::vector<Enemy> addEnemies(const int enemiesToSpawn, const int type);
-
+	std::vector<Enemy*> addEnemies(const int enemiesToSpawn, const int type);
+	bool loadTexture(const std::string& texture);
 	bool loadPlatformTexture(const std::string texture);
-	bool loadPlayerTexture(const std::string texture);
 	bool loadEnemiesTextures(std::vector<std::string>& textures, const int type);
 	void getActionFromUser();
 	void start();

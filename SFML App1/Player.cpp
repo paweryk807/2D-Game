@@ -1,16 +1,15 @@
 #include "Player.h"
 
-Player::Player(const sf::Texture& temp) : Character(temp) {
-	sprite.setSize(sf::Vector2f(32.0f, 32.0f));
-	sprite.setOrigin(sprite.getSize() / 2.0f);
-	sprite.setTexture(&temp);
-	sprite.setPosition(600, 350);
-
-	rect = sf::IntRect(64, 32, 32, 32);
-	sprite.setTextureRect(rect);
-	animation = CharacterAnimation(rect, sf::seconds(0.125));
-	velocity = sf::Vector2f(0.0f, 0.0f);
-	
+Player::Player(const sf::Texture &temp) {	
+	sf::RectangleShape s = getSprite();
+	sf::IntRect i = getIntRect();
+	i = sf::IntRect(64, 32, 32, 32);
+	s.setTexture(&temp);
+	s.setTextureRect(i);	
+	CharacterAnimation cA = getAnimation();
+	cA.setRect(i);
+	setAnimation(cA);
+	setSprite(s);
 	setHealth(100.0);
 	setSpeed(2.2, sf::seconds(2.2 * 0.125));
 	setJumpHeight(10.20);

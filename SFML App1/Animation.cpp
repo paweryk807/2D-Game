@@ -1,6 +1,6 @@
 #include "Animation.h"
 
-Animation::Animation(sf::IntRect rect, sf::Time time) : rect(rect), animTime(time) {}
+Animation::Animation(sf::IntRect& rect, sf::Time time) : rect(rect), animationCooldown(time) {}
 
 bool Animation::rotateSprite(sf::RectangleShape& sprite, const char& direction) {
 	if (sprite.getScale() != sf::Vector2f(1, 1) && direction == 'r') {
@@ -15,11 +15,19 @@ bool Animation::rotateSprite(sf::RectangleShape& sprite, const char& direction) 
 }
 
 void Animation::setAnimTime(sf::Time animT) {
-	this->animTime = animT;
+	animationCooldown.setCooldown(animT);
 }
 
-void Animation::setRect(sf::IntRect rect) {
+void Animation::setRect(sf::IntRect& rect) {
 	this->rect = rect;
+}
+
+sf::Time Animation::getAnimTime() {
+	return animationCooldown.getTime();
+}
+
+sf::IntRect Animation::getRect() {
+	return rect;
 }
 
 Animation::~Animation() {}
