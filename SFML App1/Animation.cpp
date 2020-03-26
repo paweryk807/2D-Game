@@ -22,12 +22,20 @@ void Animation::setRect(sf::IntRect& rect) {
 	this->rect = rect;
 }
 
+void Animation::restartCooldown() {
+	animationCooldown.restartCooldown();
+}
+
 sf::Time Animation::getAnimTime() {
 	return animationCooldown.getTime();
 }
 
 sf::IntRect Animation::getRect() {
 	return rect;
+}
+
+Cooldown Animation::getAnimationCooldown() {
+	return animationCooldown;
 }
 
 Animation::~Animation() {}

@@ -8,7 +8,10 @@ public:
 	Collider(sf::RectangleShape& body);
 	~Collider();
 	void move(float dx, float dy);
-	void setBody(sf::RectangleShape sh);
+	void setBody(sf::RectangleShape sh);	
+	sf::RectangleShape getBody();	
+	void setPosition(sf::Vector2f pos);
+
 	bool checkCollisionX(Collider other);
 	bool checkCollisionY(Collider other);
 	bool checkCollision(Collider other, sf::Vector2f& direction, float push);

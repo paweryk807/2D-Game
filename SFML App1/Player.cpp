@@ -1,22 +1,17 @@
 #include "Player.h"
 
-Player::Player(const sf::Texture &temp) {	
-	sf::RectangleShape s = getSprite();
-	sf::IntRect i = getIntRect();
-	i = sf::IntRect(64, 32, 32, 32);
-	s.setTexture(&temp);
-	s.setTextureRect(i);	
-	CharacterAnimation cA = getAnimation();
-	cA.setRect(i);
-	setAnimation(cA);
-	setSprite(s);
+Player::Player(const sf::Texture &temp) {
+	sf::IntRect r(64, 32, 32, 32);
+	animation.setRect(r);
+	sprite.setTexture(&temp);
+	sprite.setTextureRect(r);	
 	setHealth(100.0);
 	setSpeed(2.2, sf::seconds(2.2 * 0.125));
 	setJumpHeight(10.20);
 	setCanJump(true);
 	setOnAir(false);
 	setCanClimb(false);
-
+	
 	atackSpeed = 1.5f;
 	strength = 1.5f;
 	level = 0;

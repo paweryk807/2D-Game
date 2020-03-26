@@ -2,23 +2,17 @@
 
 Character::Character() {
 	try {
-
 		sprite.setSize(sf::Vector2f(32.0f, 32.0f));
 		sprite.setOrigin(sprite.getSize() / 2.0f);
-		sprite.setPosition(600, 350);
-
-	
-		animation = CharacterAnimation(rect, sf::seconds(0.125));
-		///
+		sprite.setPosition(600, 350);  
 		velocity = sf::Vector2f(0.0f, 0.0f);
-
+		animation.setAnimTime(sf::seconds(0.125));  
 		health = 100.0;
 		speed = 2.20;
 		jumpHeight = 10.20;
 		canJump = true;
 		onAir = false;
 		canClimb = false;
-		colid = std::unique_ptr<Collider>(new Collider(sprite));
 	}
 	catch (std::exception e) {
 		std::cerr << e.what();
@@ -28,7 +22,7 @@ Character::Character() {
 Character::~Character() {}
 
 sf::IntRect Character::getIntRect() {
-	return rect;
+	return animation.getRect();
 }
 
 bool Character::getCanClimb() {
@@ -40,13 +34,13 @@ float Character::getHealth() {
 }
 
 void Character::reset() {
-	    sprite.setPosition(600, 350);
-		health = 100.0;
-		speed = 2.20;
-		jumpHeight = 10.20;
-		canJump = true;
-		onAir = false;
-		canClimb = false;
+	sprite.setPosition(600, 350);
+	health = 100.0;
+	speed = 2.20;
+	jumpHeight = 10.20;
+	canJump = true;
+	onAir = false;
+	canClimb = false;
 }
 
 bool Character::getCanJump() {
@@ -144,7 +138,6 @@ void Character::moveLeft() {
 }
 
 void Character::refresh() {
-	
 	sprite.move(velocity.x, velocity.y);
 	if (velocity.x > 0.0f) {
 		animation.rotateSprite(sprite, 'r');
@@ -164,8 +157,7 @@ void Character::refresh() {
 	velocity.y += 0.9810f * 1.0f;
 	if (velocity.y > 17.0f) {
 		velocity.y = 9.81 * 1.6f;
-	}
-	
+	}	
 }
 
 void Character::onCollision(sf::Vector2f direction) {
@@ -218,7 +210,7 @@ void Character::correctPosition(sf::Vector2i size) {
 }
 
 Collider Character::getCollider() {
-	return *colid;
+	return Collider(sprite);
 }
 
 sf::Vector2f Character::getPosition() const {

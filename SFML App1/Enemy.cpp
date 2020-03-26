@@ -11,16 +11,11 @@ Enemy::Enemy(const sf::Texture& temp) {
 	animation = CharacterAnimation(rect, sf::seconds(0.125));
 	velocity = sf::Vector2f(0.0f, 0.0f);
 	*/
-	sf::RectangleShape s = getSprite();
-	sf::IntRect i = getIntRect();
-	i = sf::IntRect(64, 64, 32, 32);
-	s.setTexture(&temp);
-	s.setTextureRect(i);
-	s.setPosition(800, 350);
-	CharacterAnimation cA = getAnimation();
-	cA.setRect(i);
-	setAnimation(cA);
-	setSprite(s);
+	sf::IntRect i (64, 64, 32, 32);
+	sprite.setTexture(&temp);
+	sprite.setTextureRect(i);
+	sprite.setPosition(800, 350);
+	animation.setRect(i);
 	setHealth(100.0);
 	setSpeed(2.2, sf::seconds(2.2 * 0.125));
 	setJumpHeight(10.20);

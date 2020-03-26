@@ -10,8 +10,7 @@ class Bullet
 	sf::Texture texture;
 	sf::CircleShape sprite; 
 	sf::Vector2f velocity;
-	sf::IntRect rect;
-	Cooldown cooldown;
+	Animation animation;
 	sf::RectangleShape colid;
 public:
 	Bullet(sf::Vector2f startPos);

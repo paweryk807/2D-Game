@@ -8,7 +8,7 @@ Bullet::Bullet(sf::Vector2f startPos) {
 		//sprite.setTexture(&texture);
 		sprite.setPosition(startPos.x, startPos.y - 5.f);
 		velocity = sf::Vector2f(2.0f, 0.0f);
-		cooldown = Cooldown(sf::seconds(4.f));
+		animation.setAnimTime(sf::seconds(4.f));
 		sf::Vector2f cSize(sprite.getRadius() * 0.7f, sprite.getRadius() * 0.7f);
 		colid.setSize(cSize);
 		
@@ -32,7 +32,7 @@ bool Bullet::loadTexture(const std::string path) {
 	}
 }
 void Bullet::restart() {
-	cooldown.restartCooldown();
+	animation.restartCooldown();
 }
 
 void Bullet::setDirection(Character* character) {
@@ -55,11 +55,11 @@ sf::Vector2f Bullet::getVelocity() {
 }
 
 Cooldown Bullet::getCooldown() {
-	return cooldown;
+	return animation.getAnimationCooldown();
 }
 
 void Bullet::setIntRect(sf::IntRect rect) {
-	this->rect = rect;
+	animation.setRect(rect);
 }
 
 void Bullet::setVelocity(sf::Vector2f vel) {
@@ -70,4 +70,4 @@ Collider Bullet::getCollider() {
 	return Collider(colid);
 }
 
-
+ 

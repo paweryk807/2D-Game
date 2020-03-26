@@ -109,3 +109,11 @@ Collider::Collider(sf::RectangleShape& body) : body(body) {};
     void Collider::setBody(sf::RectangleShape sh) {
         body = sh;
     }
+
+    sf::RectangleShape Collider::getBody() {
+        return body;
+    }
+
+	void Collider::setPosition(sf::Vector2f pos) {
+        body.setPosition(pos);
+	}

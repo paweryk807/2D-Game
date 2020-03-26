@@ -13,11 +13,11 @@ private:
 	bool onAir;
 	bool canJump;
 	bool canClimb;
+protected:
 	sf::RectangleShape sprite; 
 	sf::Vector2f velocity;
-	sf::IntRect rect;
 	CharacterAnimation animation;
-	std::unique_ptr<Collider> colid;
+
 
 
 public:	
