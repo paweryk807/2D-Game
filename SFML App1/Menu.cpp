@@ -69,8 +69,16 @@ void Menu::drawScoreboard(sf::RenderWindow& window) {
 
 }
 
-bool Menu::moveUp() {
-	if (current > 0) {
+bool Menu::moveUp(bool started) {
+	if (!started) {
+		if (current > 1) {
+			menu[current].setFillColor(sf::Color::White);
+			current--;
+			menu[current].setFillColor(sf::Color::Magenta);
+			return true;
+		}
+	}
+	else if (current > 0) {
 		menu[current].setFillColor(sf::Color::White);
 		current--;
 		menu[current].setFillColor(sf::Color::Magenta);
@@ -91,9 +99,14 @@ bool Menu::moveDown() {
 
 }
 
+sf::Font Menu::getFont() {
+	return font;
+}
+
 bool Menu::handle(sf::RenderWindow& window, sf::View view, bool started) {
 	bool esc = false;
 	restart = esc;
+	if (!started && current < 1) moveDown();
 	while (!esc && window.isOpen())
 	{
 		sf::Event event;
@@ -107,13 +120,13 @@ bool Menu::handle(sf::RenderWindow& window, sf::View view, bool started) {
 					moveDown();
 					break;
 				case sf::Keyboard::W:
-					moveUp();
+					moveUp(started);
 					break;
 				case sf::Keyboard::Escape:
 					if (started) {
-						return true;
+						return false;
 					}
-					if (!started) {
+					else {
 						window.close();
 					}
 					break;
@@ -123,7 +136,7 @@ bool Menu::handle(sf::RenderWindow& window, sf::View view, bool started) {
 						esc = true;
 					}
 					else {
-						return true;
+						return false;
 					}
 					break;
 				}

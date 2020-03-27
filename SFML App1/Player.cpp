@@ -13,7 +13,7 @@ Player::Player(const sf::Texture &temp) {
 	setCanClimb(false);
 	
 	atackSpeed = 1.5f;
-	strength = 1.5f;
+	strength = 50.f;
 	level = 0;
 	exp = 0.0f;
 }

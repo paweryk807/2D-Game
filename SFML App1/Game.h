@@ -8,6 +8,8 @@
 #include "Level.h"
 #include "bullet.h"
 
+#define PLATFORM_PATH "images/sheet.png"
+#define 
 class Game
 {
 	std::unique_ptr<sf::RenderWindow> window;
@@ -18,7 +20,6 @@ class Game
 	std::vector<Bullet> bullets;
 	sf::View view;
 	sf::Texture playerTexture;
-	sf::Texture platformTexture;
 	Menu menu;
 	bool shot;
 	bool started;
@@ -28,6 +29,7 @@ class Game
 public:
 	Game(sf::View& view, std::vector<std::string>& enemiesTextures, const std::string& playerTexture, const std::string& platform);
 	void restart();
+	void printRound(int number);
 	void run();
 
 	std::vector<Enemy*> addEnemies(const int enemiesToSpawn, const int type);

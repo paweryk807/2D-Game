@@ -2,15 +2,18 @@
 
 Bullet::Bullet(sf::Vector2f startPos) {
 	try {
-		//loadTexture(TEXTURE_PATH);
+		loadTexture(TEXTURE_PATH);
 		sprite.setRadius(3.0f);
-		sprite.setFillColor(sf::Color::Blue);
-		//sprite.setTexture(&texture);
+		sprite.setFillColor(sf::Color::Yellow);
+		sprite.setOutlineColor(sf::Color::Red);
+		//sprite.setTexture(&texture); 
 		sprite.setPosition(startPos.x, startPos.y - 5.f);
-		velocity = sf::Vector2f(2.0f, 0.0f);
-		animation.setAnimTime(sf::seconds(4.f));
-		sf::Vector2f cSize(sprite.getRadius() * 0.7f, sprite.getRadius() * 0.7f);
+		velocity = sf::Vector2f(10.0f, 0.0f);
+		animation.setAnimTime(sf::seconds(0.5f));
+		sf::Vector2f cSize(   sprite.getRadius(), sprite.getRadius());
 		colid.setSize(cSize);
+		colid.setPosition(startPos.x, startPos.y - 5.f);
+		colid.setOrigin(cSize / 2.0f);
 		
 	}
 	catch (std::exception e) {
@@ -31,19 +34,39 @@ bool Bullet::loadTexture(const std::string path) {
 		throw std::exception("cannot open bullet texture");
 	}
 }
-void Bullet::restart() {
-	animation.restartCooldown();
-}
 
 void Bullet::setDirection(Character* character) {
 	sprite.setPosition(character->getCollider().getPosition());
-	if (character->getVelocity().x < 0);
+	if (character->getSprite().getScale().x < 0 && velocity.x > 0)
 	{
 		velocity.x = -velocity.x;
 	}
+	else if(velocity.x < 0 && character->getSprite().getScale().x > 0) {
+		velocity.x = -velocity.x;
+	}
 }
+
+void Bullet::restart(sf::Vector2f pos) {
+	sprite.setPosition(pos);
+	colid.setPosition(pos);
+	animation.restartCooldown();
+}
+
 void Bullet::refresh() {
 		sprite.move(velocity);
+		colid.setPosition(sprite.getPosition());
+}
+
+bool Bullet::hit(Character* character) {
+	sf::Vector2f colliderDirection;   
+	if (character->getCollider().checkCollision(getCollider(), colliderDirection , 1.5f)) {
+		colliderDirection.x = 1920.f;
+		colliderDirection.y = 1080.f;
+		colid.setPosition(colliderDirection);
+		sprite.setPosition(colliderDirection);
+		return 1;
+	}
+	return 0;
 }
 
 sf::CircleShape Bullet::getSprite() {

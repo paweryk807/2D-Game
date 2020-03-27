@@ -20,7 +20,7 @@ Game::Game(sf::View& view, std::vector<std::string>& enemiesTextures, const std:
     window->setView(view);
     started = false;
     pause = false;
-
+    int round = 0;
     
        
 }
@@ -32,19 +32,25 @@ bool Game::loadTexture(const std::string& texture) {
     return 1;
 }
 void Game::restart() {
-    player->reset();
     enemiesToSpawn.clear();
-    enemiesToSpawn = addEnemies(5, 0);
-    started = true;
-    pause = false;
+    bullets.clear();
+     pause = false; 
+	 player->reset();
+	 bullets.push_back(Bullet(player->getPosition()));
+	enemiesToSpawn = addEnemies(5, 0);
+     start();
+  //  start();
+  //  player->reset();
+   // enemiesToSpawn = addEnemies(5, 0);
+
     // RESET WORLD 
 }
 
 void Game::run() {
-    if (menu.handle(*window.get(), view, started)) {
-        start();
+    if (!menu.handle(*window.get(), view, started)) {
+       start();	
     }
-  
+    
 }
 
 std::vector<Enemy*> Game::addEnemies(const int enemiesToSpawn, const int type) {
@@ -76,11 +82,28 @@ std::vector<Enemy*> Game::addEnemies(const int enemiesToSpawn, const int type) {
 
 }
 
+void Game::printRound(int number) {
+    sf::Text object;
+    std::string round = "Round";// + static_cast<char>(number);
+    object.setString(round + " " + static_cast<char>(number+48));
+    sf::Vector2f factors(1.f, 1.f);  
+    sf::Font font;
+    font.loadFromFile(FONT_PATH);
+    object.setFont(font);
+    object.setFillColor(sf::Color::Magenta);
+    object.setScale(factors);
+    object.setOutlineThickness(0.5f);
+    object.setOutlineColor(sf::Color::White);
+    object.setPosition(sf::Vector2f(WIDTH/2 - (round.length()+1.5f) *10, ((HEIGHT/2)/6))); // /6 dla symetrii
+    window->draw(object);
+}
 
 void Game::start() {
 
     started = true;
-	bullets.push_back(Bullet(player->getPosition()));
+
+
+	int round = 1;       
 
 
     //BACKGROUND APLHA 
@@ -92,7 +115,8 @@ void Game::start() {
     background.setTexture(&backText);
     //
     while (window->isOpen())
-    {
+    {	
+       
         sf::Event event;
         while (window->pollEvent(event))
         {
@@ -104,11 +128,12 @@ void Game::start() {
             case sf::Event::KeyReleased:
                 if (event.key.code == sf::Keyboard::Escape) {
                     if (!pause) {
-                        pause = !(menu.handle(*window.get(), view, started));
+                        pause =  (menu.handle(*window.get(), view, started));
                     }
                     else {
-                        pause = false;
-                    }
+                        pause = true;
+                    } 
+
 
                 }
                 break;
@@ -118,12 +143,12 @@ void Game::start() {
             }
         }
         window->clear();
-
         //BACKGROUND ALPHA 
-        window->draw(background);
+        window->draw(background);   
+        printRound(round);
+
         sf::Vector2f direction;
         
-
         if (!pause) {
             getActionFromUser();
             for (int i = 0; i < enemiesToSpawn.size(); i++) {
@@ -139,19 +164,47 @@ void Game::start() {
                         menu.handle(*window.get(), view, false);
                         break;
                     }
-                }
+                }    
+                level->checkCollision(direction, enemiesToSpawn[i]);
 
+                if (!bullets[0].getCooldown().elapsed()) {
+                    if (bullets[0].hit(enemiesToSpawn[i])) {
+                        shot = false;
+                            enemiesToSpawn[i]->setHealth(enemiesToSpawn[i]->getHealth() - player->getStrength());
+                            if (enemiesToSpawn[i]->getHealth() <= 0) {
+                                std::cout << "zabil" << std::endl;
+                                enemiesToSpawn.erase(enemiesToSpawn.begin() + i);
+                                   
+                                /*if (i != (enemiesToSpawn.size() - 1 && enemiesToSpawn.size() != 1)) {
+                                    delete enemiesToSpawn[i];
+                                    enemiesToSpawn[i] = enemiesToSpawn[enemiesToSpawn.size() - 1];
+                                    // enemiesToSpawn[enemiesToSpawn.size() - 1] = nullptr;
+                                    //  delete tmp;
+                                }
+                                 
+
+                                //enemiesToSpawn.pop_back();*/
+
+                        }
+                    } 
+                }
                 for (int n = i; n < enemiesToSpawn.size(); n++) {
                     if (n != i) {
                         enemiesToSpawn[i]->getCollider().checkCollision(enemiesToSpawn[n]->getCollider(), direction, 0.1f);
                     }
-                }
+                } 
 
-                level->checkCollision(direction, enemiesToSpawn[i]);
-            }
+                
+            if (enemiesToSpawn.empty()) {
+                std::cout << "KONIEC RUNDY"<<std::endl;
+                round++;
+                enemiesToSpawn.clear();
+                enemiesToSpawn = addEnemies(round * 2 + 5, 0);
+            } 
+
+            } 
             level->draw(*window.get());
             for(int z = 0; z < enemiesToSpawn.size(); z++) {
-         //   for (auto elem : enemiesToSpawn) {
                 window->draw(enemiesToSpawn[z]->getSprite());
             }
             window->draw(player->getSprite());
@@ -165,6 +218,7 @@ void Game::start() {
 
 
         }
+       
         if (menu.restarted()) {
             restart();
         }
@@ -186,8 +240,8 @@ void Game::getActionFromUser() {
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::P)) {
         if (bullets[0].getCooldown().elapsed()) {
-            shot = true;
-            bullets[0].restart();
+            shot = true; 
+            bullets[0].restart(player->getPosition() );
             bullets[0].setDirection(player);
         }
     }

@@ -29,9 +29,9 @@ public:
 	void gameRunning();
 	void gameStarted();
 	void drawOptions(sf::RenderWindow& window);
-	bool moveUp();
+	bool moveUp(bool started);
 	bool moveDown();
-
+	sf::Font getFont();
 	bool loadFont(const std::string& fontPath);
 	bool handle(sf::RenderWindow& window, sf::View view, bool started);
 	bool instruction(sf::RenderWindow& window);

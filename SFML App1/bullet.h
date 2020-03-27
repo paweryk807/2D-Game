@@ -14,11 +14,11 @@ class Bullet
 	sf::RectangleShape colid;
 public:
 	Bullet(sf::Vector2f startPos);
-
 	void setScale(sf::Vector2f scale);
 	bool loadTexture(const std::string path);
 	void refresh();
-	void restart(); 
+	void restart(sf::Vector2f pos);
+	bool hit(Character* character); 
 	void setDirection(Character* character);
 	sf::CircleShape getSprite();
 	sf::Vector2f getVelocity();
