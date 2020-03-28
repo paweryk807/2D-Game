@@ -9,7 +9,9 @@
 #include "bullet.h"
 
 #define PLATFORM_PATH "images/sheet.png"
-#define 
+#define BACKGROUND_1 "images/background.jpg"
+#define SHEET  "images/sheet.png"
+
 class Game
 {
 	std::unique_ptr<sf::RenderWindow> window;
@@ -27,14 +29,15 @@ class Game
 	
 
 public:
-	Game(sf::View& view, std::vector<std::string>& enemiesTextures, const std::string& playerTexture, const std::string& platform);
+	Game(sf::View& view, std::vector<std::string>& enemiesTextures, const std::string& playerTexture);
 	void restart();
 	void printRound(int number);
 	void run();
+	void generateLevel();
 
 	std::vector<Enemy*> addEnemies(const int enemiesToSpawn, const int type);
 	bool loadTexture(const std::string& texture);
-	bool loadPlatformTexture(const std::string texture);
+	//bool loadPlatformTexture(const std::string texture);
 	bool loadEnemiesTextures(std::vector<std::string>& textures, const int type);
 	void getActionFromUser();
 	void start();

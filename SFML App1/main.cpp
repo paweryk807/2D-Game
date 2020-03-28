@@ -36,7 +36,7 @@ int main()
     std::vector<std::string> enemies;
     enemies.push_back("images/characters2.png");
     try {
-        giera = std::unique_ptr<Game>{ new Game(view, enemies, "images/characters.png", "images/sheet.png") };
+        giera = std::unique_ptr<Game>{ new Game(view, enemies, "images/characters.png") };
         giera->run();
     }
     catch (std::exception & e) {

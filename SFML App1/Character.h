@@ -53,7 +53,7 @@ public:
 	void moveRight();
 	void refresh();
 	void onCollision(sf::Vector2f direction);
-	void correctPosition(sf::Vector2i);
+	void correctPosition(sf::Vector2f);
 	sf::Vector2f getPosition() const;
 	sf::RectangleShape getSprite() const;
 	Collider getCollider();

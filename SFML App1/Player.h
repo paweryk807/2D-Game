@@ -3,6 +3,7 @@
 #include "Character.h"
 
 #define DEFAULT_PATH "images/characters.png"
+
 class Player : public Character
 {
 private:

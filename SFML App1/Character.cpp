@@ -192,7 +192,7 @@ void Character::setAnimation(CharacterAnimation& a) {
 	animation = a;
 }
 
-void Character::correctPosition(sf::Vector2i size) {
+void Character::correctPosition(sf::Vector2f size) {
 	int x = getPosition().x;
 	int y = getPosition().y;
 	if (x < 0) {
