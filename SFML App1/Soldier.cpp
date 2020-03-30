@@ -86,35 +86,67 @@ void Soldier::setAnimation(SoldierAnimation& a) {
 }
 
 void Soldier::refresh(const Player& player, bool wall) {
+	bool changed = false;	
 	if (getHealth() > 0) {
+		// AI SECTION
+		if (velocity.y != 0.0f) {
+			setOnAir(true);
+			setCanJump(false);
+			sprite.setTexture(&texture[2]);
+			jump();
+			changed = true;
+		}
+		else if (getCanJump()) {
+			if (getCanJump()) {
+				if (wall) {
+					if (!changed) {
+						sprite.setTexture(&texture[2]);
+						changed = true;
+					}
+					jump();
+				}
+				else if ((abs(player.getPosition().x - getPosition().x) < 30 && (player.getPosition().y < getPosition().y))) {
+					if (!changed) {
+						sprite.setTexture(&texture[2]);
+						changed = true;
+					}
+					jump();
+				}
+			}
+
+		}
+
 		if (player.getPosition().x >= getPosition().x) {
 			velocity.x++;
 			sprite.setTexture(&texture[1]);
+			changed = true;
 			animation.rotateSprite(sprite, 'r');
 			moveRight();
 		}
 		else if (player.getPosition().x < getPosition().x) {
 			velocity.x--;
 			sprite.setTexture(&texture[1]);
+			changed = true;
 			animation.rotateSprite(sprite, 'l');
 			moveLeft();
 		}
 		else if (velocity.x == 0 && velocity.y == 0) {
 			sprite.setTexture(&texture[0]);
+			changed = true;
 
+		}	
+		sprite.move(velocity.x, velocity.y);
+
+		velocity.x = 0.0f;
+		velocity.y += 0.9810f * 1.0f;
+		if (velocity.y > 17.0f) {
+			velocity.y = 9.81 * 1.6f;
 		}
-		Character::refresh();
-		// AI SECTION
-		if (wall) {
-			sprite.setTexture(&texture[2]);
-			jump();
-		}
-		else if ((abs(player.getPosition().x - getPosition().x) < 30 && (player.getPosition().y < getPosition().y))) {
-			sprite.setTexture(&texture[2]);
-			jump();
-		}
+
 	}
 	else {
+
 		sprite.setTexture(&texture[3]);
+		animation.death(sprite, velocity);
 	}
 }
