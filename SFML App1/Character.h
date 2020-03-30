@@ -16,7 +16,6 @@ private:
 protected:
 	sf::RectangleShape sprite; 
 	sf::Vector2f velocity;
-	CharacterAnimation animation;
 
 
 
@@ -31,7 +30,7 @@ public:
 	float getSpeed();
 	float getJumpHeight();
 	sf::Vector2f getVelocity();
-	sf::IntRect getIntRect();
+	//sf::IntRect getIntRect();
 	void setSprite(sf::RectangleShape& sprite);
 
 	CharacterAnimation getAnimation();
@@ -43,9 +42,8 @@ public:
 
 	void setCanJump(bool jump);
 	void setOnAir(bool air);
-	void setSpeed(float, sf::Time);
 	void setVelocity(sf::Vector2f vel);
-	void setAnimation(CharacterAnimation& a);
+	//void setAnimation(CharacterAnimation& a);
 	void moveUp();
 	void jump();
 	void moveDown();
@@ -53,6 +51,7 @@ public:
 	void moveRight();
 	void refresh();
 	void onCollision(sf::Vector2f direction);
+	void setSpeed(float temp);
 	void correctPosition(sf::Vector2f);
 	sf::Vector2f getPosition() const;
 	sf::RectangleShape getSprite() const;

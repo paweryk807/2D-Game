@@ -2,7 +2,7 @@
 #include <time.h>
 #include <iostream>
 #include <stdexcept>
-#include "Enemy.h"
+#include "Soldier.h"
 #include "Menu.h"
 #include "Functions.h"
 #include "Level.h"
@@ -17,8 +17,8 @@ class Game
 	std::unique_ptr<sf::RenderWindow> window;
 	std::unique_ptr<Level> level;
 	Player* player;
-	std::vector<Enemy*> enemiesToSpawn;
-	std::vector<sf::Texture> enemiesTextures;
+	std::vector<Soldier*> enemiesToSpawn;
+	std::vector<std::string> enemiesTextures;
 	std::vector<Bullet> bullets;
 	sf::View view;
 	sf::Texture playerTexture;
@@ -35,10 +35,10 @@ public:
 	void run();
 	void generateLevel();
 
-	std::vector<Enemy*> addEnemies(const int enemiesToSpawn, const int type);
+	std::vector<Soldier*> addEnemies(const int enemiesToSpawn, const int type);
 	bool loadTexture(const std::string& texture);
 	//bool loadPlatformTexture(const std::string texture);
-	bool loadEnemiesTextures(std::vector<std::string>& textures, const int type);
+	bool loadEnemiesTextures(std::vector<std::string>& textures);
 	void getActionFromUser();
 	void start();
 

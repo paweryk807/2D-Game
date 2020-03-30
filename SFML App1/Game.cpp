@@ -7,8 +7,9 @@
 
 
 Game::Game(sf::View& view, std::vector<std::string>& enemiesTextures, const std::string& playerT) : view(view) {
+    this->enemiesTextures = enemiesTextures;
     loadTexture(playerT);
-    loadEnemiesTextures(enemiesTextures, 0); // Tymczasowo 0   DO TESTOW !!!!!!!!!!!!!!!
+    // loadEnemiesTextures(enemiesTextures); // Tymczasowo 0   DO TESTOW !!!!!!!!!!!!!!!
     level = std::unique_ptr<Level>{ new Level(sf::Vector2f(1920.f,1080.f), BACKGROUND_1)};
     player = new Player(playerTexture);
     window = std::unique_ptr<sf::RenderWindow>{ new sf::RenderWindow(sf::VideoMode(1920, 1080), "The 2D-Game!", sf::Style::Fullscreen | sf::Style::Resize) };
@@ -60,30 +61,53 @@ void Game::generateLevel() {
     level->addPlatform(new Platform(SHEET, sf::Vector2f(140.0f, 40.0f), sf::Vector2f(1000.0f, 200.0f)));
 }
 
-std::vector<Enemy*> Game::addEnemies(const int enemiesToSpawn, const int type) {
-    std::vector<Enemy*> toSpawn;
+std::vector<Soldier*> Game::addEnemies(const int enemiesToSpawn, const int type) {
+    std::vector<Soldier*> toSpawn;
+    std::vector<std::string> tmp;
+
     for (int i = 0; i < enemiesToSpawn; i++) {
-        switch (type) {
-        case 0:
-            toSpawn.push_back(new Enemy(playerTexture));
-            toSpawn[i]->correctPosition(sf::Vector2f(toSpawn[i]->getPosition().x - i * 32, toSpawn[i]->getPosition().y));
+           tmp.clear();  
+ 
+       // toSpawn.push_back(new Soldier(enemiesTextures));
+        //toSpawn[i]->correctPosition(sf::Vector2f(toSpawn[i]->getPosition().x - i * 32, toSpawn[i]->getPosition().y));
+      switch (type) {
+        case 0: //BLUE
+            for (int a = 0; a < 4; a++) {
+                tmp.push_back(enemiesTextures[a]);
+            }
+         //   toSpawn.push_back(new Soldier(tmp));
+          //  toSpawn[i]->correctPosition(sf::Vector2f(toSpawn[i]->getPosition().x - i * 32, toSpawn[i]->getPosition().y));
             break;        
-        case 1:
-           // toSpawn.push_back(enemiesTypes[1]);
-            break;        
-        case 2:
-           // toSpawn.push_back(enemiesTypes[2]);
-            break;        
-        case 3:
-           // toSpawn.push_back(enemiesTypes[3]);
+        case 1: //RED
+            for (int a = 4; a < 8; a++) {
+                tmp.push_back(enemiesTextures[a]);
+            }
+           // toSpawn.push_back(new Soldier(tmp));
+         //   toSpawn[i]->correctPosition(sf::Vector2f(toSpawn[i]->getPosition().x - i * 32, toSpawn[i]->getPosition().y));
             break;
-        case 4:
+        case 2: //YELLOW
+            for (int a = 8; a < 12; a++) {
+                tmp.push_back(enemiesTextures[a]);
+            }
+          //  toSpawn.push_back(new Soldier(tmp));
+         //   toSpawn[i]->correctPosition(sf::Vector2f(toSpawn[i]->getPosition().x - i * 32, toSpawn[i]->getPosition().y));
+            break;        
+        case 3: //GREEN
+            for (int a = 12; a < 16; a++) {
+                tmp.push_back(enemiesTextures[a]);
+            }
+
+            break;
+       // case 4:
            // toSpawn.push_back(enemiesTypes[4]);
-            break;
+         //   break;
         default:
             throw std::exception("Bad enemy type");
-            break;
-        }
+            break;            
+           
+        } 
+      toSpawn.push_back(new Soldier(tmp));
+      toSpawn[i]->correctPosition(sf::Vector2f(toSpawn[i]->getPosition().x - i * 32, toSpawn[i]->getPosition().y));
     }       
     return toSpawn;
 
@@ -247,10 +271,10 @@ void Game::getActionFromUser() {
 
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift)) {
-        player->setSpeed(2.65, sf::seconds(0.075));
+        player->setSpeed(6.65, sf::seconds(0.075));
     }
     else {
-        player->setSpeed(2.20, sf::seconds(0.125));
+        player->setSpeed(4.20, sf::seconds(0.125));
     }
     player->refresh();
   
@@ -263,16 +287,16 @@ void Game::getActionFromUser() {
 }
 
 
-bool Game::loadEnemiesTextures(std::vector<std::string>& textures, const int type)
+bool Game::loadEnemiesTextures(std::vector<std::string>& textures)
 {
-    //for (int i = 0; i < textures.size(); i++) {
-       // sf::Texture texture;
-       // if (!texture.loadFromFile(textures[type].data())){
-          //  throw std::exception("unable to open texture file");
-        //    return 0;
-      //  }
-  //     enemiesTypes.push_back(new Enemy(playerTexture));//Enemy(texture));
-    //}
+    for (int i = 0; i < textures.size(); i++) {
+        sf::Texture texture;
+        if (!texture.loadFromFile(textures[i].data())) {
+            throw std::exception("unable to open texture file");
+            return 0;
+        }
+       // enemiesTextures.push_back(sf::Texture(texture));//Enemy(texture));
+    }
     return 1;
 }
 

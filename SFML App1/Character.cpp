@@ -6,7 +6,7 @@ Character::Character() {
 		sprite.setOrigin(sprite.getSize() / 2.0f);
 		sprite.setPosition(600, 350);  
 		velocity = sf::Vector2f(0.0f, 0.0f);
-		animation.setAnimTime(sf::seconds(0.125));  
+		//animation.setAnimTime(sf::seconds(0.125));  
 		health = 100.0;
 		speed = 2.20;
 		jumpHeight = 10.20;
@@ -21,9 +21,9 @@ Character::Character() {
 
 Character::~Character() {}
 
-sf::IntRect Character::getIntRect() {
-	return animation.getRect();
-}
+//sf::IntRect Character::getIntRect() {
+//	return animation.getRect();
+//}
 
 bool Character::getCanClimb() {
 	return canClimb;
@@ -36,8 +36,8 @@ float Character::getHealth() {
 void Character::reset() {
 	sprite.setPosition(600, 350);
 	health = 100.0;
-	speed = 2.20;
-	jumpHeight = 10.20;
+	//speed = 2.20;
+	//jumpHeight = 10.20;
 	canJump = true;
 	onAir = false;
 	canClimb = false;
@@ -63,9 +63,9 @@ void Character::setSprite(sf::RectangleShape& sprite) {
 	this->sprite = sprite;
 }
 
-CharacterAnimation Character::getAnimation() {
-	return animation;
-}
+//CharacterAnimation Character::getAnimation() {
+//	return animation;
+//}
 
 float Character::getSpeed() {
 	return speed;
@@ -107,39 +107,30 @@ sf::RectangleShape Character::getSprite() const {
 
 void Character::moveUp() {
 	velocity.y = -speed;
-	animation.oY(32, 19 * 32, 22 * 32, sprite);
 }
 
 void Character::jump() {
 	if (canJump) {
 		velocity.y = -sqrtf(2.0f * 9.81f * jumpHeight);
-		animation.jump(32, 6 * 32, 8 * 32, sprite, velocity);
 		canJump = false;
 	}	
 }
 
 void Character::moveDown() {
 	velocity.y = speed;
-	animation.oY(32, 19 * 32, 22 * 32, sprite);
 }
 
 void Character::moveRight() {
 	velocity.x = speed;
-	if (!onAir) {
-		animation.oX(32, 0, 128, sprite);
-	}
 }
 
 void Character::moveLeft() {
 	velocity.x = -speed;
-	if (!onAir) {
-		animation.oX(32, 0, 128, sprite);
-	}
 }
 
 void Character::refresh() {
 	sprite.move(velocity.x, velocity.y);
-	if (velocity.x > 0.0f) {
+	/*if (velocity.x > 0.0f) {
 		animation.rotateSprite(sprite, 'r');
 	}
 	if(velocity.x < 0.0f) {
@@ -148,10 +139,11 @@ void Character::refresh() {
 	if (velocity.y > 0.0f) {
 		onAir = true;
 		animation.jump(32, 6 * 32, 8 * 32, sprite, velocity);
-	}
-	if(velocity.y  < 0.0f) {
+	}*/
+	if(velocity.y  != 0.0f ) {
 		onAir = true;
-		animation.jump(32, 6 * 32, 8 * 32, sprite, velocity);
+		canJump = false;
+		//animation.jump(32, 6 * 32, 8 * 32, sprite, velocity);
 	}
 	velocity.x = 0.0f;
 	velocity.y += 0.9810f * 1.0f;
@@ -178,19 +170,21 @@ void Character::onCollision(sf::Vector2f direction) {
 		velocity.y = 0.0f;
 	}
 }
-void Character::setSpeed(float temp, sf::Time tempAnim) //Sprint Speed
+void Character::setSpeed(float temp) //Sprint Speed
 {
 	speed = temp;
-    animation.setAnimTime(tempAnim);
+   // animation.setAnimTime(tempAnim);
 }
 
 void Character::setVelocity(sf::Vector2f vel) {
 	velocity = vel;
 }
 
+/*
 void Character::setAnimation(CharacterAnimation& a) {
 	animation = a;
-}
+}*/
+
 
 void Character::correctPosition(sf::Vector2f size) {
 	int x = getPosition().x;

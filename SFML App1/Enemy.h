@@ -8,7 +8,8 @@ class Enemy : public Character
 	float atackSpeed; 
 	float strength;
 public:
-	Enemy(const sf::Texture& temp);
+	Enemy() = delete;
+	Enemy(float atackSpeed, float strength);
 	void setAtackSpeed(float aSpd);
 	void setStrength(float str);
 	float getStrength();
