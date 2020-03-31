@@ -2,38 +2,32 @@
 
 Soldier::Soldier(std::vector<std::string>& textures) : Enemy(2.5f, 4.5f)
 {
-	//for (auto elem : textures) {
-	//	texture.push_back(elem);
-	//}	
+	try {
+		loadTextures(textures);
 
-	loadTextures(textures);
+		sf::IntRect r(48, 0, 48, 48);
+		animation.setRect(r);
+		animation.setAnimTime(sf::seconds(0.075));
 
-	sf::IntRect r(48, 0, 48, 48);
-	animation.setRect(r);
-	animation.setAnimTime(sf::seconds(0.075));
+		sprite.setSize(sf::Vector2f(48.0f, 48.0f));
+		sprite.setOrigin((sprite.getSize().x - 16) / 2.0f, (sprite.getSize().y - 16.0f) / 2.0f);
+		sprite.setTexture(&texture[0]);
+		sprite.setTextureRect(animation.getRect());
+		sprite.setPosition(800, 350);
 
-	sprite.setSize(sf::Vector2f(48.0f, 48.0f));
-	sprite.setOrigin((sprite.getSize().x - 16) / 2.0f, (sprite.getSize().y - 16.0f) / 2.0f);
-	sprite.setTexture(&texture[0]);
-	sprite.setTextureRect(animation.getRect());
-	sprite.setPosition(800, 350);
-
-	velocity = sf::Vector2f(0.0f, 0.0f);
+		velocity = sf::Vector2f(0.0f, 0.0f);
 
 
-	setHealth(100.0);
-	setSpeed(2.f, sf::seconds(2.2 * 0.125));
-	setJumpHeight(10.20);
-	setCanJump(true);
-	setOnAir(false);
-	setCanClimb(false);
-
-
-	/*try {
+		setHealth(100.0);
+		setSpeed(2.f, sf::seconds(2.2 * 0.125));
+		setJumpHeight(10.20);
+		setCanJump(true);
+		setOnAir(false);
+		setCanClimb(false);
 	}
 	catch (std::exception e) {
 		std::cout << e.what() << std::endl;
-	}*/
+	}
 }
 
 bool Soldier::loadTextures(std::vector<std::string>& text) {
