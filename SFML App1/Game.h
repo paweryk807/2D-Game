@@ -9,7 +9,7 @@
 #include "bullet.h"
 
 #define PLATFORM_PATH "images/sheet.png"
-#define BACKGROUND_1 "images/background.jpg"
+#define BACKGROUND_1 "images/bg.jpg"//background.jpg"
 #define SHEET  "images/sheet.png"
 
 class Game
