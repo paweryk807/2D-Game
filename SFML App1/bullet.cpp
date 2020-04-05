@@ -51,6 +51,38 @@ void Bullet::restart(sf::Vector2f pos) {
 	animation.restartCooldown();
 }
 
+void Bullet::upgrade(int lvl) {
+	if (lvl < 10) {
+		sprite.setFillColor(sf::Color::Yellow);
+		sprite.setOutlineColor(sf::Color::Red);
+		animation.setAnimTime(sf::seconds(0.5f));
+	}
+
+	else if (lvl < 20) {
+		sprite.setFillColor(sf::Color::Red);
+		sprite.setOutlineColor(sf::Color::Yellow);
+		if (velocity.x > 0)
+			velocity.x = 12.0f;
+		else velocity.x = -12.0f;
+	}
+
+	else if (lvl < 40) {
+		sprite.setFillColor(sf::Color::Magenta);
+		sprite.setOutlineColor(sf::Color::Yellow);
+		if (velocity.x > 0)
+			velocity.x = 14.0f;
+		else velocity.x = -14.0f;
+	}
+
+	else {
+		sprite.setFillColor(sf::Color::White);
+		sprite.setOutlineColor(sf::Color::Magenta);
+		if (velocity.x > 0)
+			velocity.x = 16.0f;
+		else velocity.x = -16.0f;
+	}
+}
+
 void Bullet::refresh() {
 		sprite.move(velocity);
 		colid.setPosition(sprite.getPosition());

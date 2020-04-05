@@ -18,6 +18,7 @@ public:
 	bool loadTexture(const std::string path);
 	void refresh();
 	void restart(sf::Vector2f pos);
+	void upgrade(int lvl);
 	bool hit(Character* character); 
 	void setDirection(Character* character);
 	sf::CircleShape getSprite();

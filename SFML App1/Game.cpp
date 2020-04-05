@@ -64,7 +64,7 @@ std::vector<Soldier*> Game::addEnemies(const int enemiesToSpawn, const int type)
 
     for (int i = 0; i < enemiesToSpawn; i++) {
            tmp.clear();
-           //type
+           /*  RANDOM TYPE SET  */
            int type = std::rand() % 4;
      switch (type) {
         case 0: //BLUE
@@ -93,7 +93,10 @@ std::vector<Soldier*> Game::addEnemies(const int enemiesToSpawn, const int type)
            
         } 
       toSpawn.push_back(new Soldier(tmp));
-      toSpawn[i]->correctPosition(sf::Vector2f(toSpawn[i]->getPosition().x - i * 32, toSpawn[i]->getPosition().y));
+      toSpawn[i]->correctPosition(sf::Vector2f(toSpawn[i]->getPosition().x - i * 2, toSpawn[i]->getPosition().y));
+      bullets.push_back(Bullet(toSpawn[i]->getPosition()));
+      bullets[bullets.size() - 1].upgrade(41);
+      toSpawn[i]->addAmmunition(&bullets[bullets.size()-1]);
     }       
     return toSpawn;
 
@@ -200,13 +203,23 @@ void Game::start() {
                 }
                 else {
                     enemiesToSpawn.erase(enemiesToSpawn.begin() + i);
-                    player->setExp(player->getExp() + 20);
+                    player->addExp(20);
 
                 }
                 
+                for (int i = 1; i < bullets.size(); i++) {
+                    if (!level->checkBulletCollision(direction, bullets[i]))
+                        if (bullets[i].hit(player)) {
+                            player->setHealth(player->getHealth() - 5);
+                            
+                        }
+                }
                 if (enemiesToSpawn.empty()) {
                     round++;
                     enemiesToSpawn.clear();
+                    while (bullets.size() != 1) {
+                        bullets.pop_back();
+                    }
                     enemiesToSpawn = addEnemies(round * 2 + 5, 0);
                 }
             }
@@ -219,6 +232,8 @@ void Game::start() {
                 window->draw(enemiesToSpawn[z]->getSprite());
             }
 
+
+              
             window->draw(player->getSprite());
             healthBar.draw(window.get());
             //window->draw(healthBar.getText());
@@ -229,6 +244,13 @@ void Game::start() {
                         bullets[0].refresh();
                     }
                     else shot = false;
+            }
+            
+            for (int z = 1; z < bullets.size(); z++) {
+                if (!bullets[z].getCooldown().elapsed()) {
+                    window->draw(bullets[z].getSprite());
+                }
+
             }
         }
 
@@ -279,7 +301,8 @@ void Game::getActionFromUser() {
         player->setSpeed(4.20, sf::seconds(0.125));
     }
 
-    player->refresh();
+    if (player->refresh())
+        bullets[0].upgrade(player->getLevel());
     healthBar.update(player);
   
     if (!level->checkPosition(player)) {

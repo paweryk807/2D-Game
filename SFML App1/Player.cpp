@@ -19,6 +19,7 @@ Player::Player(const sf::Texture &temp) {
 	
 	atackSpeed = 2.5f;
 	strength = 50.f;
+	prevLevel = 0;
 	level = 0;
 	exp = 0.0f;
 }
@@ -109,22 +110,19 @@ int Player::getLevel() {
 	return level;
 }
 
-void Player::setExp(float nExp) {
-	if (nExp > 0) {
-	exp = nExp;
-	}
-	else {
-		exp = 0;
-	}
+void Player::addExp(float nExp) {
+	exp += nExp;
 }
 
-void Player::leveled() {
+bool Player::leveled() {
+
 	if (level < 10) {
 		if (exp > 100) {
 			level += 1;
 			exp -= 100;
 			strength *= 1.1;
 			setHealth(maxHP);
+			return true;
 			// maxHP = 100;
 		}
 	}
@@ -135,6 +133,7 @@ void Player::leveled() {
 			strength *= 1.2f;
 			maxHP *= 1.1f;
 			setHealth(maxHP);
+			return true;
 		}
 	}
 	else {
@@ -144,19 +143,13 @@ void Player::leveled() {
 			strength *= 1.05f;
 			maxHP *= 1.15f;
 			setHealth(maxHP);
+			return true;
 		}
-
 	}
+	return false;
 }
 
-void Player::refresh() {
-	
-	leveled();
-	// LEVEL section //
-
-	
-
-
+bool Player::refresh() {
 	sprite.move(velocity.x, velocity.y);
 	if (velocity.x > 0.0f) {
 		animation.rotateSprite(sprite, 'r');
@@ -174,5 +167,6 @@ void Player::refresh() {
 	if (velocity.y > 17.0f) {
 		velocity.y = 9.81 * 1.6f;
 	}
+	return leveled();
 }
 

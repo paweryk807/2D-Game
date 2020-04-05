@@ -4,7 +4,7 @@ Soldier::Soldier(std::vector<std::string>& textures) : Enemy(2.5f, 4.5f)
 {
 	try {
 		loadTextures(textures);
-
+		bullet = nullptr;
 		sf::IntRect r(48, 0, 48, 48);
 		animation.setRect(r);
 		animation.setAnimTime(sf::seconds(0.075));
@@ -28,6 +28,10 @@ Soldier::Soldier(std::vector<std::string>& textures) : Enemy(2.5f, 4.5f)
 	catch (std::exception e) {
 		std::cout << e.what() << std::endl;
 	}
+}
+
+void Soldier::addAmmunition(Bullet* bullet) {
+	this->bullet = bullet;
 }
 
 bool Soldier::loadTextures(std::vector<std::string>& text) {
@@ -129,6 +133,18 @@ bool Soldier::refresh(const Player& player, bool wall) {
 			changed = true;
 
 		}	
+
+
+		/*SEKCJA STRZELANIA*/
+		if ((abs(player.getPosition().x) - abs(getPosition().x)) >= 10 && (abs(player.getPosition().x) - abs(getPosition().x)) <= 400) {
+			if (bullet->getCooldown().elapsed()) {
+				bullet->restart(getPosition());
+				bullet->setDirection(this);
+			}
+		}
+
+
+
 		//velocity.x = 0.0f;
 		velocity.y += 0.9810f * 1.0f;	
 		sprite.move(velocity.x, velocity.y);
@@ -150,4 +166,8 @@ bool Soldier::refresh(const Player& player, bool wall) {
 
 	}
 
+}
+
+Soldier::~Soldier() {
+	bullet = nullptr;
 }

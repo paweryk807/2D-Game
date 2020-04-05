@@ -1,6 +1,7 @@
 #pragma once
 #include "Enemy.h"
 #include "SoldierAnimation.h"
+#include "Bullet.h"
 
 //Defaultowo na pozycji 0 Idle, 1 Run, 2 Jump, 3 Death 
 class Soldier : public Enemy
@@ -8,9 +9,14 @@ class Soldier : public Enemy
 	sf::Vector2f prevPos;
 	std::vector<sf::Texture> texture;
 	SoldierAnimation animation;
+	Bullet* bullet;
+
 public:
 	Soldier() = delete;
 	Soldier(std::vector<std::string>& textures);
+	~Soldier();
+
+	void addAmmunition(Bullet* bullet);
 
 	void moveRight();
 

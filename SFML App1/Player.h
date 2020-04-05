@@ -9,6 +9,7 @@ class Player : public Character
 private:
 	float exp;
 	int level;
+	int prevLevel;
 	float atackSpeed; 
 	float strength;
 	float maxHP;
@@ -20,9 +21,9 @@ public:
 	Player(const sf::Texture &temp);
 	float getMaxHP();
 	void moveUp();
-	void setExp(float nExp);
-	void leveled();
-	void refresh();
+	void addExp(float nExp);
+	bool leveled();
+	bool refresh();
 	void moveDown();
 	void moveRight();
 	void moveLeft();
