@@ -6,12 +6,13 @@
 //   wyswietlac damage zadane postacia 
 
 
-Game::Game(sf::View& view, std::vector<std::string>& enemiesTextures, const std::string& playerT) : view(view) {
+Game::Game(sf::View& view, std::vector<std::string>& enemiesTextures, const std::string& playerT) : view(view), healthBar(100) {
     this->enemiesTextures = enemiesTextures;
     loadTexture(playerT);
     // loadEnemiesTextures(enemiesTextures); // Tymczasowo 0   DO TESTOW !!!!!!!!!!!!!!!
-    level = std::unique_ptr<Level>{ new Level(sf::Vector2f(1920.f,1080.f), BACKGROUND_1)};
+    level = std::unique_ptr<Level>{ new Level(sf::Vector2f(1920.f,1080.f), BACKGROUND_1) };
     player = new Player(playerTexture);
+    healthBar.setValue(player->getHealth());
     window = std::unique_ptr<sf::RenderWindow>{ new sf::RenderWindow(sf::VideoMode(1920, 1080), "The 2D-Game!", sf::Style::Fullscreen | sf::Style::Resize) };
     window->setKeyRepeatEnabled(false);
     window->setFramerateLimit(60);
@@ -48,11 +49,13 @@ void Game::run() {
 }
 
 void Game::generateLevel() {
-   	level->addPlatform(new Platform(SHEET, sf::Vector2f(19000.0f, 40.0f), sf::Vector2f(10.0f, 400.0f)));
-    level->addPlatform(new Platform(SHEET, sf::Vector2f(140.0f, 40.0f), sf::Vector2f(700.0f, 360.0f)));
-    level->addPlatform(new Platform(SHEET, sf::Vector2f(140.0f, 40.0f), sf::Vector2f(480.0f, 360.0f)));
-    level->addPlatform(new Platform(SHEET, sf::Vector2f(140.0f, 40.0f), sf::Vector2f(900.0f, 300.0f)));
-    level->addPlatform(new Platform(SHEET, sf::Vector2f(140.0f, 40.0f), sf::Vector2f(1000.0f, 200.0f)));
+    float random_pos = rand() % 1080 + 400 + rand() % 200;
+ //  float random_pos = rand() % 960 + 700;
+   // Platform basic(Platform(SHEET, sf::Vector2f(1980.0f, 40.0f), sf::Vector2f(960, 700.0f)));
+   //level->addPlatform(sf::Vector2f(rand() % 1080, rand() % 500));
+  //  level->addPlatform(new Platform(SHEET, sf::Vector2f(140.0f, 40.0f), sf::Vector2f(rand() % 1080 , rand() % 500 )));
+    //level->addPlatform(new Platform(SHEET, sf::Vector2f(140.0f, 40.0f), sf::Vector2f(rand() % 1080 , rand() % 600 )));
+    //level->addPlatform(new Platform(SHEET, sf::Vector2f(140.0f, 40.0f), sf::Vector2f(rand() % 1080 , rand() % 600 )));
 }
 
 std::vector<Soldier*> Game::addEnemies(const int enemiesToSpawn, const int type) {
@@ -98,8 +101,9 @@ std::vector<Soldier*> Game::addEnemies(const int enemiesToSpawn, const int type)
 
 void Game::printRound(int number) {
     sf::Text object;
-    std::string round = "Round";// + static_cast<char>(number);
-    object.setString(round + " " + static_cast<char>(number+48));
+    std::string round = "Round : ";// + static_cast<char>(number);
+    round += std::to_string(number);
+    object.setString(round);
     sf::Vector2f factors(1.f, 1.f);  
     sf::Font font;
     font.loadFromFile(FONT_PATH);
@@ -113,13 +117,15 @@ void Game::printRound(int number) {
 }
 
 void Game::start() {
-
+    level->reset();
     started = true;
     sf::Vector2f direction;
 
 
     int round = 1;
-    generateLevel(); //             <------ Zrobic predefiniowane levele w switchu 
+    //generateLevel(); //             <------ Zrobic predefiniowane levele w switchu 
+    level->addPlatform(sf::Vector2f(1000, rand() % 500));
+    level->addPlatform(sf::Vector2f(rand() % 1080, rand() % 500));
 
 
     while (window->isOpen())
@@ -157,46 +163,59 @@ void Game::start() {
             getActionFromUser();
 
             for (int i = 0; i < enemiesToSpawn.size(); i++) {
-                if (level->checkPosition(enemiesToSpawn[i])) {
-                    enemiesToSpawn[i]->correctPosition(level->getSize());
-                    enemiesToSpawn[i]->refresh(*player, level->wall(enemiesToSpawn[i]));// bedzie trzeba je refreshowac jeszcze ... powinny biegac w strone gracza  
+                if (enemiesToSpawn[i]->refresh(*player, level->wall(enemiesToSpawn[i]))) {
+                    if (level->checkPosition(enemiesToSpawn[i])) {
+                        enemiesToSpawn[i]->correctPosition(level->getSize());
+                        //enemiesToSpawn[i]->refresh(*player, level->wall(enemiesToSpawn[i]));// bedzie trzeba je refreshowac jeszcze ... powinny biegac w strone gracza  
 
-                }
 
-                if (enemiesToSpawn[i]->getCollider().checkCollision(player->getCollider(), direction, 0.2f)) {
-                    player->setHealth(player->getHealth() - 0.5);
-                    if (player->getHealth() == 0) {
-                        pause = true;
-                        menu.handle(*window.get(), view, false);
-                        break;
                     }
-                }
 
-                level->checkCollision(direction, enemiesToSpawn[i]);
-
-                if (!bullets[0].getCooldown().elapsed()) {
-                    if (!level->checkBulletCollision(direction, bullets[0]))
-                        if (bullets[0].hit(enemiesToSpawn[i])) {
-                            shot = false;
-                            enemiesToSpawn[i]->setHealth(enemiesToSpawn[i]->getHealth() - player->getStrength());
-                            if (enemiesToSpawn[i]->getHealth() <= 0) {
-                                enemiesToSpawn.erase(enemiesToSpawn.begin() + i);
-                            }
+                    if (enemiesToSpawn[i]->getCollider().checkCollision(player->getCollider(), direction, 0.2f)) {
+                        player->setHealth(player->getHealth() - 0.5);
+                        if (player->getHealth() == 0) {
+                            pause = true;
+                            menu.handle(*window.get(), view, false);
+                            break;
                         }
-                }
-                for (int n = i; n < enemiesToSpawn.size(); n++) {
-                    if (n != i) {
-                        enemiesToSpawn[i]->getCollider().checkCollision(enemiesToSpawn[n]->getCollider(), direction, 0.1f);
+                    }
+
+                    level->checkCollision(direction, enemiesToSpawn[i]);
+
+                    if (!bullets[0].getCooldown().elapsed()) {
+                        if (!level->checkBulletCollision(direction, bullets[0]))
+                            if (bullets[0].hit(enemiesToSpawn[i])) {
+                                shot = false;
+                                enemiesToSpawn[i]->setHealth(enemiesToSpawn[i]->getHealth() - player->getStrength()); // metoda dekrementuj zdrowie(wartosc o ile)
+                                player->setExp(player->getExp() + 20);
+                                if (enemiesToSpawn[i]->getHealth() <= 0) {
+                                    enemiesToSpawn[i]->setStrength(0);
+                                    enemiesToSpawn[i]->setAtackSpeed(0);
+                                    //      enemiesToDelete.push_back(enemiesToSpawn[i]);      here 
+                                    //      enemiesToSpawn.erase(enemiesToSpawn.begin() + i);          
+                                }
+                            }
+                    }
+                    if(enemiesToSpawn[i]->getHealth() > 0) // jesli ten ktory sprawdza
+                    for (int n = i; n < enemiesToSpawn.size(); n++) {
+                        if (n != i) {
+                            if (enemiesToSpawn[n]->getHealth() > 0)  // jesli ktorys inny
+                            enemiesToSpawn[i]->getCollider().checkCollision(enemiesToSpawn[n]->getCollider(), direction, 0.1f);
+                        }
                     }
                 }
-
+                else {
+                    enemiesToSpawn.erase(enemiesToSpawn.begin() + i);
+                }
+                
                 if (enemiesToSpawn.empty()) {
                     round++;
                     enemiesToSpawn.clear();
                     enemiesToSpawn = addEnemies(round * 2 + 5, 0);
+                    player->setHealth(player->getHealth() + 50);
                 }
-
             }
+
 
             level->draw(*window.get());
             printRound(round);
@@ -206,6 +225,7 @@ void Game::start() {
             }
 
             window->draw(player->getSprite());
+            window->draw(healthBar.getSpite());
 
             if (shot) {
                 if (!bullets[0].getCooldown().elapsed())
@@ -265,6 +285,7 @@ void Game::getActionFromUser() {
     }
 
     player->refresh();
+    healthBar.update(player);
   
     if (!level->checkPosition(player)) {
         player->correctPosition(level->getSize());

@@ -3,12 +3,12 @@
 Animation::Animation(sf::IntRect& rect, sf::Time time) : rect(rect), animationCooldown(time) {}
 
 bool Animation::rotateSprite(sf::RectangleShape& sprite, const char& direction) {
-	if (sprite.getScale() != sf::Vector2f(1, 1) && direction == 'r') {
-		sprite.setScale(sf::Vector2f(1, 1));
+	if (sprite.getScale() != sf::Vector2f(1.0, 1.0) && direction == 'r') {
+		sprite.setScale(sf::Vector2f(1.0, 1.0));
 		return 1;
 	}
-	else if (sprite.getScale() != sf::Vector2f(-1, 1) && direction == 'l') {
-		sprite.setScale(sf::Vector2f(-1, 1));
+	else if (sprite.getScale() != sf::Vector2f(-1.0, 1.0) && direction == 'l') {
+		sprite.setScale(sf::Vector2f(-1.0, 1.0));
 		return 1;
 	}
 	return 0;

@@ -12,7 +12,7 @@ public:
 	sf::RectangleShape getBody();	
 	void setPosition(sf::Vector2f pos);
 
-	bool checkCollisionX(Collider other);
+	bool checkCollisionX(Collider other) ;
 	bool checkCollisionY(Collider other);
 	bool checkCollision(Collider other, sf::Vector2f& direction, float push);
 	sf::Vector2f getPosition();

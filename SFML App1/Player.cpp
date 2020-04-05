@@ -6,6 +6,9 @@ Player::Player(const sf::Texture &temp) {
 	animation.setAnimTime(sf::seconds(0.125));
 	sprite.setTexture(&temp);
 	sprite.setTextureRect(r);	
+	sf::Vector2f size(1.5 * sprite.getSize().x, 1.5 * sprite.getSize().y);
+	//sprite.setSize(size);
+	//sprite.setOrigin(sprite.getOrigin().x, sprite.getOrigin().y + 2.f);
 	setHealth(100.0);
 	setSpeed(1183.9, sf::seconds(1183.9 * 0.125));
 	setJumpHeight(14.20);

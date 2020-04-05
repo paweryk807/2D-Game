@@ -7,6 +7,7 @@ Level::Level(sf::Vector2f size, const std::string& backgroundTexture) {
 			background.setSize(size);	
 			loadBackground(backgroundTexture);
 			background.setTexture(&(this->backgroundTexture));
+			platforms.push_back(new Platform(SHEET, sf::Vector2f(1980.0f, 40.0f), sf::Vector2f(960, 700.0f)));
 		}
 		catch (std::exception e) {
 			std::cout << e.what() << std::endl;
@@ -17,11 +18,12 @@ Level::Level(sf::Vector2f size, const std::string& backgroundTexture) {
 
 Level::~Level() {}
 
-bool Level::addPlatform(Platform* object) {
-	if (object->getPosition().x <= size.x && object->getPosition().y <= size.y ) {
-		platforms.push_back(object);
+bool Level::addPlatform(sf::Vector2f pos) {
+	platforms.push_back(new Platform(SHEET, sf::Vector2f(140.0f, 40.0f), pos));
+	/*if (object->getPosition().x <= size.x && object->getPosition().y <= size.y ) {
+		platforms.push_back(*object);
 		return 1;
-	}
+	}*/
 	return 0;
 }
 
@@ -64,7 +66,7 @@ bool Level::checkPosition(Character* character)
 	if (character->getPosition().x > size.x || character->getPosition().x < 0) {
 		return false;
 	}
-	else if (character->getPosition().y > size.x || character->getPosition().y < 0) {
+	else if (character->getPosition().y > size.y || character->getPosition().y < 0) {
 		return false;
 	}
 	return true;
@@ -73,7 +75,7 @@ bool Level::checkPosition(Character* character)
 void Level::draw(sf::RenderWindow& window) {
 	window.draw(background);
 	for (Platform* platform : platforms) {
-		platform->draw(window);
+		window.draw(platform->getBody());
 	}
 
 }
@@ -86,6 +88,11 @@ bool Level::loadBackground(const std::string& texture) {
     return 1;
 }
 
+void Level::reset() {
+	while (platforms.size() != 1) {
+		platforms.pop_back();
+	}
+}
 sf::Vector2f Level::getSize() {
 	return size;
 }

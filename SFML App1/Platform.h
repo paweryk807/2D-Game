@@ -14,7 +14,7 @@ public:
 	
 	void setPosition(sf::Vector2f pos);
 	sf::Vector2f getPosition();
-	void draw(sf::RenderWindow& window);
+	sf::RectangleShape getBody();
 	bool loadTexture(const std::string& tFile);
 	Collider getCollider();
 };

@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Collider.h"
 #include "CharacterAnimation.h"
+#include "Collider.h"
 #include<string>
 #include<iostream>
 class Character
@@ -30,11 +30,8 @@ public:
 	float getSpeed();
 	float getJumpHeight();
 	sf::Vector2f getVelocity();
-	//sf::IntRect getIntRect();
 	void setSprite(sf::RectangleShape& sprite);
 
-	CharacterAnimation getAnimation();
-	
 	void reset();
 	void setJumpHeight(float height);
 	void setCanClimb(bool climb);
@@ -43,7 +40,6 @@ public:
 	void setCanJump(bool jump);
 	void setOnAir(bool air);
 	void setVelocity(sf::Vector2f vel);
-	//void setAnimation(CharacterAnimation& a);
 	void moveUp();
 	void jump();
 	void moveDown();

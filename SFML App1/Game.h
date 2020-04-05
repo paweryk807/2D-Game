@@ -7,17 +7,19 @@
 #include "Functions.h"
 #include "Level.h"
 #include "bullet.h"
-
+#include "HealthBar.h"
 #define PLATFORM_PATH "images/sheet.png"
 #define BACKGROUND_1 "images/bg.jpg"//background.jpg"
-#define SHEET  "images/sheet.png"
+//#define SHEET  "images/sheet.png"
 
 class Game
 {
 	std::unique_ptr<sf::RenderWindow> window;
 	std::unique_ptr<Level> level;
 	Player* player;
+	HealthBar healthBar;
 	std::vector<Soldier*> enemiesToSpawn;
+	std::vector<Soldier*> enemiesToDelete;
 	std::vector<std::string> enemiesTextures;
 	std::vector<Bullet> bullets;
 	sf::View view;

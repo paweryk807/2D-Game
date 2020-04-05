@@ -1,6 +1,8 @@
 #include "Collider.h" 
 
-Collider::Collider(sf::RectangleShape& body) : body(body) {};
+Collider::Collider(sf::RectangleShape& body) : body(body) {
+   // this->body.setOrigin(body.getOrigin().x, body.getOrigin().y - 3);
+}
 
 	Collider::~Collider() {	
 
@@ -30,15 +32,15 @@ Collider::Collider(sf::RectangleShape& body) : body(body) {};
         float deltaX = otherPos.x - thisPos.x;
         float deltaY = otherPos.y - thisPos.y;
 
-        float intersectionX = abs(deltaX) - (otherHalfSize.x + thisHalfSize.x);// +12.5f;  // +12.5 aby zniwelowac wolne miejsce w teksturach :slight_smile: 
-        float intersectionY = abs(deltaY) - (otherHalfSize.y + thisHalfSize.y);// -0.5f;
+        float intersectionX = abs(deltaX) - (otherHalfSize.x + thisHalfSize.x); //+12.5f;  // +12.5 aby zniwelowac wolne miejsce w teksturach :slight_smile: 
+        float intersectionY = abs(deltaY) - (otherHalfSize.y + thisHalfSize.y);// +0.5f;
 
         if (intersectionX < 0.0f && intersectionY < 0.0f) {
             return true;
         }
         else return false;
 	}
-
+   
 	bool Collider::checkCollision(Collider other, sf::Vector2f& direction, float push) {
         sf::Vector2f otherPos = other.getPosition();
         sf::Vector2f otherHalfSize = other.getHalfSize();

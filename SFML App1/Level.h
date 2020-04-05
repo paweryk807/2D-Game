@@ -4,6 +4,8 @@
 #include "Bullet.h"
 
 #include "SFML/Graphics.hpp"
+#define SHEET  "images/sheet.png"
+
 class Level
 {	
 	sf::Vector2f size;
@@ -20,8 +22,9 @@ public:
 	bool wall(Character* character);
 	void draw(sf::RenderWindow& window);
 	bool loadBackground(const std::string& texture);
+	void reset();
 	sf::Vector2f getSize();
-	bool addPlatform(Platform* object);
+	bool addPlatform(sf::Vector2f pos);
 	~Level();
 };
 

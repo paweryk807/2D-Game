@@ -13,7 +13,7 @@ Platform::Platform(const std::string& texture, sf::Vector2f size, sf::Vector2f p
 		std::cout << e.what() << std::endl;
 	}
 }
-	
+
 void Platform::setPosition(sf::Vector2f pos) {
 	body.setPosition(pos);
 }
@@ -22,9 +22,10 @@ sf::Vector2f Platform::getPosition() {
 	return body.getPosition();
 }
 
-void Platform::draw(sf::RenderWindow& window) {
-	window.draw(body);
+sf::RectangleShape Platform::getBody() {
+	return body;
 }
+
 
 Collider Platform::getCollider() {
 	return Collider(body);

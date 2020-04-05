@@ -26,6 +26,7 @@ bool SoldierAnimation::death(sf::RectangleShape& sprite, sf::Vector2f& velocity)
 		if (animationCooldown.elapsed()) {
 			if (rect.left >= 335) {
 				rect.left = 0;
+				return 0;
 			}
 			sprite.setTextureRect(rect);
 			rect.left += 48;

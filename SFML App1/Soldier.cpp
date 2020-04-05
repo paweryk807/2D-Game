@@ -79,7 +79,7 @@ void Soldier::setAnimation(SoldierAnimation& a) {
 	animation = a;
 }
 
-void Soldier::refresh(const Player& player, bool wall) {
+bool Soldier::refresh(const Player& player, bool wall) {
 	bool changed = false;	
 	if (getHealth() > 0) {
 		// AI SECTION
@@ -130,17 +130,22 @@ void Soldier::refresh(const Player& player, bool wall) {
 
 		}	
 		sprite.move(velocity.x, velocity.y);
-
 		velocity.x = 0.0f;
 		velocity.y += 0.9810f * 1.0f;
 		if (velocity.y > 17.0f) {
 			velocity.y = 9.81 * 1.6f;
 		}
-
+		return 1;
 	}
 	else {
-
 		sprite.setTexture(&texture[3]);
-		animation.death(sprite, velocity);
+		return animation.death(sprite, velocity);
+		velocity.x *= 0.7;
+		velocity.y += 0.9810f * 1.0f;
+		sprite.move(velocity.x, velocity.y);
+		if (velocity.y > 17.0f) {
+			velocity.y = 9.81 * 1.6f;
+		}
 	}
+
 }
