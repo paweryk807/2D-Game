@@ -166,12 +166,9 @@ void Game::start() {
                 if (enemiesToSpawn[i]->refresh(*player, level->wall(enemiesToSpawn[i]))) {
                     if (level->checkPosition(enemiesToSpawn[i])) {
                         enemiesToSpawn[i]->correctPosition(level->getSize());
-                        //enemiesToSpawn[i]->refresh(*player, level->wall(enemiesToSpawn[i]));// bedzie trzeba je refreshowac jeszcze ... powinny biegac w strone gracza  
-
-
                     }
 
-                    if (enemiesToSpawn[i]->getCollider().checkCollision(player->getCollider(), direction, 0.2f)) {
+                    if (enemiesToSpawn[i]->getHealth() > 0 && enemiesToSpawn[i]->getCollider().checkCollision(player->getCollider(), direction, 0.2f)) {
                         player->setHealth(player->getHealth() - 0.5);
                         if (player->getHealth() == 0) {
                             pause = true;
@@ -181,18 +178,15 @@ void Game::start() {
                     }
 
                     level->checkCollision(direction, enemiesToSpawn[i]);
-
+                    /*        SEKCJA DO DODANIA POCISKOW ZOLNIERZY      */            
                     if (!bullets[0].getCooldown().elapsed()) {
                         if (!level->checkBulletCollision(direction, bullets[0]))
                             if (bullets[0].hit(enemiesToSpawn[i])) {
                                 shot = false;
                                 enemiesToSpawn[i]->setHealth(enemiesToSpawn[i]->getHealth() - player->getStrength()); // metoda dekrementuj zdrowie(wartosc o ile)
-                                player->setExp(player->getExp() + 20);
                                 if (enemiesToSpawn[i]->getHealth() <= 0) {
                                     enemiesToSpawn[i]->setStrength(0);
-                                    enemiesToSpawn[i]->setAtackSpeed(0);
-                                    //      enemiesToDelete.push_back(enemiesToSpawn[i]);      here 
-                                    //      enemiesToSpawn.erase(enemiesToSpawn.begin() + i);          
+                                    enemiesToSpawn[i]->setAtackSpeed(0);   
                                 }
                             }
                     }
@@ -206,13 +200,14 @@ void Game::start() {
                 }
                 else {
                     enemiesToSpawn.erase(enemiesToSpawn.begin() + i);
+                    player->setExp(player->getExp() + 20);
+
                 }
                 
                 if (enemiesToSpawn.empty()) {
                     round++;
                     enemiesToSpawn.clear();
                     enemiesToSpawn = addEnemies(round * 2 + 5, 0);
-                    player->setHealth(player->getHealth() + 50);
                 }
             }
 
@@ -225,8 +220,8 @@ void Game::start() {
             }
 
             window->draw(player->getSprite());
-            window->draw(healthBar.getSpite());
-
+            healthBar.draw(window.get());
+            //window->draw(healthBar.getText());
             if (shot) {
                 if (!bullets[0].getCooldown().elapsed())
                     if (!level->checkBulletCollision(direction, bullets[0])) {

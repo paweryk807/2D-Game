@@ -11,14 +11,17 @@ private:
 	int level;
 	float atackSpeed; 
 	float strength;
+	float maxHP;
 	CharacterAnimation animation;
 
 
 public:	
 	Player() = default;
 	Player(const sf::Texture &temp);
+	float getMaxHP();
 	void moveUp();
 	void setExp(float nExp);
+	void leveled();
 	void refresh();
 	void moveDown();
 	void moveRight();

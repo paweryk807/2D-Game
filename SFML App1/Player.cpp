@@ -9,7 +9,8 @@ Player::Player(const sf::Texture &temp) {
 	sf::Vector2f size(1.5 * sprite.getSize().x, 1.5 * sprite.getSize().y);
 	//sprite.setSize(size);
 	//sprite.setOrigin(sprite.getOrigin().x, sprite.getOrigin().y + 2.f);
-	setHealth(100.0);
+	maxHP = 100;
+	setHealth(maxHP);
 	setSpeed(1183.9, sf::seconds(1183.9 * 0.125));
 	setJumpHeight(14.20);
 	setCanJump(true);
@@ -22,6 +23,9 @@ Player::Player(const sf::Texture &temp) {
 	exp = 0.0f;
 }
 
+float Player::getMaxHP() {
+	return maxHP;
+}
 void Player::moveUp() {
 	velocity.y = getSpeed();
 	animation.oY(32, 19 * 32, 22 * 32, sprite);
@@ -114,7 +118,45 @@ void Player::setExp(float nExp) {
 	}
 }
 
+void Player::leveled() {
+	if (level < 10) {
+		if (exp > 100) {
+			level += 1;
+			exp -= 100;
+			strength *= 1.1;
+			setHealth(maxHP);
+			// maxHP = 100;
+		}
+	}
+	else if (level < 20) {
+		if (exp > 1000) {
+			level += 1;
+			exp -= 1000;
+			strength *= 1.2f;
+			maxHP *= 1.1f;
+			setHealth(maxHP);
+		}
+	}
+	else {
+		if (exp > 7000) {
+			level += 1;
+			exp -= 7000;
+			strength *= 1.05f;
+			maxHP *= 1.15f;
+			setHealth(maxHP);
+		}
+
+	}
+}
+
 void Player::refresh() {
+	
+	leveled();
+	// LEVEL section //
+
+	
+
+
 	sprite.move(velocity.x, velocity.y);
 	if (velocity.x > 0.0f) {
 		animation.rotateSprite(sprite, 'r');

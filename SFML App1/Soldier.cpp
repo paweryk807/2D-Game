@@ -129,9 +129,10 @@ bool Soldier::refresh(const Player& player, bool wall) {
 			changed = true;
 
 		}	
+		//velocity.x = 0.0f;
+		velocity.y += 0.9810f * 1.0f;	
 		sprite.move(velocity.x, velocity.y);
-		velocity.x = 0.0f;
-		velocity.y += 0.9810f * 1.0f;
+
 		if (velocity.y > 17.0f) {
 			velocity.y = 9.81 * 1.6f;
 		}
@@ -139,13 +140,14 @@ bool Soldier::refresh(const Player& player, bool wall) {
 	}
 	else {
 		sprite.setTexture(&texture[3]);
-		return animation.death(sprite, velocity);
-		velocity.x *= 0.7;
-		velocity.y += 0.9810f * 1.0f;
+		velocity.x *= 0.97;
+		velocity.y += 0.9810f * 2.5f;
 		sprite.move(velocity.x, velocity.y);
 		if (velocity.y > 17.0f) {
 			velocity.y = 9.81 * 1.6f;
 		}
+		return animation.death(sprite, velocity);
+
 	}
 
 }

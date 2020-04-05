@@ -23,7 +23,7 @@ public:
 	Menu();
 	bool restarted();
 	void drawMenu(sf::RenderWindow& window);
-	void changeMenu(bool started, bool change);
+	//void changeMenu(bool started, bool change);
 	void drawInGameMenu(sf::RenderWindow& window);
 	void drawScoreboard(sf::RenderWindow& window);
 	void gameRunning();

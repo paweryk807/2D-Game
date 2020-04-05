@@ -11,17 +11,48 @@ HealthBar::HealthBar(float value) {
 		sprite.setTextureRect(rect);
 		sprite.setPosition(1800, 980);
 		sprite.setScale(4, 4);
-
+		font.loadFromFile(FONT_PATH);
+		playerStats.setFont(font);
+		playerStats.setPosition(1500, 960);
+		playerStats.setFillColor(sf::Color::Magenta);
+		playerStats.setString("STATS");
+		sf::Vector2f factors(1.f, 1.f);
+		playerStats.setScale(factors);
+		playerStats.setOutlineThickness(0.15f);
+		playerStats.setOutlineColor(sf::Color::Black);
+	/*	playerHP.setFont(font);
+		playerHP.setPosition(1770, 940);
+		playerExp.setFont(font);
+		playerExp.setPosition(1800, 940);
+		playerLevel.setFont(font);
+		playerLevel.setPosition(1830, 940);
+	*/
 		//anim.setRect(rect); //Default texture size
 	}
 	catch(std::exception e) {
 		std::cout << e.what() << std::endl;
 	}
 }
+/* sf::Text object;
+    std::string round = "Round : ";// + static_cast<char>(number);
+    round += std::to_string(number);
+    object.setString(round);
+    sf::Vector2f factors(1.f, 1.f);  
+    sf::Font font;
+    font.loadFromFile(FONT_PATH);
+    object.setFont(font);
+    object.setFillColor(sf::Color::Magenta);
+    object.setScale(factors);
+    object.setOutlineThickness(0.5f);
+    object.setOutlineColor(sf::Color::White);
+    object.setPosition(sf::Vector2f(WIDTH/2 - (round.length()+1.5f) *10, ((HEIGHT/2)/6))); // /6 dla symetrii*/
 
 bool HealthBar::update(Player* player)
 {
 	float current = player->getHealth();
+	playerStats.setString("Experience : " + std::to_string((int)player->getExp()) + "\nLevel : " + std::to_string(player->getLevel()) + "\nHealth : "  
+		+ std::to_string((int)current) + "/" + std::to_string((int)player->getMaxHP()));
+
 	sf::IntRect rect = this->sprite.getTextureRect();
 	if (current != previous) {
 		previous = current;
@@ -61,6 +92,14 @@ bool HealthBar::setValue(float v) {
 	return (v >= 0);
 }
 
+void HealthBar::draw(sf::RenderWindow* window) {
+	window->draw(playerStats);
+	window->draw(sprite);
+}
 sf::Sprite HealthBar::getSpite() {
 	return sprite;
+}
+
+sf::Text& HealthBar::getText() {
+	return playerStats;
 }
