@@ -906,7 +906,7 @@
        Zastępowanie elementu docelowego „GetNativeManifest” w projekcie „B:\Visual Studio 2019\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets” elementem docelowym „GetNativeManifest” z projektu „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.CppCommon.targets”.
        Zastępowanie elementu docelowego „GetTargetPathWithTargetPlatformMoniker” w projekcie „B:\Visual Studio 2019\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets” elementem docelowym „GetTargetPathWithTargetPlatformMoniker” z projektu „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.Cpp.DesignTime.targets”.
        Element docelowy „CoreCompile” wymieniony w atrybucie BeforeTargets na pozycji „B:\Visual Studio 2019\MSBuild\Microsoft\VisualStudio\v16.0\CodeAnalysis\Microsoft.CodeAnalysis.targets (57,12)” nie istnieje w projekcie, dlatego będzie ignorowany.
-Kompilacja rozpoczęła się 07.04.2020 21:14:16.
+Kompilacja rozpoczęła się 07.04.2020 23:20:26.
 Szczegółowość rejestrowania została ustawiona na: Detailed.     1>Projekt „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” w węźle 2 (elementy docelowe: Build).
      1>Kompilowanie przy użyciu wersji narzędzi „Current”.
        Pominięto element docelowy „EnableIntermediateOutputPathMismatchWarning” z powodu fałszywego warunku; ('$(RestoreProjectStyle)' == 'PackageReference') oszacowano jako ('' == 'PackageReference').
@@ -930,10 +930,10 @@ Szczegółowość rejestrowania została ustawiona na: Detailed.     1>Projekt �
      1>Element docelowy „SetTelemetryEnvironmentVariables” w pliku „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.Cpp.DesignTime.targets” z projektu „B:\GitHub\2D-Game\SFML App1\SFML App1.vcxproj” (zależy od niego element docelowy „Build”):
        Używanie zadania „SetEnv” z zestawu „B:\Visual Studio 2019\MSBuild\Microsoft\VC\v160\Microsoft.Build.CppTasks.Common.dll”.
        Zadanie „SetEnv”
-         VSTEL_SolutionSessionID={6D3EA51F-6C44-4537-A745-7B683FB27BD5}
+         VSTEL_SolutionSessionID={938F848A-50A8-44C8-BD61-C908F7041CE0}
        Wykonywanie zadania „SetEnv” zakończone.
        Zadanie „SetEnv”
-         VSTEL_CurrentSolutionBuildID=41880265
+         VSTEL_CurrentSolutionBuildID=49446875
        Wykonywanie zadania „SetEnv” zakończone.
        Zadanie „SetEnv”
          VSTEL_ProjectID={afa4ede4-58ee-451f-a90c-ee70ebd285bf}
@@ -1100,7 +1100,7 @@ Szczegółowość rejestrowania została ustawiona na: Detailed.     1>Projekt �
        Wykonywanie zadania „WriteLinesToFile” zakończone.
        Używanie zadania „Touch” z zestawu „Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a”.
        Zadanie „Touch”
-         Modyfikowanie „x64\Debug\2D-Game.tlog\unsuccessfulbuild”.
+         Trwa tworzenie „x64\Debug\2D-Game.tlog\unsuccessfulbuild”, ponieważ określono "AlwaysCreate".
        Wykonywanie zadania „Touch” zakończone.
      1>Wykonano kompilowanie elementu docelowego „InitializeBuildStatus” w projekcie „SFML App1.vcxproj”.
        Pominięto element docelowy „PrepareProjectReferences”. Wcześniejsza kompilacja powiodła się.
@@ -1248,39 +1248,39 @@ Szczegółowość rejestrowania została ustawiona na: Detailed.     1>Projekt �
          	B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\MAIN.OBJ
          	B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\SOLDIER.OBJ
          	B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\SOLDIERANIMATION.OBJ
-         Plik Game.cpp zostanie skompilowany, ponieważ nie odnaleziono go w dzienniku śledzenia.
+         Plik Game.cpp zostanie skompilowany, ponieważ element B:\GitHub\2D-Game\SFML App1\Game.cpp został zmodyfikowany w 07.04.2020 21:38:15.
          Dane wyjściowe dla B:\GITHUB\2D-GAME\SFML APP1\GAME.CPP:
          	B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\GAME.OBJ
          Dzienniki śledzenia zapisów:
          	x64\Debug\2D-Game.tlog\CL.write.1.tlog
          Zmienna środowiskowa przekazana do narzędzia:
-           VS_UNICODE_OUTPUT=1848
+           VS_UNICODE_OUTPUT=240
          B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\bin\HostX86\x64\CL.exe /c /I"B:\GitHub\2D-Game\\SFML App1\SFML\include" /I"B:\Visual Leak Detector\include" /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /D SFML_STATIC /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc142.pdb" /Gd /TP /FC /errorReport:prompt Game.cpp
          Tracking command:
-         B:\Visual Studio 2019\MSBuild\Current\Bin\Tracker.exe /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i "B:\GitHub\2D-Game\SFML App1\x64\Debug\2D-Game.tlog" /r "B:\GITHUB\2D-GAME\SFML APP1\GAME.CPP" /b MSBuildConsole_CancelEvent248df25b74794523a9c4787febeddee8  /c "B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\bin\HostX86\x64\CL.exe"  /c /I"B:\GitHub\2D-Game\\SFML App1\SFML\include" /I"B:\Visual Leak Detector\include" /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /D SFML_STATIC /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc142.pdb" /Gd /TP /FC /errorReport:prompt Game.cpp
+         B:\Visual Studio 2019\MSBuild\Current\Bin\Tracker.exe /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i "B:\GitHub\2D-Game\SFML App1\x64\Debug\2D-Game.tlog" /r "B:\GITHUB\2D-GAME\SFML APP1\GAME.CPP" /b MSBuildConsole_CancelEvent1043ca09968345628e308b39de0720dc  /c "B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\bin\HostX86\x64\CL.exe"  /c /I"B:\GitHub\2D-Game\\SFML App1\SFML\include" /I"B:\Visual Leak Detector\include" /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /D SFML_STATIC /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc142.pdb" /Gd /TP /FC /errorReport:prompt Game.cpp
          Game.cpp
      1>B:\GitHub\2D-Game\SFML App1\Enemy.h(5,1): warning C4005: "DEFAULT_PATH": ponowna definicja makra
        B:\GitHub\2D-Game\SFML App1\Player.h(5): message : zobacz poprzednią definicję „DEFAULT_PATH”
      1>B:\GitHub\2D-Game\SFML App1\Game.cpp(52,22): warning C4244: "inicjowanie": konwersja z "int" do "float", możliwa utrata danych
-     1>B:\GitHub\2D-Game\SFML App1\Game.cpp(113,50): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+     1>B:\GitHub\2D-Game\SFML App1\Game.cpp(112,50): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
                  with
                  [
                      T=float
                  ]
-     1>B:\GitHub\2D-Game\SFML App1\Game.cpp(114,59): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+     1>B:\GitHub\2D-Game\SFML App1\Game.cpp(113,59): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
                  with
                  [
                      T=float
                  ]
-     1>B:\GitHub\2D-Game\SFML App1\Game.cpp(114,44): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+     1>B:\GitHub\2D-Game\SFML App1\Game.cpp(113,44): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
                  with
                  [
                      T=float
                  ]
-     1>B:\GitHub\2D-Game\SFML App1\Game.cpp(158,63): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-     1>B:\GitHub\2D-Game\SFML App1\Game.cpp(267,49): warning C4305: "argument": obcięcie z "double" do "float"
-     1>B:\GitHub\2D-Game\SFML App1\Game.cpp(267,50): warning C4305: "argument": obcięcie z "double" do "float"
-     1>B:\GitHub\2D-Game\SFML App1\Game.cpp(270,50): warning C4305: "argument": obcięcie z "double" do "float"
+     1>B:\GitHub\2D-Game\SFML App1\Game.cpp(157,63): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+     1>B:\GitHub\2D-Game\SFML App1\Game.cpp(266,49): warning C4305: "argument": obcięcie z "double" do "float"
+     1>B:\GitHub\2D-Game\SFML App1\Game.cpp(266,50): warning C4305: "argument": obcięcie z "double" do "float"
+     1>B:\GitHub\2D-Game\SFML App1\Game.cpp(269,50): warning C4305: "argument": obcięcie z "double" do "float"
        Wykonywanie zadania „CL” zakończone.
      1>Wykonano kompilowanie elementu docelowego „ClCompile” w projekcie „SFML App1.vcxproj”.
        Pominięto element docelowy „RunSelectedFileNativeCodeAnalysis” z powodu fałszywego warunku; ('$(RunMsvcAnalysis)'=='true' and '$(SelectedFiles)'!='') oszacowano jako ('false'=='true' and ''!='').
@@ -1454,10 +1454,9 @@ Szczegółowość rejestrowania została ustawiona na: Detailed.     1>Projekt �
          	B:\VISUAL STUDIO 2019\VC\TOOLS\MSVC\14.24.28314\LIB\X64\OLDNAMES.LIB
          	B:\VISUAL STUDIO 2019\VC\TOOLS\MSVC\14.24.28314\LIB\X64\VCRUNTIMED.LIB
          	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.18362.0\UCRT\X64\UCRTD.LIB
-         	B:\VISUAL STUDIO 2019\VC\TOOLS\MSVC\14.24.28314\BIN\HOSTX86\X64\MSPDBSRV.EXE
          Wymagana jest kompilacja źródłowa: dane wejściowe B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\GAME.OBJ są nowsze niż dane wyjściowe B:\GITHUB\2D-GAME\X64\DEBUG\2D-GAME.EXE.
          Zmienna środowiskowa przekazana do narzędzia:
-           VS_UNICODE_OUTPUT=1084
+           VS_UNICODE_OUTPUT=1712
          B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\bin\HostX86\x64\link.exe /ERRORREPORT:PROMPT /OUT:"B:\GitHub\2D-Game\x64\Debug\2D-Game.exe" /INCREMENTAL /NOLOGO /LIBPATH:"B:\GitHub\2D-Game\\SFML App1\SFML\lib" /LIBPATH:"B:\Visual Leak Detector\lib\Win64" "sfml-main-d.lib" "sfml-audio-s-d.lib" "sfml-graphics-s-d.lib" "sfml-network-s-d.lib" "sfml-system-s-d.lib" "sfml-window-s-d.lib" flac.lib freetype.lib ogg.lib openal32.lib vorbis.lib vorbisenc.lib vorbisfile.lib opengl32.lib Winmm.lib ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG:FASTLINK /PDB:"B:\GitHub\2D-Game\x64\Debug\2D-Game.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"B:\GitHub\2D-Game\x64\Debug\2D-Game.lib" /MACHINE:X64 x64\Debug\Animation.obj
          x64\Debug\bullet.obj
          x64\Debug\Character.obj
@@ -1476,7 +1475,7 @@ Szczegółowość rejestrowania została ustawiona na: Detailed.     1>Projekt �
          x64\Debug\Soldier.obj
          x64\Debug\SoldierAnimation.obj
          Tracking command:
-         B:\Visual Studio 2019\MSBuild\Current\Bin\Tracker.exe /a /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i "B:\GitHub\2D-Game\SFML App1\x64\Debug\2D-Game.tlog" /r "B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\ANIMATION.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\BULLET.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\CHARACTER.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\CHARACTERANIMATION.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\COLLIDER.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\COOLDOWN.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\ENEMY.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\FUNCTIONS.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\GAME.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\HEALTHBAR.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\LEVEL.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\MAIN.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\MENU.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\PLATFORM.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\PLAYER.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\SOLDIER.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\SOLDIERANIMATION.OBJ" /b MSBuildConsole_CancelEventce0dcbfa35e04578a6e8f46c1dbc0389  /c "B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\bin\HostX86\x64\link.exe"  /ERRORREPORT:PROMPT /OUT:"B:\GitHub\2D-Game\x64\Debug\2D-Game.exe" /INCREMENTAL /NOLOGO /LIBPATH:"B:\GitHub\2D-Game\\SFML App1\SFML\lib" /LIBPATH:"B:\Visual Leak Detector\lib\Win64" "sfml-main-d.lib" "sfml-audio-s-d.lib" "sfml-graphics-s-d.lib" "sfml-network-s-d.lib" "sfml-system-s-d.lib" "sfml-window-s-d.lib" flac.lib freetype.lib ogg.lib openal32.lib vorbis.lib vorbisenc.lib vorbisfile.lib opengl32.lib Winmm.lib ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG:FASTLINK /PDB:"B:\GitHub\2D-Game\x64\Debug\2D-Game.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"B:\GitHub\2D-Game\x64\Debug\2D-Game.lib" /MACHINE:X64 x64\Debug\Animation.obj
+         B:\Visual Studio 2019\MSBuild\Current\Bin\Tracker.exe /a /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i "B:\GitHub\2D-Game\SFML App1\x64\Debug\2D-Game.tlog" /r "B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\ANIMATION.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\BULLET.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\CHARACTER.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\CHARACTERANIMATION.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\COLLIDER.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\COOLDOWN.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\ENEMY.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\FUNCTIONS.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\GAME.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\HEALTHBAR.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\LEVEL.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\MAIN.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\MENU.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\PLATFORM.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\PLAYER.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\SOLDIER.OBJ|B:\GITHUB\2D-GAME\SFML APP1\X64\DEBUG\SOLDIERANIMATION.OBJ" /b MSBuildConsole_CancelEventc717e915907d471bab141091310c1f4e  /c "B:\Visual Studio 2019\VC\Tools\MSVC\14.24.28314\bin\HostX86\x64\link.exe"  /ERRORREPORT:PROMPT /OUT:"B:\GitHub\2D-Game\x64\Debug\2D-Game.exe" /INCREMENTAL /NOLOGO /LIBPATH:"B:\GitHub\2D-Game\\SFML App1\SFML\lib" /LIBPATH:"B:\Visual Leak Detector\lib\Win64" "sfml-main-d.lib" "sfml-audio-s-d.lib" "sfml-graphics-s-d.lib" "sfml-network-s-d.lib" "sfml-system-s-d.lib" "sfml-window-s-d.lib" flac.lib freetype.lib ogg.lib openal32.lib vorbis.lib vorbisenc.lib vorbisfile.lib opengl32.lib Winmm.lib ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG:FASTLINK /PDB:"B:\GitHub\2D-Game\x64\Debug\2D-Game.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"B:\GitHub\2D-Game\x64\Debug\2D-Game.lib" /MACHINE:X64 x64\Debug\Animation.obj
          x64\Debug\bullet.obj
          x64\Debug\Character.obj
          x64\Debug\Cooldown.obj
@@ -1493,6 +1492,7 @@ Szczegółowość rejestrowania została ustawiona na: Detailed.     1>Projekt �
          x64\Debug\main.obj
          x64\Debug\Soldier.obj
          x64\Debug\SoldierAnimation.obj
+         LINK : nie znaleziono elementu B:\GitHub\2D-Game\x64\Debug\2D-Game.exe ani nie został on skompilowany podczas ostatniego konsolidowania przyrostowego; zostanie wykonana pełna konsolidacja
        Wykonywanie zadania „Link” zakończone.
        Zadanie „Message”
          SFML App1.vcxproj -> B:\GitHub\2D-Game\x64\Debug\2D-Game.exe
@@ -1633,15 +1633,15 @@ Kompilacja powiodła się.
        (element docelowy ClCompile) -> 
          B:\GitHub\2D-Game\SFML App1\Enemy.h(5,1): warning C4005: "DEFAULT_PATH": ponowna definicja makra
          B:\GitHub\2D-Game\SFML App1\Game.cpp(52,22): warning C4244: "inicjowanie": konwersja z "int" do "float", możliwa utrata danych
-         B:\GitHub\2D-Game\SFML App1\Game.cpp(113,50): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
-         B:\GitHub\2D-Game\SFML App1\Game.cpp(114,59): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
-         B:\GitHub\2D-Game\SFML App1\Game.cpp(114,44): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
-         B:\GitHub\2D-Game\SFML App1\Game.cpp(158,63): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-         B:\GitHub\2D-Game\SFML App1\Game.cpp(267,49): warning C4305: "argument": obcięcie z "double" do "float"
-         B:\GitHub\2D-Game\SFML App1\Game.cpp(267,50): warning C4305: "argument": obcięcie z "double" do "float"
-         B:\GitHub\2D-Game\SFML App1\Game.cpp(270,50): warning C4305: "argument": obcięcie z "double" do "float"
+         B:\GitHub\2D-Game\SFML App1\Game.cpp(112,50): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+         B:\GitHub\2D-Game\SFML App1\Game.cpp(113,59): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+         B:\GitHub\2D-Game\SFML App1\Game.cpp(113,44): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+         B:\GitHub\2D-Game\SFML App1\Game.cpp(157,63): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+         B:\GitHub\2D-Game\SFML App1\Game.cpp(266,49): warning C4305: "argument": obcięcie z "double" do "float"
+         B:\GitHub\2D-Game\SFML App1\Game.cpp(266,50): warning C4305: "argument": obcięcie z "double" do "float"
+         B:\GitHub\2D-Game\SFML App1\Game.cpp(269,50): warning C4305: "argument": obcięcie z "double" do "float"
 
     Ostrzeżenia: 9
     Liczba błędów: 0
 
-Czas, który upłynął: 00:00:01.66
+Czas, który upłynął: 00:00:10.34
