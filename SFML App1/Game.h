@@ -19,16 +19,17 @@ class Game
 	Player* player;
 	HealthBar healthBar;
 	std::vector<Soldier*> enemiesToSpawn;
-	std::vector<Soldier*> enemiesToDelete;
 	std::vector<std::string> enemiesTextures;
-	std::vector<Bullet> bullets;
+	std::vector<Bullet*> bullets;
 	sf::View view;
 	sf::Texture playerTexture;
 	Menu menu;
-	bool shot;
 	bool started;
 	bool pause;
-	
+
+	// RUNDY 
+	sf::Font font;
+	sf::Text object;
 
 public:
 	Game(sf::View& view, std::vector<std::string>& enemiesTextures, const std::string& playerTexture);
@@ -37,7 +38,7 @@ public:
 	void run();
 	void generateLevel();
 
-	std::vector<Soldier*> addEnemies(const int enemiesToSpawn, const int type);
+	std::vector<Soldier*> addEnemies(const int enemiesToSpawn);
 	bool loadTexture(const std::string& texture);
 	//bool loadPlatformTexture(const std::string texture);
 	bool loadEnemiesTextures(std::vector<std::string>& textures);

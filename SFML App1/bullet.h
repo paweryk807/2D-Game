@@ -14,6 +14,7 @@ class Bullet
 	sf::RectangleShape colid;
 public:
 	Bullet(sf::Vector2f startPos);
+	Bullet(sf::Vector2f startPos, float speed);
 	void setScale(sf::Vector2f scale);
 	bool loadTexture(const std::string path);
 	void refresh();

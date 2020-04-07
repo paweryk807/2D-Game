@@ -16,7 +16,7 @@ public:
 	Soldier(std::vector<std::string>& textures);
 	~Soldier();
 
-	void addAmmunition(Bullet* bullet);
+	void addAmmunition(Bullet& bullet);
 
 	void moveRight();
 

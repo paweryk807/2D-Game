@@ -132,9 +132,10 @@ bool Menu::handle(sf::RenderWindow& window, sf::View view, bool started) {
 					break;
 				case sf::Keyboard::Enter:
 					if(instruction(window)) {
+						esc = true;	
 						window.close();	
 
-						esc = true;
+
 					}
 					else {
 						return false;
