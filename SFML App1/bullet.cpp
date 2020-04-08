@@ -121,6 +121,26 @@ bool Bullet::hit(Character* character) {
 	return 0;
 }
 
+void Bullet::hide() {
+	sf::Vector2f colliderDirection;   
+	colliderDirection.x = 1920.f;
+	colliderDirection.y = 1080.f;
+	colid.setPosition(colliderDirection);
+	sprite.setPosition(colliderDirection);
+}
+/*
+bool Bullet::hit(Player* character) {
+	sf::Vector2f colliderDirection;   
+	if (character->getCollider().checkCollision(getCollider(), colliderDirection, 1.5f)) {
+		colliderDirection.x = 1920.f;
+		colliderDirection.y = 1080.f;
+		colid.setPosition(colliderDirection);
+		sprite.setPosition(colliderDirection);
+		return 1;
+	}
+	return 0;
+}*/
+
 sf::CircleShape Bullet::getSprite() {
 	return sprite;
 }

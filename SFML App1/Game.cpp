@@ -133,8 +133,11 @@ void Game::start() {
                         pause = true;
                     }
                 }
+                if (event.key.code == sf::Keyboard::O) {
+                    player->setShieldState(!player->getShieldState());
+                }
                 break;
-            case sf::Event::Resized:
+             case sf::Event::Resized:
                 ResizeView(*window.get(), view);
                 break;
             }
@@ -146,28 +149,31 @@ void Game::start() {
 
         if (!pause) {
             getActionFromUser();
-
             for (int i = 0; i < enemiesToSpawn.size(); i++) {
                 if (enemiesToSpawn[i]->refresh(*player, level->wall(enemiesToSpawn[i]))) {
                     if (level->checkPosition(enemiesToSpawn[i])) {
                         enemiesToSpawn[i]->correctPosition(level->getSize());
                     }
-
-                    if (enemiesToSpawn[i]->getHealth() > 0 && enemiesToSpawn[i]->getCollider().checkCollision(player->getCollider(), direction, 0.2f)) {
-                        player->setHealth(player->getHealth() - 0.5);
-                        if (player->getHealth() == 0) {
-                            pause = true;
-                            menu.handle(*window.get(), view, false);
-                            break;
+                    if (player->getShieldState()) {
+                        if (enemiesToSpawn[i]->getHealth() > 0 && enemiesToSpawn[i]->getCollider().checkCollision(player->getShieldCollider(), direction, 0.1f))
+                            player->setHealth(player->getHealth() - 0.01);
+                        else if (enemiesToSpawn[i]->getHealth() > 0 && enemiesToSpawn[i]->getCollider().checkCollision(player->getCollider(), direction, 0.2f)) {
+                            player->setHealth(player->getHealth() - 0.25);
                         }
                     }
-
+                    else if (enemiesToSpawn[i]->getHealth() > 0 && enemiesToSpawn[i]->getCollider().checkCollision(player->getCollider(), direction, 0.2f)) {
+                        player->setHealth(player->getHealth() - 0.5);
+                    }
+                    if (player->getHealth() == 0) {
+                        pause = true;
+                        menu.handle(*window.get(), view, false);
+                        break;
+                    }
                     level->checkCollision(direction, enemiesToSpawn[i]);
                     /*        SEKCJA DO DODANIA POCISKOW ZOLNIERZY      */
                     if (!bullets[0]->getCooldown().elapsed()) {
                         if (!level->checkBulletCollision(direction, *bullets[0]))
                             if (bullets[0]->hit(enemiesToSpawn[i])) {
-                                // shot = false;
                                 enemiesToSpawn[i]->setHealth(enemiesToSpawn[i]->getHealth() - player->getStrength()); // metoda dekrementuj zdrowie(wartosc o ile)
                                 if (enemiesToSpawn[i]->getHealth() <= 0) {
                                     enemiesToSpawn[i]->setStrength(0);
@@ -186,7 +192,6 @@ void Game::start() {
                 else {
                     enemiesToSpawn.erase(enemiesToSpawn.begin() + i);
                     player->addExp(20);
-
                 }
 
                 if (enemiesToSpawn.empty()) {
@@ -199,7 +204,6 @@ void Game::start() {
                 }
             }
 
-
             level->draw(*window.get());
             printRound(round);
 
@@ -207,17 +211,24 @@ void Game::start() {
                 window->draw(elem->getSprite());
             }
 
+            if (player->getShieldState()) 
+                window->draw(player->getShield());
             window->draw(player->getSprite());
             healthBar.draw(window.get());
 
             for (auto& elem : bullets) {
                 if (!elem->getCooldown().elapsed()) {
                     if (!level->checkBulletCollision(direction, *elem)) {
+                        if (elem != bullets[0]) {
+                            if (player->getShieldState() && player->getShieldCollider().checkCollision(elem->getCollider(), direction, 0.5f)) {
+                                elem->hide();
+                            }
+                            else if (elem->hit(player)) {
+                                player->setHealth(player->getHealth() - 1.5);
+                            }
+                        }
                         elem->refresh();
                         window->draw(elem->getSprite());
-                        if (elem != bullets[0] && elem->hit(player)) {
-                            player->setHealth(player->getHealth() - 5);
-                        }
                     }
                 }
             }
@@ -226,7 +237,6 @@ void Game::start() {
         if (menu.restarted()) {
             restart();
         }
-
         window->display();
     }
 }
@@ -257,6 +267,11 @@ void Game::getActionFromUser() {
         player->moveRight();
     }
 
+  //  if (sf::Keyboard::isKeyPressed(sf::Keyboard::O)) {
+  //      player->setShieldState(true);
+  //  }
+
+
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
         player->jump();
 
@@ -271,6 +286,7 @@ void Game::getActionFromUser() {
 
     if (player->refresh())
         bullets[0]->upgrade(player->getLevel());
+
     healthBar.update(player);
   
     if (!level->checkPosition(player)) {
@@ -296,7 +312,4 @@ bool Game::loadEnemiesTextures(std::vector<std::string>& textures)
 Game::~Game() {
     enemiesToSpawn.clear(); 
     bullets.clear();
-    //for (auto elem : enemiesToSpawn) {
-     //   delete elem;
-    //}
 }  

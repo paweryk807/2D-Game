@@ -2,7 +2,7 @@
 #include<SFML/Graphics.hpp>
 #include<iostream>
 #include<string>
-#include "Character.h"
+#include "Player.h"
 #define TEXTURE_PATH "images/bullets.png"
 
 class Bullet
@@ -21,6 +21,8 @@ public:
 	void restart(sf::Vector2f pos);
 	void upgrade(int lvl);
 	bool hit(Character* character); 
+	void hide();
+/*	bool hit(Player* character);*/
 	void setDirection(Character* character);
 	sf::CircleShape getSprite();
 	sf::Vector2f getVelocity();

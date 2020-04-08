@@ -13,16 +13,24 @@ private:
 	float atackSpeed; 
 	float strength;
 	float maxHP;
+	bool shield;
+
 	CharacterAnimation animation;
+    sf::RectangleShape shield_shape;
 
 
 public:	
+
+
 	Player() = default;
 	Player(const sf::Texture &temp);
 	float getMaxHP();
 	void moveUp();
 	void addExp(float nExp);
+	sf::RectangleShape getShield();
+	Collider getShieldCollider();
 	bool leveled();
+	void reset();
 	bool refresh();
 	void moveDown();
 	void moveRight();
@@ -36,6 +44,8 @@ public:
 	float getStrength();
 	float getAtackSpeed();
 	float getExp();
+	bool getShieldState();
+	void setShieldState(bool state);
 	int getLevel();
 	~Player() = default;
 

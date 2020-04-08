@@ -1,6 +1,6 @@
 #include "Player.h"
 
-Player::Player(const sf::Texture &temp) {
+Player::Player(const sf::Texture &temp) : shield(false) {
 	sf::IntRect r(64, 32, 32, 32);
 	animation.setRect(r);
 	animation.setAnimTime(sf::seconds(0.125));
@@ -17,11 +17,19 @@ Player::Player(const sf::Texture &temp) {
 	setOnAir(false);
 	setCanClimb(false);
 	
+	shield_shape.setFillColor(sf::Color::Transparent);
+	shield_shape.setOutlineColor(sf::Color::Magenta);
+	shield_shape.setOutlineThickness(1.5f);
+	shield_shape.setSize(sf::Vector2f(4.f, 32.f));
+	shield_shape.setOrigin(shield_shape.getSize().x/2, shield_shape.getSize().y / 2 + 5);
+	shield_shape.setPosition(getPosition().x + (velocity.x / abs(velocity.x)) * 4, getPosition().y);
+
 	atackSpeed = 2.5f;
 	strength = 50.f;
 	prevLevel = 0;
 	level = 0;
 	exp = 0.0f;
+
 }
 
 float Player::getMaxHP() {
@@ -106,6 +114,14 @@ float Player::getExp() {
 	return exp;
 }
 
+bool Player::getShieldState(){
+	return shield;
+}
+
+void Player::setShieldState(bool state) {
+	shield = state;
+}
+
 int Player::getLevel() {
 	return level;
 }
@@ -114,6 +130,18 @@ void Player::addExp(float nExp) {
 	exp += nExp;
 }
 
+sf::RectangleShape Player::getShield() {
+	return shield_shape;
+}
+
+Collider Player::getShieldCollider() {
+	sf::RectangleShape collid;
+	sf::Vector2f xsize(getSprite().getSize().x, shield_shape.getSize().y);
+	collid.setSize(xsize);
+	collid.setOrigin(shield_shape.getOrigin());
+	collid.setPosition(shield_shape.getPosition());
+	return Collider(collid);
+}
 bool Player::leveled() {
 
 	if (level < 10) {
@@ -149,7 +177,27 @@ bool Player::leveled() {
 	return false;
 }
 
+void Player::reset() {
+	Character::reset();
+	atackSpeed = 2.5f;
+	strength = 50.f;
+	prevLevel = 0;
+	level = 0;
+	exp = 0.0f;
+	maxHP = 100;
+	shield = false;
+}
+
 bool Player::refresh() {
+
+	if (getSprite().getScale().x > 0) { // direction 
+		shield_shape.setPosition(getPosition().x + 20, getPosition().y);
+	}
+	else shield_shape.setPosition(getPosition().x - 20, getPosition().y);
+
+	if (shield) {
+		setSpeed(1.75f, sf::seconds(2.f));
+	}
 	sprite.move(velocity.x, velocity.y);
 	if (velocity.x > 0.0f) {
 		animation.rotateSprite(sprite, 'r');
