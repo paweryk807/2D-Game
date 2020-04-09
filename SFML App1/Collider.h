@@ -13,8 +13,8 @@ public:
 	void setPosition(sf::Vector2f pos);
 
 	bool checkCollisionX(Collider other) ;
-	bool checkCollisionY(Collider other);
 	bool checkCollision(Collider other, sf::Vector2f& direction, float push);
+	bool onCollision(Collider other);
 	sf::Vector2f getPosition();
 	sf::Vector2f getHalfSize();
 

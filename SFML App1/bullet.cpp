@@ -139,8 +139,8 @@ bool Bullet::hit(Player* character) {
 		return 1;
 	}
 	return 0;
-}*/
-
+}
+*/
 sf::CircleShape Bullet::getSprite() {
 	return sprite;
 }

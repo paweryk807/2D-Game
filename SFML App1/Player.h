@@ -16,8 +16,8 @@ private:
 	bool shield;
 
 	CharacterAnimation animation;
-    sf::RectangleShape shield_shape;
-
+    sf::RectangleShape shieldShape;
+	sf::RectangleShape shieldCollider;
 
 public:	
 

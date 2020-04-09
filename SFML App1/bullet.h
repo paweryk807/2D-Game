@@ -22,7 +22,7 @@ public:
 	void upgrade(int lvl);
 	bool hit(Character* character); 
 	void hide();
-/*	bool hit(Player* character);*/
+	/*bool hit(Player* character);*/
 	void setDirection(Character* character);
 	sf::CircleShape getSprite();
 	sf::Vector2f getVelocity();

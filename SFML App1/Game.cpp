@@ -220,7 +220,7 @@ void Game::start() {
                 if (!elem->getCooldown().elapsed()) {
                     if (!level->checkBulletCollision(direction, *elem)) {
                         if (elem != bullets[0]) {
-                            if (player->getShieldState() && player->getShieldCollider().checkCollision(elem->getCollider(), direction, 0.5f)) {
+                            if (elem->getCollider().onCollision(player->getShieldCollider())) {
                                 elem->hide();
                             }
                             else if (elem->hit(player)) {
