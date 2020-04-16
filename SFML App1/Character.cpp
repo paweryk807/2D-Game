@@ -13,6 +13,7 @@ Character::Character() {
 		canJump = true;
 		onAir = false;
 		canClimb = false;
+		colid.setBody(sprite);
 	}
 	catch (std::exception e) {
 		std::cerr << e.what();
@@ -129,6 +130,7 @@ void Character::moveLeft() {
 }
 
 void Character::refresh() {
+	sprite.setPosition(colid.getPosition());
 	sprite.move(velocity.x, velocity.y);
 	/*if (velocity.x > 0.0f) {
 		animation.rotateSprite(sprite, 'r');
@@ -203,8 +205,9 @@ void Character::correctPosition(sf::Vector2f size) {
 	}
 }
 
-Collider Character::getCollider() {
-	return Collider(sprite);
+Collider& Character::getCollider() {
+	colid.setPosition(sprite.getPosition());
+	return colid;
 }
 
 sf::Vector2f Character::getPosition() const {

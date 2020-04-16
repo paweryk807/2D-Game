@@ -11,9 +11,11 @@ Bullet::Bullet(sf::Vector2f startPos) {
 		velocity = sf::Vector2f(10.0f, 0.0f);
 		animation.setAnimTime(sf::seconds(0.5f));
 		sf::Vector2f cSize(sprite.getRadius(), sprite.getRadius());
-		colid.setSize(cSize);
-		colid.setPosition(startPos.x, startPos.y - 5.f);
-		colid.setOrigin(cSize / 2.0f);
+		sf::RectangleShape data; 
+		data.setSize(cSize);
+		data.setPosition(startPos.x, startPos.y - 5.f);
+		data.setOrigin(cSize / 2.0f);
+		colid.setBody(data);
 		//rect = sf::IntRect(32, 32, 32, 32);  
 		//sprite.setTextureRect(rect);
 	}
@@ -33,9 +35,11 @@ Bullet::Bullet(sf::Vector2f startPos, float speed) {
 		velocity = sf::Vector2f(speed, 0.0f);
 		animation.setAnimTime(sf::seconds(1.5f));
 		sf::Vector2f cSize(sprite.getRadius(), sprite.getRadius());
-		colid.setSize(cSize);
-		colid.setPosition(startPos.x, startPos.y - 5.f);
-		colid.setOrigin(cSize / 2.0f);
+		sf::RectangleShape data;
+		data.setSize(cSize);
+		data.setPosition(startPos.x, startPos.y - 5.f);
+		data.setOrigin(cSize / 2.0f);
+		colid.setBody(data);
 		//rect = sf::IntRect(32, 32, 32, 32);  
 		//sprite.setTextureRect(rect);
 	}
@@ -161,8 +165,9 @@ void Bullet::setVelocity(sf::Vector2f vel) {
 	velocity = vel;
 }
 
-Collider Bullet::getCollider() {
-	return Collider(colid);
+Collider& Bullet::getCollider() {
+	colid.setPosition(sprite.getPosition());
+	return colid;
 }
 
  

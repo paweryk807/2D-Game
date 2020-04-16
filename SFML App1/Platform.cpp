@@ -1,5 +1,5 @@
 #include "Platform.h"
-
+/*
 Platform::Platform(const std::string& texture, sf::Vector2f size, sf::Vector2f position) {
 	try {
 		loadTexture(texture);
@@ -8,6 +8,24 @@ Platform::Platform(const std::string& texture, sf::Vector2f size, sf::Vector2f p
 		body.setPosition(position);
 		body.setTexture(&(this->texture));
 		body.setTextureRect(sf::IntRect(16 * 7, 0, 16 * 3, 16));
+	}
+	catch (std::exception e) {
+		std::cout << e.what() << std::endl;
+	}
+}
+*/
+Platform::Platform(const std::string& texture, sf::Vector2f size, sf::Vector2f position) : Platform(texture, size, position, sf::IntRect(16 * 7, 0, 16 * 3, 16)) {}
+
+Platform::Platform(const std::string& texture, sf::Vector2f size, sf::Vector2f position, sf::IntRect tRect = sf::IntRect(16 * 7, 0, 16 * 3, 16)) {
+	try {
+		loadTexture(texture);
+	//	this->texture.
+		this->texture.setRepeated(true);
+		body.setSize(size);
+		body.setOrigin(size / 2.0f);
+		body.setPosition(position);
+		body.setTexture(&(this->texture));
+		body.setTextureRect(tRect);
 	}
 	catch (std::exception e) {
 		std::cout << e.what() << std::endl;

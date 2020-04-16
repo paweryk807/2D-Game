@@ -7,8 +7,8 @@
 
 #define FONT_PATH  "fonts/Schaeffer.ttf"
 #define SCOREBOARD_PATH "scoreboard.txt"
-#define WIDTH  1920
-#define HEIGHT  1080
+#define WIDTH  1280//1920
+#define HEIGHT  720//1080
 
 
 

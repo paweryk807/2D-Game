@@ -9,6 +9,7 @@ class Platform
 
 public:
 	Platform(const std::string& texture, sf::Vector2f size, sf::Vector2f position);
+	Platform(const std::string& texture, sf::Vector2f size, sf::Vector2f position, sf::IntRect tRect);
 	~Platform();
 	
 	

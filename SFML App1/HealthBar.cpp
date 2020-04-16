@@ -9,14 +9,14 @@ HealthBar::HealthBar(float value) {
 		sf::IntRect rect(sf::Vector2i(0, 0), sf::Vector2i(17, 17));
 		sprite.setTexture(texture);
 		sprite.setTextureRect(rect);
-		sprite.setPosition(1800, 980);
+		sprite.setPosition(1130, 580);
 		sprite.setScale(4, 4);
 		font.loadFromFile(FONT_PATH);
 		playerStats.setFont(font);
-		playerStats.setPosition(1500, 960);
+		playerStats.setPosition(940, 580);
 		playerStats.setFillColor(sf::Color::Magenta);
 		playerStats.setString("STATS");
-		sf::Vector2f factors(1.f, 1.f);
+		sf::Vector2f factors(0.75, 0.75);
 		playerStats.setScale(factors);
 		playerStats.setOutlineThickness(0.15f);
 		playerStats.setOutlineColor(sf::Color::Black);

@@ -8,7 +8,7 @@ Collider::Collider(sf::RectangleShape& body) : body(body) {
 
 	}
 
-	bool Collider::checkCollisionX(Collider other) {
+	bool Collider::checkCollisionX(Collider& other) {
         sf::Vector2f otherPos = other.getPosition();
         sf::Vector2f otherHalfSize = other.getHalfSize();
         sf::Vector2f thisPos = getPosition();
@@ -26,7 +26,7 @@ Collider::Collider(sf::RectangleShape& body) : body(body) {
         else return false;
 	}
    
-	bool Collider::checkCollision(Collider other, sf::Vector2f& direction, float push) {
+	bool Collider::checkCollision(Collider& other, sf::Vector2f& direction, float push) {
         sf::Vector2f otherPos = other.getPosition();
         sf::Vector2f otherHalfSize = other.getHalfSize();
         sf::Vector2f thisPos = getPosition();
@@ -35,7 +35,7 @@ Collider::Collider(sf::RectangleShape& body) : body(body) {
         float deltaX = otherPos.x - thisPos.x;
         float deltaY = otherPos.y - thisPos.y;
 
-        float intersectionX = abs(deltaX) - (otherHalfSize.x + thisHalfSize.x) + 12.5f;  // +12.5 aby zniwelowac wolne miejsce w teksturach :slight_smile: 
+        float intersectionX = abs(deltaX) - (otherHalfSize.x + thisHalfSize.x);//  +12.5f;  // +12.5 aby zniwelowac wolne miejsce w teksturach :slight_smile: 
         float intersectionY = abs(deltaY) - (otherHalfSize.y + thisHalfSize.y);// -0.5f;
 
         if (intersectionX < 0.0f && intersectionY < 0.0f) {
@@ -81,7 +81,7 @@ Collider::Collider(sf::RectangleShape& body) : body(body) {
         return false;
     }
 
-    bool Collider::onCollision(Collider other) {
+    bool Collider::onCollision(Collider& other) {
         sf::Vector2f otherPos = other.getPosition();
         sf::Vector2f otherHalfSize = other.getHalfSize();
         sf::Vector2f thisPos = getPosition();

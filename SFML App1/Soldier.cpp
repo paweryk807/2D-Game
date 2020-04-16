@@ -84,6 +84,7 @@ void Soldier::setAnimation(SoldierAnimation& a) {
 }
 
 bool Soldier::refresh(const Player& player, bool wall) {
+	//sprite.setPosition(colid.getPosition());
 	bool changed = false;	
 	if (getHealth() > 0) {
 		// AI SECTION

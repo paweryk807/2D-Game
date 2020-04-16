@@ -3,14 +3,15 @@
 Game::Game(sf::View& view, std::vector<std::string>& enemiesTextures, const std::string& playerT) : view(view), healthBar(100) {
     this->enemiesTextures = enemiesTextures;
     loadTexture(playerT);
-    level = std::unique_ptr<Level>{ new Level(sf::Vector2f(1920.f,1080.f), BACKGROUND_1) };
+   // level = std::unique_ptr<Level>{ new Level(sf::Vector2f(1920.f,1080.f), BACKGROUND_1) };
+    level = std::unique_ptr<Map>{ new Map(3600,"level.txt") };
     player = new Player(playerTexture);
     healthBar.setValue(player->getHealth());
     window = std::unique_ptr<sf::RenderWindow>{ new sf::RenderWindow(sf::VideoMode(1920, 1080), "The 2D-Game!", sf::Style::Fullscreen | sf::Style::Resize) };
     window->setKeyRepeatEnabled(false);
     window->setFramerateLimit(60);
-    view.setCenter(sf::Vector2f(1920.0 / 2, 1080.0 / 2));
-    view.setSize(sf::Vector2f(1920.0, 1080.0));
+    //view.setCenter(sf::Vector2f(120.0 / 2, 1080.0 / 2));
+   // view.setSize(sf::Vector2f(1920.0, 1080.0));
     window->setView(view);
     started = false;
     pause = false;
@@ -49,7 +50,18 @@ void Game::run() {
 }
 
 void Game::generateLevel() {
-    float random_pos = rand() % 1080 + 400 + rand() % 200;
+   /* //float random_pos = rand() % 1080 + 400 + rand() % 200;
+    level->addPlatform(sf::Vector2f(60, 300));
+    level->addPlatform(sf::Vector2f(300, 300));
+    level->addPlatform(sf::Vector2f(600, 300));
+    level->addPlatform(sf::Vector2f(160, 300));
+    level->addPlatform(sf::Vector2f(650, 600));
+    level->addPlatform(sf::Vector2f(400, 600));
+    level->addPlatform(sf::Vector2f(900, 500));
+    level->addPlatform(sf::Vector2f(1100, 500));
+    level->addPlatform(sf::Vector2f(1400, 600));
+    level->addPlatform(sf::Vector2f(1600, 300));
+    */
 }
 
 std::vector<Soldier*> Game::addEnemies(const int enemiesToSpawn) {
@@ -86,7 +98,7 @@ std::vector<Soldier*> Game::addEnemies(const int enemiesToSpawn) {
             break;            
         } 
       toSpawn.push_back(new Soldier(tmp));
-      toSpawn[i]->correctPosition(sf::Vector2f(toSpawn[i]->getPosition().x - i * 2, toSpawn[i]->getPosition().y));
+      toSpawn[i]->correctPosition(sf::Vector2f(60,270));  //toSpawn[i]->getPosition().x - i * 2, toSpawn[i]->getPosition().y)
       bullets.push_back(new Bullet(toSpawn[i]->getPosition(), 11.f));
       toSpawn[i]->addAmmunition(*bullets[bullets.size()-1]);
     }       
@@ -103,14 +115,14 @@ void Game::printRound(int number) {
 }
 
 void Game::start() {
-    level->reset();
+    //level->reset();
     started = true;
     sf::Vector2f direction;
 
     int round = 1;
-    //generateLevel(); //             <------ Zrobic predefiniowane levele w switchu 
-    level->addPlatform(sf::Vector2f(1000, rand() % 500));
-    level->addPlatform(sf::Vector2f(rand() % 1080, rand() % 500));
+    generateLevel(); //             <------ Zrobic predefiniowane levele w switchu 
+   // level->addPlatform(sf::Vector2f(1000, rand() % 500));
+   // level->addPlatform(sf::Vector2f(rand() % 1080, rand() % 500));
 
 
     while (window->isOpen())
@@ -155,16 +167,16 @@ void Game::start() {
                         enemiesToSpawn[i]->correctPosition(level->getSize());
                     }
                     if (player->getShieldState()) {
-                        if (enemiesToSpawn[i]->getHealth() > 0 && enemiesToSpawn[i]->getCollider().checkCollision(player->getShieldCollider(), direction, 0.1f))
+                        if (enemiesToSpawn[i]->getHealth() > 0 && enemiesToSpawn[i]->getCollider().checkCollision(player->getShieldCollider(), direction, 1.1f))
                             player->setHealth(player->getHealth() - 0.01);
-                        else if (enemiesToSpawn[i]->getHealth() > 0 && enemiesToSpawn[i]->getCollider().checkCollision(player->getCollider(), direction, 0.2f)) {
+                        else if (enemiesToSpawn[i]->getHealth() > 0 && enemiesToSpawn[i]->getCollider().checkCollision(player->getCollider(), direction, 1.2f)) {
                             player->setHealth(player->getHealth() - 0.25);
                         }
                     }
-                    else if (enemiesToSpawn[i]->getHealth() > 0 && enemiesToSpawn[i]->getCollider().checkCollision(player->getCollider(), direction, 0.2f)) {
+                    else if (enemiesToSpawn[i]->getHealth() > 0 && enemiesToSpawn[i]->getCollider().checkCollision(player->getCollider(), direction, 1.2f)) {
                         player->setHealth(player->getHealth() - 0.5);
                     }
-                    if (player->getHealth() == 0) {
+                    if (player->getHealth() <= 0) {
                         pause = true;
                         menu.handle(*window.get(), view, false);
                         break;
@@ -185,7 +197,7 @@ void Game::start() {
                         for (int n = i; n < enemiesToSpawn.size(); n++) {
                             if (n != i) {
                                 if (enemiesToSpawn[n]->getHealth() > 0)  // jesli ktorys inny
-                                    enemiesToSpawn[i]->getCollider().checkCollision(enemiesToSpawn[n]->getCollider(), direction, 0.1f);
+                                    enemiesToSpawn[i]->getCollider().checkCollision(enemiesToSpawn[n]->getCollider(), direction, 1.1f);
                             }
                         }
                 }
@@ -204,6 +216,7 @@ void Game::start() {
                 }
             }
 
+            
             level->draw(*window.get());
             printRound(round);
 
@@ -220,10 +233,12 @@ void Game::start() {
                 if (!elem->getCooldown().elapsed()) {
                     if (!level->checkBulletCollision(direction, *elem)) {
                         if (elem != bullets[0]) {
-                            if (elem->getCollider().onCollision(player->getShieldCollider())) {
-                                elem->hide();
+                            if (player->getShieldState()) {
+                                if (elem->getCollider().onCollision(player->getShieldCollider())) {
+                                    elem->hide();
+                                }
                             }
-                            else if (elem->hit(player)) {
+                            if (elem->hit(player)) {
                                 player->setHealth(player->getHealth() - 1.5);
                             }
                         }

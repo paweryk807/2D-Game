@@ -5,7 +5,7 @@
 #include "Soldier.h"
 #include "Menu.h"
 #include "Functions.h"
-#include "Level.h"
+#include "Map.h"
 #include "bullet.h"
 #include "HealthBar.h"
 #define PLATFORM_PATH "images/sheet.png"
@@ -15,7 +15,8 @@
 class Game
 {
 	std::unique_ptr<sf::RenderWindow> window;
-	std::unique_ptr<Level> level;
+	//std::unique_ptr<Level> level;
+	std::unique_ptr<Map> level;
 	Player* player;
 	HealthBar healthBar;
 	std::vector<Soldier*> enemiesToSpawn;

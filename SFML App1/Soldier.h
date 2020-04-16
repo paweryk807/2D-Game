@@ -11,6 +11,7 @@ class Soldier : public Enemy
 	SoldierAnimation animation;
 	Bullet* bullet;
 
+
 public:
 	Soldier() = delete;
 	Soldier(std::vector<std::string>& textures);

@@ -1,19 +1,32 @@
 #include "Level.h"
 
 Level::Level(sf::Vector2f size, const std::string& backgroundTexture) {
+	/*int tab[] =  {
+	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 
+	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 
+	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 };
+	//tMap.load(SHEET, sf::Vector2u(272, 128), tab, 16, 16);
+	*/
 	if (size.x > 0 && size.y > 0) {
 		this->size = size;
 		try {
 			background.setSize(size);	
 			loadBackground(backgroundTexture);
 			background.setTexture(&(this->backgroundTexture));
-			platforms.push_back(new Platform(SHEET, sf::Vector2f(1980.0f, 40.0f), sf::Vector2f(960, 700.0f)));
+			sf::IntRect x(640, 240, 240, 75);//800, 130, 240, 75);
+			platforms.push_back(new Platform(TILES, sf::Vector2f(1980.0f, 40.0f), sf::Vector2f(960, 700.0f),x));
+
 		}
 		catch (std::exception e) {
 			std::cout << e.what() << std::endl;
 		}
 	}
 	else throw std::exception("Bledne wymiary");
+	
 }
 
 Level::~Level() {}
