@@ -35,8 +35,8 @@ Collider::Collider(sf::RectangleShape& body) : body(body) {
         float deltaX = otherPos.x - thisPos.x;
         float deltaY = otherPos.y - thisPos.y;
 
-        float intersectionX = abs(deltaX) - (otherHalfSize.x + thisHalfSize.x);//  +12.5f;  // +12.5 aby zniwelowac wolne miejsce w teksturach :slight_smile: 
-        float intersectionY = abs(deltaY) - (otherHalfSize.y + thisHalfSize.y);// -0.5f;
+        float intersectionX = abs(deltaX) - (otherHalfSize.x + thisHalfSize.x)  +12.5f;  // +12.5 aby zniwelowac wolne miejsce w teksturach :slight_smile: 
+        float intersectionY = abs(deltaY) - (otherHalfSize.y + thisHalfSize.y)  +0.99;
 
         if (intersectionX < 0.0f && intersectionY < 0.0f) {
             push = std::min(std::max(push, 0.0f), 1.0f);

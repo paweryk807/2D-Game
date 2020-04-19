@@ -42,12 +42,12 @@ bool Map::loadLevelToTab(const std::string& directory, unsigned int tabSize) {
 }
 
 void Map::setCollider(const unsigned int sizeTab)
-{	
+{
 	float width = 0, height = 0;
 	int w_param = 0;
 	int h_param = 0;
 	bool add;
-	for (int i = 0; i < sizeTab; i++) {		
+	for (int i = 0; i < sizeTab; i++) {
 		if (w_param == 80) {
 			w_param = 0;
 			h_param++;
@@ -56,21 +56,21 @@ void Map::setCollider(const unsigned int sizeTab)
 		if (tab[i] >= 7 && tab[i] <= 14) {
 			add = true;
 		}
-		//else if (tab[i] >= 24 && tab[i] <= 30) {
-		//        	add = true;
-		//}
-		//else if (tab[i] >= 41 && tab[i] <= 47) {
-		//	add = true;
-		//}
-	//	else if (tab[i] >= 58 && tab[i] <= 61) {
-		//	add = true;
-		//}
-		//else if (tab[i] >= 63 && tab[i] <= 64) {
-		//	add = true;
-		//}
+		else if (tab[i] >= 24 && tab[i] <= 30) {
+		        	add = true;
+		}
+		else if (tab[i] >= 41 && tab[i] <= 47) {
+			add = true;
+		}
+		else if (tab[i] >= 58 && tab[i] <= 61) {
+			add = true;
+		}
+		else if (tab[i] >= 63 && tab[i] <= 64) {
+			add = true;
+		}
 		if (add) {
 			sf::RectangleShape tmp(sf::Vector2f(16, 16));
-			tmp.setOrigin(8, 8);
+			//tmp.setOrigin(8, 8);
 			width = w_param * 16.f;// + 8.f;
 			height = h_param * 16.f;/// /+ 8.f;
 			tmp.setPosition(sf::Vector2f(width, height));
@@ -78,30 +78,38 @@ void Map::setCollider(const unsigned int sizeTab)
 		}
 		w_param++;
 	}
-	// OGRANICZA SIE LICZBA BLOKOW ALE NIE KOLIDUJE POPRAWNIE
-	
-	for (int i = 0; i < platforms.size(); i++) {
-		if (i > 0) {
-			if ((platforms[i]->getPosition().x - platforms[i]->getPosition().x) <= 16.1)  // Kolejny blok z danych
-			{
-				sf::RectangleShape tmp = platforms[i-1]->getBody();
-				sf::Vector2f newSize(platforms[i - 1]->getBody().getSize().x + platforms[i]->getBody().getSize().x, platforms[i - 1]->getBody().getSize().y);
-				sf::Vector2f newPos(platforms[i - 1]->getBody().getPosition().x + (0.5)*(platforms[i - 1]->getBody().getPosition().x + platforms[i]->getBody().getPosition().x), platforms[i - 1]->getBody().getPosition().y);
-				tmp.setSize(newSize);
-				tmp.setOrigin(newSize.x/2, newSize.y/2);
-				tmp.setPosition(newPos);
-				platforms[i - 1]->setBody(tmp);
-				platforms.erase(platforms.begin() + i);
-				
+	// DODAWANIE PARAMI IDENTYCZNYCH BLOKOW W JEDNEJ PLASZCZYZNIE ___  NIE DZIALA IDEALNIE ALE REDUKUJE 1440 BLOKOW KOLIDERA DO 36 
+	bool changed = false;
+	while (!changed)
+	{
+		for (int i = 1; i < platforms.size(); i++) {
+			sf::RectangleShape tmp = platforms[i - 1]->getBody();
+			if (platforms[i]->getPosition().y == tmp.getPosition().y && platforms[i]->getBody().getSize() == tmp.getSize()) {
+				float distance = platforms[i]->getHalfSize().x + platforms[i - 1]->getHalfSize().x;
+				if (platforms[i]->getPosition().x - platforms[i - 1]->getPosition().x <= distance)  // Kolejny blok z danych
+				{
+					changed = true;
+					sf::Vector2f newSize((tmp.getSize().x + platforms[i]->getBody().getSize().x) , tmp.getSize().y);
+					sf::Vector2f newPos((tmp.getPosition().x + platforms[i]->getBody().getPosition().x)/2, tmp.getPosition().y);
+					tmp.setSize(newSize);
+					//tmp.setOrigin(tmp.getPosition().x - platforms[i-1]->getHalfSize().x, newSize.y / 2);
+					tmp.setOrigin(newSize.x / 2, newSize.y / 2);
+					tmp.setPosition(newPos);
+					platforms[i]->setBody(tmp);
+					platforms.erase(platforms.begin() + i - 1);
+				}
 			}
 		}
+		if (!changed)
+			break;
+		changed = false;
 	}
 // KOLIDUJACE BLOKI :
 // 7,8,9,10,11,12,14
 // 24,25,26,27,28,29,30
 // 41,42,43,44,45,46,47
 // 58,59,60,61,63,64
- }
+  }
 
 bool Map::checkCollision(sf::Vector2f direction, Character* character)
 {
@@ -156,7 +164,7 @@ bool Map::wall(Character* character) {
 
 sf::Vector2f Map::getSize() const
 {
-	return sf::Vector2f(1280, 720);
+	return sf::Vector2f(1279, 719);
 }
 
 void Map::draw(sf::RenderWindow& window) const {
