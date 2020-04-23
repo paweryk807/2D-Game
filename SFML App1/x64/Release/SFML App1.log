@@ -1,0 +1,38 @@
+﻿  Animation.cpp
+B:\GitHub\2D-Game\SFML App1\Animation.h(2,10): fatal error C1083: Nie można otworzyć pliku dołącz: 'SFML\Graphics.hpp': No such file or directory
+  bullet.cpp
+B:\GitHub\2D-Game\SFML App1\bullet.h(2,9): fatal error C1083: Nie można otworzyć pliku dołącz: 'SFML/Graphics.hpp': No such file or directory
+  Character.cpp
+B:\GitHub\2D-Game\SFML App1\Character.h(2,10): fatal error C1083: Nie można otworzyć pliku dołącz: 'SFML\Graphics.hpp': No such file or directory
+  Cooldown.cpp
+B:\GitHub\2D-Game\SFML App1\Cooldown.h(2,9): fatal error C1083: Nie można otworzyć pliku dołącz: 'SFML\Graphics.hpp': No such file or directory
+  Enemy.cpp
+B:\GitHub\2D-Game\SFML App1\Character.h(2,10): fatal error C1083: Nie można otworzyć pliku dołącz: 'SFML\Graphics.hpp': No such file or directory
+  HealthBar.cpp
+B:\GitHub\2D-Game\SFML App1\HealthBar.h(2,9): fatal error C1083: Nie można otworzyć pliku dołącz: 'SFML/Graphics.hpp': No such file or directory
+  Map.cpp
+B:\GitHub\2D-Game\SFML App1\TileMap.h(2,9): fatal error C1083: Nie można otworzyć pliku dołącz: 'SFML/Graphics.hpp': No such file or directory
+  Menu.cpp
+B:\GitHub\2D-Game\SFML App1\Functions.h(2,10): fatal error C1083: Nie można otworzyć pliku dołącz: 'SFML/Graphics.hpp': No such file or directory
+  CharacterAnimation.cpp
+B:\GitHub\2D-Game\SFML App1\Animation.h(2,10): fatal error C1083: Nie można otworzyć pliku dołącz: 'SFML\Graphics.hpp': No such file or directory
+  Collider.cpp
+B:\GitHub\2D-Game\SFML App1\Collider.h(2,10): fatal error C1083: Nie można otworzyć pliku dołącz: 'SFML\Graphics.hpp': No such file or directory
+  Functions.cpp
+B:\GitHub\2D-Game\SFML App1\Functions.h(2,10): fatal error C1083: Nie można otworzyć pliku dołącz: 'SFML/Graphics.hpp': No such file or directory
+  Game.cpp
+B:\GitHub\2D-Game\SFML App1\Character.h(2,10): fatal error C1083: Nie można otworzyć pliku dołącz: 'SFML\Graphics.hpp': No such file or directory
+  Level.cpp
+B:\GitHub\2D-Game\SFML App1\Platform.h(2,10): fatal error C1083: Nie można otworzyć pliku dołącz: 'SFML/Graphics.hpp': No such file or directory
+  Platform.cpp
+B:\GitHub\2D-Game\SFML App1\Platform.h(2,10): fatal error C1083: Nie można otworzyć pliku dołącz: 'SFML/Graphics.hpp': No such file or directory
+  Player.cpp
+B:\GitHub\2D-Game\SFML App1\Player.h(2,10): fatal error C1083: Nie można otworzyć pliku dołącz: 'SFML/Graphics.hpp': No such file or directory
+  main.cpp
+B:\GitHub\2D-Game\SFML App1\Character.h(2,10): fatal error C1083: Nie można otworzyć pliku dołącz: 'SFML\Graphics.hpp': No such file or directory
+  Soldier.cpp
+B:\GitHub\2D-Game\SFML App1\Character.h(2,10): fatal error C1083: Nie można otworzyć pliku dołącz: 'SFML\Graphics.hpp': No such file or directory
+  SoldierAnimation.cpp
+B:\GitHub\2D-Game\SFML App1\Animation.h(2,10): fatal error C1083: Nie można otworzyć pliku dołącz: 'SFML\Graphics.hpp': No such file or directory
+  TileMap.cpp
+B:\GitHub\2D-Game\SFML App1\TileMap.h(2,9): fatal error C1083: Nie można otworzyć pliku dołącz: 'SFML/Graphics.hpp': No such file or directory

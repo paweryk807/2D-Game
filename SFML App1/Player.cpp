@@ -25,14 +25,13 @@ Player::Player(const sf::Texture &temp) : shield(false) {
 	shieldShape.setOutlineColor(sf::Color::Magenta);
 	shieldShape.setOutlineThickness(1.5f);
 
-	shieldCollider.getBody().setSize(size);
+	shieldCollider.setSize(size);
 
 	atackSpeed = 2.5f;
 	strength = 50.f;
 	prevLevel = 0;
 	level = 0;
 	exp = 0.0f;
-
 }
 
 float Player::getMaxHP() {
@@ -137,7 +136,7 @@ sf::RectangleShape Player::getShield() {
 	return shieldShape;
 }
 
-Collider& Player::getShieldCollider() {	
+Collider Player::getShieldCollider() {	
 	if (getSprite().getScale().x > 0) { // direction 
 		shieldCollider.setPosition(sf::Vector2f(getPosition().x + 32, getPosition().y));
 	}
@@ -146,7 +145,7 @@ Collider& Player::getShieldCollider() {
 	//sf::Vector2f size(shield_shape.getSize().x * 2, shield_shape.getSize().y);
 	//collid.setSize(size);
 
-	return shieldCollider;
+	return Collider(shieldCollider);
 }
 bool Player::leveled() {
 
@@ -195,7 +194,6 @@ void Player::reset() {
 }
 
 bool Player::refresh() {
-	sprite.setPosition(colid.getPosition());
 	if (shield) {
 		if (getSprite().getScale().x > 0) { // direction 
 			shieldShape.setPosition(getPosition().x + 20, getPosition().y);

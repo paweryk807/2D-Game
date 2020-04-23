@@ -11,7 +11,7 @@ Map::Map(unsigned int sizeParam, const std::string& lvlDirectory) {
 		tab = new unsigned int[sizeParam];
 		loadLevelToTab(lvlDirectory, sizeParam);
 		tiles.load("images/sheet.png", sf::Vector2u(16, 16), tab, 80, 45);
-		setCollider(sizeParam);
+		setPlatforms(sizeParam);
 		
 
 	}
@@ -41,8 +41,10 @@ bool Map::loadLevelToTab(const std::string& directory, unsigned int tabSize) {
 	return true;
 }
 
-void Map::setCollider(const unsigned int sizeTab)
+void Map::setPlatforms(const unsigned int sizeTab)
 {
+	float size_param = 16.f;
+	float half_size = 8.f;
 	float width = 0, height = 0;
 	int w_param = 0;
 	int h_param = 0;
@@ -69,12 +71,11 @@ void Map::setCollider(const unsigned int sizeTab)
 			add = true;
 		}
 		if (add) {
-			sf::RectangleShape tmp(sf::Vector2f(16, 16));
-			//tmp.setOrigin(8, 8);
-			width = w_param * 16.f;// + 8.f;
-			height = h_param * 16.f;/// /+ 8.f;
+			sf::RectangleShape tmp(sf::Vector2f(size_param, size_param));
+			width = w_param * size_param + half_size;// + 8.f;
+			height = h_param * size_param + half_size;/// /+ 8.f;
 			tmp.setPosition(sf::Vector2f(width, height));
-			platforms.push_back(new Collider(tmp));
+			platforms.push_back(new Platform(tmp));
 		}
 		w_param++;
 	}
@@ -85,14 +86,38 @@ void Map::setCollider(const unsigned int sizeTab)
 		for (int i = 1; i < platforms.size(); i++) {
 			sf::RectangleShape tmp = platforms[i - 1]->getBody();
 			if (platforms[i]->getPosition().y == tmp.getPosition().y && platforms[i]->getBody().getSize() == tmp.getSize()) {
-				float distance = platforms[i]->getHalfSize().x + platforms[i - 1]->getHalfSize().x;
+				float distance = platforms[i]->getCollider().getHalfSize().x + platforms[i - 1]->getCollider().getHalfSize().x;
 				if (platforms[i]->getPosition().x - platforms[i - 1]->getPosition().x <= distance)  // Kolejny blok z danych
 				{
 					changed = true;
 					sf::Vector2f newSize((tmp.getSize().x + platforms[i]->getBody().getSize().x) , tmp.getSize().y);
 					sf::Vector2f newPos((tmp.getPosition().x + platforms[i]->getBody().getPosition().x)/2, tmp.getPosition().y);
 					tmp.setSize(newSize);
-					//tmp.setOrigin(tmp.getPosition().x - platforms[i-1]->getHalfSize().x, newSize.y / 2);
+					tmp.setOrigin(newSize.x / 2, newSize.y / 2);
+					tmp.setPosition(newPos);
+					platforms[i]->setBody(tmp);
+					platforms.erase(platforms.begin() + i - 1);
+				}
+			}
+		}
+		if (!changed)
+			break;
+		changed = false;
+	}
+
+
+	while (!changed)
+	{
+		for (int i = 1; i < platforms.size(); i++) {
+			sf::RectangleShape tmp = platforms[i - 1]->getBody();
+			if (platforms[i]->getPosition().x == tmp.getPosition().x && platforms[i]->getBody().getSize() == tmp.getSize()) {
+				float distance = platforms[i]->getCollider().getHalfSize().y + platforms[i - 1]->getCollider().getHalfSize().y;
+				if (platforms[i]->getPosition().y - platforms[i - 1]->getPosition().y <= distance)  // Kolejny blok z danych
+				{
+					changed = true;
+					sf::Vector2f newSize(tmp.getSize().x , (tmp.getSize().y + platforms[i]->getBody().getSize().y));
+					sf::Vector2f newPos((tmp.getPosition().x + platforms[i]->getBody().getPosition().x) / 2, tmp.getPosition().y + 8);
+					tmp.setSize(newSize);
 					tmp.setOrigin(newSize.x / 2, newSize.y / 2);
 					tmp.setPosition(newPos);
 					platforms[i]->setBody(tmp);
@@ -109,13 +134,13 @@ void Map::setCollider(const unsigned int sizeTab)
 // 24,25,26,27,28,29,30
 // 41,42,43,44,45,46,47
 // 58,59,60,61,63,64
-  }
 
-bool Map::checkCollision(sf::Vector2f direction, Character* character)
-{
+}
+
+bool Map::checkCollision(sf::Vector2f direction, Character* character) const {
 	bool collision = false;
 	for (auto platform : platforms) {
-		if (platform->checkCollision(character->getCollider(), direction, 2.0f)) {
+		if (platform->getCollider().checkCollision(character->getCollider(), direction, 1.f)) {
 			character->onCollision(direction);
 			collision = true;
 		}
@@ -124,10 +149,9 @@ bool Map::checkCollision(sf::Vector2f direction, Character* character)
 	return collision;
 }
 
-bool Map::checkBulletCollision(sf::Vector2f direction, Bullet bullet)
-{
+bool Map::checkBulletCollision(sf::Vector2f direction, Bullet& bullet) const {
 	for (auto platform : platforms) {
-		if (platform->checkCollision(bullet.getCollider(), direction, 1.4f)) {
+		if (platform->getCollider().checkCollision(bullet.getCollider(), direction, 1.f)) {
 			return true;
 		}
 	}
@@ -153,17 +177,17 @@ bool Map::loadBackground(const std::string& texture) {
 	return 1;
 }
 
-bool Map::wall(Character* character) {
+bool Map::wall(Character* character) const {
+	//sf::Vector2f dir = sf::Vector2f(0, 0);
 	for (auto platform : platforms) {
-		if (platform->checkCollisionX(character->getCollider())) {
+		if (platform->getCollider().wallCollision(character->getCollider())) {// , dir, 1.0)) {
 			return true;
 		}
 	}
 	return false;
 }
 
-sf::Vector2f Map::getSize() const
-{
+sf::Vector2f Map::getSize() const {
 	return sf::Vector2f(1279, 719);
 }
 

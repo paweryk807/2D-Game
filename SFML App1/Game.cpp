@@ -50,17 +50,10 @@ void Game::run() {
 }
 
 void Game::generateLevel() {
-   /* //float random_pos = rand() % 1080 + 400 + rand() % 200;
-    level->addPlatform(sf::Vector2f(60, 300));
-    level->addPlatform(sf::Vector2f(300, 300));
-    level->addPlatform(sf::Vector2f(600, 300));
-    level->addPlatform(sf::Vector2f(160, 300));
-    level->addPlatform(sf::Vector2f(650, 600));
-    level->addPlatform(sf::Vector2f(400, 600));
-    level->addPlatform(sf::Vector2f(900, 500));
-    level->addPlatform(sf::Vector2f(1100, 500));
-    level->addPlatform(sf::Vector2f(1400, 600));
-    level->addPlatform(sf::Vector2f(1600, 300));
+    /*
+        FUNKCJA DO ZMIANY PLANSZY 
+        W.I.P
+
     */
 }
 
@@ -98,7 +91,7 @@ std::vector<Soldier*> Game::addEnemies(const int enemiesToSpawn) {
             break;            
         } 
       toSpawn.push_back(new Soldier(tmp));
-      toSpawn[i]->correctPosition(sf::Vector2f(60,270));  //toSpawn[i]->getPosition().x - i * 2, toSpawn[i]->getPosition().y)
+      toSpawn[i]->correctPosition(sf::Vector2f(120 + rand() % 3,570 + rand() % 5));  //toSpawn[i]->getPosition().x - i * 2, toSpawn[i]->getPosition().y)
       bullets.push_back(new Bullet(toSpawn[i]->getPosition(), 11.f));
       toSpawn[i]->addAmmunition(*bullets[bullets.size()-1]);
     }       
@@ -119,15 +112,17 @@ void Game::start() {
     started = true;
     sf::Vector2f direction;
 
+    sf::Image ss;
+    sf::Texture sst;
+    sst.create(window.get()->getSize().x, window.get()->getSize().y);
+    int number = 0;
+
+
     int round = 1;
     generateLevel(); //             <------ Zrobic predefiniowane levele w switchu 
-   // level->addPlatform(sf::Vector2f(1000, rand() % 500));
-   // level->addPlatform(sf::Vector2f(rand() % 1080, rand() % 500));
-
 
     while (window->isOpen())
     {
-
         sf::Event event;
         while (window->pollEvent(event))
         {
@@ -144,6 +139,14 @@ void Game::start() {
                     else {
                         pause = true;
                     }
+                }
+                if (event.key.code == sf::Keyboard::RShift) {
+
+                    sst.update(*window);
+                    ss = sst.copyToImage();
+                    std::string filename = "screenshots/screenshot_" + std::to_string(number) + ".png";
+                    ss.saveToFile(filename);
+                    number++;
                 }
                 if (event.key.code == sf::Keyboard::O) {
                     player->setShieldState(!player->getShieldState());
@@ -166,14 +169,15 @@ void Game::start() {
                     if (level->checkPosition(enemiesToSpawn[i])) {
                         enemiesToSpawn[i]->correctPosition(level->getSize());
                     }
+
                     if (player->getShieldState()) {
-                        if (enemiesToSpawn[i]->getHealth() > 0 && enemiesToSpawn[i]->getCollider().checkCollision(player->getShieldCollider(), direction, 1.1f))
+                        if (enemiesToSpawn[i]->getHealth() > 0 && enemiesToSpawn[i]->getCollider().checkCollision(player->getShieldCollider(), direction, 1.0f))
                             player->setHealth(player->getHealth() - 0.01);
-                        else if (enemiesToSpawn[i]->getHealth() > 0 && enemiesToSpawn[i]->getCollider().checkCollision(player->getCollider(), direction, 1.2f)) {
+                        else if (enemiesToSpawn[i]->getHealth() > 0 && enemiesToSpawn[i]->getCollider().checkCollision(player->getCollider(), direction, 1.0f)) {
                             player->setHealth(player->getHealth() - 0.25);
                         }
                     }
-                    else if (enemiesToSpawn[i]->getHealth() > 0 && enemiesToSpawn[i]->getCollider().checkCollision(player->getCollider(), direction, 1.2f)) {
+                    else if (enemiesToSpawn[i]->getHealth() > 0 && enemiesToSpawn[i]->getCollider().checkCollision(player->getCollider(), direction, 0.5f)) {
                         player->setHealth(player->getHealth() - 0.5);
                     }
                     if (player->getHealth() <= 0) {
@@ -193,13 +197,14 @@ void Game::start() {
                                 }
                             }
                     }
-                    if (enemiesToSpawn[i]->getHealth() > 0) // jesli ten ktory sprawdza
+                    if (enemiesToSpawn[i]->getHealth() > 0) { // jesli ten ktory sprawdza
                         for (int n = i; n < enemiesToSpawn.size(); n++) {
                             if (n != i) {
                                 if (enemiesToSpawn[n]->getHealth() > 0)  // jesli ktorys inny
-                                    enemiesToSpawn[i]->getCollider().checkCollision(enemiesToSpawn[n]->getCollider(), direction, 1.1f);
+                                    enemiesToSpawn[i]->getCollider().checkCollision(enemiesToSpawn[n]->getCollider(), direction, 1.0f);
                             }
                         }
+                    }
                 }
                 else {
                     enemiesToSpawn.erase(enemiesToSpawn.begin() + i);
@@ -281,11 +286,6 @@ void Game::getActionFromUser() {
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
         player->moveRight();
     }
-
-  //  if (sf::Keyboard::isKeyPressed(sf::Keyboard::O)) {
-  //      player->setShieldState(true);
-  //  }
-
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
         player->jump();

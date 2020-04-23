@@ -17,7 +17,7 @@ private:
 
 	CharacterAnimation animation;
     sf::RectangleShape shieldShape;
-	Collider shieldCollider;
+	sf::RectangleShape shieldCollider;
 
 public:	
 
@@ -28,7 +28,7 @@ public:
 	void moveUp();
 	void addExp(float nExp);
 	sf::RectangleShape getShield();
-	Collider& getShieldCollider();
+	Collider getShieldCollider();
 	bool leveled();
 	void reset();
 	bool refresh();

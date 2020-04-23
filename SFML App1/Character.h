@@ -16,7 +16,6 @@ private:
 protected:
 	sf::RectangleShape sprite; 
 	sf::Vector2f velocity;
-	Collider colid;
 
 
 public:	
@@ -51,7 +50,7 @@ public:
 	void correctPosition(sf::Vector2f);
 	sf::Vector2f getPosition() const;
 	sf::RectangleShape getSprite() const;
-	Collider& getCollider();
+	Collider getCollider();
 
 
 };

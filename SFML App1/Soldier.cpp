@@ -10,7 +10,7 @@ Soldier::Soldier(std::vector<std::string>& textures) : Enemy(2.5f, 4.5f)
 		animation.setAnimTime(sf::seconds(0.075));
 
 		sprite.setSize(sf::Vector2f(48.0f, 48.0f));
-		sprite.setOrigin((sprite.getSize().x - 16) / 2.0f, (sprite.getSize().y - 16.0f) / 2.0f);
+		sprite.setOrigin(32.0f / 2.0f, 30.0f / 2.0f);  // Aby nie bylo odstepow od podloza
 		sprite.setTexture(&texture[0]);
 		sprite.setTextureRect(animation.getRect());
 		sprite.setPosition(800, 350);
@@ -85,9 +85,20 @@ void Soldier::setAnimation(SoldierAnimation& a) {
 
 bool Soldier::refresh(const Player& player, bool wall) {
 	//sprite.setPosition(colid.getPosition());
-	bool changed = false;	
+	bool changed = false;
 	if (getHealth() > 0) {
 		// AI SECTION
+		if (getPosition().x < 0)
+		{
+			correctPosition(sf::Vector2f(0.1f, 250.f));
+		}
+		else if (getPosition().y > 1280) {
+			correctPosition(sf::Vector2f(1279.1f, 250.f));
+		}
+		else if (getPosition().y > 1080 || getPosition().y < 0) {
+			correctPosition(sf::Vector2f(0.1f, 250.f));
+		}
+
 		if (velocity.y != 0.0f) {
 			setOnAir(true);
 			setCanJump(false);

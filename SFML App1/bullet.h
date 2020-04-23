@@ -11,7 +11,7 @@ class Bullet
 	sf::CircleShape sprite; 
 	sf::Vector2f velocity;
 	Animation animation;
-	Collider colid;
+	sf::RectangleShape colid;
 public:
 	Bullet(sf::Vector2f startPos);
 	Bullet(sf::Vector2f startPos, float speed);
@@ -29,7 +29,7 @@ public:
 	Cooldown getCooldown();
 	void setIntRect(sf::IntRect rect);
 	void setVelocity(sf::Vector2f vel);
-	Collider& getCollider();
+	Collider getCollider();
 	~Bullet() = default;
 };
 

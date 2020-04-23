@@ -8,6 +8,7 @@
 #include "Map.h"
 #include "bullet.h"
 #include "HealthBar.h"
+#include <sstream>
 #define PLATFORM_PATH "images/sheet.png"
 #define BACKGROUND_1 "images/bg.jpg"//background.jpg"
 //#define SHEET  "images/sheet.png"
@@ -15,7 +16,6 @@
 class Game
 {
 	std::unique_ptr<sf::RenderWindow> window;
-	//std::unique_ptr<Level> level;
 	std::unique_ptr<Map> level;
 	Player* player;
 	HealthBar healthBar;
@@ -41,7 +41,6 @@ public:
 
 	std::vector<Soldier*> addEnemies(const int enemiesToSpawn);
 	bool loadTexture(const std::string& texture);
-	//bool loadPlatformTexture(const std::string texture);
 	bool loadEnemiesTextures(std::vector<std::string>& textures);
 	void getActionFromUser();
 	void start();

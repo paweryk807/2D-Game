@@ -11,11 +11,11 @@ Bullet::Bullet(sf::Vector2f startPos) {
 		velocity = sf::Vector2f(10.0f, 0.0f);
 		animation.setAnimTime(sf::seconds(0.5f));
 		sf::Vector2f cSize(sprite.getRadius(), sprite.getRadius());
-		sf::RectangleShape data; 
-		data.setSize(cSize);
-		data.setPosition(startPos.x, startPos.y - 5.f);
-		data.setOrigin(cSize / 2.0f);
-		colid.setBody(data);
+		
+		colid.setSize(cSize);
+		colid.setPosition(startPos.x, startPos.y - 5.f);
+		colid.setOrigin(cSize / 2.0f);
+		
 		//rect = sf::IntRect(32, 32, 32, 32);  
 		//sprite.setTextureRect(rect);
 	}
@@ -35,11 +35,9 @@ Bullet::Bullet(sf::Vector2f startPos, float speed) {
 		velocity = sf::Vector2f(speed, 0.0f);
 		animation.setAnimTime(sf::seconds(1.5f));
 		sf::Vector2f cSize(sprite.getRadius(), sprite.getRadius());
-		sf::RectangleShape data;
-		data.setSize(cSize);
-		data.setPosition(startPos.x, startPos.y - 5.f);
-		data.setOrigin(cSize / 2.0f);
-		colid.setBody(data);
+		colid.setSize(cSize);
+		colid.setPosition(startPos.x, startPos.y - 5.f);
+		colid.setOrigin(cSize / 2.0f);
 		//rect = sf::IntRect(32, 32, 32, 32);  
 		//sprite.setTextureRect(rect);
 	}
@@ -115,7 +113,7 @@ void Bullet::refresh() {
 
 bool Bullet::hit(Character* character) {
 	sf::Vector2f colliderDirection;   
-	if (character->getCollider().checkCollision(getCollider(), colliderDirection , 1.5f)) {
+	if (character->getCollider().checkCollision(getCollider(), colliderDirection , 1.0f)) {
 		colliderDirection.x = 1920.f;
 		colliderDirection.y = 1080.f;
 		colid.setPosition(colliderDirection);
@@ -132,19 +130,7 @@ void Bullet::hide() {
 	colid.setPosition(colliderDirection);
 	sprite.setPosition(colliderDirection);
 }
-/*
-bool Bullet::hit(Player* character) {
-	sf::Vector2f colliderDirection;   
-	if (character->getCollider().checkCollision(getCollider(), colliderDirection, 1.5f)) {
-		colliderDirection.x = 1920.f;
-		colliderDirection.y = 1080.f;
-		colid.setPosition(colliderDirection);
-		sprite.setPosition(colliderDirection);
-		return 1;
-	}
-	return 0;
-}
-*/
+
 sf::CircleShape Bullet::getSprite() {
 	return sprite;
 }
@@ -165,9 +151,8 @@ void Bullet::setVelocity(sf::Vector2f vel) {
 	velocity = vel;
 }
 
-Collider& Bullet::getCollider() {
-	colid.setPosition(sprite.getPosition());
-	return colid;
+Collider Bullet::getCollider() {
+	return Collider(colid);
 }
 
  

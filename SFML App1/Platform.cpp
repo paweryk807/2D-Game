@@ -1,36 +1,6 @@
 #include "Platform.h"
-/*
-Platform::Platform(const std::string& texture, sf::Vector2f size, sf::Vector2f position) {
-	try {
-		loadTexture(texture);
-		body.setSize(size);
-		body.setOrigin(size / 2.0f);
-		body.setPosition(position);
-		body.setTexture(&(this->texture));
-		body.setTextureRect(sf::IntRect(16 * 7, 0, 16 * 3, 16));
-	}
-	catch (std::exception e) {
-		std::cout << e.what() << std::endl;
-	}
-}
-*/
-Platform::Platform(const std::string& texture, sf::Vector2f size, sf::Vector2f position) : Platform(texture, size, position, sf::IntRect(16 * 7, 0, 16 * 3, 16)) {}
+Platform::Platform(sf::RectangleShape& body) : body(body) {}
 
-Platform::Platform(const std::string& texture, sf::Vector2f size, sf::Vector2f position, sf::IntRect tRect = sf::IntRect(16 * 7, 0, 16 * 3, 16)) {
-	try {
-		loadTexture(texture);
-	//	this->texture.
-		this->texture.setRepeated(true);
-		body.setSize(size);
-		body.setOrigin(size / 2.0f);
-		body.setPosition(position);
-		body.setTexture(&(this->texture));
-		body.setTextureRect(tRect);
-	}
-	catch (std::exception e) {
-		std::cout << e.what() << std::endl;
-	}
-}
 
 void Platform::setPosition(sf::Vector2f pos) {
 	body.setPosition(pos);
@@ -43,19 +13,13 @@ sf::Vector2f Platform::getPosition() {
 sf::RectangleShape Platform::getBody() {
 	return body;
 }
-
-
-Collider Platform::getCollider() {
-	return Collider(body);
+void Platform::setBody(sf::RectangleShape& body) {
+	this->body = body;
 }
 
-bool Platform::loadTexture(const std::string& tFile)
-{
-	if (!texture.loadFromFile(tFile)) {
-		throw std::exception("unable to open texture file");
-        return 0;
-    }
-	return 1;
+
+MapCollider Platform::getCollider() {
+	return MapCollider(body);
 }
 
 Platform::~Platform() {

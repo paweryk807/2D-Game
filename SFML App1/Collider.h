@@ -2,7 +2,7 @@
 #include <SFML\Graphics.hpp>
 class Collider
 {
-	sf::RectangleShape body;
+	sf::RectangleShape& body;
 public: 
 	Collider() = default;
 	Collider(sf::RectangleShape& body);
@@ -12,11 +12,18 @@ public:
 	sf::RectangleShape getBody();	
 	void setPosition(sf::Vector2f pos);
 
-	bool checkCollisionX(Collider& other) ;
-	bool checkCollision(Collider& other, sf::Vector2f& direction, float push);
-	bool onCollision(Collider& other);
+	//bool checkCollisionX(Collider other) ;
+	bool virtual checkCollision(Collider other, sf::Vector2f& direction, float push);
+	bool onCollision(Collider other);
 	sf::Vector2f getPosition();
 	sf::Vector2f getHalfSize();
 
 };
 
+class MapCollider : public Collider {
+public:
+	MapCollider(sf::RectangleShape& body);
+	bool checkCollision(Collider other, sf::Vector2f& direction, float push) override;
+	bool wallCollision(Collider other);
+
+};

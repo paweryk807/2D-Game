@@ -9,43 +9,22 @@ HealthBar::HealthBar(float value) {
 		sf::IntRect rect(sf::Vector2i(0, 0), sf::Vector2i(17, 17));
 		sprite.setTexture(texture);
 		sprite.setTextureRect(rect);
-		sprite.setPosition(1130, 580);
+		sprite.setPosition(1150, 620);
 		sprite.setScale(4, 4);
 		font.loadFromFile(FONT_PATH);
 		playerStats.setFont(font);
-		playerStats.setPosition(940, 580);
+		playerStats.setPosition(960, 620);
 		playerStats.setFillColor(sf::Color::Magenta);
 		playerStats.setString("STATS");
 		sf::Vector2f factors(0.75, 0.75);
 		playerStats.setScale(factors);
 		playerStats.setOutlineThickness(0.15f);
 		playerStats.setOutlineColor(sf::Color::Black);
-	/*	playerHP.setFont(font);
-		playerHP.setPosition(1770, 940);
-		playerExp.setFont(font);
-		playerExp.setPosition(1800, 940);
-		playerLevel.setFont(font);
-		playerLevel.setPosition(1830, 940);
-	*/
-		//anim.setRect(rect); //Default texture size
 	}
 	catch(std::exception e) {
 		std::cout << e.what() << std::endl;
 	}
 }
-/* sf::Text object;
-    std::string round = "Round : ";// + static_cast<char>(number);
-    round += std::to_string(number);
-    object.setString(round);
-    sf::Vector2f factors(1.f, 1.f);  
-    sf::Font font;
-    font.loadFromFile(FONT_PATH);
-    object.setFont(font);
-    object.setFillColor(sf::Color::Magenta);
-    object.setScale(factors);
-    object.setOutlineThickness(0.5f);
-    object.setOutlineColor(sf::Color::White);
-    object.setPosition(sf::Vector2f(WIDTH/2 - (round.length()+1.5f) *10, ((HEIGHT/2)/6))); // /6 dla symetrii*/
 
 bool HealthBar::update(Player* player)
 {
