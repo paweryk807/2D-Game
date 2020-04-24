@@ -8,6 +8,7 @@
 #include "Map.h"
 #include "bullet.h"
 #include "HealthBar.h"
+#include "EnemySpawner.h"
 #include <sstream>
 #define PLATFORM_PATH "images/sheet.png"
 #define BACKGROUND_1 "images/bg.jpg"//background.jpg"
@@ -19,9 +20,9 @@ class Game
 	std::unique_ptr<Map> level;
 	Player* player;
 	HealthBar healthBar;
-	std::vector<Soldier*> enemiesToSpawn;
-	std::vector<std::string> enemiesTextures;
-	std::vector<Bullet*> bullets;
+	//std::vector<Soldier*> enemiesToSpawn;
+	//std::vector<std::string> enemiesTextures;
+	//std::vector<Bullet*> bullets;
 	sf::View view;
 	sf::Texture playerTexture;
 	Menu menu;

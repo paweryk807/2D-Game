@@ -1,3 +1,9 @@
-﻿  bullet.cpp
-B:\GitHub\2D-Game\SFML App1\bullet.cpp(58): warning C4715: "Bullet::loadTexture”: niewszystkie ścieżki kodu zwracają wartość
-  SFML App1.vcxproj -> B:\GitHub\2D-Game\x64\Debug\2D-Game.exe
+﻿  EnemySpawner.cpp
+B:\GitHub\2D-Game\SFML App1\EnemySpawner.h(1,9): warning C4068: nieznana pragma
+B:\GitHub\2D-Game\SFML App1\EnemySpawner.h(1,12): error C2017: niedozwolona sekwencja ucieczki
+B:\GitHub\2D-Game\SFML App1\Enemy.h(5,1): warning C4005: "DEFAULT_PATH": ponowna definicja makra
+B:\GitHub\2D-Game\SFML App1\Player.h(5): message : zobacz poprzednią definicję „DEFAULT_PATH”
+B:\GitHub\2D-Game\SFML App1\EnemySpawner.cpp(10,79): error C2678: dwuargumentowy "-": nie znaleziono żadnego operatora, który przyjmuje lewostronny operand typu "overloaded-function" (lub nie istnieje akceptowalna konwersja)
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.25.28610\include\chrono(501,9): message : może to być „std::chrono::duration<__int64,std::nano> std::chrono::operator -<std::chrono::steady_clock,std::chrono::nanoseconds,std::chrono::nanoseconds>(const std::chrono::time_point<std::chrono::steady_clock,std::chrono::nanoseconds> &,const std::chrono::time_point<std::chrono::steady_clock,std::chrono::nanoseconds> &) noexcept(<expr>)”
+B:\GitHub\2D-Game\SFML App1\EnemySpawner.cpp(10,79): message : podczas próby dopasowania listy argumentów "(overloaded-function, std::chrono::steady_clock::time_point)"
+B:\GitHub\2D-Game\SFML App1\EnemySpawner.cpp(10,32): error C2672: „std::chrono::duration_cast”: nie znaleziono zgodnej przeciążonej funkcji

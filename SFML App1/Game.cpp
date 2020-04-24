@@ -166,9 +166,9 @@ void Game::start() {
             getActionFromUser();
             for (int i = 0; i < enemiesToSpawn.size(); i++) {
                 if (enemiesToSpawn[i]->refresh(*player, level->wall(enemiesToSpawn[i]))) {
-                    if (level->checkPosition(enemiesToSpawn[i])) {
-                        enemiesToSpawn[i]->correctPosition(level->getSize());
-                    }
+                  //  if (level->checkPosition(enemiesToSpawn[i])) {
+                    //    enemiesToSpawn[i]->correctPosition(level->getSize());
+                  //  }
 
                     if (player->getShieldState()) {
                         if (enemiesToSpawn[i]->getHealth() > 0 && enemiesToSpawn[i]->getCollider().checkCollision(player->getShieldCollider(), direction, 1.0f))

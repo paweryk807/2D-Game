@@ -183,6 +183,7 @@
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="Cooldown.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EnemySpawner.cpp" />
     <ClCompile Include="HealthBar.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Menu.cpp" />
@@ -203,6 +204,7 @@
     <ClInclude Include="Character.h" />
     <ClInclude Include="Cooldown.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemySpawner.h" />
     <ClInclude Include="HealthBar.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Menu.h" />
