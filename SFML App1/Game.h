@@ -23,6 +23,7 @@ class Game
 	//std::vector<Soldier*> enemiesToSpawn;
 	//std::vector<std::string> enemiesTextures;
 	//std::vector<Bullet*> bullets;
+	EnemySpawner spawner;
 	sf::View view;
 	sf::Texture playerTexture;
 	Menu menu;
@@ -40,9 +41,10 @@ public:
 	void run();
 	void generateLevel();
 
-	std::vector<Soldier*> addEnemies(const int enemiesToSpawn);
+	//std::vector<Soldier*> addEnemies(const int enemiesToSpawn);
+	
 	bool loadTexture(const std::string& texture);
-	bool loadEnemiesTextures(std::vector<std::string>& textures);
+	//bool loadEnemiesTextures(std::vector<std::string>& textures);
 	void getActionFromUser();
 	void start();
 

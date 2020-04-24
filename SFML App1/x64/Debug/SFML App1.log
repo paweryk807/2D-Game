@@ -1,9 +1,11 @@
-﻿  EnemySpawner.cpp
-B:\GitHub\2D-Game\SFML App1\EnemySpawner.h(1,9): warning C4068: nieznana pragma
-B:\GitHub\2D-Game\SFML App1\EnemySpawner.h(1,12): error C2017: niedozwolona sekwencja ucieczki
+﻿  Game.cpp
 B:\GitHub\2D-Game\SFML App1\Enemy.h(5,1): warning C4005: "DEFAULT_PATH": ponowna definicja makra
 B:\GitHub\2D-Game\SFML App1\Player.h(5): message : zobacz poprzednią definicję „DEFAULT_PATH”
-B:\GitHub\2D-Game\SFML App1\EnemySpawner.cpp(10,79): error C2678: dwuargumentowy "-": nie znaleziono żadnego operatora, który przyjmuje lewostronny operand typu "overloaded-function" (lub nie istnieje akceptowalna konwersja)
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.25.28610\include\chrono(501,9): message : może to być „std::chrono::duration<__int64,std::nano> std::chrono::operator -<std::chrono::steady_clock,std::chrono::nanoseconds,std::chrono::nanoseconds>(const std::chrono::time_point<std::chrono::steady_clock,std::chrono::nanoseconds> &,const std::chrono::time_point<std::chrono::steady_clock,std::chrono::nanoseconds> &) noexcept(<expr>)”
-B:\GitHub\2D-Game\SFML App1\EnemySpawner.cpp(10,79): message : podczas próby dopasowania listy argumentów "(overloaded-function, std::chrono::steady_clock::time_point)"
-B:\GitHub\2D-Game\SFML App1\EnemySpawner.cpp(10,32): error C2672: „std::chrono::duration_cast”: nie znaleziono zgodnej przeciążonej funkcji
+B:\GitHub\2D-Game\SFML App1\Game.cpp(181,67): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(183,67): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(187,63): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(255,71): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(304,49): warning C4305: "argument": obcięcie z "double" do "float"
+B:\GitHub\2D-Game\SFML App1\Game.cpp(304,50): warning C4305: "argument": obcięcie z "double" do "float"
+B:\GitHub\2D-Game\SFML App1\Game.cpp(307,50): warning C4305: "argument": obcięcie z "double" do "float"
+  SFML App1.vcxproj -> B:\GitHub\2D-Game\x64\Debug\2D-Game.exe

@@ -1,7 +1,7 @@
 #include "Game.h"
 
-Game::Game(sf::View& view, std::vector<std::string>& enemiesTextures, const std::string& playerT) : view(view), healthBar(100) {
-    this->enemiesTextures = enemiesTextures;
+Game::Game(sf::View& view, std::vector<std::string>& enemiesTextures, const std::string& playerT) : view(view), healthBar(100), spawner(std::chrono::seconds(45)) {
+  //  this->enemiesTextures = enemiesTextures;
     loadTexture(playerT);
    // level = std::unique_ptr<Level>{ new Level(sf::Vector2f(1920.f,1080.f), BACKGROUND_1) };
     level = std::unique_ptr<Map>{ new Map(3600,"level.txt") };
@@ -33,13 +33,17 @@ bool Game::loadTexture(const std::string& texture) {
 }
 
 void Game::restart() {
-    enemiesToSpawn.clear();   
-    bullets.clear();
-    bullets.clear();
+    spawner.enemies.clear();
+    spawner.bullets.clear();
+   // enemiesToSpawn.clear();   
+   //  bullets.clear();
+    //bullets.clear();
     pause = false; 
-	player->reset();
-	bullets.push_back(new Bullet(player->getPosition()));
-    enemiesToSpawn = addEnemies(5);
+	player->reset();	
+    spawner.bullets.push_back(new Bullet(player->getPosition()));
+    //bullets.push_back(new Bullet(player->getPosition()));
+  //  enemiesToSpawn = addEnemies(5);
+    spawner.spawnEnemies(5, 0);
     start();
 }
 
@@ -56,7 +60,7 @@ void Game::generateLevel() {
 
     */
 }
-
+/*
 std::vector<Soldier*> Game::addEnemies(const int enemiesToSpawn) {
     std::vector<Soldier*> toSpawn;
     std::vector<std::string> tmp;
@@ -64,6 +68,7 @@ std::vector<Soldier*> Game::addEnemies(const int enemiesToSpawn) {
     for (int i = 0; i < enemiesToSpawn; i++) {
            tmp.clear();
            /*  RANDOM TYPE SET  */
+/*
            int type = std::rand() % 4;
      switch (type) {
         case 0: //BLUE
@@ -98,7 +103,7 @@ std::vector<Soldier*> Game::addEnemies(const int enemiesToSpawn) {
     return toSpawn;
 
 }
-
+*/
 void Game::printRound(int number) {
     std::string round = "Round : ";// + static_cast<char>(number);
     round += std::to_string(number);
@@ -116,7 +121,8 @@ void Game::start() {
     sf::Texture sst;
     sst.create(window.get()->getSize().x, window.get()->getSize().y);
     int number = 0;
-
+   // std::vector<Soldier*> enemiesToSpawn = std::move(spawner.enemies);
+    //std::vector<Bullet*> bullets = std::move(spawner.bullets);
 
     int round = 1;
     generateLevel(); //             <------ Zrobic predefiniowane levele w switchu 
@@ -164,20 +170,20 @@ void Game::start() {
 
         if (!pause) {
             getActionFromUser();
-            for (int i = 0; i < enemiesToSpawn.size(); i++) {
-                if (enemiesToSpawn[i]->refresh(*player, level->wall(enemiesToSpawn[i]))) {
+            for (int i = 0; i < spawner.enemies.size(); i++) {
+                if (spawner.enemies[i]->refresh(*player, level->wall(spawner.enemies[i]))) {
                   //  if (level->checkPosition(enemiesToSpawn[i])) {
                     //    enemiesToSpawn[i]->correctPosition(level->getSize());
                   //  }
 
                     if (player->getShieldState()) {
-                        if (enemiesToSpawn[i]->getHealth() > 0 && enemiesToSpawn[i]->getCollider().checkCollision(player->getShieldCollider(), direction, 1.0f))
+                        if (spawner.enemies[i]->getHealth() > 0 && spawner.enemies[i]->getCollider().checkCollision(player->getShieldCollider(), direction, 1.0f))
                             player->setHealth(player->getHealth() - 0.01);
-                        else if (enemiesToSpawn[i]->getHealth() > 0 && enemiesToSpawn[i]->getCollider().checkCollision(player->getCollider(), direction, 1.0f)) {
+                        else if (spawner.enemies[i]->getHealth() > 0 && spawner.enemies[i]->getCollider().checkCollision(player->getCollider(), direction, 1.0f)) {
                             player->setHealth(player->getHealth() - 0.25);
                         }
                     }
-                    else if (enemiesToSpawn[i]->getHealth() > 0 && enemiesToSpawn[i]->getCollider().checkCollision(player->getCollider(), direction, 0.5f)) {
+                    else if (spawner.enemies[i]->getHealth() > 0 && spawner.enemies[i]->getCollider().checkCollision(player->getCollider(), direction, 0.5f)) {
                         player->setHealth(player->getHealth() - 0.5);
                     }
                     if (player->getHealth() <= 0) {
@@ -185,39 +191,41 @@ void Game::start() {
                         menu.handle(*window.get(), view, false);
                         break;
                     }
-                    level->checkCollision(direction, enemiesToSpawn[i]);
+                    level->checkCollision(direction, spawner.enemies[i]);
                     /*        SEKCJA DO DODANIA POCISKOW ZOLNIERZY      */
-                    if (!bullets[0]->getCooldown().elapsed()) {
-                        if (!level->checkBulletCollision(direction, *bullets[0]))
-                            if (bullets[0]->hit(enemiesToSpawn[i])) {
-                                enemiesToSpawn[i]->setHealth(enemiesToSpawn[i]->getHealth() - player->getStrength()); // metoda dekrementuj zdrowie(wartosc o ile)
-                                if (enemiesToSpawn[i]->getHealth() <= 0) {
-                                    enemiesToSpawn[i]->setStrength(0);
-                                    enemiesToSpawn[i]->setAtackSpeed(0);
+                    if (!spawner.bullets[0]->getCooldown().elapsed()) {
+                        if (!level->checkBulletCollision(direction, *spawner.bullets[0]))
+                            if (spawner.bullets[0]->hit(spawner.enemies[i])) {
+                                spawner.enemies[i]->setHealth(spawner.enemies[i]->getHealth() - player->getStrength()); // metoda dekrementuj zdrowie(wartosc o ile)
+                                if (spawner.enemies[i]->getHealth() <= 0) {
+                                    spawner.enemies[i]->setStrength(0);
+                                    spawner.enemies[i]->setAtackSpeed(0);
                                 }
                             }
                     }
-                    if (enemiesToSpawn[i]->getHealth() > 0) { // jesli ten ktory sprawdza
-                        for (int n = i; n < enemiesToSpawn.size(); n++) {
+                    if (spawner.enemies[i]->getHealth() > 0) { // jesli ten ktory sprawdza
+                        for (int n = i; n < spawner.enemies.size(); n++) {
                             if (n != i) {
-                                if (enemiesToSpawn[n]->getHealth() > 0)  // jesli ktorys inny
-                                    enemiesToSpawn[i]->getCollider().checkCollision(enemiesToSpawn[n]->getCollider(), direction, 1.0f);
+                                if (spawner.enemies[n]->getHealth() > 0)  // jesli ktorys inny
+                                    spawner.enemies[i]->getCollider().checkCollision(spawner.enemies[n]->getCollider(), direction, 1.0f);
                             }
                         }
                     }
                 }
                 else {
-                    enemiesToSpawn.erase(enemiesToSpawn.begin() + i);
+                    spawner.enemies.erase(spawner.enemies.begin() + i);
                     player->addExp(20);
                 }
 
-                if (enemiesToSpawn.empty()) {
+                if (spawner.enemies.empty()) {
                     round++;
-                    enemiesToSpawn.clear();
-                    Bullet* tmp = bullets[0];
-                    bullets.clear();
-                    bullets.push_back(tmp);
-                    enemiesToSpawn = addEnemies(round * 2 + 5);
+                    spawner.enemies.clear();
+                    Bullet* tmp = spawner.bullets[0];
+                    spawner.bullets.clear();
+                    spawner.bullets.push_back(tmp);
+                    spawner.spawnEnemies(round * 2 + 5, rand() % 3);
+                    
+                     // enemiesToSpawn = addEnemies(round * 2 + 5);
                 }
             }
 
@@ -225,7 +233,7 @@ void Game::start() {
             level->draw(*window.get());
             printRound(round);
 
-            for(auto &elem : enemiesToSpawn) {
+            for(auto &elem : spawner.enemies) {
                 window->draw(elem->getSprite());
             }
 
@@ -234,10 +242,10 @@ void Game::start() {
             window->draw(player->getSprite());
             healthBar.draw(window.get());
 
-            for (auto& elem : bullets) {
+            for (auto& elem : spawner.bullets) {
                 if (!elem->getCooldown().elapsed()) {
                     if (!level->checkBulletCollision(direction, *elem)) {
-                        if (elem != bullets[0]) {
+                        if (elem != spawner.bullets[0]) {
                             if (player->getShieldState()) {
                                 if (elem->getCollider().onCollision(player->getShieldCollider())) {
                                     elem->hide();
@@ -274,9 +282,9 @@ void Game::getActionFromUser() {
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::P)) {
-        if (bullets[0]->getCooldown().elapsed()) {
-            bullets[0]->restart(player->getPosition() );
-            bullets[0]->setDirection(player);
+        if (spawner.bullets[0]->getCooldown().elapsed()) {
+            spawner.bullets[0]->restart(player->getPosition() );
+            spawner.bullets[0]->setDirection(player);
         }
     }
 
@@ -300,7 +308,7 @@ void Game::getActionFromUser() {
     }
 
     if (player->refresh())
-        bullets[0]->upgrade(player->getLevel());
+        spawner.bullets[0]->upgrade(player->getLevel());
 
     healthBar.update(player);
   
@@ -311,7 +319,7 @@ void Game::getActionFromUser() {
       
 }
 
-
+/*
 bool Game::loadEnemiesTextures(std::vector<std::string>& textures)
 {
     for (int i = 0; i < textures.size(); i++) {
@@ -323,8 +331,10 @@ bool Game::loadEnemiesTextures(std::vector<std::string>& textures)
     }
     return 1;
 }
-
+*/
 Game::~Game() {
-    enemiesToSpawn.clear(); 
-    bullets.clear();
+ //   enemiesToSpawn.clear(); 
+ //   bullets.clear();
+    spawner.bullets.clear();
+    spawner.enemies.clear();
 }  

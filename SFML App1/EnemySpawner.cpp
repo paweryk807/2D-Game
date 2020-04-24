@@ -1,19 +1,21 @@
 #include "EnemySpawner.h"
 
-EnemySpawner::EnemySpawner(std::chrono::minutes minutes) {
+EnemySpawner::EnemySpawner(std::chrono::seconds minutes) {
 	time = minutes;
 }
 
-bool const EnemySpawner::elapsed() noexcept
+bool EnemySpawner::elapsed() const noexcept
 {
 	std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
-	return (time.count() <= std::chrono::duration_cast<std::chrono::minutes>(now - begin).count());
+	return (time.count() <= std::chrono::duration_cast<std::chrono::seconds>(now - begin).count());
 }
 
 
 void EnemySpawner::spawnEnemies(int value, int type)
 {
-    std::vector<Soldier*> toSpawn;
+    enemies.clear();
+    enemies.reserve(value);
+    //std::vector<Soldier*> toSpawn;
     std::vector<std::string> tmp;
     bullets.reserve(value);
     for (int i = 0; i < value; i++) {
@@ -22,25 +24,28 @@ void EnemySpawner::spawnEnemies(int value, int type)
         //int type = std::rand() % 4;
         switch (type) {
         case 0: //BLUE
-            tmp = std::move(TYPE_0);
+            tmp = { "images/Blue/Gunner_Blue_Idle.png", "images/Blue/Gunner_Blue_Run.png", "images/Blue/Gunner_Blue_Jump.png", "images/Blue/Gunner_Blue_Death.png" };
             break;
         case 1: //RED
-            tmp = std::move(TYPE_1);
+            tmp = { "images/Red/Gunner_Red_Idle.png", "images/Red/Gunner_Red_Run.png", "images/Red/Gunner_Red_Jump.png", "images/Red/Gunner_Red_Death.png" };
             break;
         case 2: //YELLOW
-            tmp = std::move(TYPE_2);
+            tmp = { "images/Yellow/Gunner_Yellow_Idle.png", "images/Yellow/Gunner_Yellow_Run.png", "images/Yellow/Gunner_Yellow_Jump.png", "images/Yellow/Gunner_Yellow_Death.png" };
             break;
         case 3: //GREEN
-            tmp = std::move(TYPE_3);
+            tmp = { "images/Green/Gunner_Green_Idle.png", "images/Green/Gunner_Green_Run.png", "images/Green/Gunner_Green_Jump.png", "images/Green/Gunner_Green_Death.png" };
             break;
         default:
             throw std::exception("Bad enemy type param.");
             break;
         }
-        toSpawn.push_back(new Soldier(tmp));
-        toSpawn[i]->correctPosition(sf::Vector2f(120 + rand() % 3, 570 + rand() % 5));  //toSpawn[i]->getPosition().x - i * 2, toSpawn[i]->getPosition().y)
-        bullets.push_back(new Bullet(toSpawn[i]->getPosition(), 11.f));
-        toSpawn[i]->addAmmunition(*bullets[bullets.size() - 1]);
+        enemies.push_back(new Soldier(tmp));
+        enemies[i]->correctPosition(sf::Vector2f(120 + rand() % 3, 570 + rand() % 5));  //toSpawn[i]->getPosition().x - i * 2, toSpawn[i]->getPosition().y)
+        bullets.push_back(new Bullet(enemies[i]->getPosition(), 11.f));
+        enemies[i]->addAmmunition(*bullets[bullets.size() - 1]);
     }
 }
+
+
+
 
