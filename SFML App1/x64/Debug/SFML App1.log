@@ -1,11 +1,2 @@
-﻿  Game.cpp
-B:\GitHub\2D-Game\SFML App1\Enemy.h(5,1): warning C4005: "DEFAULT_PATH": ponowna definicja makra
-B:\GitHub\2D-Game\SFML App1\Player.h(5): message : zobacz poprzednią definicję „DEFAULT_PATH”
-B:\GitHub\2D-Game\SFML App1\Game.cpp(181,67): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-B:\GitHub\2D-Game\SFML App1\Game.cpp(183,67): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-B:\GitHub\2D-Game\SFML App1\Game.cpp(187,63): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-B:\GitHub\2D-Game\SFML App1\Game.cpp(255,71): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-B:\GitHub\2D-Game\SFML App1\Game.cpp(304,49): warning C4305: "argument": obcięcie z "double" do "float"
-B:\GitHub\2D-Game\SFML App1\Game.cpp(304,50): warning C4305: "argument": obcięcie z "double" do "float"
-B:\GitHub\2D-Game\SFML App1\Game.cpp(307,50): warning C4305: "argument": obcięcie z "double" do "float"
+﻿  Timer.cpp
   SFML App1.vcxproj -> B:\GitHub\2D-Game\x64\Debug\2D-Game.exe

@@ -38,15 +38,15 @@ bool Menu::restarted() {
 	}
 	return restart;
 }
-void Menu::drawMenu(sf::RenderWindow& window) {
+void Menu::drawMenu(sf::RenderWindow* window) {
 	for (int i = 1; i < menu.size(); i++) {
-		window.draw(menu[i]);
+		window->draw(menu[i]);
 	}
 }
 
-void Menu::drawInGameMenu(sf::RenderWindow& window) {
+void Menu::drawInGameMenu(sf::RenderWindow* window) {
 	for(auto elem : menu){
-		window.draw(elem);
+		window->draw(elem);
 	}
 }
 
@@ -59,13 +59,13 @@ void Menu::gameStarted() {
 void Menu::gameRunning() {
 }
 
-void Menu::drawOptions(sf::RenderWindow& window) {
+void Menu::drawOptions(sf::RenderWindow* window) {
 	std::string optionsMenu = { };
 
 
 }
 
-void Menu::drawScoreboard(sf::RenderWindow& window) {
+void Menu::drawScoreboard(sf::RenderWindow* window) {
 
 }
 
@@ -103,14 +103,14 @@ sf::Font Menu::getFont() {
 	return font;
 }
 
-bool Menu::handle(sf::RenderWindow& window, sf::View view, bool started) {
+bool Menu::handle(sf::RenderWindow* window, sf::View view, bool started) {
 	bool esc = false;
 	restart = esc;
 	if (!started && current < 1) moveDown();
-	while (!esc && window.isOpen())
+	while (!esc && window->isOpen())
 	{
 		sf::Event event;
-		while (window.pollEvent(event))
+		while (window->pollEvent(event))
 		{
 			switch (event.type)
 			{
@@ -127,13 +127,13 @@ bool Menu::handle(sf::RenderWindow& window, sf::View view, bool started) {
 						return false;
 					}
 					else {
-						window.close();
+						window->close();
 					}
 					break;
 				case sf::Keyboard::Enter:
 					if(instruction(window)) {
 						esc = true;	
-						window.close();	
+						window->close();	
 
 
 					}
@@ -144,14 +144,14 @@ bool Menu::handle(sf::RenderWindow& window, sf::View view, bool started) {
 				}
 				break;
 			case sf::Event::Closed:
-				window.close();
+				window->close();
 				break;
 			case sf::Event::Resized:
-                ResizeView(window, view);
+				ResizeView(*window, view);
             break;
 			}
 		}
-		window.clear();
+		window->clear();
 		if (!started) {
 			drawMenu(window);
 		}
@@ -159,12 +159,12 @@ bool Menu::handle(sf::RenderWindow& window, sf::View view, bool started) {
 			drawInGameMenu(window);
 		}
 
-		window.display();
+		window->display();
 	}
 	return 1;
 }
 
-bool Menu::instruction(sf::RenderWindow& window) {
+bool Menu::instruction(sf::RenderWindow* window) {
 	switch (current) {
 	case 0:
 		break;
@@ -172,13 +172,13 @@ bool Menu::instruction(sf::RenderWindow& window) {
 		restart = true;
 		break;
 	case 2:
-		while (window.isOpen()) {
+		while (window->isOpen()) {
 			drawOptions(window);
 
 		}
 		break;
 	case 3:
-		while (window.isOpen()) {
+		while (window->isOpen()) {
 			drawScoreboard(window);
 		}
 		break;

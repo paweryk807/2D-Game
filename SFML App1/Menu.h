@@ -22,19 +22,19 @@ class Menu
 public:
 	Menu();
 	bool restarted();
-	void drawMenu(sf::RenderWindow& window);
+	void drawMenu(sf::RenderWindow* window);
 	//void changeMenu(bool started, bool change);
-	void drawInGameMenu(sf::RenderWindow& window);
-	void drawScoreboard(sf::RenderWindow& window);
+	void drawInGameMenu(sf::RenderWindow* window);
+	void drawScoreboard(sf::RenderWindow* window);
 	void gameRunning();
 	void gameStarted();
-	void drawOptions(sf::RenderWindow& window);
+	void drawOptions(sf::RenderWindow* window);
 	bool moveUp(bool started);
 	bool moveDown();
 	sf::Font getFont();
 	bool loadFont(const std::string& fontPath);
-	bool handle(sf::RenderWindow& window, sf::View view, bool started);
-	bool instruction(sf::RenderWindow& window);
+	bool handle(sf::RenderWindow* window, sf::View view, bool started);
+	bool instruction(sf::RenderWindow* window);
 	~Menu() = default;
 };
 

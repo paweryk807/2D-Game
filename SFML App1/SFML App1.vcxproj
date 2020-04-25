@@ -197,6 +197,7 @@
     <ClCompile Include="Soldier.cpp" />
     <ClCompile Include="SoldierAnimation.cpp" />
     <ClCompile Include="TileMap.cpp" />
+    <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
@@ -218,6 +219,7 @@
     <ClInclude Include="Soldier.h" />
     <ClInclude Include="SoldierAnimation.h" />
     <ClInclude Include="TileMap.h" />
+    <ClInclude Include="Timer.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

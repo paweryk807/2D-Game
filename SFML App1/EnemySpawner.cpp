@@ -1,21 +1,35 @@
 #include "EnemySpawner.h"
 
-EnemySpawner::EnemySpawner(std::chrono::seconds minutes) {
-	time = minutes;
+
+
+
+EnemySpawner::EnemySpawner() : EnemySpawner(std::chrono::seconds(10)) {}
+EnemySpawner::EnemySpawner(std::chrono::seconds seconds) : timer(seconds) {}
+
+Timer& EnemySpawner::getTimer()
+{
+    return timer;
 }
 
+/*
 bool EnemySpawner::elapsed() const noexcept
 {
 	std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
 	return (time.count() <= std::chrono::duration_cast<std::chrono::seconds>(now - begin).count());
 }
-
+/*
+void EnemySpawner::refresher() noexcept
+{
+    std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
+    timeLeft.setString(std::to_string(time.count() - std::chrono::duration_cast<std::chrono::seconds>(now - begin).count()) + " seconds left");
+}
+*/
 
 void EnemySpawner::spawnEnemies(int value, int type)
 {
+    timer.setBegin();
     enemies.clear();
     enemies.reserve(value);
-    //std::vector<Soldier*> toSpawn;
     std::vector<std::string> tmp;
     bullets.reserve(value);
     for (int i = 0; i < value; i++) {

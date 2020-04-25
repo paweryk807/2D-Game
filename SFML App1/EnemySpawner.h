@@ -3,21 +3,24 @@
 #include <vector>
 #include "Soldier.h"
 #include "bullet.h"
+#include "Timer.h"
 
-//ENEMY TYPES
 
 class EnemySpawner
 {
-	std::chrono::seconds time; // Na runde 
-	std::chrono::steady_clock::time_point begin;
-
+private:
+	Timer timer;
 public:
 	std::vector<Soldier*> enemies;
 	std::vector<Bullet*> bullets;
+	
+	//void drawTimer(sf::RenderWindow* window) const noexcept;
+	EnemySpawner();
+	EnemySpawner(std::chrono::seconds seconds);
+	Timer& getTimer();
+	//bool elapsed() const noexcept;
+	//void refresher() noexcept;
 
-
-	EnemySpawner(std::chrono::seconds minutes);
-	bool elapsed() const noexcept;
 	void spawnEnemies(int value, int type);
 	//std::vector<Soldier*>* getEnemies() const noexcept;
 	//std::vector<Bullet*>* getBullets() const noexcept;

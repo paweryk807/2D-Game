@@ -48,7 +48,7 @@ void Game::restart() {
 }
 
 void Game::run() {
-    if (!menu.handle(*window.get(), view, started)) {
+    if (!menu.handle(window.get(), view, started)) {
        start();	
     }
 }
@@ -140,7 +140,7 @@ void Game::start() {
             case sf::Event::KeyReleased:
                 if (event.key.code == sf::Keyboard::Escape) {
                     if (!pause) {
-                        pause = (menu.handle(*window.get(), view, started));
+                        pause = (menu.handle(window.get(), view, started));
                     }
                     else {
                         pause = true;
@@ -166,7 +166,7 @@ void Game::start() {
         window->clear();
 
         if(!window->hasFocus())
-            pause = (menu.handle(*window.get(), view, started));
+            pause = (menu.handle(window.get(), view, started));
 
         if (!pause) {
             getActionFromUser();
@@ -186,9 +186,9 @@ void Game::start() {
                     else if (spawner.enemies[i]->getHealth() > 0 && spawner.enemies[i]->getCollider().checkCollision(player->getCollider(), direction, 0.5f)) {
                         player->setHealth(player->getHealth() - 0.5);
                     }
-                    if (player->getHealth() <= 0) {
+                    if (player->getHealth() <= 0 || spawner.getTimer().elapsed()) {
                         pause = true;
-                        menu.handle(*window.get(), view, false);
+                        menu.handle(window.get(), view, false);
                         break;
                     }
                     level->checkCollision(direction, spawner.enemies[i]);
@@ -229,9 +229,11 @@ void Game::start() {
                 }
             }
 
-            
+            spawner.getTimer().refresher();
+         
             level->draw(*window.get());
-            printRound(round);
+            printRound(round);   
+            spawner.getTimer().drawTimer(window.get());
 
             for(auto &elem : spawner.enemies) {
                 window->draw(elem->getSprite());
