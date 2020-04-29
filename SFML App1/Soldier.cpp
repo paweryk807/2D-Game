@@ -155,14 +155,10 @@ bool Soldier::refresh(const Player& player, bool wall) {
 				bullet->setDirection(this);
 			}
 		}
-		//else bullet->refresh();
 
-
-
-		//velocity.x = 0.0f;
 		velocity.y += 0.9810f * 1.0f;	
 		sprite.move(velocity.x, velocity.y);
-
+		velocity.x = 0.0f;
 		if (velocity.y > 17.0f) {
 			velocity.y = 9.81 * 1.6f;
 		}

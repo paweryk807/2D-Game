@@ -1,12 +1,10 @@
 #include "Game.h"
 
-Game::Game(sf::View& view, std::vector<std::string>& enemiesTextures, const std::string& playerT) : view(view), healthBar(100), spawner(std::chrono::seconds(45)) {
-  //  this->enemiesTextures = enemiesTextures;
+Game::Game(sf::View& view, std::vector<std::string>& enemiesTextures, const std::string& playerT) : view(view), hud(100), spawner(std::chrono::seconds(45)) {
     loadTexture(playerT);
-   // level = std::unique_ptr<Level>{ new Level(sf::Vector2f(1920.f,1080.f), BACKGROUND_1) };
     level = std::unique_ptr<Map>{ new Map(3600,"level.txt") };
     player = new Player(playerTexture);
-    healthBar.setValue(player->getHealth());
+    hud.setValue(player->getHealth());
     window = std::unique_ptr<sf::RenderWindow>{ new sf::RenderWindow(sf::VideoMode(1920, 1080), "The 2D-Game!", sf::Style::Fullscreen | sf::Style::Resize) };
     window->setKeyRepeatEnabled(false);
     window->setFramerateLimit(60);
@@ -15,13 +13,7 @@ Game::Game(sf::View& view, std::vector<std::string>& enemiesTextures, const std:
     window->setView(view);
     started = false;
     pause = false;
-    int round = 0;
-    font.loadFromFile(FONT_PATH);
-    object.setFont(font);
-    object.setFillColor(sf::Color::Magenta);
-    object.setScale(1.f,1.f);
-    object.setOutlineThickness(0.5f);
-    object.setOutlineColor(sf::Color::White);
+
 }
 
 void Game::gameOver()
@@ -55,14 +47,9 @@ bool Game::loadTexture(const std::string& texture) {
 void Game::restart() {
     spawner.enemies.clear();
     spawner.bullets.clear();
-   // enemiesToSpawn.clear();   
-   //  bullets.clear();
-    //bullets.clear();
     pause = false; 
 	player->reset();	
     spawner.bullets.push_back(new Bullet(player->getPosition()));
-    //bullets.push_back(new Bullet(player->getPosition()));
-  //  enemiesToSpawn = addEnemies(5);
     spawner.spawnEnemies(5, 0);
     start();
 }
@@ -80,57 +67,6 @@ void Game::generateLevel() {
 
     */
 }
-/*
-std::vector<Soldier*> Game::addEnemies(const int enemiesToSpawn) {
-    std::vector<Soldier*> toSpawn;
-    std::vector<std::string> tmp;
-    bullets.reserve(enemiesToSpawn);
-    for (int i = 0; i < enemiesToSpawn; i++) {
-           tmp.clear();
-           /*  RANDOM TYPE SET  */
-/*
-           int type = std::rand() % 4;
-     switch (type) {
-        case 0: //BLUE
-            for (int a = 0; a < 4; a++) {
-                tmp.push_back(enemiesTextures[a]);
-            }
-         break;        
-        case 1: //RED
-            for (int a = 4; a < 8; a++) {
-                tmp.push_back(enemiesTextures[a]);
-            }
-            break;
-        case 2: //YELLOW
-            for (int a = 8; a < 12; a++) {
-                tmp.push_back(enemiesTextures[a]);
-            }
-            break;
-        case 3: //GREEN
-            for (int a = 12; a < 16; a++) {
-                tmp.push_back(enemiesTextures[a]);
-            }
-            break;
-        default:
-            throw std::exception("Bad enemy type");
-            break;            
-        } 
-      toSpawn.push_back(new Soldier(tmp));
-      toSpawn[i]->correctPosition(sf::Vector2f(120 + rand() % 3,570 + rand() % 5));  //toSpawn[i]->getPosition().x - i * 2, toSpawn[i]->getPosition().y)
-      bullets.push_back(new Bullet(toSpawn[i]->getPosition(), 11.f));
-      toSpawn[i]->addAmmunition(*bullets[bullets.size()-1]);
-    }       
-    return toSpawn;
-
-}
-*/
-void Game::printRound(int number) {
-    std::string round = "Round : ";// + static_cast<char>(number);
-    round += std::to_string(number);
-    object.setString(round);
-    object.setPosition(sf::Vector2f(WIDTH/2 - (round.length()+1.5f) *10, ((HEIGHT/2)/6))); // /6 dla symetrii
-    window->draw(object);
-}
 
 void Game::start() {
     /* GENERATOR LICZB LOSOWYCH */
@@ -146,7 +82,7 @@ void Game::start() {
     sf::Texture sst;
     sst.create(window.get()->getSize().x, window.get()->getSize().y);
     int number = 0;
-    int round = 1;
+    round = 1;
     generateLevel(); //             <------ Zrobic predefiniowane levele w switchu 
 
     while (window->isOpen())
@@ -173,7 +109,7 @@ void Game::start() {
 
                     sst.update(*window);
                     ss = sst.copyToImage();
-                    std::string filename = "screenshots/screenshot_" + std::to_string(number) + ".png";
+                    std::string filename = "screenshots/screenshot_" + std::to_string(dist(mt)) + std::to_string(dist(mt)) + std::to_string(dist(mt)) + "_" + std::to_string(number) + ".png";
                     ss.saveToFile(filename);
                     number++;
                 }
@@ -198,9 +134,9 @@ void Game::start() {
             getActionFromUser();
             for (int i = 0; i < spawner.enemies.size(); i++) {
                 if (spawner.enemies[i]->refresh(*player, level->wall(spawner.enemies[i]))) {
-                  if (level->checkPosition(spawner.enemies[i])) {
-                       spawner.enemies[i]->correctPosition(level->getSize());
-                     }
+                    if (level->checkPosition(spawner.enemies[i])) {
+                        spawner.enemies[i]->correctPosition(level->getSize());
+                    }
 
                     if (player->getShieldState()) {
                         if (spawner.enemies[i]->getHealth() > 0 && spawner.enemies[i]->getCollider().checkCollision(player->getShieldCollider(), direction, 1.0f))
@@ -213,8 +149,9 @@ void Game::start() {
                         player->setHealth(player->getHealth() - 0.5);
                     }
                     if (player->getHealth() <= 0 || spawner.getTimer().elapsed()) {
-                        gameOver();
-                        menu.addToScores(window.get(), score);
+                        //gameOver();
+                        spawner.getTimer().stop();
+                        // menu.addToScores(window.get(), score);
                         pause = true;
                         menu.handle(window.get(), view, false);
                         break;
@@ -237,7 +174,7 @@ void Game::start() {
                                 if (spawner.enemies[n]->getHealth() > 0)  // jesli ktorys inny
                                     if (spawner.enemies[i]->getCollider().checkCollision(spawner.enemies[n]->getCollider(), direction, 1.0f))
                                         if (spawner.enemies[i]->getPosition().y != spawner.enemies[n]->getPosition().y && abs(spawner.enemies[i]->getPosition().x - spawner.enemies[n]->getPosition().x) < 40)
-                                        spawner.enemies[i]->setSpeed(0.5, sf::seconds(0.51));
+                                            spawner.enemies[i]->setSpeed(0.5, sf::seconds(0.51));
                             }
                         }
                     }
@@ -256,24 +193,16 @@ void Game::start() {
                     spawner.bullets.clear();
                     spawner.bullets.push_back(tmp);
                     spawner.spawnEnemies(round * 2 + 5, dist(mt));
-                    spawner.getTimer().setTime(std::chrono::seconds(45 + round * 2));
+                    spawner.getTimer().setTime(std::chrono::seconds(45  + round * 2 * dist(mt)));
+                    spawner.getTimer().start();
+
                 }
             }
-
             spawner.getTimer().refresher();
-         
-            level->draw(*window.get());
-            printRound(round);   
-            spawner.getTimer().drawTimer(window.get());
+            hud.update(player, &spawner.getTimer(), round, score);
+            window->draw(*level);
+            window->draw(hud);
 
-            for(auto &elem : spawner.enemies) {
-                window->draw(elem->getSprite());
-            }
-
-            if (player->getShieldState()) 
-                window->draw(player->getShield());
-            window->draw(player->getSprite());
-            healthBar.draw(window.get());
 
             for (auto& elem : spawner.bullets) {
                 if (!elem->getCooldown().elapsed()) {
@@ -289,10 +218,14 @@ void Game::start() {
                             }
                         }
                         elem->refresh();
-                        window->draw(elem->getSprite());
+                        window->draw(*elem);
                     }
                 }
             }
+            for (auto& elem : spawner.enemies) {
+                window->draw(*elem);
+            }
+            window->draw(*player);
         }
 
         if (menu.restarted()) {
@@ -301,6 +234,7 @@ void Game::start() {
         window->display();
     }
 }
+
 
 
 void Game::getActionFromUser() {
@@ -342,9 +276,7 @@ void Game::getActionFromUser() {
 
     if (player->refresh())
         spawner.bullets[0]->upgrade(player->getLevel());
-
-    healthBar.update(player);
-  
+ 
     if (!level->checkPosition(player)) {
         player->correctPosition(level->getSize());
     }
@@ -352,22 +284,8 @@ void Game::getActionFromUser() {
       
 }
 
-/*
-bool Game::loadEnemiesTextures(std::vector<std::string>& textures)
-{
-    for (int i = 0; i < textures.size(); i++) {
-        sf::Texture texture;
-        if (!texture.loadFromFile(textures[i].data())) {
-            throw std::exception("unable to open texture file");
-            return 0;
-        }
-    }
-    return 1;
-}
-*/
 Game::~Game() {
- //   enemiesToSpawn.clear(); 
- //   bullets.clear();
+    delete player;
     spawner.bullets.clear();
     spawner.enemies.clear();
 }  

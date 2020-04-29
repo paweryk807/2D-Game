@@ -9,7 +9,7 @@
 #include "Functions.h"
 #include "Map.h"
 #include "bullet.h"
-#include "HealthBar.h"
+#include "HUD.h"
 #include "EnemySpawner.h"
 #define PLATFORM_PATH "images/sheet.png"
 #define BACKGROUND_1 "images/bg.jpg"//background.jpg"
@@ -20,7 +20,7 @@ class Game
 	std::unique_ptr<sf::RenderWindow> window;
 	std::unique_ptr<Map> level;
 	Player* player;
-	HealthBar healthBar;
+	HUD hud;
 	EnemySpawner spawner;
 	sf::View view;
 	sf::Texture playerTexture;
@@ -28,6 +28,7 @@ class Game
 	bool started;
 	bool pause;
 
+	unsigned int round;
 	unsigned int score;
 
 	// RUNDY 

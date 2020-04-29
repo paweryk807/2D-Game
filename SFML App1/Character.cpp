@@ -129,26 +129,18 @@ void Character::moveLeft() {
 }
 
 void Character::refresh() {
+	
 	sprite.move(velocity.x, velocity.y);
-	/*if (velocity.x > 0.0f) {
-		animation.rotateSprite(sprite, 'r');
-	}
-	if(velocity.x < 0.0f) {
-		animation.rotateSprite(sprite, 'l');
-	}
-	if (velocity.y > 0.0f) {
-		onAir = true;
-		animation.jump(32, 6 * 32, 8 * 32, sprite, velocity);
-	}*/
+
 	if(velocity.y  != 0.0f ) {
 		onAir = true;
 		canJump = false;
-		//animation.jump(32, 6 * 32, 8 * 32, sprite, velocity);
 	}
+
 	velocity.x = 0.0f;
 	velocity.y += 0.9810f * 1.0f;
 	if (velocity.y > 17.0f) {
-		velocity.y = 9.81 * 1.6f;
+		velocity.y = 9.81f;
 	}	
 }
 
@@ -201,6 +193,11 @@ void Character::correctPosition(sf::Vector2f size) {
 	else if(y > size.y) {
 		sprite.setPosition(sprite.getPosition().x, size.y);
 	}
+}
+
+void Character::draw(sf::RenderTarget& target, sf::RenderStates state) const
+{
+	target.draw(sprite);
 }
 
 Collider Character::getCollider() {

@@ -184,7 +184,7 @@
     <ClCompile Include="Cooldown.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemySpawner.cpp" />
-    <ClCompile Include="HealthBar.cpp" />
+    <ClCompile Include="HUD.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="CharacterAnimation.cpp" />
@@ -206,7 +206,7 @@
     <ClInclude Include="Cooldown.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemySpawner.h" />
-    <ClInclude Include="HealthBar.h" />
+    <ClInclude Include="HUD.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="CharacterAnimation.h" />

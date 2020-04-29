@@ -5,8 +5,7 @@
 #define TIME_FONT_PATH  "fonts/Schaeffer.ttf"
 
 class Timer {
-	sf::Font font;
-	sf::Text timeLeft;
+	sf::String timeLeft;
 	std::chrono::seconds time; // Na runde 
 	std::chrono::steady_clock::time_point begin;
 	bool disabled;
@@ -19,12 +18,11 @@ public:
 	void setTime(std::chrono::seconds seconds) noexcept;
 	void stop() noexcept;
 	void start() noexcept;
-	friend class EnemySpawner;
+	sf::String getTimeString();
 	void refresher() noexcept;
-	void drawTimer(sf::RenderWindow* window) const noexcept;
 	bool elapsed() noexcept;
 
 	unsigned int getCountedTime();
-
+	~Timer() = default;
 };
 

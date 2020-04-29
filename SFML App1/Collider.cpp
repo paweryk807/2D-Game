@@ -73,7 +73,7 @@
         float intersectionX = abs(deltaX) - (otherHalfSize.x + thisHalfSize.x);
         float intersectionY = abs(deltaY) - (otherHalfSize.y + thisHalfSize.y);
 
-        return (intersectionX < 0.0f || intersectionY < 0.0f);
+        return (intersectionX < 0.0f && intersectionY < 0.0f);
     }
 
 	sf::Vector2f Collider::getPosition() {

@@ -168,7 +168,17 @@ bool Map::checkPosition(Character* character)
 	}
 	return true;
 }
+/*
+TileMap Map::getTileMap()
+{
+	return tiles;
+}
 
+sf::RectangleShape Map::getBackground()
+{
+	return background;
+}
+*/
 bool Map::loadBackground(const std::string& texture) {
 	if (!backgroundTexture.loadFromFile(texture)) {
 		throw std::exception("unable to open texture file");
@@ -191,7 +201,8 @@ sf::Vector2f Map::getSize() const {
 	return sf::Vector2f(1279, 719);
 }
 
-void Map::draw(sf::RenderWindow& window) const {
-	window.draw(background);
-	window.draw(tiles);
+
+void Map::draw(sf::RenderTarget& target, sf::RenderStates state) const {
+	target.draw(background);
+	target.draw(tiles);
 }

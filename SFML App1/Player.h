@@ -32,6 +32,7 @@ public:
 	bool leveled();
 	void reset();
 	bool refresh();
+	virtual void draw(sf::RenderTarget& target, sf::RenderStates state) const;
 	void moveDown();
 	void moveRight();
 	void moveLeft();

@@ -11,23 +11,13 @@ Timer& EnemySpawner::getTimer()
     return timer;
 }
 
-/*
-bool EnemySpawner::elapsed() const noexcept
-{
-	std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
-	return (time.count() <= std::chrono::duration_cast<std::chrono::seconds>(now - begin).count());
+void EnemySpawner::setTime(std::chrono::seconds seconds) {
+    timer.setTime(seconds);
 }
-/*
-void EnemySpawner::refresher() noexcept
-{
-    std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
-    timeLeft.setString(std::to_string(time.count() - std::chrono::duration_cast<std::chrono::seconds>(now - begin).count()) + " seconds left");
-}
-*/
 
 void EnemySpawner::spawnEnemies(int value, int type)
 {
-    timer.setBegin();
+    timer.start();
     enemies.clear();
     enemies.reserve(value);
     std::vector<std::string> tmp;
@@ -59,7 +49,6 @@ void EnemySpawner::spawnEnemies(int value, int type)
         enemies[i]->addAmmunition(*bullets[bullets.size() - 1]);
     }
 }
-
 
 
 

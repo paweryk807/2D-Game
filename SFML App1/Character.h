@@ -4,7 +4,7 @@
 #include "Collider.h"
 #include<string>
 #include<iostream>
-class Character
+class Character : public sf::Drawable
 {
 private:
 	float health;
@@ -48,10 +48,10 @@ public:
 	void onCollision(sf::Vector2f direction);
 	void setSpeed(float temp);
 	void correctPosition(sf::Vector2f);
+	virtual void draw(sf::RenderTarget& target, sf::RenderStates state) const;
 	sf::Vector2f getPosition() const;
 	sf::RectangleShape getSprite() const;
 	Collider getCollider();
-
 
 };
 

@@ -5,7 +5,7 @@
 #include "Platform.h"
 #include "Character.h"
 #include "Bullet.h"
-class Map {
+class Map : public sf::Drawable {
 	unsigned int* tab;
 	TileMap tiles;
 	std::vector<Platform*> platforms;
@@ -18,14 +18,15 @@ class Map {
 
 	//Collider* colliderTab;
 public: 
-	Map() = delete;
+	//Map() = delete;
 	Map(unsigned int sizeParam, const std::string& lvlDirectory);
 	sf::Vector2f getSize() const;
 	bool wall(Character* character) const;
 	bool checkCollision(sf::Vector2f direction, Character* character) const;
 	bool checkBulletCollision(sf::Vector2f direction, Bullet& bullet) const;
 	bool checkPosition(Character* character);
-
-	void draw(sf::RenderWindow& window) const;
+	//TileMap getTileMap();//
+	void draw(sf::RenderTarget& target, sf::RenderStates) const;
+	//sf::RectangleShape getBackground();
 };
 

@@ -6,7 +6,6 @@ Bullet::Bullet(sf::Vector2f startPos) {
 		sprite.setRadius(3.0f);
 		sprite.setFillColor(sf::Color::Yellow);
 		sprite.setOutlineColor(sf::Color::Red);
-		//sprite.setTexture(&texture); 
 		sprite.setPosition(startPos.x, startPos.y - 5.f);
 		velocity = sf::Vector2f(10.0f, 0.0f);
 		animation.setAnimTime(sf::seconds(0.5f));
@@ -15,9 +14,7 @@ Bullet::Bullet(sf::Vector2f startPos) {
 		colid.setSize(cSize);
 		colid.setPosition(startPos.x, startPos.y - 5.f);
 		colid.setOrigin(cSize / 2.0f);
-		
-		//rect = sf::IntRect(32, 32, 32, 32);  
-		//sprite.setTextureRect(rect);
+
 	}
 	catch (std::exception e) {
 		std::cerr << e.what();
@@ -30,7 +27,7 @@ Bullet::Bullet(sf::Vector2f startPos, float speed) {
 		sprite.setRadius(3.0f);
 		sprite.setFillColor(sf::Color::Cyan);
 		sprite.setOutlineColor(sf::Color::Magenta);
-		//sprite.setTexture(&texture); 
+		sprite.setTexture(&texture); 
 		sprite.setPosition(startPos.x, startPos.y - 5.f);
 		velocity = sf::Vector2f(speed, 0.0f);
 		animation.setAnimTime(sf::seconds(1.5f));
@@ -38,8 +35,8 @@ Bullet::Bullet(sf::Vector2f startPos, float speed) {
 		colid.setSize(cSize);
 		colid.setPosition(startPos.x, startPos.y - 5.f);
 		colid.setOrigin(cSize / 2.0f);
-		//rect = sf::IntRect(32, 32, 32, 32);  
-		//sprite.setTextureRect(rect);
+		sf::IntRect rect(64, 32, 32, 32);  
+		sprite.setTextureRect(rect);
 	}
 	catch (std::exception e) {
 		std::cerr << e.what();
@@ -131,6 +128,10 @@ void Bullet::hide() {
 	sprite.setPosition(colliderDirection);
 }
 
+void Bullet::draw(sf::RenderTarget& target, sf::RenderStates state) const {
+	target.draw(sprite);
+}
+
 sf::CircleShape Bullet::getSprite() {
 	return sprite;
 }
@@ -152,6 +153,7 @@ void Bullet::setVelocity(sf::Vector2f vel) {
 }
 
 Collider Bullet::getCollider() {
+	colid.setPosition(sprite.getPosition());
 	return Collider(colid);
 }
 

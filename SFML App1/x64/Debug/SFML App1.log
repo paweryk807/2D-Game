@@ -1,17 +1,14 @@
-﻿  Menu.cpp
-B:\GitHub\2D-Game\SFML App1\Menu.cpp(15,99): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-B:\GitHub\2D-Game\SFML App1\Menu.cpp(15,48): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-B:\GitHub\2D-Game\SFML App1\Menu.cpp(86,37): warning C4267: "inicjowanie": konwersja z "size_t" do "unsigned int", możliwa utrata danych
-B:\GitHub\2D-Game\SFML App1\Menu.cpp(117,69): warning C4244: "argument": konwersja z "unsigned int" do "float", możliwa utrata danych
-B:\GitHub\2D-Game\SFML App1\Menu.cpp(117,31): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-B:\GitHub\2D-Game\SFML App1\Menu.cpp(136,27): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-B:\GitHub\2D-Game\SFML App1\Menu.cpp(95): warning C4715: "Menu::loadScoreboard”: niewszystkie ścieżki kodu zwracają wartość
+﻿  Game.cpp
+B:\GitHub\2D-Game\SFML App1\Enemy.h(5,1): warning C4005: "DEFAULT_PATH": ponowna definicja makra
+B:\GitHub\2D-Game\SFML App1\Player.h(5): message : zobacz poprzednią definicję „DEFAULT_PATH”
+B:\GitHub\2D-Game\SFML App1\Game.cpp(27,14): warning C4244: "inicjowanie": konwersja z "float" do "int", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(28,32): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(143,67): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(145,67): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(149,63): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(177,95): warning C4305: "argument": obcięcie z "double" do "float"
+B:\GitHub\2D-Game\SFML App1\Game.cpp(220,71): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(274,49): warning C4305: "argument": obcięcie z "double" do "float"
+B:\GitHub\2D-Game\SFML App1\Game.cpp(274,50): warning C4305: "argument": obcięcie z "double" do "float"
+B:\GitHub\2D-Game\SFML App1\Game.cpp(277,50): warning C4305: "argument": obcięcie z "double" do "float"
   SFML App1.vcxproj -> B:\GitHub\2D-Game\x64\Debug\2D-Game.exe

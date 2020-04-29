@@ -5,7 +5,7 @@
 #include "Player.h"
 #define TEXTURE_PATH "images/bullets.png"
 
-class Bullet
+class Bullet : public sf::Drawable
 {
 	sf::Texture texture;
 	sf::CircleShape sprite; 
@@ -22,7 +22,8 @@ public:
 	void upgrade(int lvl);
 	bool hit(Character* character); 
 	void hide();
-	/*bool hit(Player* character);*/
+	virtual void draw(sf::RenderTarget& target, sf::RenderStates state) const;
+	//bool hit(Player* character);*/
 	void setDirection(Character* character);
 	sf::CircleShape getSprite();
 	sf::Vector2f getVelocity();

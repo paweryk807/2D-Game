@@ -4,7 +4,6 @@ void TileMap::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 	states.transform *= getTransform();
 	states.texture = &tileset;
 	target.draw(vertices, states);
-
 }
 
 bool TileMap::load(const std::string& tileSet, sf::Vector2u tileSize, const unsigned int* tiles, unsigned int width, unsigned int height) {
