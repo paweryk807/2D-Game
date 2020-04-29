@@ -9,16 +9,22 @@ class Timer {
 	sf::Text timeLeft;
 	std::chrono::seconds time; // Na runde 
 	std::chrono::steady_clock::time_point begin;
+	bool disabled;
+	void setBegin();
 
 public:		
-	void setBegin();
 
 	Timer() = delete;
 	Timer(std::chrono::seconds seconds);
+	void setTime(std::chrono::seconds seconds) noexcept;
+	void stop() noexcept;
+	void start() noexcept;
 	friend class EnemySpawner;
 	void refresher() noexcept;
 	void drawTimer(sf::RenderWindow* window) const noexcept;
-	bool elapsed();
+	bool elapsed() noexcept;
+
+	unsigned int getCountedTime();
 
 };
 

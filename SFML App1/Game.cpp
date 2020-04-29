@@ -24,6 +24,26 @@ Game::Game(sf::View& view, std::vector<std::string>& enemiesTextures, const std:
     object.setOutlineColor(sf::Color::White);
 }
 
+void Game::gameOver()
+{
+    std::chrono::seconds showTime(5);
+    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+    std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
+    sf::Text text;
+    text.setString("Game Over");
+    text.setCharacterSize(35);
+    int size = ((text.getString().getSize())/2 - 1) * (35 + text.getLetterSpacing());
+    text.setPosition(WIDTH / 2 - size, HEIGHT / 2);
+    text.setFont(font);
+    window->clear();
+    window->draw(text);
+    window->display();
+    do {
+        now = std::chrono::steady_clock::now();
+    } while (showTime.count() >= abs(std::chrono::duration_cast<std::chrono::seconds>(begin - now).count()));
+
+}
+
 bool Game::loadTexture(const std::string& texture) {
 	if (!playerTexture.loadFromFile(texture)) {
 		throw std::exception("unable to open texture file");
@@ -113,7 +133,12 @@ void Game::printRound(int number) {
 }
 
 void Game::start() {
-    //level->reset();
+    /* GENERATOR LICZB LOSOWYCH */
+    std::random_device rd;
+    std::mt19937 mt(rd());
+    std::uniform_int_distribution <unsigned int> dist(0, 3);
+    /*--------------------------*/
+
     started = true;
     sf::Vector2f direction;
 
@@ -121,9 +146,6 @@ void Game::start() {
     sf::Texture sst;
     sst.create(window.get()->getSize().x, window.get()->getSize().y);
     int number = 0;
-   // std::vector<Soldier*> enemiesToSpawn = std::move(spawner.enemies);
-    //std::vector<Bullet*> bullets = std::move(spawner.bullets);
-
     int round = 1;
     generateLevel(); //             <------ Zrobic predefiniowane levele w switchu 
 
@@ -139,6 +161,7 @@ void Game::start() {
                 break;
             case sf::Event::KeyReleased:
                 if (event.key.code == sf::Keyboard::Escape) {
+                    spawner.getTimer().stop();
                     if (!pause) {
                         pause = (menu.handle(window.get(), view, started));
                     }
@@ -158,23 +181,26 @@ void Game::start() {
                     player->setShieldState(!player->getShieldState());
                 }
                 break;
-             case sf::Event::Resized:
+            case sf::Event::Resized:
                 ResizeView(*window.get(), view);
                 break;
             }
         }
         window->clear();
 
-        if(!window->hasFocus())
+        if (!window->hasFocus()) {
+            spawner.getTimer().stop();
             pause = (menu.handle(window.get(), view, started));
+        }
 
         if (!pause) {
+            spawner.getTimer().start();
             getActionFromUser();
             for (int i = 0; i < spawner.enemies.size(); i++) {
                 if (spawner.enemies[i]->refresh(*player, level->wall(spawner.enemies[i]))) {
-                  //  if (level->checkPosition(enemiesToSpawn[i])) {
-                    //    enemiesToSpawn[i]->correctPosition(level->getSize());
-                  //  }
+                  if (level->checkPosition(spawner.enemies[i])) {
+                       spawner.enemies[i]->correctPosition(level->getSize());
+                     }
 
                     if (player->getShieldState()) {
                         if (spawner.enemies[i]->getHealth() > 0 && spawner.enemies[i]->getCollider().checkCollision(player->getShieldCollider(), direction, 1.0f))
@@ -183,10 +209,12 @@ void Game::start() {
                             player->setHealth(player->getHealth() - 0.25);
                         }
                     }
-                    else if (spawner.enemies[i]->getHealth() > 0 && spawner.enemies[i]->getCollider().checkCollision(player->getCollider(), direction, 0.5f)) {
+                    else if (spawner.enemies[i]->getHealth() > 0 && spawner.enemies[i]->getCollider().checkCollision(player->getCollider(), direction, 0.35f)) {
                         player->setHealth(player->getHealth() - 0.5);
                     }
                     if (player->getHealth() <= 0 || spawner.getTimer().elapsed()) {
+                        gameOver();
+                        menu.addToScores(window.get(), score);
                         pause = true;
                         menu.handle(window.get(), view, false);
                         break;
@@ -207,7 +235,9 @@ void Game::start() {
                         for (int n = i; n < spawner.enemies.size(); n++) {
                             if (n != i) {
                                 if (spawner.enemies[n]->getHealth() > 0)  // jesli ktorys inny
-                                    spawner.enemies[i]->getCollider().checkCollision(spawner.enemies[n]->getCollider(), direction, 1.0f);
+                                    if (spawner.enemies[i]->getCollider().checkCollision(spawner.enemies[n]->getCollider(), direction, 1.0f))
+                                        if (spawner.enemies[i]->getPosition().y != spawner.enemies[n]->getPosition().y && abs(spawner.enemies[i]->getPosition().x - spawner.enemies[n]->getPosition().x) < 40)
+                                        spawner.enemies[i]->setSpeed(0.5, sf::seconds(0.51));
                             }
                         }
                     }
@@ -215,17 +245,18 @@ void Game::start() {
                 else {
                     spawner.enemies.erase(spawner.enemies.begin() + i);
                     player->addExp(20);
+                    score += 20;
                 }
 
                 if (spawner.enemies.empty()) {
                     round++;
+                    score += spawner.getTimer().getCountedTime() * 100;
                     spawner.enemies.clear();
                     Bullet* tmp = spawner.bullets[0];
                     spawner.bullets.clear();
                     spawner.bullets.push_back(tmp);
-                    spawner.spawnEnemies(round * 2 + 5, rand() % 3);
-                    
-                     // enemiesToSpawn = addEnemies(round * 2 + 5);
+                    spawner.spawnEnemies(round * 2 + 5, dist(mt));
+                    spawner.getTimer().setTime(std::chrono::seconds(45 + round * 2));
                 }
             }
 

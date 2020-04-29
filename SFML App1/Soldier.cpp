@@ -100,7 +100,7 @@ bool Soldier::refresh(const Player& player, bool wall) {
 		}
 
 		if (velocity.y != 0.0f) {
-			setOnAir(true);
+			setOnAir(true); 
 			setCanJump(false);
 			sprite.setTexture(&texture[2]);
 			jump();
@@ -145,6 +145,7 @@ bool Soldier::refresh(const Player& player, bool wall) {
 			changed = true;
 
 		}	
+		setSpeed(2.f, sf::seconds(2.2 * 0.125));
 
 
 		/*SEKCJA STRZELANIA*/

@@ -2,6 +2,8 @@
 #include <time.h>
 #include <iostream>
 #include <stdexcept>
+#include <sstream>
+#include <random>
 #include "Soldier.h"
 #include "Menu.h"
 #include "Functions.h"
@@ -9,7 +11,6 @@
 #include "bullet.h"
 #include "HealthBar.h"
 #include "EnemySpawner.h"
-#include <sstream>
 #define PLATFORM_PATH "images/sheet.png"
 #define BACKGROUND_1 "images/bg.jpg"//background.jpg"
 //#define SHEET  "images/sheet.png"
@@ -20,15 +21,14 @@ class Game
 	std::unique_ptr<Map> level;
 	Player* player;
 	HealthBar healthBar;
-	//std::vector<Soldier*> enemiesToSpawn;
-	//std::vector<std::string> enemiesTextures;
-	//std::vector<Bullet*> bullets;
 	EnemySpawner spawner;
 	sf::View view;
 	sf::Texture playerTexture;
 	Menu menu;
 	bool started;
 	bool pause;
+
+	unsigned int score;
 
 	// RUNDY 
 	sf::Font font;
@@ -42,7 +42,7 @@ public:
 	void generateLevel();
 
 	//std::vector<Soldier*> addEnemies(const int enemiesToSpawn);
-	
+	void gameOver();
 	bool loadTexture(const std::string& texture);
 	//bool loadEnemiesTextures(std::vector<std::string>& textures);
 	void getActionFromUser();

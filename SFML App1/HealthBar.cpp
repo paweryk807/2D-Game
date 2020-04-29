@@ -13,7 +13,7 @@ HealthBar::HealthBar(float value) {
 		sprite.setScale(4, 4);
 		font.loadFromFile(FONT_PATH);
 		playerStats.setFont(font);
-		playerStats.setPosition(960, 620);
+		playerStats.setPosition(920, 620);
 		playerStats.setFillColor(sf::Color::Magenta);
 		playerStats.setString("STATS");
 		sf::Vector2f factors(0.75, 0.75);
