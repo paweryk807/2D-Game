@@ -41,15 +41,15 @@ bool Menu::restarted() {
 	}
 	return restart;
 }
-void Menu::drawMenu(sf::RenderWindow* window) {
+void Menu::drawMenu(sf::RenderWindow& window) {
 	for (int i = 1; i < menu.size(); i++) {
-		window->draw(menu[i]);
+		window.draw(menu[i]);
 	}
 }
 
-void Menu::drawInGameMenu(sf::RenderWindow* window) {
+void Menu::drawInGameMenu(sf::RenderWindow& window) {
 	for(auto elem : menu){
-		window->draw(elem);
+		window.draw(elem);
 	}
 
 }
@@ -63,7 +63,7 @@ void Menu::gameStarted() {
 void Menu::gameRunning() {
 }
 
-void Menu::drawOptions(sf::RenderWindow* window) {
+void Menu::drawOptions(sf::RenderWindow& window) {
 	std::string optionsMenu = { };
 
 
@@ -90,8 +90,33 @@ bool Menu::loadScoreboard() {
 			scores.push_back(std::make_tuple(tmp, stoi(score)));
 			i--;
 		}
+		plik.close();
+		return true;
+
 	}
-	plik.close();
+}
+
+bool Menu::saveScoreboard() {
+	std::ofstream plik;
+	plik.open(SCOREBOARD_PATH);
+	if (!plik.good() || !plik.is_open()) {
+		throw std::exception("Scoreboard load exception");
+		plik.close();
+		return false;
+	}
+	else {
+		std::string tmp;
+		for (auto& elem : scores) {
+			tmp = std::get<0>(elem).getString();
+			tmp.erase(tmp.length() - 1);
+			tmp+=";" + std::to_string(std::get<1>(elem));
+			plik << tmp;
+			if(!(std::get<0>(elem).getString() == std::get<0>(scores[scores.size() -1]).getString() && std::get<1>(elem) == std::get<1>(scores[scores.size() - 1])))
+				plik << std::endl;
+		}
+		plik.close();
+		return true;
+	}
 }
 
 bool Menu::sortScores() {
@@ -107,7 +132,8 @@ bool Menu::sortScores() {
 	return 0;
 }
 
-void Menu::drawScoreboard(sf::RenderWindow* window) {
+
+void Menu::drawScoreboard(sf::RenderWindow& window) {
 	sf::Text tmp;
 	sortScores();
 	unsigned int position = 1;
@@ -116,11 +142,11 @@ void Menu::drawScoreboard(sf::RenderWindow* window) {
 		tmp.setString(std::to_string(position) + ". " + tmp.getString() + std::to_string(std::get<1>(elem)));
 		tmp.setPosition(WIDTH * 0.5 - tmp.getString().getSize() * 10, 100 + position * 40);
 		position++;
-		window->draw(tmp);
+		window.draw(tmp);
 	}
 }
 
-bool Menu::addToScores(sf::RenderWindow* window,unsigned int score) {
+bool Menu::addToScores(sf::RenderWindow& window,unsigned int score) {
 	bool dataSet = false;
 	sf::String input;
 	sf::Text userName;
@@ -139,10 +165,10 @@ bool Menu::addToScores(sf::RenderWindow* window,unsigned int score) {
 
 	/*----------*/
 	if (scores.size() < 10) {
-		while (window->isOpen() && !dataSet)
+		while (window.isOpen() && !dataSet)
 		{
 			sf::Event event;
-			while (window->pollEvent(event) && !dataSet)
+			while (window.pollEvent(event) && !dataSet)
 			{ 
 				if (event.key.code == sf::Keyboard::BackSpace && input.getSize() > 0)
 					input.erase(input.getSize() - 1);
@@ -156,10 +182,10 @@ bool Menu::addToScores(sf::RenderWindow* window,unsigned int score) {
 				}
 
 			}
-			window->clear();
-			window->draw(fieldToPrint);
-			window->draw(userName);
-			window->display();
+			window.clear();
+			window.draw(fieldToPrint);
+			window.draw(userName);
+			window.display();
 		}
 		scores.push_back(std::make_tuple(userName, score));
 		return 1;
@@ -168,10 +194,10 @@ bool Menu::addToScores(sf::RenderWindow* window,unsigned int score) {
 		sortScores(); // zeby byly posortowane; 
 		for (auto& elem : scores) {
 			if (std::get<1>(elem) < score) {
-				while (window->isOpen() && !dataSet)
+				while (window.isOpen() && !dataSet)
 				{
 					sf::Event event;
-					while (window->pollEvent(event))
+					while (window.pollEvent(event))
 					{
 						if (event.type == sf::Event::TextEntered) {
 							input += event.text.unicode;
@@ -180,10 +206,10 @@ bool Menu::addToScores(sf::RenderWindow* window,unsigned int score) {
 						}
 
 					}
-					window->clear();
-					window->draw(fieldToPrint);
-					window->draw(userName);
-					window->display();
+					window.clear();
+					window.draw(fieldToPrint);
+					window.draw(userName);
+					window.display();
 				}
 				elem = std::make_tuple(userName, score);
 				return 1;
@@ -226,13 +252,13 @@ sf::Font Menu::getFont() {
 	return font;
 }
 
-bool Menu::handle(sf::RenderWindow* window, sf::View view, bool started) {
+bool Menu::handle(sf::RenderWindow& window, sf::View view, bool started) {
 	if (!started && current < 1) moveDown();
-	while (!exit && window->isOpen())
+	while (!exit && window.isOpen())
 	{
 		game = false;
 		sf::Event event;
-		while (window->pollEvent(event))
+		while (window.pollEvent(event))
 		{
 			switch (event.type)
 			{
@@ -249,37 +275,37 @@ bool Menu::handle(sf::RenderWindow* window, sf::View view, bool started) {
 						return false;
 					}
 					else {
-						window->close();
+						window.close();
 					}
 					break;
 				case sf::Keyboard::Enter:
 					exit = instruction(window, view);
 					if (game) return false;
-					if (exit) window->close();
+					if (exit) window.close();
 					break;
 				}
 				break;
 			case sf::Event::Closed:
-				window->close();
+				window.close();
 				break;
 			case sf::Event::Resized:
-				ResizeView(*window, view);
+				ResizeView(window, view);
             break;
 			}
 		}
-		window->clear();
+		window.clear();
 		if (!started) {
 			drawMenu(window);
 		}
 		else {
 			drawInGameMenu(window);
 		}
-		window->display();
+		window.display();
 	}
 	return true;
 }
 
-bool Menu::instruction(sf::RenderWindow* window, sf::View view) {
+bool Menu::instruction(sf::RenderWindow& window, sf::View view) {
 	bool esc = false;
 	switch (current) {
 	case 0:
@@ -290,9 +316,9 @@ bool Menu::instruction(sf::RenderWindow* window, sf::View view) {
 		restart = true;
 		break;
 	case 2:
-		while (!esc && window->isOpen()) {
+		while (!esc && window.isOpen()) {
 			sf::Event event;
-			while(window->pollEvent(event))
+			while(window.pollEvent(event))
 			switch (event.type)
 			{
 			case sf::Event::KeyReleased:
@@ -300,22 +326,22 @@ bool Menu::instruction(sf::RenderWindow* window, sf::View view) {
 					esc = true;
 				break;
 			case sf::Event::Closed:
-				window->close();
+				window.close();
 				break;
 			case sf::Event::Resized:
-				ResizeView(*window, view);
+				ResizeView(window, view);
 				break;
 			}
-			window->clear();
+			window.clear();
 			drawOptions(window);	
-			window->display();
+			window.display();
 		}			
 		return false;
 		break;
 	case 3:
-		while (!esc && window->isOpen()) {
+		while (!esc && window.isOpen()) {
 			sf::Event event;
-			while (window->pollEvent(event))
+			while (window.pollEvent(event))
 				switch (event.type)
 				{
 				case sf::Event::KeyReleased:
@@ -323,15 +349,15 @@ bool Menu::instruction(sf::RenderWindow* window, sf::View view) {
 						esc = true;
 					break;
 				case sf::Event::Closed:
-					window->close();
+					window.close();
 					break;
 				case sf::Event::Resized:
-					ResizeView(*window, view);
+					ResizeView(window, view);
 					break;
 				}
-			window->clear();
+			window.clear();
 			drawScoreboard(window);
-			window->display();
+			window.display();
 		}	
 		return false;
 		break;

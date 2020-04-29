@@ -7,6 +7,8 @@ Timer::Timer(std::chrono::seconds seconds) {
 }
 
 void Timer::setTime(std::chrono::seconds seconds) noexcept {
+ 
+    setBegin();
     time = seconds;
     timeLeft = ("Left :\n" + std::to_string(time.count()) + " seconds\nto kill all enemies");
 }

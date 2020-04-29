@@ -18,7 +18,7 @@ Game::Game(sf::View& view, std::vector<std::string>& enemiesTextures, const std:
 
 void Game::gameOver()
 {
-    std::chrono::seconds showTime(5);
+    std::chrono::seconds showTime(3);
     std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
     std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
     sf::Text text;
@@ -26,7 +26,9 @@ void Game::gameOver()
     text.setCharacterSize(35);
     int size = ((text.getString().getSize())/2 - 1) * (35 + text.getLetterSpacing());
     text.setPosition(WIDTH / 2 - size, HEIGHT / 2);
-    text.setFont(font);
+    sf::Font f;
+    f.loadFromFile(FONT_PATH);
+    text.setFont(f);
     window->clear();
     window->draw(text);
     window->display();
@@ -55,7 +57,7 @@ void Game::restart() {
 }
 
 void Game::run() {
-    if (!menu.handle(window.get(), view, started)) {
+    if (!menu.handle(*window, view, started)) {
        start();	
     }
 }
@@ -99,7 +101,7 @@ void Game::start() {
                 if (event.key.code == sf::Keyboard::Escape) {
                     spawner.getTimer().stop();
                     if (!pause) {
-                        pause = (menu.handle(window.get(), view, started));
+                        pause = (menu.handle(*window, view, started));
                     }
                     else {
                         pause = true;
@@ -126,7 +128,7 @@ void Game::start() {
 
         if (!window->hasFocus()) {
             spawner.getTimer().stop();
-            pause = (menu.handle(window.get(), view, started));
+            pause = (menu.handle(*window, view, started));
         }
 
         if (!pause) {
@@ -149,11 +151,12 @@ void Game::start() {
                         player->setHealth(player->getHealth() - 0.5);
                     }
                     if (player->getHealth() <= 0 || spawner.getTimer().elapsed()) {
-                        //gameOver();
+                        gameOver();
                         spawner.getTimer().stop();
-                        // menu.addToScores(window.get(), score);
+                        if (menu.addToScores(*window, score))
+                            menu.saveScoreboard();
                         pause = true;
-                        menu.handle(window.get(), view, false);
+                        menu.handle(*window, view, false);
                         break;
                     }
                     level->checkCollision(direction, spawner.enemies[i]);
@@ -193,9 +196,10 @@ void Game::start() {
                     spawner.bullets.clear();
                     spawner.bullets.push_back(tmp);
                     spawner.spawnEnemies(round * 2 + 5, dist(mt));
-                    spawner.getTimer().setTime(std::chrono::seconds(45  + round * 2 * dist(mt)));
+                    std::chrono::seconds s(45 + round * 2 * dist(mt));
+                    spawner.getTimer().setTime(s);
                     spawner.getTimer().start();
-
+        
                 }
             }
             spawner.getTimer().refresher();
