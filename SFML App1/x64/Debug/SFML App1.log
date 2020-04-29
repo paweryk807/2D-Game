@@ -1,16 +1,61 @@
-﻿  Menu.cpp
-B:\GitHub\2D-Game\SFML App1\Menu.cpp(15,99): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
+﻿  EnemySpawner.cpp
+B:\GitHub\2D-Game\SFML App1\Enemy.h(5,1): warning C4005: "DEFAULT_PATH": ponowna definicja makra
+B:\GitHub\2D-Game\SFML App1\Player.h(5): message : zobacz poprzednią definicję „DEFAULT_PATH”
+B:\GitHub\2D-Game\SFML App1\EnemySpawner.cpp(47,72): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-B:\GitHub\2D-Game\SFML App1\Menu.cpp(15,48): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\EnemySpawner.cpp(47,54): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-B:\GitHub\2D-Game\SFML App1\Menu.cpp(86,37): warning C4267: "inicjowanie": konwersja z "size_t" do "unsigned int", możliwa utrata danych
-B:\GitHub\2D-Game\SFML App1\Menu.cpp(143,69): warning C4244: "argument": konwersja z "unsigned int" do "float", możliwa utrata danych
-B:\GitHub\2D-Game\SFML App1\Menu.cpp(143,31): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-B:\GitHub\2D-Game\SFML App1\Menu.cpp(162,27): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+  Game.cpp
+B:\GitHub\2D-Game\SFML App1\Enemy.h(5,1): warning C4005: "DEFAULT_PATH": ponowna definicja makra
+B:\GitHub\2D-Game\SFML App1\Player.h(5): message : zobacz poprzednią definicję „DEFAULT_PATH”
+B:\GitHub\2D-Game\SFML App1\Game.cpp(27,14): warning C4244: "inicjowanie": konwersja z "float" do "int", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(28,32): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(143,67): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(145,67): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(149,63): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(178,95): warning C4305: "argument": obcięcie z "double" do "float"
+B:\GitHub\2D-Game\SFML App1\Game.cpp(219,71): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(273,49): warning C4305: "argument": obcięcie z "double" do "float"
+B:\GitHub\2D-Game\SFML App1\Game.cpp(273,50): warning C4305: "argument": obcięcie z "double" do "float"
+B:\GitHub\2D-Game\SFML App1\Game.cpp(276,50): warning C4305: "argument": obcięcie z "double" do "float"
+  Map.cpp
+B:\GitHub\2D-Game\SFML App1\Map.cpp(52,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+  Soldier.cpp
+B:\GitHub\2D-Game\SFML App1\Enemy.h(5,1): warning C4005: "DEFAULT_PATH": ponowna definicja makra
+B:\GitHub\2D-Game\SFML App1\Player.h(5): message : zobacz poprzednią definicję „DEFAULT_PATH”
+B:\GitHub\2D-Game\SFML App1\Soldier.cpp(10,42): warning C4305: "argument": obcięcie z "double" do "float"
+B:\GitHub\2D-Game\SFML App1\Soldier.cpp(22,40): warning C4305: "argument": obcięcie z "double" do "float"
+B:\GitHub\2D-Game\SFML App1\Soldier.cpp(23,22): warning C4305: "argument": obcięcie z "double" do "float"
+B:\GitHub\2D-Game\SFML App1\Soldier.cpp(148,40): warning C4305: "argument": obcięcie z "double" do "float"
+B:\GitHub\2D-Game\SFML App1\Soldier.cpp(163,28): warning C4305: "=": obcięcie z "double" do "T"
+          with
+          [
+              T=float
+          ]
+B:\GitHub\2D-Game\SFML App1\Soldier.cpp(169,21): warning C4305: "*=": obcięcie z "double" do "T"
+          with
+          [
+              T=float
+          ]
+B:\GitHub\2D-Game\SFML App1\Soldier.cpp(173,28): warning C4305: "=": obcięcie z "double" do "T"
+          with
+          [
+              T=float
+          ]
+  Utils.cpp
+  bullet.cpp
+B:\GitHub\2D-Game\SFML App1\bullet.cpp(33,66): warning C4305: "argument": obcięcie z "double" do "float"
+  main.cpp
+B:\GitHub\2D-Game\SFML App1\Enemy.h(5,1): warning C4005: "DEFAULT_PATH": ponowna definicja makra
+B:\GitHub\2D-Game\SFML App1\Player.h(5): message : zobacz poprzednią definicję „DEFAULT_PATH”
+B:\GitHub\2D-Game\SFML App1\main.cpp(113,29): warning C4101: "e": lokalna zmienna, do której nie istnieje odwołanie
+  Generowanie kodu...
+B:\GitHub\2D-Game\SFML App1\bullet.cpp(55): warning C4715: "Bullet::loadTexture”: niewszystkie ścieżki kodu zwracają wartość
+B:\GitHub\2D-Game\SFML App1\Soldier.cpp(46): warning C4715: "Soldier::loadTextures”: niewszystkie ścieżki kodu zwracają wartość
   SFML App1.vcxproj -> B:\GitHub\2D-Game\x64\Debug\2D-Game.exe

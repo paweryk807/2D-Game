@@ -170,6 +170,9 @@ bool Menu::addToScores(sf::RenderWindow& window,unsigned int score) {
 			sf::Event event;
 			while (window.pollEvent(event) && !dataSet)
 			{ 
+				if (event.key.code == sf::Keyboard::Escape) {
+					return false;
+				}
 				if (event.key.code == sf::Keyboard::BackSpace && input.getSize() > 0)
 					input.erase(input.getSize() - 1);
 				else if (event.key.code == sf::Keyboard::Enter) {
@@ -194,22 +197,30 @@ bool Menu::addToScores(sf::RenderWindow& window,unsigned int score) {
 		sortScores(); // zeby byly posortowane; 
 		for (auto& elem : scores) {
 			if (std::get<1>(elem) < score) {
-				while (window.isOpen() && !dataSet)
-				{
+				while (window.isOpen() && !dataSet) {
 					sf::Event event;
-					while (window.pollEvent(event))
-					{
-						if (event.type == sf::Event::TextEntered) {
-							input += event.text.unicode;
-							userName.setString(input);
-							dataSet = (event.key.code == sf::Keyboard::Enter);
-						}
-
+				while (window.pollEvent(event) && !dataSet)
+				{
+					if (event.key.code == sf::Keyboard::Escape) {
+						return false;
 					}
-					window.clear();
-					window.draw(fieldToPrint);
-					window.draw(userName);
-					window.display();
+					if (event.key.code == sf::Keyboard::BackSpace && input.getSize() > 0)
+						input.erase(input.getSize() - 1);
+					else if (event.key.code == sf::Keyboard::Enter) {
+						userName.setString(input + ' ');
+						dataSet = true;
+						std::tuple<sf::Text, unsigned int> tmp (userName, score);
+						elem.swap(tmp);
+					}
+					else if (event.type == sf::Event::TextEntered) {
+						input += event.text.unicode;
+						userName.setString(input);
+					}
+				}
+				window.clear();
+				window.draw(fieldToPrint);
+				window.draw(userName);
+				window.display();
 				}
 				elem = std::make_tuple(userName, score);
 				return 1;

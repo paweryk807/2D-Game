@@ -3,7 +3,6 @@
 #include <iostream>
 #include <stdexcept>
 #include <sstream>
-#include <random>
 #include "Soldier.h"
 #include "Menu.h"
 #include "Functions.h"
@@ -11,9 +10,6 @@
 #include "bullet.h"
 #include "HUD.h"
 #include "EnemySpawner.h"
-#define PLATFORM_PATH "images/sheet.png"
-#define BACKGROUND_1 "images/bg.jpg"//background.jpg"
-//#define SHEET  "images/sheet.png"
 
 class Game
 {

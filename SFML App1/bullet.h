@@ -3,6 +3,7 @@
 #include<iostream>
 #include<string>
 #include "Player.h"
+#include "Utils.h"
 #define TEXTURE_PATH "images/bullets.png"
 
 class Bullet : public sf::Drawable

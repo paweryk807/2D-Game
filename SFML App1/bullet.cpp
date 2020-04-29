@@ -30,12 +30,12 @@ Bullet::Bullet(sf::Vector2f startPos, float speed) {
 		sprite.setTexture(&texture); 
 		sprite.setPosition(startPos.x, startPos.y - 5.f);
 		velocity = sf::Vector2f(speed, 0.0f);
-		animation.setAnimTime(sf::seconds(1.5f));
+		animation.setAnimTime(sf::seconds(utils::randomFloat(0.55, 1.05)));  // Randomowy cooldown
 		sf::Vector2f cSize(sprite.getRadius(), sprite.getRadius());
 		colid.setSize(cSize);
 		colid.setPosition(startPos.x, startPos.y - 5.f);
 		colid.setOrigin(cSize / 2.0f);
-		sf::IntRect rect(64, 32, 32, 32);  
+		sf::IntRect rect(10 * utils::randomInt(0,30), 10 * utils::randomInt(0, 10), 10, 10);   /// RANDOMOWE KOLORY POCISKOW 
 		sprite.setTextureRect(rect);
 	}
 	catch (std::exception e) {

@@ -72,9 +72,7 @@ void Game::generateLevel() {
 
 void Game::start() {
     /* GENERATOR LICZB LOSOWYCH */
-    std::random_device rd;
-    std::mt19937 mt(rd());
-    std::uniform_int_distribution <unsigned int> dist(0, 3);
+ 
     /*--------------------------*/
 
     started = true;
@@ -111,7 +109,7 @@ void Game::start() {
 
                     sst.update(*window);
                     ss = sst.copyToImage();
-                    std::string filename = "screenshots/screenshot_" + std::to_string(dist(mt)) + std::to_string(dist(mt)) + std::to_string(dist(mt)) + "_" + std::to_string(number) + ".png";
+                    std::string filename = "screenshots/screenshot_" + std::to_string(utils::randomInt(1,7)) + std::to_string(utils::randomInt(99,1450)) + std::to_string(utils::randomInt(33,99)) + "_" + std::to_string(number) + ".png";
                     ss.saveToFile(filename);
                     number++;
                 }
@@ -195,8 +193,8 @@ void Game::start() {
                     Bullet* tmp = spawner.bullets[0];
                     spawner.bullets.clear();
                     spawner.bullets.push_back(tmp);
-                    spawner.spawnEnemies(round * 2 + 5, dist(mt));
-                    std::chrono::seconds s(45 + round * 2 * dist(mt));
+                    spawner.spawnEnemies(round * 2 + 5, utils::randomInt(0,3));
+                    std::chrono::seconds s = std::chrono::seconds(utils::randomInt(2 * round  + 20, 2*round + 25));
                     spawner.getTimer().setTime(s);
                     spawner.getTimer().start();
         
