@@ -7,10 +7,11 @@ public:
 	CharacterAnimation() = default ;
 	CharacterAnimation(sf::IntRect rect, sf::Time time);
 	
-	bool oX(int width, int leftStart, int leftEnd, sf::RectangleShape& sprite); //width - szerokosc tekstury leftStart - pozycja startowa z pliku , leftEnd - koncowa 
-	bool oY(int width, int leftStart, int leftEnd, sf::RectangleShape& sprite);
-	bool jump(int width, int leftStart, int leftEnd, sf::RectangleShape& sprite,  sf::Vector2f velocity);
-
+	bool changeMove(int width, int leftStart, int leftEnd, int startHeight, sf::RectangleShape& sprite); //width - szerokosc tekstury leftStart - pozycja startowa z pliku , leftEnd - koncowa 
+	//bool oY(int width, int leftStart, int leftEnd, int startHeight, sf::RectangleShape& sprite);
+	//bool idle(int width, int leftStart, int leftEnd, int startHeight, sf::RectangleShape& sprite);
+	bool jump(int width, int leftStart, int leftEnd, int startHeight, sf::RectangleShape& sprite,  sf::Vector2f& velocity);
+	bool death(int width, int leftStart, int leftEnd, int startHeight, sf::RectangleShape& sprite,  sf::Vector2f& velocity);
 	~CharacterAnimation();
 };
 

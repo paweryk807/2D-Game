@@ -24,8 +24,10 @@ B:\GitHub\2D-Game\SFML App1\Game.cpp(219,71): warning C4244: "argument": konwers
 B:\GitHub\2D-Game\SFML App1\Game.cpp(273,49): warning C4305: "argument": obcięcie z "double" do "float"
 B:\GitHub\2D-Game\SFML App1\Game.cpp(273,50): warning C4305: "argument": obcięcie z "double" do "float"
 B:\GitHub\2D-Game\SFML App1\Game.cpp(276,50): warning C4305: "argument": obcięcie z "double" do "float"
-  Map.cpp
-B:\GitHub\2D-Game\SFML App1\Map.cpp(52,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+  main.cpp
+B:\GitHub\2D-Game\SFML App1\Enemy.h(5,1): warning C4005: "DEFAULT_PATH": ponowna definicja makra
+B:\GitHub\2D-Game\SFML App1\Player.h(5): message : zobacz poprzednią definicję „DEFAULT_PATH”
+B:\GitHub\2D-Game\SFML App1\main.cpp(113,29): warning C4101: "e": lokalna zmienna, do której nie istnieje odwołanie
   Soldier.cpp
 B:\GitHub\2D-Game\SFML App1\Enemy.h(5,1): warning C4005: "DEFAULT_PATH": ponowna definicja makra
 B:\GitHub\2D-Game\SFML App1\Player.h(5): message : zobacz poprzednią definicję „DEFAULT_PATH”
@@ -48,14 +50,6 @@ B:\GitHub\2D-Game\SFML App1\Soldier.cpp(173,28): warning C4305: "=": obcięcie z
           [
               T=float
           ]
-  Utils.cpp
-  bullet.cpp
-B:\GitHub\2D-Game\SFML App1\bullet.cpp(33,66): warning C4305: "argument": obcięcie z "double" do "float"
-  main.cpp
-B:\GitHub\2D-Game\SFML App1\Enemy.h(5,1): warning C4005: "DEFAULT_PATH": ponowna definicja makra
-B:\GitHub\2D-Game\SFML App1\Player.h(5): message : zobacz poprzednią definicję „DEFAULT_PATH”
-B:\GitHub\2D-Game\SFML App1\main.cpp(113,29): warning C4101: "e": lokalna zmienna, do której nie istnieje odwołanie
   Generowanie kodu...
-B:\GitHub\2D-Game\SFML App1\bullet.cpp(55): warning C4715: "Bullet::loadTexture”: niewszystkie ścieżki kodu zwracają wartość
 B:\GitHub\2D-Game\SFML App1\Soldier.cpp(46): warning C4715: "Soldier::loadTextures”: niewszystkie ścieżki kodu zwracają wartość
   SFML App1.vcxproj -> B:\GitHub\2D-Game\x64\Debug\2D-Game.exe

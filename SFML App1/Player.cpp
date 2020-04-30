@@ -39,32 +39,32 @@ float Player::getMaxHP() {
 }
 void Player::moveUp() {
 	velocity.y = getSpeed();
-	animation.oY(32, 19 * 32, 22 * 32, sprite);
+	animation.changeMove(32, 19 * 32, 22 * 32, 32, sprite);
 }
 
 void Player::moveDown() {
 	velocity.y = -getSpeed();
-	animation.oY(32, 19 * 32, 22 * 32, sprite);
+	animation.changeMove(32, 19 * 32, 22 * 32, 32, sprite);
 }
 
 void Player::moveRight() {
 	velocity.x = getSpeed();
 	if (!getOnAir()) {
-		animation.oX(32, 0, 128, sprite);
+		animation.changeMove(32, 0, 128, 32, sprite);
 	}
 }
 
 void Player::moveLeft() {
 	velocity.x = -getSpeed();
 	if (!getOnAir()) {
-		animation.oX(32, 0, 128, sprite);
+		animation.changeMove(32, 0, 128, 32, sprite);
 	}
 }
 
 void Player::jump() {
 	if (getCanJump()) {
 		velocity.y = -sqrtf(2.0f * 9.81f * getJumpHeight());
-		animation.jump(32, 6 * 32, 8 * 32, sprite, velocity);
+		animation.jump(32, 6 * 32, 8 * 32, 32, sprite, velocity);
 	}
 }
 
@@ -210,7 +210,7 @@ bool Player::refresh() {
 	if (velocity.y != 0.0f) {
 		setOnAir(true);
 		setCanJump(false);
-		animation.jump(32, 6 * 32, 8 * 32, sprite, velocity);
+		animation.jump(32, 6 * 32, 8 * 32, 32, sprite, velocity);
 	}
 	velocity.x = 0.0f;
 	velocity.y += 0.9810f * 1.0f;

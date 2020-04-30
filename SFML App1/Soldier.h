@@ -1,6 +1,5 @@
 #pragma once
 #include "Enemy.h"
-#include "SoldierAnimation.h"
 #include "Bullet.h"
 
 
@@ -9,7 +8,7 @@ class Soldier : public Enemy
 {
 	sf::Vector2f prevPos;
 	std::vector<sf::Texture> texture;
-	SoldierAnimation animation;
+	CharacterAnimation animation;
 	Bullet* bullet;
 
 
@@ -30,7 +29,7 @@ public:
 
 	void setSpeed(float temp, sf::Time tempAnim);
 
-	void setAnimation(SoldierAnimation& a);
+	void setAnimation(CharacterAnimation& a);
 
 	//bool isDead();
 

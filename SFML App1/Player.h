@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "Character.h"
 
-#define DEFAULT_PATH "images/characters.png"
+#define DEFAULT_PATH "images/Hero Knight/Sprites/Hero"//"images/characters.png"
 
 class Player : public Character
 {

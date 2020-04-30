@@ -49,27 +49,27 @@ bool Soldier::loadTextures(std::vector<std::string>& text) {
 void Soldier::moveRight() {
 	velocity.x = getSpeed();
 	if (!getOnAir()) {
-		animation.oX(sprite);
+		animation.changeMove(48, 0, 6 * 48, 0, sprite);
 	}
 }
 
 void Soldier::moveLeft() {
 	velocity.x = -getSpeed();
 	if (!getOnAir()) {
-		animation.oX(sprite);
+		animation.changeMove(48, 0, 6 * 48, 0, sprite);
 	}
 }
 
 void Soldier::idle() {
 	if (!getOnAir()) {
-		animation.idle(sprite);
+		animation.changeMove(48, 0, 5 * 48, 0, sprite);
 	}
 }
 
 void Soldier::jump() {
 	if (getCanJump()) {
 		velocity.y = -sqrtf(2.0f * 9.81f * getJumpHeight());
-		animation.jump(sprite, velocity);
+		animation.jump(48, 0, 48, 0, sprite, velocity);
 	}
 }
 
@@ -79,7 +79,7 @@ void Soldier::setSpeed(float temp, sf::Time tempAnim) //Sprint Speed
 	animation.setAnimTime(tempAnim);
 }
 
-void Soldier::setAnimation(SoldierAnimation& a) {
+void Soldier::setAnimation(CharacterAnimation& a) {
 	animation = a;
 }
 
@@ -172,7 +172,7 @@ bool Soldier::refresh(const Player& player, bool wall) {
 		if (velocity.y > 17.0f) {
 			velocity.y = 9.81 * 1.6f;
 		}
-		return animation.death(sprite, velocity);
+		return 	animation.death(48, 0, 8 * 48, 0, sprite, velocity);
 
 	}
 
