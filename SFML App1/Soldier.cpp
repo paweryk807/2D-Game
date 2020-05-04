@@ -1,6 +1,6 @@
 #include "Soldier.h" 
 
-Soldier::Soldier(std::vector<std::string>& textures) : Enemy(2.5f, 4.5f)
+Soldier::Soldier(std::vector<std::string>& textures)
 {
 	try {
 		loadTextures(textures);
@@ -17,7 +17,7 @@ Soldier::Soldier(std::vector<std::string>& textures) : Enemy(2.5f, 4.5f)
 
 		velocity = sf::Vector2f(0.0f, 0.0f);
 
-
+		strength = 20.0f;
 		setHealth(100.0);
 		setSpeed(2.f, sf::seconds(2.2 * 0.125));
 		setJumpHeight(10.20);
@@ -29,6 +29,21 @@ Soldier::Soldier(std::vector<std::string>& textures) : Enemy(2.5f, 4.5f)
 		std::cout << e.what() << std::endl;
 	}
 }
+
+
+void Soldier::setStrength(float str) {
+	if (str > 0) {
+		strength = str;
+	}
+	else {
+		strength = 0;
+	}
+}
+
+float Soldier::getStrength() {
+	return strength;
+}
+
 
 void Soldier::addAmmunition(Bullet& bullet) {
 	this->bullet = &bullet;
@@ -83,21 +98,25 @@ void Soldier::setAnimation(CharacterAnimation& a) {
 	animation = a;
 }
 
+void Soldier::levelUp(int round)
+{
+	setHealth(getHealth() + round * 0.15 * getHealth() / 5);
+	strength += round * 0.15 * strength / 8;
+}
+
 bool Soldier::refresh(const Player& player, bool wall) {
 	//sprite.setPosition(colid.getPosition());
 	bool changed = false;
 	if (getHealth() > 0) {
 		// AI SECTION
 		if (getPosition().x < 0)
-		{
-			correctPosition(sf::Vector2f(0.1f, 250.f));
-		}
-		else if (getPosition().y > 1280) {
-			correctPosition(sf::Vector2f(1279.1f, 250.f));
-		}
-		else if (getPosition().y > 1080 || getPosition().y < 0) {
-			correctPosition(sf::Vector2f(0.1f, 250.f));
-		}
+			correctPosition(sf::Vector2f(5.1f, sprite.getPosition().y));
+		else if (getPosition().x > 1280) 
+			correctPosition(sf::Vector2f(1274.1f, sprite.getPosition().y));
+		if (getPosition().y > 1070)
+				correctPosition(sf::Vector2f(getPosition().x, player.getPosition().y));
+		else if (getPosition().y < 0)
+				correctPosition(sf::Vector2f(getPosition().x, 5.f));
 
 		if (velocity.y != 0.0f) {
 			setOnAir(true); 
@@ -126,14 +145,14 @@ bool Soldier::refresh(const Player& player, bool wall) {
 
 		}
 
-		if (player.getPosition().x >= getPosition().x) {
+		if (player.getPosition().x - 1 >= getPosition().x) {
 			velocity.x++;
 			sprite.setTexture(&texture[1]);
 			changed = true;
 			animation.rotateSprite(sprite, 'r');
 			moveRight();
 		}
-		else if (player.getPosition().x < getPosition().x) {
+		else if ((player.getPosition().x + 1) < getPosition().x) {
 			velocity.x--;
 			sprite.setTexture(&texture[1]);
 			changed = true;

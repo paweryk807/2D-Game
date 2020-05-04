@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "Character.h"
 
-#define DEFAULT_PATH "images/Hero Knight/Sprites/Hero"//"images/characters.png"
+//#define DEFAULT_PATH "images/Hero Knight/Sprites/Hero"//"images/characters.png"
 
 class Player : public Character
 {
@@ -14,7 +14,7 @@ private:
 	float strength;
 	float maxHP;
 	bool shield;
-
+	sf::Texture texture;
 	CharacterAnimation animation;
     sf::RectangleShape shieldShape;
 	sf::RectangleShape shieldCollider;
@@ -22,8 +22,8 @@ private:
 public:	
 
 
-	Player() = default;
-	Player(const sf::Texture &temp);
+	Player() = delete;
+	Player(const std::string &temp);
 	float getMaxHP();
 	void moveUp();
 	void addExp(float nExp);

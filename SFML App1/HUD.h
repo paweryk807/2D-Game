@@ -14,9 +14,7 @@ class HUD : public sf::Drawable
 	sf::Text playerStats;
 	sf::Text gameStats;
 	sf::Text time;
-	/*sf::Text playerLevel;
-	sf::Text playerExp;
-	sf::Text playerHP;*/
+
 	float value; // poczatkowa wartosc zycia ew. ulepszona 
 	float previous;
 

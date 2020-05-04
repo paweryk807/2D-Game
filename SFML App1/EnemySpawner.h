@@ -19,5 +19,6 @@ public:
 	Timer& getTimer();
 	void setTime(std::chrono::seconds seconds);
 	void spawnEnemies(int value, int type);
+	void levelUpEnemies(int round);
 	~EnemySpawner() = default;
 };

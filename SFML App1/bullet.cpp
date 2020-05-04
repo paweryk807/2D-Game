@@ -21,6 +21,21 @@ Bullet::Bullet(sf::Vector2f startPos) {
 	}
 }
 
+Bullet::Bullet(sf::Vector2f startPos, sf::Texture textr) {
+		texture = textr;
+		sprite.setRadius(3.0f);
+		sprite.setFillColor(sf::Color::Yellow);
+		sprite.setOutlineColor(sf::Color::Red);
+		sprite.setPosition(startPos.x, startPos.y - 5.f);
+		velocity = sf::Vector2f(10.0f, 0.0f);
+		animation.setAnimTime(sf::seconds(0.5f));
+		sf::Vector2f cSize(sprite.getRadius(), sprite.getRadius());
+
+		colid.setSize(cSize);
+		colid.setPosition(startPos.x, startPos.y - 5.f);
+		colid.setOrigin(cSize / 2.0f);
+}
+
 Bullet::Bullet(sf::Vector2f startPos, float speed) {
 	try {
 		loadTexture(TEXTURE_PATH);
@@ -43,9 +58,12 @@ Bullet::Bullet(sf::Vector2f startPos, float speed) {
 	}
 }
 
-
 void Bullet::setScale(sf::Vector2f scale) {
 	sprite.setScale(scale);
+}
+
+void Bullet::setSize(float size) {
+	sprite.setRadius(size);
 }
 
 bool Bullet::loadTexture(const std::string path) {

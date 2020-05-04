@@ -140,11 +140,11 @@ void Map::setPlatforms(const unsigned int sizeTab)
 bool Map::checkCollision(sf::Vector2f direction, Character* character) const {
 	bool collision = false;
 	for (auto platform : platforms) {
-		if (platform->getCollider().checkCollision(character->getCollider(), direction, 1.f)) {
+		if (platform->getCollider().checkCollision(character->getCollider(), direction, 1.2f)) {
 			character->onCollision(direction);
 			collision = true;
 		}
-		else collision = false;
+		//else collision = false;
 	}
 	return collision;
 }

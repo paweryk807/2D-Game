@@ -48,6 +48,13 @@ void EnemySpawner::spawnEnemies(int value, int type)
         bullets.push_back(new Bullet(enemies[i]->getPosition(), 11.f));
         enemies[i]->addAmmunition(*bullets[bullets.size() - 1]);
     }
+    //enemies.push_back(new PlasmaDrone());
+}
+
+void EnemySpawner::levelUpEnemies(int round) {
+    for (auto& elem : enemies) {
+        elem->levelUp(round);
+    }
 }
 
 

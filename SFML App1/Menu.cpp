@@ -152,7 +152,7 @@ bool Menu::addToScores(sf::RenderWindow& window,unsigned int score) {
 	sf::Text userName;
 	/* MALE GUI */
 
-	sf::String textField("Zakwalifikowa³eœ siê do rankingu,\n proszê wpisz tu pseudonim: ");
+	sf::String textField("Zakwalifikowales sie do rankingu,\n prosze wpisz tu pseudonim: ");
 	sf::Text fieldToPrint;
 	fieldToPrint.setString(textField);
 	fieldToPrint.setFont(font);
@@ -195,6 +195,7 @@ bool Menu::addToScores(sf::RenderWindow& window,unsigned int score) {
 	}
 	else {
 		sortScores(); // zeby byly posortowane; 
+		int pos = 0;
 		for (auto& elem : scores) {
 			if (std::get<1>(elem) < score) {
 				while (window.isOpen() && !dataSet) {
@@ -209,8 +210,8 @@ bool Menu::addToScores(sf::RenderWindow& window,unsigned int score) {
 					else if (event.key.code == sf::Keyboard::Enter) {
 						userName.setString(input + ' ');
 						dataSet = true;
-						std::tuple<sf::Text, unsigned int> tmp (userName, score);
-						elem.swap(tmp);
+						scores.erase(scores.end() - 1);
+						scores.push_back(std::make_tuple(userName, score));
 					}
 					else if (event.type == sf::Event::TextEntered) {
 						input += event.text.unicode;
@@ -222,9 +223,10 @@ bool Menu::addToScores(sf::RenderWindow& window,unsigned int score) {
 				window.draw(userName);
 				window.display();
 				}
-				elem = std::make_tuple(userName, score);
+
 				return 1;
 			}
+			pos++;
 		}
 	}
 	return 0;
@@ -263,7 +265,7 @@ sf::Font Menu::getFont() {
 	return font;
 }
 
-bool Menu::handle(sf::RenderWindow& window, sf::View view, bool started) {
+bool Menu::handle(sf::RenderWindow& window, bool started) {
 	if (!started && current < 1) moveDown();
 	while (!exit && window.isOpen())
 	{
@@ -290,7 +292,7 @@ bool Menu::handle(sf::RenderWindow& window, sf::View view, bool started) {
 					}
 					break;
 				case sf::Keyboard::Enter:
-					exit = instruction(window, view);
+					exit = instruction(window);
 					if (game) return false;
 					if (exit) window.close();
 					break;
@@ -298,9 +300,6 @@ bool Menu::handle(sf::RenderWindow& window, sf::View view, bool started) {
 				break;
 			case sf::Event::Closed:
 				window.close();
-				break;
-			case sf::Event::Resized:
-				ResizeView(window, view);
             break;
 			}
 		}
@@ -316,7 +315,7 @@ bool Menu::handle(sf::RenderWindow& window, sf::View view, bool started) {
 	return true;
 }
 
-bool Menu::instruction(sf::RenderWindow& window, sf::View view) {
+bool Menu::instruction(sf::RenderWindow& window) {
 	bool esc = false;
 	switch (current) {
 	case 0:
@@ -339,9 +338,7 @@ bool Menu::instruction(sf::RenderWindow& window, sf::View view) {
 			case sf::Event::Closed:
 				window.close();
 				break;
-			case sf::Event::Resized:
-				ResizeView(window, view);
-				break;
+
 			}
 			window.clear();
 			drawOptions(window);	
@@ -361,9 +358,6 @@ bool Menu::instruction(sf::RenderWindow& window, sf::View view) {
 					break;
 				case sf::Event::Closed:
 					window.close();
-					break;
-				case sf::Event::Resized:
-					ResizeView(window, view);
 					break;
 				}
 			window.clear();

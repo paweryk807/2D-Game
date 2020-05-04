@@ -118,7 +118,7 @@
             float intersectionY = abs(deltaY) - (otherHalfSize.y + thisHalfSize.y);// +4.f; // +0.99;
 
         if (intersectionX < 0.0f && intersectionY < 0.0f) {
-            push = std::min(std::max(push, 0.0f), 1.0f);
+            push = std::min(std::max(push, 0.0f), 10.0f);
 
             if (intersectionX > intersectionY) {
                 if (deltaX > 0.0f) {

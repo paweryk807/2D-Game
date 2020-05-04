@@ -43,8 +43,8 @@ public:
 	bool moveDown();
 	sf::Font getFont();
 	bool loadFont(const std::string& fontPath);
-	bool handle(sf::RenderWindow& window, sf::View view, bool started);
-	bool instruction(sf::RenderWindow& window, sf::View view);
+	bool handle(sf::RenderWindow& window, bool started);
+	bool instruction(sf::RenderWindow& window);
 	~Menu() = default;
 };
 

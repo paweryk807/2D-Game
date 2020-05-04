@@ -4,22 +4,22 @@
 #include <stdexcept>
 #include <sstream>
 #include "Soldier.h"
+#include "Bird.h"
 #include "Menu.h"
 #include "Functions.h"
 #include "Map.h"
 #include "bullet.h"
 #include "HUD.h"
 #include "EnemySpawner.h"
+#include "PlasmaDrone.h"
 
 class Game
 {
 	std::unique_ptr<sf::RenderWindow> window;
 	std::unique_ptr<Map> level;
-	Player* player;
+	std::unique_ptr<Player> player;
 	HUD hud;
 	EnemySpawner spawner;
-	sf::View view;
-	sf::Texture playerTexture;
 	Menu menu;
 	bool started;
 	bool pause;
@@ -27,21 +27,13 @@ class Game
 	unsigned int round;
 	unsigned int score;
 
-	// RUNDY 
-	sf::Font font;
-	sf::Text object;
-
 public:
-	Game(sf::View& view, std::vector<std::string>& enemiesTextures, const std::string& playerTexture);
+	Game(std::vector<std::string>& enemiesTextures, const std::string& playerTexture);
+	bool addBonus(Bird bonusBird);
 	void restart();
-	void printRound(int number);
 	void run();
 	void generateLevel();
-
-	//std::vector<Soldier*> addEnemies(const int enemiesToSpawn);
 	void gameOver();
-	bool loadTexture(const std::string& texture);
-	//bool loadEnemiesTextures(std::vector<std::string>& textures);
 	void getActionFromUser();
 	void start();
 

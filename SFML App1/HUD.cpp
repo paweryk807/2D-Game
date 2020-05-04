@@ -5,7 +5,6 @@ HUD::HUD(float value) {
 		loadTexture(HEARTS_PATH);
 		this->value = value;
 		previous = value;
-		//anim.setAnimTime(sf::seconds(0.125f));
 		sf::IntRect rect(sf::Vector2i(0, 0), sf::Vector2i(17, 17));
 		sprite.setTexture(texture);
 		sprite.setTextureRect(rect);
@@ -13,7 +12,7 @@ HUD::HUD(float value) {
 		sprite.setScale(4, 4);
 		font.loadFromFile(FONT_PATH);
 		playerStats.setFont(font);
-		playerStats.setPosition(920, 620);
+		playerStats.setPosition(920, 600);
 		playerStats.setFillColor(sf::Color::Magenta);
 		playerStats.setString("STATS");
 		sf::Vector2f factors(0.75, 0.75);
@@ -21,13 +20,14 @@ HUD::HUD(float value) {
 		playerStats.setOutlineThickness(0.15f);
 		playerStats.setOutlineColor(sf::Color::Black);
 		time = playerStats;
+		time.setCharacterSize(35);
+
 		gameStats = playerStats; 
 		time.setPosition(130.f, 620.f);
 		gameStats.setPosition(130, 40.0f);
 		gameStats.setCharacterSize(40);
 		gameStats.setFillColor(sf::Color::Color(12,12,31,123));
 		gameStats.setOutlineColor(sf::Color::Cyan);
-		//object.setPosition(sf::Vector2f(WIDTH / 2 - (round.length() + 1.5f) * 10, ((HEIGHT / 2) / 6)));
 	}
 	catch(std::exception e) {
 		std::cout << e.what() << std::endl;
@@ -37,9 +37,12 @@ HUD::HUD(float value) {
 bool HUD::update(Player* player, Timer* timer, unsigned int round, unsigned int score)
 {
 	float current = player->getHealth();
-	playerStats.setString("Experience : " + std::to_string((int)player->getExp()) + "\nLevel : " + std::to_string(player->getLevel()) + "\nHealth : "  
-		+ std::to_string((int)current) + "/" + std::to_string((int)player->getMaxHP()));
-
+	playerStats.setString("Experience : " + std::to_string((int)player->getExp()) + 
+						"\nLevel : " + std::to_string(player->getLevel()) +
+						"\nHealth : " + std::to_string((int)current) + "/" + std::to_string((int)player->getMaxHP()) + 
+						"\nStrength : " + std::to_string(player->getStrength()).substr(0, 4) +
+						"\nSpeed : " + std::to_string(player->getSpeed()).substr(0, 4));
+	playerStats.setCharacterSize(30);
 	time.setString(timer->getTimeString());
 	gameStats.setString("Round: " + std::to_string(round) + "\nScore: " + std::to_string(score));
 	sf::IntRect rect = this->sprite.getTextureRect();

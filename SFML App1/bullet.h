@@ -15,8 +15,10 @@ class Bullet : public sf::Drawable
 	sf::RectangleShape colid;
 public:
 	Bullet(sf::Vector2f startPos);
+	Bullet(sf::Vector2f startPos, sf::Texture);
 	Bullet(sf::Vector2f startPos, float speed);
 	void setScale(sf::Vector2f scale);
+	void setSize(float size);
 	bool loadTexture(const std::string path);
 	void refresh();
 	void restart(sf::Vector2f pos);

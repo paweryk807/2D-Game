@@ -1,10 +1,10 @@
-Piotr;2131320
-Pawel;1231230
-WUJEK;16720
-Pawoo;7260
-Daro;3580
-d;3000
-m;1160
-don;80
-pawcio;20
-waldek;20
+Pawelek;58800
+elo;32580
+Walczeseponocachzbosem;9020
+a ;2280
+Andrzej;1720
+Pawelek;1500
+edek;1200
+d;900
+exde;800
+ope;3900

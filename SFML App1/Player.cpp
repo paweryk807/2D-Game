@@ -1,10 +1,11 @@
 #include "Player.h"
 
-Player::Player(const sf::Texture &temp) : shield(false) {
+Player::Player(const std::string &temp) : shield(false) {
 	sf::IntRect r(64, 32, 32, 32);
 	animation.setRect(r);
 	animation.setAnimTime(sf::seconds(0.125));
-	sprite.setTexture(&temp);
+	texture.loadFromFile(temp);
+	sprite.setTexture(&texture);
 	sprite.setTextureRect(r);	
 	sf::Vector2f size(1.5 * sprite.getSize().x, 1.5 * sprite.getSize().y);
 	//sprite.setSize(size);

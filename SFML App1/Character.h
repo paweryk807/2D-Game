@@ -13,6 +13,13 @@ private:
 	bool onAir;
 	bool canJump;
 	bool canClimb;
+
+	void moveUp();
+	void jump();
+	void moveDown();
+	void moveLeft();
+	void moveRight();
+
 protected:
 	sf::RectangleShape sprite; 
 	sf::Vector2f velocity;
@@ -39,11 +46,7 @@ public:
 	void setCanJump(bool jump);
 	void setOnAir(bool air);
 	void setVelocity(sf::Vector2f vel);
-	void moveUp();
-	void jump();
-	void moveDown();
-	void moveLeft();
-	void moveRight();
+
 	void refresh();
 	void onCollision(sf::Vector2f direction);
 	void setSpeed(float temp);
