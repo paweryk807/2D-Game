@@ -1,9 +1,9 @@
 #pragma once
 #include "Character.h"
-#include "Bullet.h"
+#include "PlasmaBullet.h"
 
 class PlasmaDrone : public Character {
-	std::vector<Bullet> bullets;
+	std::vector<PlasmaBullet*>& bullets;
 	std::vector<sf::Texture> texture;
 	CharacterAnimation animation;
 	utils::PlasmaDroneState state;
@@ -31,8 +31,8 @@ class PlasmaDrone : public Character {
 
 
 public:
-	PlasmaDrone();
-	bool refresh(const Player& player, bool wall);
+	PlasmaDrone(std::vector<PlasmaBullet*>& bullets);
+	bool refresh(Player* player, bool wall);
 	void levelUp(int round);
 	void draw(sf::RenderTarget& target, sf::RenderStates state);
 	//Collider getCollider();

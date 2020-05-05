@@ -114,7 +114,7 @@ bool Soldier::refresh(const Player& player, bool wall) {
 		else if (getPosition().x > 1280) 
 			correctPosition(sf::Vector2f(1274.1f, sprite.getPosition().y));
 		if (getPosition().y > 1070)
-				correctPosition(sf::Vector2f(getPosition().x, player.getPosition().y));
+				correctPosition(sf::Vector2f(getPosition().x, 0));
 		else if (getPosition().y < 0)
 				correctPosition(sf::Vector2f(getPosition().x, 5.f));
 
@@ -168,7 +168,7 @@ bool Soldier::refresh(const Player& player, bool wall) {
 
 
 		/*SEKCJA STRZELANIA*/
-		if ((abs(player.getPosition().x) - abs(getPosition().x)) >= -400 && (abs(player.getPosition().x) - abs(getPosition().x)) <= 400) {
+		if ((abs(player.getPosition().x - getPosition().x)) <= 400) { // && (abs(player.getPosition().x) - abs(getPosition().x)) <= 400) {
 			if (bullet->getCooldown().elapsed()) {
 				bullet->restart(getPosition());
 				bullet->setDirection(this);

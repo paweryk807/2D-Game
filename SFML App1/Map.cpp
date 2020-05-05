@@ -49,7 +49,7 @@ void Map::setPlatforms(const unsigned int sizeTab)
 	int w_param = 0;
 	int h_param = 0;
 	bool add;
-	for (int i = 0; i < sizeTab; i++) {
+	for (unsigned int i = 0; i < sizeTab; i++) {
 		if (w_param == 80) {
 			w_param = 0;
 			h_param++;
@@ -139,7 +139,9 @@ void Map::setPlatforms(const unsigned int sizeTab)
 
 bool Map::checkCollision(sf::Vector2f direction, Character* character) const {
 	bool collision = false;
+	sf::Vector2f characterPosition = character->getPosition();
 	for (auto platform : platforms) {
+		if(std::abs(characterPosition.x - platform->getPosition().x) < 700 && std::abs(characterPosition.y - platform->getPosition().y) < 100)
 		if (platform->getCollider().checkCollision(character->getCollider(), direction, 1.2f)) {
 			character->onCollision(direction);
 			collision = true;

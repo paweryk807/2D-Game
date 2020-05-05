@@ -3,18 +3,18 @@
 #include <iostream>
 #include <stdexcept>
 #include <sstream>
-#include "Soldier.h"
+//#include "Soldier.h"
 #include "Bird.h"
 #include "Menu.h"
 #include "Functions.h"
 #include "Map.h"
-#include "bullet.h"
+//#include "bullet.h"
 #include "HUD.h"
 #include "EnemySpawner.h"
 #include "PlasmaDrone.h"
+#include "PlasmaBullet.h"
 
-class Game
-{
+class Game {
 	std::unique_ptr<sf::RenderWindow> window;
 	std::unique_ptr<Map> level;
 	std::unique_ptr<Player> player;

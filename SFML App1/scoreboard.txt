@@ -1,10 +1,10 @@
 Pawelek;58800
 elo;32580
 Walczeseponocachzbosem;9020
+ope;3900
+ elo;3360
 a ;2280
 Andrzej;1720
-Pawelek;1500
-edek;1200
-d;900
-exde;800
-ope;3900
+;1700
+dp;1600
+mistrz;28100

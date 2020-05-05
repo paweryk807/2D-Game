@@ -15,13 +15,13 @@ void EnemySpawner::setTime(std::chrono::seconds seconds) {
     timer.setTime(seconds);
 }
 
-void EnemySpawner::spawnEnemies(int value, int type)
+void EnemySpawner::spawnSoldiers(int value, int type)
 {
     timer.start();
-    enemies.clear();
-    enemies.reserve(value);
+    soldiers.clear();
+    soldiers.reserve(value);
     std::vector<std::string> tmp;
-    bullets.reserve(value);
+    soldierBullets.reserve(value);
     for (int i = 0; i < value; i++) {
         tmp.clear();
         /*  RANDOM TYPE SET  */
@@ -43,16 +43,17 @@ void EnemySpawner::spawnEnemies(int value, int type)
             throw std::exception("Bad enemy type param.");
             break;
         }
-        enemies.push_back(new Soldier(tmp));
-        enemies[i]->correctPosition(sf::Vector2f(120 + rand() % 3, 570 + rand() % 5));  //toSpawn[i]->getPosition().x - i * 2, toSpawn[i]->getPosition().y)
-        bullets.push_back(new Bullet(enemies[i]->getPosition(), 11.f));
-        enemies[i]->addAmmunition(*bullets[bullets.size() - 1]);
+        soldiers.push_back(new Soldier(tmp));
+        soldiers[i]->correctPosition(sf::Vector2f(120 + rand() % 3, 570 + rand() % 5));  //toSpawn[i]->getPosition().x - i * 2, toSpawn[i]->getPosition().y)
+        soldierBullets.push_back(new Bullet(soldiers[i]->getPosition(), 11.f));
+        soldiers[i]->addAmmunition(*soldierBullets[soldierBullets.size() - 1]);
     }
     //enemies.push_back(new PlasmaDrone());
 }
 
+
 void EnemySpawner::levelUpEnemies(int round) {
-    for (auto& elem : enemies) {
+    for (auto& elem : soldiers) {
         elem->levelUp(round);
     }
 }

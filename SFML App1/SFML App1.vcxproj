@@ -191,6 +191,8 @@
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Functions.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="PlasmaBullet.cpp" />
+    <ClCompile Include="PlasmaBulletAnimation.cpp" />
     <ClCompile Include="PlasmaDrone.cpp" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -215,6 +217,8 @@
     <ClInclude Include="Functions.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="PlasmaBullet.h" />
+    <ClInclude Include="PlasmaBulletAnimation.h" />
     <ClInclude Include="PlasmaDrone.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="Player.h" />

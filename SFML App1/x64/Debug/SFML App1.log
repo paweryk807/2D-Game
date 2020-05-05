@@ -1,15 +1,33 @@
-﻿  PlasmaDrone.cpp
-B:\GitHub\2D-Game\SFML App1\PlasmaDrone.cpp(28,24): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-B:\GitHub\2D-Game\SFML App1\PlasmaDrone.cpp(29,36): warning C4244: "+=": konwersja z "double" do "float", możliwa utrata danych
-B:\GitHub\2D-Game\SFML App1\PlasmaDrone.cpp(198,21): warning C4305: "*=": obcięcie z "double" do "T"
+﻿  EnemySpawner.cpp
+B:\GitHub\2D-Game\SFML App1\EnemySpawner.cpp(47,73): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-B:\GitHub\2D-Game\SFML App1\PlasmaDrone.cpp(202,28): warning C4305: "=": obcięcie z "double" do "T"
+B:\GitHub\2D-Game\SFML App1\EnemySpawner.cpp(47,55): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-B:\GitHub\2D-Game\SFML App1\PlasmaDrone.cpp(14): warning C4715: "PlasmaDrone::loadTextures”: niewszystkie ścieżki kodu zwracają wartość
+  Game.cpp
+B:\GitHub\2D-Game\SFML App1\Game.cpp(51,14): warning C4244: "inicjowanie": konwersja z "float" do "int", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(52,32): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(162,67): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(164,67): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(168,63): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(208,96): warning C4305: "argument": obcięcie z "double" do "float"
+B:\GitHub\2D-Game\SFML App1\Game.cpp(268,71): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(324,49): warning C4305: "argument": obcięcie z "double" do "float"
+B:\GitHub\2D-Game\SFML App1\Game.cpp(324,50): warning C4305: "argument": obcięcie z "double" do "float"
+B:\GitHub\2D-Game\SFML App1\Game.cpp(327,50): warning C4305: "argument": obcięcie z "double" do "float"
+  PlasmaBullet.cpp
+B:\GitHub\2D-Game\SFML App1\PlasmaBullet.cpp(12,40): warning C4305: "argument": obcięcie z "double" do "float"
+B:\GitHub\2D-Game\SFML App1\PlasmaBullet.cpp(30,39): warning C4552: „*”: Wynik wyrażenia nie jest używany
+B:\GitHub\2D-Game\SFML App1\PlasmaBullet.cpp(31,39): warning C4552: „*”: Wynik wyrażenia nie jest używany
+B:\GitHub\2D-Game\SFML App1\PlasmaBullet.cpp(32,39): warning C4552: „*”: Wynik wyrażenia nie jest używany
+B:\GitHub\2D-Game\SFML App1\PlasmaBullet.cpp(33,39): warning C4552: „*”: Wynik wyrażenia nie jest używany
+  PlasmaDrone.cpp
+  main.cpp
+B:\GitHub\2D-Game\SFML App1\main.cpp(71,29): warning C4101: "e": lokalna zmienna, do której nie istnieje odwołanie
+  Generowanie kodu...
   SFML App1.vcxproj -> B:\GitHub\2D-Game\x64\Debug\2D-Game.exe

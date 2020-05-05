@@ -12,7 +12,7 @@ Menu::Menu() {
 			sf::Text object;
 			object.setFont(font);
 			object.setString(firstOptions[i]);
-			object.setPosition(sf::Vector2f(WIDTH * 0.5 - firstOptions[i].length()*10, ((HEIGHT   * 0.5)/6 * (i + 1)))); // /6 dla symetrii
+			object.setPosition(sf::Vector2f(WIDTH * 0.5f - firstOptions[i].length()*10.f, (((HEIGHT   * 0.5f)/6.f) * (float)(i + 1)))); // /6 dla symetrii
 			object.setFillColor(sf::Color::White);
 			menu.push_back(object);
 
@@ -85,7 +85,7 @@ bool Menu::loadScoreboard() {
 			std::getline(plik, line);
 			unsigned int pos = line.find(';');
 			std::string name = line.substr(0, pos);
-			std::string score = line.substr(pos + 1, line.length()-1);
+			std::string score = line.substr(pos + 1, (line.length()-1));
   			tmp.setString(name + ' ');
 			scores.push_back(std::make_tuple(tmp, stoi(score)));
 			i--;
@@ -125,7 +125,7 @@ bool Menu::sortScores() {
 		sf::Vector2f pos;
 		for (int i = 0; i < scores.size(); i++)
 			for (int j = 0; j < scores.size() - 1; j++) 
-				if (std::get<1>(scores[j]) < std::get<1>(scores[j+1]))
+				if (std::get<1>(scores[j]) < std::get<1>(scores[j + 1]))
 					std::swap(scores[j], scores[j + 1]);
 		return 1;
 	}
@@ -140,7 +140,7 @@ void Menu::drawScoreboard(sf::RenderWindow& window) {
 	for (auto &elem : scores) {
 		tmp = std::get<0>(elem);
 		tmp.setString(std::to_string(position) + ". " + tmp.getString() + std::to_string(std::get<1>(elem)));
-		tmp.setPosition(WIDTH * 0.5 - tmp.getString().getSize() * 10, 100 + position * 40);
+		tmp.setPosition(WIDTH * 0.5f - tmp.getString().getSize() * 10.f, 100.f + (float)position * 40.f);
 		position++;
 		window.draw(tmp);
 	}
@@ -159,7 +159,7 @@ bool Menu::addToScores(sf::RenderWindow& window,unsigned int score) {
 	fieldToPrint.setPosition(110, 400);
 
 	userName.setFont(font);
-	userName.setPosition(150 + textField.getSize() * 12.5, 400);
+	userName.setPosition(150 + textField.getSize() * 12.5f, 400);
 	userName.setFillColor(sf::Color::Blue);
 	userName.setOutlineColor(sf::Color::Cyan);
 

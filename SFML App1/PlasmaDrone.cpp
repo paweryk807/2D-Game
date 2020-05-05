@@ -11,28 +11,30 @@ bool PlasmaDrone::loadTextures(std::vector<std::string>& textures)
 		}
 		texture.push_back(sf::Texture(tmp));
 	}
+	return 1;
 }
 
 void PlasmaDrone::createBullets()
 {
+	//Bullet* tmp = nullptr;
 	for (int i = 0; i < 5; i++) {
-		Bullet tmp(sf::Vector2f(2000, 2000), texture[0]);
-		tmp.setIntRect(sf::IntRect(0, 0, 64, 64));
-		tmp.setSize(32);
-		
+		Bullet tmp (sf::Vector2f(2000, 2000));//, texture[0]);
+	//	tmp->setIntRect(sf::IntRect(0, 0, 64, 64));
+		//tmp->setSize(32);
+		//bullets.push_back(tmp);
 	}
 }
 
 void PlasmaDrone::levelUp(int round)
 {
-	setHealth(getHealth() + round * 0.1 * getHealth() / 5);
-	strength += round * 0.1 * strength;
+	setHealth(getHealth() +  (float)round * 0.1f * getHealth() / 5.f);
+	strength += round * 0.1f * strength;
 }
 void PlasmaDrone::draw(sf::RenderTarget& target, sf::RenderStates state){
 	target.draw(sprite);
-	//for (auto elem : bullets) {
-	//	if (!elem.getCooldown().elapsed())
-	//		target.draw(elem);
+	//for (auto &elem : bullets) {
+	//	if (!elem->getCooldown().elapsed())
+	//		target.draw(*elem);
 	//}
 }
 /*
@@ -50,22 +52,22 @@ Collider PlasmaDrone::getCollider() {
 	}
 }
 */
-PlasmaDrone::PlasmaDrone()
+PlasmaDrone::PlasmaDrone(std::vector<PlasmaBullet*>& bullets) : bullets(bullets)
 {
 	try {
-		std::vector<std::string> fileNames = { "images/PlasmaDrone/ball_sheet.png", "images/PlasmaDrone/explode_sheet.png","images/PlasmaDrone/fire_sheet.png","images/PlasmaDrone/idle_sheet.png" };
+		std::vector<std::string> fileNames = { "images/PlasmaDrone/explode_sheet.png","images/PlasmaDrone/fire_sheet.png","images/PlasmaDrone/idle_sheet.png" };
 		loadTextures(fileNames);
 		state = static_cast<utils::PlasmaDroneState>(1);
 		changeDirectionX = false;
 		changeDirectionY = false;
-		createBullets();
+		//createBullets();
 		velocity.y = 4.0;
-		sprite.setSize(sf::Vector2f(92, 92));
+		sprite.setSize(sf::Vector2f(91, 92));
 		sprite.setPosition(sf::Vector2f(100, 100));
-		sf::IntRect rect(0, 0, 92, 92);
+		sf::IntRect rect(0, 0, 91, 92);
 		sprite.setTextureRect(rect);
 		animation.setRect(rect);
-		sprite.setTexture(&texture[3]);
+		sprite.setTexture(&texture[2]);
 		sprite.setOrigin(sprite.getSize().x / 2, sprite.getSize().y / 2);
 		setHealth(1000);
 
@@ -77,9 +79,9 @@ PlasmaDrone::PlasmaDrone()
 
 void PlasmaDrone::prepareToFly() {
 	state = utils::PlasmaDroneState::fly;
-	sprite.setTexture(&texture[3]);
-	sprite.setSize(sf::Vector2f(92, 92));
-	sf::IntRect rect(0, 0, 92, 92);
+	sprite.setTexture(&texture[2]);
+	sprite.setSize(sf::Vector2f(91, 92));
+	sf::IntRect rect(0, 0, 91, 92);
 	sprite.setTextureRect(rect);
 	animation.setRect(rect);
 	sprite.setOrigin(sprite.getSize().x / 2, sprite.getSize().y / 2);
@@ -89,7 +91,7 @@ void PlasmaDrone::prepareToFly() {
 void PlasmaDrone::prepareToExplode() {
 	state = utils::PlasmaDroneState::explode;
 	sprite.setSize(sf::Vector2f(192, 204));
-	sprite.setTexture(&texture[1]);
+	sprite.setTexture(&texture[0]);
 	sf::IntRect rect(0, 0, 192, 204);
 	sprite.setTextureRect(rect);
 	animation.setRect(rect);
@@ -99,7 +101,7 @@ void PlasmaDrone::prepareToExplode() {
 
 void PlasmaDrone::prepareToFire() {
 	state = utils::PlasmaDroneState::fire;
-	sprite.setTexture(&texture[2]);
+	sprite.setTexture(&texture[1]);
 	sprite.setSize(sf::Vector2f(128, 128));
 	sf::IntRect rect(0, 0, 128, 128);
 	sprite.setTextureRect(rect);
@@ -108,16 +110,17 @@ void PlasmaDrone::prepareToFire() {
 
 }
 
-bool PlasmaDrone::refresh(const Player& player, bool wall) {
-	//sprite.setPosition(colid.getPosition());
-	bool changed = false;
-	for (auto& elem : bullets) {
-		refresh(player, false);
-	}
-	if (getHealth() > 0) {
-		// AI SECTION
-		//velocity.x--;
+bool PlasmaDrone::refresh(Player* player, bool wall) {
 
+	bool alive = true;
+
+	for(auto& elem : bullets) {
+		elem->refresh();
+	}
+
+	if (getHealth() > 0) {
+		
+		/* Sekcja odpowiedzialna za poruszanie sie po planszy*/
 		if (sprite.getSize().x != 92)  // IDLE
 			prepareToFly();
 		if (!changeDirectionY)
@@ -139,69 +142,47 @@ bool PlasmaDrone::refresh(const Player& player, bool wall) {
 		if (sprite.getPosition().y >= 1080 || wall) changeDirectionY = true;
 		else if (sprite.getPosition().y <= 16) changeDirectionY = false;
 
-		animation.changeMove(92, 0, 24 * 92, 0, sprite);
-
-		/*
-		if (player.getPosition().x - 1 >= getPosition().x) {
-
-			velocity.x++;
-			changed = true;
-			animation.rotateSprite(sprite, 'l');
-		//	moveRight();
-		}
-		else if ((player.getPosition().x + 1) < getPosition().x) {
-			velocity.x--;
-			sprite.setTexture(&texture[1]);
-			changed = true;
-			animation.rotateSprite(sprite, 'r');
-		//	moveLeft();
-		}
-		else if (velocity.x == 0 && velocity.y == 0) {
-			sprite.setTexture(&texture[0]);
-			changed = true;
-
-		}*/
+		
 		setSpeed(3.f);
 		animation.setAnimTime(sf::seconds(0.125));
-		sprite.move(velocity.x, velocity.y);
-		velocity.x = 0.0f;
-		velocity.y = 0.0f;
-		/*/*SEKCJA STRZELANIA
-		if ((abs(player.getPosition().x) - abs(getPosition().x)) >= -520 && (abs(player.getPosition().x) - abs(getPosition().x)) <= 520) {
-			if (sprite.getSize().x != 128) // FIRE
+		
+		/* Sekcja odpowiedzialna za strzelanie drona */
+		if ((abs(player->getPosition().x - getPosition().x)) <= 520) {
+			if (sprite.getSize().x != 128) // FIREs
 				prepareToFire();
-
 			animation.changeMove(128, 0, 128 * 20, 0, sprite);
-			for(auto &bullet : bullets)
-				if (bullet.getCooldown().elapsed()) {
-					bullet.restart(getPosition());
-					bullet.setDirection(this);
+			for(auto &bullet : bullets){
+				if (bullet->getCooldown().elapsed()) {
+					bullet->restart(getPosition());
+					bullet->countDirection(this, player);
 				}
+			}
 		}
-		else if (sprite.getSize().x != 92) { // IDLE
+		else if (sprite.getSize().x != 91) { // IDLE
 				prepareToFly();
-			animation.changeMove(92, 0, 24 * 92, 0, sprite);
 		}
-		//velocity.y += 0.9810f * 1.0f;
+
+
+		if (sprite.getSize().x == 91)
+		animation.changeMove(91, 0, 24 * 91, 0, sprite);
 		sprite.move(velocity.x, velocity.y);
 		velocity.x = 0.0f;
 		velocity.y = 0.0f;
-		//velocity.y = 0.0f;
-		//if (velocity.y > 17.0f) {
-		//	velocity.y = 9.81 * 1.6f;
-		//}*/
 		return 1;
 	}
 	else {
+		/* Sekcja odpowiedzialna za wybuch drona */
 		if (sprite.getSize().x != 192) // EXPLODE
 			prepareToExplode();
-		velocity.x *= 0.97;
+		velocity.x *= 0.57f;
 		velocity.y += 0.9810f * 2.5f;
 		sprite.move(velocity.x, velocity.y);
 		if (velocity.y > 17.0f) {
-			velocity.y = 9.81 * 1.6f;
+			velocity.y = 9.81f * 1.6f;
 		}
-		return animation.death(192, 192, 6 * 192, 0, sprite, velocity);
+		alive = (getHealth() > 0) || animation.death(192, 0, 6 * 192, 0, sprite, velocity);
+		if (!alive) sprite.setPosition(2000, 2000);
+		return alive;
 	}
 
 }

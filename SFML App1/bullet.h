@@ -3,37 +3,39 @@
 #include<iostream>
 #include<string>
 #include "Player.h"
+#include "Cooldown.h"
 #include "Utils.h"
-#define TEXTURE_PATH "images/bullets.png"
 
 class Bullet : public sf::Drawable
 {
-	sf::Texture texture;
-	sf::CircleShape sprite; 
-	sf::Vector2f velocity;
-	Animation animation;
+	void setVelocity(sf::Vector2f vel);
+protected:	
+	Cooldown cooldown;
 	sf::RectangleShape colid;
-public:
+	sf::Vector2f velocity;
+	sf::CircleShape sprite; 
+
+
+public:	
+	virtual void draw(sf::RenderTarget& target, sf::RenderStates state) const;
+	Bullet() = default;
 	Bullet(sf::Vector2f startPos);
-	Bullet(sf::Vector2f startPos, sf::Texture);
 	Bullet(sf::Vector2f startPos, float speed);
 	void setScale(sf::Vector2f scale);
 	void setSize(float size);
-	bool loadTexture(const std::string path);
+	void setDirection(Character* character);
+	void upgrade(int lvl);
+
 	void refresh();
 	void restart(sf::Vector2f pos);
-	void upgrade(int lvl);
 	bool hit(Character* character); 
 	void hide();
-	virtual void draw(sf::RenderTarget& target, sf::RenderStates state) const;
-	//bool hit(Player* character);*/
-	void setDirection(Character* character);
+
 	sf::CircleShape getSprite();
 	sf::Vector2f getVelocity();
 	Cooldown getCooldown();
-	void setIntRect(sf::IntRect rect);
-	void setVelocity(sf::Vector2f vel);
 	Collider getCollider();
+
 	~Bullet() = default;
 };
 

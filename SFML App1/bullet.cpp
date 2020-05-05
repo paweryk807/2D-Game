@@ -1,61 +1,30 @@
 #include "bullet.h"
 
 Bullet::Bullet(sf::Vector2f startPos) {
-	try {
-		loadTexture(TEXTURE_PATH);
 		sprite.setRadius(3.0f);
 		sprite.setFillColor(sf::Color::Yellow);
 		sprite.setOutlineColor(sf::Color::Red);
 		sprite.setPosition(startPos.x, startPos.y - 5.f);
 		velocity = sf::Vector2f(10.0f, 0.0f);
-		animation.setAnimTime(sf::seconds(0.5f));
-		sf::Vector2f cSize(sprite.getRadius(), sprite.getRadius());
-		
-		colid.setSize(cSize);
-		colid.setPosition(startPos.x, startPos.y - 5.f);
-		colid.setOrigin(cSize / 2.0f);
-
-	}
-	catch (std::exception e) {
-		std::cerr << e.what();
-	}
-}
-
-Bullet::Bullet(sf::Vector2f startPos, sf::Texture textr) {
-		texture = textr;
-		sprite.setRadius(3.0f);
-		sprite.setFillColor(sf::Color::Yellow);
-		sprite.setOutlineColor(sf::Color::Red);
-		sprite.setPosition(startPos.x, startPos.y - 5.f);
-		velocity = sf::Vector2f(10.0f, 0.0f);
-		animation.setAnimTime(sf::seconds(0.5f));
+		cooldown.setCooldown(sf::seconds(0.5f));
 		sf::Vector2f cSize(sprite.getRadius(), sprite.getRadius());
 
-		colid.setSize(cSize);
-		colid.setPosition(startPos.x, startPos.y - 5.f);
-		colid.setOrigin(cSize / 2.0f);
-}
 
+}
+ 
 Bullet::Bullet(sf::Vector2f startPos, float speed) {
-	try {
-		loadTexture(TEXTURE_PATH);
 		sprite.setRadius(3.0f);
-		sprite.setFillColor(sf::Color::Cyan);
+		sprite.setFillColor(sf::Color(utils::randomInt(0,255), utils::randomInt(0, 255), utils::randomInt(0,255)));
 		sprite.setOutlineColor(sf::Color::Magenta);
-		sprite.setTexture(&texture); 
+		sprite.setOutlineThickness(1.5f);
 		sprite.setPosition(startPos.x, startPos.y - 5.f);
 		velocity = sf::Vector2f(speed, 0.0f);
-		animation.setAnimTime(sf::seconds(utils::randomFloat(0.55, 1.05)));  // Randomowy cooldown
+		cooldown.setCooldown(sf::seconds(utils::randomFloat(0.55, 1.05)));  // Randomowy cooldown
 		sf::Vector2f cSize(sprite.getRadius(), sprite.getRadius());
+
 		colid.setSize(cSize);
 		colid.setPosition(startPos.x, startPos.y - 5.f);
 		colid.setOrigin(cSize / 2.0f);
-		sf::IntRect rect(10 * utils::randomInt(0,30), 10 * utils::randomInt(0, 10), 10, 10);   /// RANDOMOWE KOLORY POCISKOW 
-		sprite.setTextureRect(rect);
-	}
-	catch (std::exception e) {
-		std::cerr << e.what();
-	}
 }
 
 void Bullet::setScale(sf::Vector2f scale) {
@@ -64,12 +33,6 @@ void Bullet::setScale(sf::Vector2f scale) {
 
 void Bullet::setSize(float size) {
 	sprite.setRadius(size);
-}
-
-bool Bullet::loadTexture(const std::string path) {
-	if (!texture.loadFromFile(path)) {
-		throw std::exception("cannot open bullet texture");
-	}
 }
 
 void Bullet::setDirection(Character* character) {
@@ -86,14 +49,14 @@ void Bullet::setDirection(Character* character) {
 void Bullet::restart(sf::Vector2f pos) {
 	sprite.setPosition(pos);
 	colid.setPosition(pos);
-	animation.restartCooldown();
+	cooldown.restartCooldown();
 }
 
 void Bullet::upgrade(int lvl) {
 	if (lvl < 10) {
 		sprite.setFillColor(sf::Color::Yellow);
 		sprite.setOutlineColor(sf::Color::Red);
-		animation.setAnimTime(sf::seconds(0.5f));
+		cooldown.setCooldown(sf::seconds(0.5f));
 	}
 
 	else if (lvl < 20) {
@@ -159,11 +122,7 @@ sf::Vector2f Bullet::getVelocity() {
 }
 
 Cooldown Bullet::getCooldown() {
-	return animation.getAnimationCooldown();
-}
-
-void Bullet::setIntRect(sf::IntRect rect) {
-	animation.setRect(rect);
+	return cooldown;
 }
 
 void Bullet::setVelocity(sf::Vector2f vel) {

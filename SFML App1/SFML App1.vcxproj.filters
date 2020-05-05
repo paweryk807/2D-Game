@@ -78,6 +78,12 @@
     <ClCompile Include="PlasmaDrone.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PlasmaBullet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlasmaBulletAnimation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h">
@@ -141,6 +147,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PlasmaDrone.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlasmaBullet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlasmaBulletAnimation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
