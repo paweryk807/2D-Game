@@ -1,6 +1,3 @@
-﻿  PlasmaBullet.cpp
-B:\GitHub\2D-Game\SFML App1\PlasmaBullet.cpp(34,39): warning C4552: „*”: Wynik wyrażenia nie jest używany
-B:\GitHub\2D-Game\SFML App1\PlasmaBullet.cpp(35,39): warning C4552: „*”: Wynik wyrażenia nie jest używany
-B:\GitHub\2D-Game\SFML App1\PlasmaBullet.cpp(36,39): warning C4552: „*”: Wynik wyrażenia nie jest używany
-B:\GitHub\2D-Game\SFML App1\PlasmaBullet.cpp(37,39): warning C4552: „*”: Wynik wyrażenia nie jest używany
+﻿  Map.cpp
+B:\GitHub\2D-Game\SFML App1\Map.cpp(210): warning C4715: "Map::changeMap”: niewszystkie ścieżki kodu zwracają wartość
   SFML App1.vcxproj -> B:\GitHub\2D-Game\x64\Debug\2D-Game.exe

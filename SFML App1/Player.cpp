@@ -180,8 +180,13 @@ bool Player::leveled() {
 }
 
 void Player::reset() {
-	Character::reset();
-	atackSpeed = 2.5f;
+	//Character::reset();
+	sprite.setPosition(600, 350);
+	setHealth(100.0);
+	setCanJump(true);
+	setOnAir(false);
+	setCanClimb(false);
+	setAtackSpeed(2.5f);
 	strength = 50.f;
 	prevLevel = 0;
 	level = 0;

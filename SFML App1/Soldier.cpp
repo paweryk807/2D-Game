@@ -40,6 +40,10 @@ void Soldier::setStrength(float str) {
 	}
 }
 
+void Soldier::reset() {
+
+}
+
 float Soldier::getStrength() {
 	return strength;
 }

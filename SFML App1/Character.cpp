@@ -1,29 +1,18 @@
 #include "Character.h"
 
 Character::Character() {
-	try {
-		sprite.setSize(sf::Vector2f(32.0f, 32.0f));
-		sprite.setOrigin(sprite.getSize() / 2.0f);
-		sprite.setPosition(600, 350);  
-		velocity = sf::Vector2f(0.0f, 0.0f);
-		//animation.setAnimTime(sf::seconds(0.125));  
-		health = 100.0;
-		speed = 2.20;
-		jumpHeight = 10.20;
-		canJump = true;
-		onAir = false;
-		canClimb = false;
-	}
-	catch (std::exception e) {
-		std::cerr << e.what();
-	}
+
+	sprite.setSize(sf::Vector2f(32.0f, 32.0f));
+	sprite.setOrigin(sprite.getSize() / 2.0f);
+	sprite.setPosition(600, 350);
+	velocity = sf::Vector2f(0.0f, 0.0f);
+	health = 100.0;
+	speed = 2.20;
+	jumpHeight = 10.20;
+	canJump = true;
+	onAir = false;
+	canClimb = false;
 }
-
-Character::~Character() {}
-
-//sf::IntRect Character::getIntRect() {
-//	return animation.getRect();
-//}
 
 bool Character::getCanClimb() {
 	return canClimb;
@@ -31,16 +20,6 @@ bool Character::getCanClimb() {
 
 float Character::getHealth() {
 	return health;
-}
-
-void Character::reset() {
-	sprite.setPosition(600, 350);
-	health = 100.0;
-	//speed = 2.20;
-	//jumpHeight = 10.20;
-	canJump = true;
-	onAir = false;
-	canClimb = false;
 }
 
 bool Character::getCanJump() {
@@ -55,17 +34,13 @@ float Character::getJumpHeight() {
 	return jumpHeight;
 }
 
-sf::Vector2f Character::getVelocity() {
+sf::Vector2f Character::getVelocity() const {
 	return velocity;
 }
 
 void Character::setSprite(sf::RectangleShape& sprite) {
 	this->sprite = sprite;
 }
-
-//CharacterAnimation Character::getAnimation() {
-//	return animation;
-//}
 
 float Character::getSpeed() {
 	return speed;
@@ -162,21 +137,14 @@ void Character::onCollision(sf::Vector2f direction) {
 		velocity.y = 0.0f;
 	}
 }
-void Character::setSpeed(float temp) //Sprint Speed
-{
+
+void Character::setSpeed(float temp) {
 	speed = temp;
-   // animation.setAnimTime(tempAnim);
 }
 
 void Character::setVelocity(sf::Vector2f vel) {
 	velocity = vel;
 }
-
-/*
-void Character::setAnimation(CharacterAnimation& a) {
-	animation = a;
-}*/
-
 
 void Character::correctPosition(sf::Vector2f size) {
 	int x = getPosition().x;

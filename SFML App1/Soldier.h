@@ -31,6 +31,8 @@ public:
 	~Soldier();
 
 	void setStrength(float str);
+
+	void reset();
 	
 	void setSpeed(float temp, sf::Time tempAnim);
 	

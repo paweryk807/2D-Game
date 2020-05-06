@@ -82,11 +82,13 @@ void Game::run() {
 }
 
 void Game::generateLevel() {
+    level->changeMap("level2.txt", 3600);
     /*
         FUNKCJA DO ZMIANY PLANSZY 
         W.I.P
 
     */
+     
 }
 
 void Game::start() {
@@ -221,6 +223,12 @@ void Game::start() {
                 }
 
                 if (spawner.soldiers.empty()) {
+                    if (round == 1) {
+                        player->correctPosition(sf::Vector2f(0, 100));
+                        ptaszyskoTestowe.correctPosition(sf::Vector2f(0, 100));
+                        dronik.correctPosition(sf::Vector2f(0, 100));
+                        generateLevel();
+                    }
                     round++;
                     score += spawner.getTimer().getCountedTime() * 100;
                     spawner.soldiers.clear();

@@ -146,7 +146,6 @@ bool Map::checkCollision(sf::Vector2f direction, Character* character) const {
 			character->onCollision(direction);
 			collision = true;
 		}
-		//else collision = false;
 	}
 	return collision;
 }
@@ -170,17 +169,7 @@ bool Map::checkPosition(Character* character)
 	}
 	return true;
 }
-/*
-TileMap Map::getTileMap()
-{
-	return tiles;
-}
 
-sf::RectangleShape Map::getBackground()
-{
-	return background;
-}
-*/
 bool Map::loadBackground(const std::string& texture) {
 	if (!backgroundTexture.loadFromFile(texture)) {
 		throw std::exception("unable to open texture file");
@@ -190,7 +179,6 @@ bool Map::loadBackground(const std::string& texture) {
 }
 
 bool Map::wall(Character* character) const {
-	//sf::Vector2f dir = sf::Vector2f(0, 0);
 	for (auto platform : platforms) {
 		if (platform->getCollider().wallCollision(character->getCollider())) {// , dir, 1.0)) {
 			return true;
@@ -207,4 +195,23 @@ sf::Vector2f Map::getSize() const {
 void Map::draw(sf::RenderTarget& target, sf::RenderStates state) const {
 	target.draw(background);
 	target.draw(tiles);
+}
+
+bool Map::changeMap(std::string mapFile, unsigned int tabSize) {
+	delete tab;
+	platforms.clear();
+	tab = new unsigned int[tabSize];
+	if (!loadLevelToTab(mapFile, tabSize))
+		throw std::exception("Bad map file path");
+	else {
+		tiles.load("images/sheet.png", sf::Vector2u(16, 16), tab, 80, 45);
+		setPlatforms(tabSize);
+	}
+}
+
+Map::~Map() {
+	delete tab; 
+	for (auto& elem : platforms) {
+		delete elem;
+	}
 }

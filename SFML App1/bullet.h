@@ -10,6 +10,7 @@ class Bullet : public sf::Drawable
 {
 	void setVelocity(sf::Vector2f vel);
 protected:	
+	bool used; 
 	Cooldown cooldown;
 	sf::RectangleShape colid;
 	sf::Vector2f velocity;

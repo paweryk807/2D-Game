@@ -35,6 +35,7 @@ public:
 	bool refresh(Player* player, bool wall);
 	void levelUp(int round);
 	void draw(sf::RenderTarget& target, sf::RenderStates state);
+	void reset();
 	//Collider getCollider();
 
 };

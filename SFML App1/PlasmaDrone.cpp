@@ -37,6 +37,8 @@ void PlasmaDrone::draw(sf::RenderTarget& target, sf::RenderStates state){
 	//		target.draw(*elem);
 	//}
 }
+void PlasmaDrone::reset() {
+}
 /*
 Collider PlasmaDrone::getCollider() {
 	sf::Sprite tmp;
