@@ -12,17 +12,17 @@ class EnemySpawner
 private:
 	Timer timer;
 public:
-	std::vector<Soldier*> soldiers;
-	std::vector<PlasmaDrone*> drones;
-	std::vector<Bullet*> soldierBullets;
-	std::vector<Bullet*> dronesBullets;
+	std::vector<std::unique_ptr<Soldier>> soldiers;
+	std::vector<std::unique_ptr<PlasmaDrone>> drones;
+	std::vector<std::unique_ptr<Bullet>> soldierBullets;
+	std::vector<std::vector<std::unique_ptr<PlasmaBullet>>> dronesBullets;
 
 	EnemySpawner();
 	EnemySpawner(std::chrono::seconds seconds);
 	Timer& getTimer();
 	void setTime(std::chrono::seconds seconds);
 	void spawnSoldiers(int value, int type);
-//	void spawnPlasmaDrone(int value, int type);
+	void spawnPlasmaDrone(int value, int round);
 	void levelUpEnemies(int round);
 	~EnemySpawner() = default;
 };

@@ -15,13 +15,30 @@ void EnemySpawner::setTime(std::chrono::seconds seconds) {
     timer.setTime(seconds);
 }
 
+void EnemySpawner::spawnPlasmaDrone(int value, int round) {
+    int enemiesToSpawn = round / 5; // 1 ekstra co 5 rund 
+    drones.clear();
+    dronesBullets.clear();
+    for (int i = 0; i < enemiesToSpawn; i++) {
+        dronesBullets.push_back(std::vector<std::unique_ptr<PlasmaBullet>>());
+        for (int y = 0; y < 10; y++) {
+            dronesBullets[i].push_back(std::unique_ptr<PlasmaBullet>(new PlasmaBullet(sf::Vector2f(2000, 2000), 1.f + 0.25f * i)));
+        }
+        drones.push_back(std::unique_ptr<PlasmaDrone>(new PlasmaDrone(dronesBullets[i])));
+    }
+    
+    timer.start();
+}
+
 void EnemySpawner::spawnSoldiers(int value, int type)
 {
-    timer.start();
     soldiers.clear();
     soldiers.reserve(value);
-    std::vector<std::string> tmp;
-    soldierBullets.reserve(value);
+    std::vector<std::string> tmp;                  
+    // Bullet tmp = *spawner.soldierBullets[0].get();
+    //spawner.soldierBullets.clear();
+   // spawner.soldierBullets.push_back(std::unique_ptr<Bullet>(tmp));
+    //soldierBullets.reserve(value);
     for (int i = 0; i < value; i++) {
         tmp.clear();
         /*  RANDOM TYPE SET  */
@@ -43,10 +60,12 @@ void EnemySpawner::spawnSoldiers(int value, int type)
             throw std::exception("Bad enemy type param.");
             break;
         }
-        soldiers.push_back(new Soldier(tmp));
+        soldiers.push_back(std::unique_ptr<Soldier>(new Soldier(tmp)));
         soldiers[i]->correctPosition(sf::Vector2f(120 + rand() % 3, 570 + rand() % 5));  //toSpawn[i]->getPosition().x - i * 2, toSpawn[i]->getPosition().y)
-        soldierBullets.push_back(new Bullet(soldiers[i]->getPosition(), 11.f));
+        soldierBullets.push_back(std::unique_ptr<Bullet>(new Bullet(soldiers[i]->getPosition(), 11.f)));
         soldiers[i]->addAmmunition(*soldierBullets[soldierBullets.size() - 1]);
+
+        timer.start();
     }
     //enemies.push_back(new PlasmaDrone());
 }

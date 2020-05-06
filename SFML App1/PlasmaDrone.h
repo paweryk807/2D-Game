@@ -3,7 +3,7 @@
 #include "PlasmaBullet.h"
 
 class PlasmaDrone : public Character {
-	std::vector<PlasmaBullet*>& bullets;
+	std::vector <std::unique_ptr<PlasmaBullet>>& bullets;
 	std::vector<sf::Texture> texture;
 	CharacterAnimation animation;
 	utils::PlasmaDroneState state;
@@ -31,7 +31,7 @@ class PlasmaDrone : public Character {
 
 
 public:
-	PlasmaDrone(std::vector<PlasmaBullet*>& bullets);
+	PlasmaDrone(std::vector<std::unique_ptr<PlasmaBullet>>& bullets);
 	bool refresh(Player* player, bool wall);
 	void levelUp(int round);
 	void draw(sf::RenderTarget& target, sf::RenderStates state);

@@ -54,7 +54,7 @@ Collider PlasmaDrone::getCollider() {
 	}
 }
 */
-PlasmaDrone::PlasmaDrone(std::vector<PlasmaBullet*>& bullets) : bullets(bullets)
+PlasmaDrone::PlasmaDrone(std::vector<std::unique_ptr<PlasmaBullet>>& bullets) : bullets(bullets)
 {
 	try {
 		std::vector<std::string> fileNames = { "images/PlasmaDrone/explode_sheet.png","images/PlasmaDrone/fire_sheet.png","images/PlasmaDrone/idle_sheet.png" };

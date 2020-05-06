@@ -8,7 +8,7 @@
 //#include "Platform.h"
 #include "Game.h"
 #include  "TileMap.h"
-//#include "vld.h"
+#include "vld.h"
 //using namespace std;
 
 
@@ -33,6 +33,7 @@ draw.io
 
 int main()
 {
+    //sf::RectangleShape sprite;
 //sf::View view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(VIEW_HEIGHT, VIEW_HEIGHT));
 //sf::View view(sf::Vector2f(1280.0/2, 720.0/2), sf::Vector2f(1280, 720));
 

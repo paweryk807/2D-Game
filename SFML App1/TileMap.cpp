@@ -13,7 +13,7 @@ bool TileMap::load(const std::string& tileSet, sf::Vector2u tileSize, const unsi
 	}
 
 	vertices.setPrimitiveType(sf::Quads);
-	vertices.resize((int)width * height * 4);
+	vertices.resize((int)(width * height * 4));
 
 	for (unsigned int i = 0; i < width; i++)
 		for (unsigned int j = 0; j < height; j++) {
@@ -21,8 +21,7 @@ bool TileMap::load(const std::string& tileSet, sf::Vector2u tileSize, const unsi
 			unsigned int tu = tileNumber % (tileset.getSize().x / tileSize.x);
 			unsigned int tv = tileNumber / (tileset.getSize().x / tileSize.x);
 
-			sf::Vertex* quad = &vertices[(int)((i + j * width) * 4)];
-			//sf::Vertex* quad = &vertices[(int)((i + j * width) * 4)];
+			sf::Vertex* quad = &vertices[(int)(((i + j * width) * 4))];
 
 			quad[0].position = sf::Vector2f(i * tileSize.x, j * tileSize.y);
 			quad[1].position = sf::Vector2f((i + 1) * tileSize.x, j * tileSize.y);

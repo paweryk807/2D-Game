@@ -8,7 +8,7 @@
 class Map : public sf::Drawable {
 	unsigned int* tab;
 	TileMap tiles;
-	std::vector<Platform*> platforms;
+	std::vector<std::unique_ptr<Platform>> platforms;
 	sf::RectangleShape background;
 	sf::Texture backgroundTexture;
 	void setPlatforms(const unsigned int sizeTab);
@@ -24,10 +24,10 @@ public:
 	bool checkCollision(sf::Vector2f direction, Character* character) const;
 	bool checkBulletCollision(sf::Vector2f direction, Bullet& bullet) const;
 	bool checkPosition(Character* character);
-
+	//bool openBox(Character* player);
+	//bool thereIsALadder(Character* player);
 	void draw(sf::RenderTarget& target, sf::RenderStates) const;
 
-	bool changeMap(std::string mapFile, unsigned int tabSize); // tabSize --- Liczba blokow 
 	~Map();
 };
 

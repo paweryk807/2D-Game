@@ -1,6 +1,5 @@
 #include "Map.h"
 
-// Przemyslec p-try c-ora
 Map::Map(unsigned int sizeParam, const std::string& lvlDirectory) {
 	try {
 
@@ -15,8 +14,8 @@ Map::Map(unsigned int sizeParam, const std::string& lvlDirectory) {
 		
 
 	}
-	catch(std::exception ){
-		
+	catch(std::exception e){
+		std::cerr << e.what();
 	}
 }
 
@@ -75,7 +74,7 @@ void Map::setPlatforms(const unsigned int sizeTab)
 			width = w_param * size_param + half_size;// + 8.f;
 			height = h_param * size_param + half_size;/// /+ 8.f;
 			tmp.setPosition(sf::Vector2f(width, height));
-			platforms.push_back(new Platform(tmp));
+			platforms.push_back(std::unique_ptr<Platform>(new Platform(tmp)));
 		}
 		w_param++;
 	}
@@ -140,9 +139,9 @@ void Map::setPlatforms(const unsigned int sizeTab)
 bool Map::checkCollision(sf::Vector2f direction, Character* character) const {
 	bool collision = false;
 	sf::Vector2f characterPosition = character->getPosition();
-	for (auto platform : platforms) {
-		if(std::abs(characterPosition.x - platform->getPosition().x) < 700 && std::abs(characterPosition.y - platform->getPosition().y) < 100)
-		if (platform->getCollider().checkCollision(character->getCollider(), direction, 1.2f)) {
+	for(auto iterator = platforms.begin(); iterator!= platforms.end(); iterator++) { //for (platforms platform : &platforms)
+		if(std::abs(characterPosition.x - iterator->get()->getPosition().x) < 700 && std::abs(characterPosition.y - iterator->get()->getPosition().y) < 100)
+		if (iterator->get()->getCollider().checkCollision(character->getCollider(), direction, 1.2f)) {
 			character->onCollision(direction);
 			collision = true;
 		}
@@ -151,8 +150,8 @@ bool Map::checkCollision(sf::Vector2f direction, Character* character) const {
 }
 
 bool Map::checkBulletCollision(sf::Vector2f direction, Bullet& bullet) const {
-	for (auto platform : platforms) {
-		if (platform->getCollider().checkCollision(bullet.getCollider(), direction, 1.f)) {
+	for (auto iterator = platforms.begin(); iterator != platforms.end(); iterator++) {//for (auto platform : platforms) {
+		if (iterator->get()->getCollider().checkCollision(bullet.getCollider(), direction, 1.f)) {
 			return true;
 		}
 	}
@@ -169,7 +168,12 @@ bool Map::checkPosition(Character* character)
 	}
 	return true;
 }
-
+/*
+bool Map::openBox(Character* player)
+{
+	if)
+}
+*/
 bool Map::loadBackground(const std::string& texture) {
 	if (!backgroundTexture.loadFromFile(texture)) {
 		throw std::exception("unable to open texture file");
@@ -179,8 +183,8 @@ bool Map::loadBackground(const std::string& texture) {
 }
 
 bool Map::wall(Character* character) const {
-	for (auto platform : platforms) {
-		if (platform->getCollider().wallCollision(character->getCollider())) {// , dir, 1.0)) {
+	for (auto iterator = platforms.begin(); iterator != platforms.end(); iterator++) {//	for (auto platform : platforms) {
+		if (iterator->get()->getCollider().wallCollision(character->getCollider())) {// , dir, 1.0)) {
 			return true;
 		}
 	}
@@ -191,27 +195,12 @@ sf::Vector2f Map::getSize() const {
 	return sf::Vector2f(1279, 719);
 }
 
-
 void Map::draw(sf::RenderTarget& target, sf::RenderStates state) const {
 	target.draw(background);
 	target.draw(tiles);
 }
 
-bool Map::changeMap(std::string mapFile, unsigned int tabSize) {
-	delete tab;
-	platforms.clear();
-	tab = new unsigned int[tabSize];
-	if (!loadLevelToTab(mapFile, tabSize))
-		throw std::exception("Bad map file path");
-	else {
-		tiles.load("images/sheet.png", sf::Vector2u(16, 16), tab, 80, 45);
-		setPlatforms(tabSize);
-	}
-}
-
 Map::~Map() {
 	delete tab; 
-	for (auto& elem : platforms) {
-		delete elem;
-	}
+	platforms.clear();
 }
