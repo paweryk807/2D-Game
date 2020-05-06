@@ -114,10 +114,6 @@ bool PlasmaDrone::refresh(Player* player, bool wall) {
 
 	bool alive = true;
 
-	for(auto& elem : bullets) {
-		elem->refresh();
-	}
-
 	if (getHealth() > 0) {
 		
 		/* Sekcja odpowiedzialna za poruszanie sie po planszy*/
@@ -153,8 +149,8 @@ bool PlasmaDrone::refresh(Player* player, bool wall) {
 			animation.changeMove(128, 0, 128 * 20, 0, sprite);
 			for(auto &bullet : bullets){
 				if (bullet->getCooldown().elapsed()) {
-					bullet->restart(getPosition());
 					bullet->countDirection(this, player);
+					bullet->restart(getPosition());
 				}
 			}
 		}

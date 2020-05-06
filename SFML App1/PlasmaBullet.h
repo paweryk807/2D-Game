@@ -7,7 +7,7 @@ class PlasmaBullet :
 	sf::Texture texture;
 	PlasmaBulletAnimation animation;
 public:	
-	PlasmaBullet(sf::Vector2f pos);
+	PlasmaBullet(sf::Vector2f pos, float seconds);
 	void countDirection(Character* shooter, Character* target);
 
 	void restart(sf::Vector2f pos);

@@ -101,8 +101,8 @@ void Game::start() {
     bool shooted = false;
     std::vector<PlasmaBullet*> bullets;
     PlasmaBullet* tmp = nullptr;
-    for (int i = 0; i < 5; i++) {
-        tmp = new PlasmaBullet(sf::Vector2f(120, 120));//, texture[0]);
+    for (int i = 0; i < 25; i++) {
+        tmp = new PlasmaBullet(sf::Vector2f(120, 120), 2.f+0.5f*i);//, texture[0]);
     //	tmp->setIntRect(sf::IntRect(0, 0, 64, 64));
         bullets.push_back(tmp);
     }
@@ -251,6 +251,7 @@ void Game::start() {
             if (dronik.getPosition() != sf::Vector2f(2000, 2000))
             window->draw(dronik);
             for (auto& elem : bullets) {
+                elem->refresh();
                 if (!elem->getCooldown().elapsed())
                     window->draw(*elem);
             }
