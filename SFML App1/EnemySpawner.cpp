@@ -22,7 +22,7 @@ void EnemySpawner::spawnPlasmaDrone(int value, int round) {
     for (int i = 0; i < enemiesToSpawn; i++) {
         dronesBullets.push_back(std::vector<std::unique_ptr<PlasmaBullet>>());
         for (int y = 0; y < 10; y++) {
-            dronesBullets[i].push_back(std::unique_ptr<PlasmaBullet>(new PlasmaBullet(sf::Vector2f(2000, 2000), 1.f + 0.25f * i)));
+            dronesBullets[i].push_back(std::unique_ptr<PlasmaBullet>(new PlasmaBullet(sf::Vector2f(2000, 2000), 3.f + 0.25f * y)));
         }
         drones.push_back(std::unique_ptr<PlasmaDrone>(new PlasmaDrone(dronesBullets[i])));
     }

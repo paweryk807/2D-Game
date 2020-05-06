@@ -102,6 +102,7 @@ void Game::start() {
     //generateLevel(); //             <------ Zrobic predefiniowane levele w switchu 
     Bird ptaszyskoTestowe(sf::Vector2f(400,450));
     bool shooted = false;
+    bool killed = false;
     //std::vector<std::unique_ptr<PlasmaBullet>> bullets;
     //PlasmaBullet* tmp = nullptr;
     //for (int i = 0; i < 25; i++) {
@@ -211,7 +212,7 @@ void Game::start() {
                             }
                         }
                     }
-                 //   level->checkCollision(direction, spawner.enemies[i]);// {
+                    //   level->checkCollision(direction, spawner.enemies[i]);// {
 
                 }
                 else {
@@ -220,67 +221,74 @@ void Game::start() {
                     score += 20;
                 }
 
-                
-
-                if (spawner.soldiers.empty() && spawner.drones.empty()) {
-                    //if (round == 1 || round == 2) {
-                    //    player->correctPosition(sf::Vector2f(0, 100));
-                    //    ptaszyskoTestowe.correctPosition(sf::Vector2f(0, 100));
-                    //    //dronik.correctPosition(sf::Vector2f(0, 100));
-                    //    generateLevel();
-                    // }
-                    spawner.soldiers.clear();
-                    std::chrono::seconds s;
-                    score += spawner.getTimer().getCountedTime() * 100;
-
-                    round++;
-                    if (round % 5 == 0) {
-                        spawner.spawnPlasmaDrone(10, round);
-                        s = std::chrono::seconds(utils::randomInt(4 * round + 20, 4 * round + 25));
-                    }
-                    else {
-                        spawner.spawnSoldiers(round * 2 + 5, utils::randomInt(0, 3));
-                        spawner.levelUpEnemies(round);
-                        s = std::chrono::seconds(utils::randomInt(2 * round + 20, 2 * round + 25));
-                    }
-
-
-                    spawner.getTimer().setTime(s);
-                    spawner.getTimer().start();
-                    if (utils::randomFloat(0, 100) < 25.f) {
-                        shooted = false;
-                        ptaszyskoTestowe.reset();
-                    }
-
-                }
+                if (spawner.soldiers.empty() && spawner.drones.empty())
+                    killed = true;
+                //if (round == 1 || round == 2) {
+                //    player->correctPosition(sf::Vector2f(0, 100));
+                //    ptaszyskoTestowe.correctPosition(sf::Vector2f(0, 100));
+                //    //dronik.correctPosition(sf::Vector2f(0, 100));
+                //    generateLevel();
+                // }
             }
-      
-            if(spawner.drones.size() != 0){
+
+            window->draw(*level);
+
+
+
+            if (killed) {
+                spawner.soldiers.clear();
+                std::chrono::seconds s;
+                score += spawner.getTimer().getCountedTime() * 100;
+
+
+                if (round < 2) {
+                    spawner.spawnPlasmaDrone(10, round * 5);
+                    s = std::chrono::seconds(utils::randomInt(4 * round + 20, 4 * round + 25));
+                }
+                else {
+                    spawner.spawnSoldiers(round * 2 + 5, utils::randomInt(0, 3));
+                    spawner.levelUpEnemies(round);
+                    s = std::chrono::seconds(utils::randomInt(2 * round + 20, 2 * round + 25));
+                }
+                round++;
+
+
+                spawner.getTimer().setTime(s);
+                spawner.getTimer().start();
+                if (utils::randomFloat(0, 100) < 25.f) {
+                    shooted = false;
+                    ptaszyskoTestowe.reset();
+                }
+                killed = false;
+            }
+            else if (!killed && spawner.drones.size() != 0) {
                 int i = 0;
-                for (auto it = spawner.drones.begin(); it != spawner.drones.end(); it++) {
-                    if (spawner.soldierBullets[0]->getCollider().checkCollision(it->get()->getCollider(), direction, 1.0f)) {
-                        it->get()->setHealth(it->get()->getHealth() - player->getStrength());
+                for(auto &elem : spawner.drones) {
+                    if (spawner.soldierBullets[0]->getCollider().checkCollision(elem.get()->getCollider(), direction, 1.0f)) {
+                        elem.get()->setHealth(elem.get()->getHealth() - player->getStrength());
                     }
-                    it->get()->refresh(player.get(), level->checkCollision(direction, it->get()));
-                    if (it->get()->getPosition() != sf::Vector2f(2000, 2000)) {
-                        window->draw(*it->get());
+                    elem.get()->refresh(player.get(), level->checkCollision(direction, elem.get()));
+                    if (elem.get()->getPosition() != sf::Vector2f(2000, 2000)) {
+                        window->draw(*elem.get());
                     }
 
-                    if (spawner.dronesBullets.size() != 0)
-                        for (auto itB = spawner.dronesBullets[i].begin(); itB != spawner.dronesBullets[i].end(); itB++) {
-                                itB->get()->refresh();
-                            if (!itB->get()->getCooldown().elapsed())
-                                window->draw(*itB->get());
-                        }
+                //    if (spawner.dronesBullets.size() != 0)
+                 //       for (auto itB = spawner.dronesBullets[i].begin(); itB != spawner.dronesBullets[i].end(); itB++) {
+                  //          itB->get()->refresh();
+                   //     }
                     i++;
                 }
-
             }
-            
-            
+            for(auto&elem : spawner.dronesBullets)
+                for (auto& bullet : elem) {
+                    bullet->refresh();
+                    window->draw(*bullet);
+                }
+
+
+
             spawner.getTimer().refresher();
             hud.update(player.get(), &spawner.getTimer(), round, score);
-            window->draw(*level);
             window->draw(hud);
 
 

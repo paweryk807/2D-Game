@@ -32,10 +32,10 @@ void PlasmaDrone::levelUp(int round)
 }
 void PlasmaDrone::draw(sf::RenderTarget& target, sf::RenderStates state){
 	target.draw(sprite);
-	//for (auto &elem : bullets) {
-	//	if (!elem->getCooldown().elapsed())
-	//		target.draw(*elem);
-	//}
+	/*for (auto &elem : bullets) {
+		if (!elem->getCooldown().elapsed())
+			target.draw(*elem);
+	}*/
 }
 void PlasmaDrone::reset() {
 }
