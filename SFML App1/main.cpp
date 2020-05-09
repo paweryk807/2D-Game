@@ -41,32 +41,9 @@ int main()
 
 //view.setCenter(view.getSize().x / 2, view.getSize().y /  2);
 
-std::unique_ptr<Game> giera;//{ new Level(sf::Vector2i(1920,1080),this->platformTexture) };
-
-    std::vector<std::string> enemies;
-
-    enemies.push_back("images/Blue/Gunner_Blue_Idle.png");
-    enemies.push_back("images/Blue/Gunner_Blue_Run.png");
-    enemies.push_back("images/Blue/Gunner_Blue_Jump.png");
-    enemies.push_back("images/Blue/Gunner_Blue_Death.png");
-
-    enemies.push_back("images/Red/Gunner_Red_Idle.png");
-    enemies.push_back("images/Red/Gunner_Red_Run.png");
-    enemies.push_back("images/Red/Gunner_Red_Jump.png");
-    enemies.push_back("images/Red/Gunner_Red_Death.png");
-
-    enemies.push_back("images/Yellow/Gunner_Yellow_Idle.png");
-    enemies.push_back("images/Yellow/Gunner_Yellow_Run.png");
-    enemies.push_back("images/Yellow/Gunner_Yellow_Jump.png");
-    enemies.push_back("images/Yellow/Gunner_Yellow_Death.png");
-
-    enemies.push_back("images/Green/Gunner_Green_Idle.png");
-    enemies.push_back("images/Green/Gunner_Green_Run.png");
-    enemies.push_back("images/Green/Gunner_Green_Jump.png");
-    enemies.push_back("images/Green/Gunner_Green_Death.png");
-
+std::unique_ptr<Game> giera;
     try {
-        giera = std::unique_ptr<Game>{ new Game(enemies, "images/characters.png") };
+        giera = std::unique_ptr<Game>{ new Game() };
         giera->run();
     }
     catch (std::exception & e) {

@@ -3,23 +3,18 @@
 #include <iostream>
 #include <stdexcept>
 #include <sstream>
-//#include "Soldier.h"
 #include "Bird.h"
 #include "Menu.h"
 #include "Functions.h"
 #include "Map.h"
-//#include "bullet.h"
 #include "HUD.h"
 #include "EnemySpawner.h"
-//#include "PlasmaDrone.h"
-//#include "PlasmaBullet.h"
-//#include "PlayerHandler.h"
+#include "PlayerHandler.h"
 class Game {
 	std::unique_ptr<sf::RenderWindow> window;
 	std::unique_ptr<Map> level;
-	Player player;
-	//Player player;
-
+	PlayerHandler playerHandler;
+	Bird bonusBird;
 	HUD hud;
 	EnemySpawner spawner;
 	Menu menu;
@@ -30,15 +25,15 @@ class Game {
 	unsigned int score;
 
 public:
-	Game(std::vector<std::string>& enemiesTextures, const std::string& playerTexture);
+	Game();
 	bool addBonus(Bird bonusBird);
-	void soldierHanlder(bool& killed);
-	void dronesHanlder();
+	void soldierHandler(bool& killed);
+	void droneHandler();
+	void birdHandler(bool& shooted);
 	void restart();
 	void run();
 	void generateLevel();
 	void gameOver();
-	void getActionFromUser();
 	void start();
 
 	~Game();

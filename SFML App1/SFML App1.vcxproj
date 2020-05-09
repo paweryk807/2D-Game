@@ -217,7 +217,6 @@
     <ClInclude Include="Collider.h" />
     <ClInclude Include="Functions.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="Level.h" />
     <ClInclude Include="PlasmaBullet.h" />
     <ClInclude Include="PlasmaBulletAnimation.h" />
     <ClInclude Include="PlasmaDrone.h" />

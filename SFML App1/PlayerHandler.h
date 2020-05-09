@@ -1,23 +1,24 @@
 #pragma once
-//#include "Player.h"
-//#include "bullet.h"
-//#include "Utils.h"
-/*class PlayerHandler
+#include "Player.h"
+#include "bullet.h"
+#include "Bird.h"
+#include "Utils.h"
+class PlayerHandler
 {
-
+	void playerUpdater();
 public:
 
 	Player player;
-	//std::vector<std::unique_ptr<Bullet>> playerAmmo;
-
+	
 	PlayerHandler();
 	~PlayerHandler() = default;
 
-	//bool addBonus(utils::BonusType type);
+	//bool addBonus(Bird bonusBird);
+	void getActionFromUser();
+	
 	
 	//void addAmmo();
 
 	//void refresh();
 
 };
-*/

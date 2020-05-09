@@ -143,6 +143,13 @@ bool Map::checkCollision(sf::Vector2f direction, Character* character) const {
 		if(std::abs(characterPosition.x - iterator->get()->getPosition().x) < 700 && std::abs(characterPosition.y - iterator->get()->getPosition().y) < 100)
 		if (iterator->get()->getCollider().checkCollision(character->getCollider(), direction, 1.2f)) {
 			character->onCollision(direction);
+			if (direction.x != 0) {
+				character->setVelocity(sf::Vector2f(0, character->getVelocity().y));
+			}
+			if (direction.y != 0) {
+				character->setVelocity(sf::Vector2f(character->getVelocity().x, 0));
+			}
+
 			collision = true;
 		}
 	}

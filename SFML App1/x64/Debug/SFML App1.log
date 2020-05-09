@@ -1,13 +1,10 @@
 ﻿  Game.cpp
-B:\GitHub\2D-Game\SFML App1\Game.cpp(53,57): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-B:\GitHub\2D-Game\SFML App1\Game.cpp(55,57): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-B:\GitHub\2D-Game\SFML App1\Game.cpp(59,53): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-B:\GitHub\2D-Game\SFML App1\Game.cpp(123,88): warning C4305: "argument": obcięcie z "double" do "float"
-B:\GitHub\2D-Game\SFML App1\Game.cpp(175,14): warning C4244: "inicjowanie": konwersja z "float" do "int", możliwa utrata danych
-B:\GitHub\2D-Game\SFML App1\Game.cpp(176,32): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(53,85): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(55,85): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(59,81): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(98,88): warning C4305: "argument": obcięcie z "double" do "float"
+B:\GitHub\2D-Game\SFML App1\Game.cpp(172,14): warning C4244: "inicjowanie": konwersja z "float" do "int", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(173,32): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
 B:\GitHub\2D-Game\SFML App1\Game.cpp(209,10): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
-B:\GitHub\2D-Game\SFML App1\Game.cpp(385,69): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-  main.cpp
-B:\GitHub\2D-Game\SFML App1\main.cpp(72,29): warning C4101: "e": lokalna zmienna, do której nie istnieje odwołanie
-  Generowanie kodu...
+B:\GitHub\2D-Game\SFML App1\Game.cpp(336,97): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
   SFML App1.vcxproj -> B:\GitHub\2D-Game\x64\Debug\2D-Game.exe
