@@ -197,6 +197,7 @@
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PlayerHandler.cpp" />
     <ClCompile Include="Soldier.cpp" />
     <ClCompile Include="TileMap.cpp" />
     <ClCompile Include="Timer.cpp" />
@@ -222,6 +223,7 @@
     <ClInclude Include="PlasmaDrone.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerHandler.h" />
     <ClInclude Include="Soldier.h" />
     <ClInclude Include="TileMap.h" />
     <ClInclude Include="Timer.h" />

@@ -1,6 +1,6 @@
 #pragma once
-#include "Character.h"
-#include "Bullet.h"
+#include "Player.h"
+//#include "Bullet.h"
 
 
 //Defaultowo na pozycji 0 Idle, 1 Run, 2 Jump, 3 Death 

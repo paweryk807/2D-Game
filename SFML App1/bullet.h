@@ -2,7 +2,7 @@
 #include<SFML/Graphics.hpp>
 #include<iostream>
 #include<string>
-#include "Player.h"
+#include "character.h"
 #include "Cooldown.h"
 #include "Utils.h"
 
@@ -24,6 +24,7 @@ public:
 	Bullet(sf::Vector2f startPos, float speed);
 	void setScale(sf::Vector2f scale);
 	void setSize(float size);
+	void setTime(sf::Time time);
 	void setDirection(Character* character);
 	void upgrade(int lvl);
 
@@ -31,7 +32,9 @@ public:
 	void restart(sf::Vector2f pos);
 	bool hit(Character* character); 
 	void hide();
+	void setUse(bool use);
 
+	bool isUsed();
 	sf::CircleShape getSprite();
 	sf::Vector2f getVelocity();
 	Cooldown getCooldown();

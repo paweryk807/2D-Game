@@ -22,7 +22,7 @@ public:
 
 	bool wall(Character* character) const;
 	bool checkCollision(sf::Vector2f direction, Character* character) const;
-	bool checkBulletCollision(sf::Vector2f direction, Bullet& bullet) const;
+	bool checkBulletCollision(sf::Vector2f direction, Bullet* bullet) const;
 	bool checkPosition(Character* character);
 	//bool openBox(Character* player);
 	//bool thereIsALadder(Character* player);

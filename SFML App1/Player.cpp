@@ -1,26 +1,29 @@
 #include "Player.h"
 
-Player::Player(const std::string &temp) : shield(false) {
+Player::Player(const std::string& temp) : bullets(bullets) {//, std::vector<std::pair<Bullet&,bool>> &bullets) : shield(false), bullets(bullets){
 	sf::IntRect r(64, 32, 32, 32);
 	animation.setRect(r);
 	animation.setAnimTime(sf::seconds(0.125));
 	texture.loadFromFile(temp);
 	sprite.setTexture(&texture);
-	sprite.setTextureRect(r);	
+	sprite.setTextureRect(r);
 	sf::Vector2f size(1.5 * sprite.getSize().x, 1.5 * sprite.getSize().y);
 	//sprite.setSize(size);
 	//sprite.setOrigin(sprite.getOrigin().x, sprite.getOrigin().y + 2.f);
+	setSpeed(4.20, sf::seconds(0.15));
+	walkSpeed = getSpeed();
+	sprintSpeed = getSpeed() * 1.25;
 	maxHP = 100;
 	setHealth(maxHP);
-	setSpeed(1183.9, sf::seconds(1183.9 * 0.125));
+	//setSpeed(1183.9, sf::seconds(1183.9 * 0.125));
 	setJumpHeight(14.20);
 	setCanJump(true);
 	setOnAir(false);
 	setCanClimb(false);
-	
+
 
 	shieldShape.setSize(sf::Vector2f(4.f, 32.f));
-	shieldShape.setOrigin(shieldShape.getSize().x/2, shieldShape.getSize().y / 2+ 5);
+	shieldShape.setOrigin(shieldShape.getSize().x / 2, shieldShape.getSize().y / 2 + 5);
 	shieldShape.setPosition(getPosition().x + (velocity.x / abs(velocity.x)) * 4, getPosition().y);
 	shieldShape.setFillColor(sf::Color::Transparent);
 	shieldShape.setOutlineColor(sf::Color::Magenta);
@@ -28,12 +31,21 @@ Player::Player(const std::string &temp) : shield(false) {
 
 	shieldCollider.setSize(size);
 	//shieldCollider = shieldShape;
-	atackSpeed = 2.5f;
 	strength = 50.f;
 	prevLevel = 0;
 	level = 0;
 	exp = 0.0f;
+
+
+	for (int i = 0; i < 4; i++)
+	{
+		bullets.push_back(Bullet(sf::Vector2f(2000, 2000)));
+		bullets[i].setTime(sf::seconds(2.f));
+	}
+
+	shotCooldown.setCooldown(sf::seconds(0.5));
 }
+
 
 float Player::getMaxHP() {
 	return maxHP;
@@ -69,6 +81,22 @@ void Player::jump() {
 	}
 }
 
+bool Player::shot() {
+	int i = 0;
+	if (shotCooldown.elapsed())
+		for (auto& elem : bullets) {
+			if (!elem.isUsed()) {
+				std::cout << i << std::endl;
+				elem.restart(getPosition());
+				elem.setDirection(this);
+				elem.setUse(1);
+				shotCooldown.restartCooldown();
+				return 1;
+			};
+			i++;
+		}
+	return 0;
+}
 void Player::setSpeed(float temp, sf::Time tempAnim) //Sprint Speed
 {
 	Character::setSpeed(temp);
@@ -78,21 +106,17 @@ void Player::setSpeed(float temp, sf::Time tempAnim) //Sprint Speed
 void Player::setAnimation(CharacterAnimation& a) {
 	animation = a;
 }
+void Player::setWalkSpeed(float speed)
+{
+	walkSpeed = speed;
+	sprintSpeed = 1.25 * walkSpeed;
+}
 void Player::setLevel(int lvl) {
 	if (lvl > 0) {
 		level = level;
 	}
 	else {
 		level = 0;
-	}
-}
-
-void Player::setAtackSpeed(float aSpd) {
-	if (aSpd > 0) {
-		atackSpeed = aSpd;
-	}
-	else {
-		atackSpeed = 0;
 	}
 }
 
@@ -107,10 +131,6 @@ void Player::setStrength(float str) {
 
 float Player::getStrength() {
 	return strength;
-}
-
-float Player::getAtackSpeed() {
-	return atackSpeed;
 }
 
 float Player::getExp() {
@@ -186,26 +206,43 @@ void Player::reset() {
 	setCanJump(true);
 	setOnAir(false);
 	setCanClimb(false);
-	setAtackSpeed(2.5f);
 	strength = 50.f;
 	prevLevel = 0;
 	level = 0;
 	exp = 0.0f;
 	maxHP = 100;
 	shield = false;
+
+	for (auto& elem : bullets) {
+		if (elem.getCooldown().elapsed()) {
+			elem.restart(sf::Vector2f(2000, 2000));
+				elem.setUse(0);
+		}
+	}
+	while (bullets.size() > 4) {
+		bullets.pop_back();
+	}
 }
 
 bool Player::refresh() {
+	for (auto& elem : bullets) {
+		elem.refresh();
+		if (elem.getCooldown().elapsed()) {
+			elem.setUse(0);
+		}
+	}
 	if (shield) {
 		if (getSprite().getScale().x > 0) { // direction 
 			shieldShape.setPosition(getPosition().x + 20, getPosition().y);
 		}
 		else shieldShape.setPosition(getPosition().x - 20, getPosition().y);
-		setSpeed(1.75f, sf::seconds(2.f));
+		setSpeed(1.75f, sf::seconds(0.75));
 		animation.setAnimTime(sf::seconds(0.25));
 	}
-	else shieldShape.setPosition(2050, 1150);
-
+	else {
+		shieldShape.setPosition(2050, 1150);
+		setSpeed(getSpeed(), sf::seconds(0.15));
+	}
 	sprite.move(velocity.x, velocity.y);
 	if (velocity.x > 0.0f) {
 		animation.rotateSprite(sprite, 'r');
@@ -232,4 +269,16 @@ void Player::draw(sf::RenderTarget& target, sf::RenderStates state) const {
 		target.draw(tmp);
 	}
 	target.draw(sprite);
+	for (auto elem : bullets) {
+			if (!elem.getCooldown().elapsed())
+				target.draw(elem);
+	}
+}
+
+void Player::setSpeedToSprint() {
+	setSpeed(sprintSpeed, sf::seconds(0.15 * 1.25));
+}
+
+void Player::setSpeedToWalk() {
+	setSpeed(walkSpeed, sf::seconds(0.15));
 }

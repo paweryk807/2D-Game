@@ -149,9 +149,9 @@ bool Map::checkCollision(sf::Vector2f direction, Character* character) const {
 	return collision;
 }
 
-bool Map::checkBulletCollision(sf::Vector2f direction, Bullet& bullet) const {
+bool Map::checkBulletCollision(sf::Vector2f direction, Bullet* bullet) const {
 	for (auto iterator = platforms.begin(); iterator != platforms.end(); iterator++) {//for (auto platform : platforms) {
-		if (iterator->get()->getCollider().checkCollision(bullet.getCollider(), direction, 1.f)) {
+		if (iterator->get()->getCollider().checkCollision(bullet->getCollider(), direction, 1.f)) {
 			return true;
 		}
 	}

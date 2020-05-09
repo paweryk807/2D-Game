@@ -26,15 +26,15 @@
                     move(intersectionX * (1.0f - push)*0.5, 0.0f);
                     other.move(-intersectionX * push, 0.0f);
 
-                    direction.x = 1.0f;
-                    direction.y = 0.0f;
+                    //direction.x = 1.0f;
+                    //direction.y = 0.0f;
                 }
                 else {
                     move(-intersectionX * (1.0f - push )* 0.5, 0.0f);
                     other.move(intersectionX * push, 0.0f);
 
-                    direction.x = -1.0f;
-                    direction.y = 0.0f;
+                    //direction.x = -1.0f;
+                    //direction.y = 0.0f;
                 }
             }
             else {
@@ -42,15 +42,15 @@
                     move(0.0f, intersectionY * (1.0f - push )* 0.5);
                     other.move(0.0f, -intersectionY * push);
 
-                    direction.x = 0.0f;
-                    direction.y = 1.0f;
+                    //direction.x = 0.0f;
+                    //direction.y = 1.0f;
                 }
                 else {
                     move(0.0f, -intersectionY * (1.0f - push) * 0.5);
                     other.move(0.0f, intersectionY * push);
 
-                    direction.x = 0.0f;
-                    direction.y = -1.0f;
+                    //direction.x = 0.0f;
+                    //direction.y = -1.0f;
 
                 }
             }

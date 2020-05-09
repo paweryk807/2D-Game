@@ -8,10 +8,10 @@ Bullet::Bullet(sf::Vector2f startPos) {
 		velocity = sf::Vector2f(10.0f, 0.0f);
 		cooldown.setCooldown(sf::seconds(0.5f));
 		sf::Vector2f cSize(sprite.getRadius(), sprite.getRadius());
-
+		used = false;
 
 }
- 
+
 Bullet::Bullet(sf::Vector2f startPos, float speed) {
 		sprite.setRadius(3.0f);
 		sprite.setFillColor(sf::Color(utils::randomInt(0,255), utils::randomInt(0, 255), utils::randomInt(0,255)));
@@ -25,6 +25,7 @@ Bullet::Bullet(sf::Vector2f startPos, float speed) {
 		colid.setSize(cSize);
 		colid.setPosition(startPos.x, startPos.y - 5.f);
 		colid.setOrigin(cSize / 2.0f);
+		used = false;
 }
 
 void Bullet::setScale(sf::Vector2f scale) {
@@ -33,6 +34,10 @@ void Bullet::setScale(sf::Vector2f scale) {
 
 void Bullet::setSize(float size) {
 	sprite.setRadius(size);
+}
+
+void Bullet::setTime(sf::Time time) {
+	cooldown.setCooldown(time);
 }
 
 void Bullet::setDirection(Character* character) {
@@ -109,8 +114,18 @@ void Bullet::hide() {
 	sprite.setPosition(colliderDirection);
 }
 
+void Bullet::setUse(bool use)
+{
+	used = use;
+}
+
 void Bullet::draw(sf::RenderTarget& target, sf::RenderStates state) const {
 	target.draw(sprite);
+}
+
+bool Bullet::isUsed()
+{
+	return used;
 }
 
 sf::CircleShape Bullet::getSprite() {

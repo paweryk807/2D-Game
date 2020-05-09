@@ -16,7 +16,7 @@ PlasmaBullet::PlasmaBullet(sf::Vector2f pos, float seconds)
 
 	animation.setRect(rect);
 	sprite.setPosition(pos.x, pos.y);	
-	sf::Vector2f cSize(sprite.getRadius(), sprite.getRadius());
+	sf::Vector2f cSize(sprite.getRadius()/2, sprite.getRadius()/2);
 
 	colid.setSize(cSize);
 	colid.setPosition(pos.x, pos.y);
@@ -55,3 +55,8 @@ void PlasmaBullet::refresh() {
 		sprite.setPosition(2000, 2000);
 	Bullet::refresh();
 }
+
+//Collider PlasmaBullets::getCollider() {
+//	colid.setPosition(sprite.getPosition());
+//	return Collider(colid);
+//}

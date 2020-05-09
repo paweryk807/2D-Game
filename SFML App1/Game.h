@@ -11,13 +11,15 @@
 //#include "bullet.h"
 #include "HUD.h"
 #include "EnemySpawner.h"
-#include "PlasmaDrone.h"
-#include "PlasmaBullet.h"
-
+//#include "PlasmaDrone.h"
+//#include "PlasmaBullet.h"
+//#include "PlayerHandler.h"
 class Game {
 	std::unique_ptr<sf::RenderWindow> window;
 	std::unique_ptr<Map> level;
-	std::unique_ptr<Player> player;
+	Player player;
+	//Player player;
+
 	HUD hud;
 	EnemySpawner spawner;
 	Menu menu;
@@ -30,6 +32,8 @@ class Game {
 public:
 	Game(std::vector<std::string>& enemiesTextures, const std::string& playerTexture);
 	bool addBonus(Bird bonusBird);
+	void soldierHanlder(bool& killed);
+	void dronesHanlder();
 	void restart();
 	void run();
 	void generateLevel();
