@@ -2,7 +2,7 @@
 
 Game::Game() : hud(100), spawner(std::chrono::seconds(45)), bonusBird(sf::Vector2f(400, 450)) {
     try {
-        sf::View view(sf::Vector2f(1280.0 / 2, 720.0 / 2), sf::Vector2f(1280, 720));
+        sf::View view(sf::Vector2f(1280.0 / 2, 720.0 / 2), sf::Vector2f(1280 , 720));
         view.setCenter(view.getSize().x / 2, view.getSize().y / 2);
         level = std::unique_ptr<Map>{ new Map(3600,"level3.txt") };
         hud.setValue(playerHandler.player.getHealth());
@@ -39,68 +39,54 @@ bool Game::addBonus(Bird bonusBird)
     return true;
 }
 
-void Game::soldierHandler(bool& killed){
+void Game::soldierHandler(bool& killed) {
     sf::Vector2f direction;
     for (int i = 0; i < spawner.soldiers.size(); i++) {
         if (spawner.soldiers[i]->refresh(playerHandler.player, level->wall(spawner.soldiers[i].get()))) {
 
             if (level->checkPosition(spawner.soldiers[i].get())) {
-                spawner.soldiers[i]->correctPosition(level->getSize());
+               spawner.soldiers[i]->correctPosition(level->getSize());
             }
-            /*   Czy gracz ma tarcze   */
-            if (playerHandler.player.getShieldState()) {
-                if (spawner.soldiers[i]->getHealth() > 0 && spawner.soldiers[i]->getCollider().checkCollision(playerHandler.player.getShieldCollider(), direction, 1.0f))
-                    playerHandler.player.setHealth(playerHandler.player.getHealth() - 0.01);
-                else if (spawner.soldiers[i]->getHealth() > 0 && spawner.soldiers[i]->getCollider().checkCollision(playerHandler.player.getCollider(), direction, 1.0f)) {
-                    playerHandler.player.setHealth(playerHandler.player.getHealth() - 0.25);
-                }
-            }
-            else if (spawner.soldiers[i]->getHealth() > 0 && spawner.soldiers[i]->getCollider().checkCollision(playerHandler.player.getCollider(), direction, 0.35f)) {
-                playerHandler.player.setHealth(playerHandler.player.getHealth() - 0.5);
-            }
-            /*    Gracz zginal    */
-            if (playerHandler.player.getHealth() <= 0 || spawner.getTimer().elapsed()) {
-                spawner.getTimer().stop();
-                gameOver();
-                if (menu.addToScores(*window, score))
-                    menu.saveScoreboard();
-                pause = true;
-                menu.handle(*window, false);
-                break;
-            }
-            std::cout << "PRZYPADEK X POCZATEK X" << spawner.soldiers[i]->getVelocity().x << "," << spawner.soldiers[i]->getVelocity().y << std::endl;
             level->checkCollision(direction, spawner.soldiers[i].get());
-            std::cout << "PRZYPADEK X KONIEC X" << spawner.soldiers[i]->getVelocity().x << "," << spawner.soldiers[i]->getVelocity().y << std::endl;
-            /* Czy Player trafil Soldier'a */
-            for (auto& elem : playerHandler.player.bullets) {
-                if (!elem.getCooldown().elapsed() && elem.isUsed()) {
-                    if (!level->checkBulletCollision(direction, &elem)) {
-                        if (spawner.soldiers[i]->getHealth() > 0)
-                            if (elem.hit(spawner.soldiers[i].get())) {
-                                elem.hide();
-                                spawner.soldiers[i]->setHealth(spawner.soldiers[i]->getHealth() - playerHandler.player.getStrength()); // metoda dekrementuj zdrowie(wartosc o ile)
-                                if (spawner.soldiers[i]->getHealth() <= 0) {
-                                    spawner.soldiers[i]->setStrength(0);
-                                }
-                            }
+            if (spawner.soldiers[i]->getHealth() > 0) { 
+                
+                /*   Czy gracz ma tarcze   */
+                if (playerHandler.player.getShieldState()) {
+                    if (spawner.soldiers[i]->getCollider().checkCollision(playerHandler.player.getShieldCollider(), direction, 1.0f))
+                        playerHandler.player.setHealth(playerHandler.player.getHealth() - 0.01);
+                    else if (spawner.soldiers[i]->getCollider().checkCollision(playerHandler.player.getCollider(), direction, 1.0f)) {
+                        playerHandler.player.setHealth(playerHandler.player.getHealth() - 0.25);
                     }
-                    else elem.hide();
                 }
-            }
+                else if (spawner.soldiers[i]->getCollider().checkCollision(playerHandler.player.getCollider(), direction, 0.35f)) {
+                    playerHandler.player.setHealth(playerHandler.player.getHealth() - 0.5);
+                }
 
-            /*      Sprawdzenie kolizji soldier'ow      */
-            if (spawner.soldiers[i]->getHealth() > 0) { // jesli ten ktory sprawdza
+                /* Czy Player trafil Soldier'a */
+                for (auto& elem : playerHandler.player.bullets) {
+                    if (!elem.getCooldown().elapsed() && elem.isUsed()) {
+                        if (!level->checkBulletCollision(direction, &elem)) {
+                                if (elem.hit(spawner.soldiers[i].get())) {
+                                    elem.hide();
+                                    spawner.soldiers[i]->setHealth(spawner.soldiers[i]->getHealth() - playerHandler.player.getStrength()); // metoda dekrementuj zdrowie(wartosc o ile)
+                                }
+                        }
+                        else elem.hide();
+                    }
+                }
+
+                /*      Sprawdzenie kolizji soldier'ow      */
                 for (int n = i; n < spawner.soldiers.size(); n++) {
                     if (n != i) {
                         if (spawner.soldiers[n]->getHealth() > 0)  // jesli ktorys inny
                             if (spawner.soldiers[i]->getCollider().checkCollision(spawner.soldiers[n]->getCollider(), direction, 0.75f))
-                                if (spawner.soldiers[i]->getPosition().y != spawner.soldiers[n]->getPosition().y && abs(spawner.soldiers[i]->getPosition().x - spawner.soldiers[n]->getPosition().x) < 40)
-                                    spawner.soldiers[i]->setSpeed(0.5, sf::seconds(0.51));
-                        level->checkCollision(direction, spawner.soldiers[n].get());// {
-
+                                spawner.soldiers[n]->setSpeed(0.5, sf::seconds(0.51));
                     }
                 }
             }
+
+            window->draw(*spawner.soldiers[i]);
+
         }
         else {
             spawner.soldiers.erase(spawner.soldiers.begin() + i);
@@ -113,40 +99,42 @@ void Game::soldierHandler(bool& killed){
     }
 }
 
-void Game::droneHandler()
+void Game::droneHandler(bool& killed)
 {
-    sf::Vector2f direction;
-    for (auto& elem : spawner.drones) {
-        for(auto& bullet : playerHandler.player.bullets) {
-            if (bullet.getCollider().checkCollision(elem.get()->getCollider(), direction, 1.0f)) {
-                elem.get()->setHealth(elem.get()->getHealth() - playerHandler.player.getStrength());
-                bullet.hide();
-            }
-        }
-        elem.get()->refresh(&playerHandler.player, level->checkCollision(direction, elem.get()));
-        if (elem.get()->getPosition() != sf::Vector2f(2000, 2000)) {
-            window->draw(*elem.get());
-        }
-
-    }
-
-    for (auto& elem : spawner.dronesBullets)
-        for (auto& bullet : elem) {
-            bullet->refresh();
-            window->draw(*bullet);
-            if (bullet->hit(&playerHandler.player)) {
-                playerHandler.player.setHealth(playerHandler.player.getHealth() - 10);
-                if (playerHandler.player.getHealth() <= 0 || spawner.getTimer().elapsed()) {
-                    spawner.getTimer().stop();
-                    gameOver();
-                    if (menu.addToScores(*window, score))
-                        menu.saveScoreboard();
-                    pause = true;
-                    menu.handle(*window, false);
-                    break;
+    if (spawner.drones.size() != 0) {
+        int position = 0;
+        sf::Vector2f direction;
+        for (auto& elem : spawner.drones) {
+            for (auto& bullet : playerHandler.player.bullets) {
+                if (bullet.getCollider().checkCollision(elem.get()->getCollider(), direction, 1.0f)) {
+                    elem.get()->setHealth(elem.get()->getHealth() - playerHandler.player.getStrength());
+                    bullet.hide();
                 }
             }
+
+            if (!elem.get()->refresh(&playerHandler.player, level->checkCollision(direction, elem.get()))) {
+                spawner.drones.erase(spawner.drones.begin() + position);
+                position--;
+                if (spawner.drones.empty()) killed = true;
+                break;
+            }
+
+            if (elem.get()->getPosition() != sf::Vector2f(2000, 2000)) {
+                window->draw(*elem.get());
+            }
+
+            position++;
         }
+
+        for (auto& elem : spawner.dronesBullets)
+            for (auto& bullet : elem) {
+                bullet->refresh();
+                window->draw(*bullet);
+                if (bullet->hit(&playerHandler.player)) {
+                    playerHandler.player.setHealth(playerHandler.player.getHealth() - 10);
+                }
+            }
+    }
 }
 
 void Game::birdHandler(bool& shooted) {
@@ -270,7 +258,7 @@ void Game::start() {
         }
 
         /*   Jesli odpalona jest gra    */    
-        if (!pause) {   
+        if (!pause) {
             window->draw(*level);
 
             spawner.getTimer().start();
@@ -285,12 +273,11 @@ void Game::start() {
 
             birdHandler(shooted);
 
-
-
-           
-
             if (killed) {
                 spawner.soldiers.clear();
+                spawner.drones.clear();
+                spawner.dronesBullets.clear();
+                spawner.soldierBullets.clear();
                 std::chrono::seconds s;
                 score += spawner.getTimer().getCountedTime() * 100;
 
@@ -306,7 +293,6 @@ void Game::start() {
                 }
                 round++;
 
-
                 spawner.getTimer().setTime(s);
                 spawner.getTimer().start();
                 if (utils::randomFloat(0, 100) < 25.f) {
@@ -316,7 +302,18 @@ void Game::start() {
                 killed = false;
             }
             else if (!killed && spawner.drones.size() != 0) {
-                droneHandler();
+                droneHandler(killed);
+            }
+
+            /*    Gracz zginal    */
+            if (playerHandler.player.getHealth() <= 0 || spawner.getTimer().elapsed()) {
+                spawner.getTimer().stop();
+                gameOver();
+                if (menu.addToScores(*window, score))
+                    menu.saveScoreboard();
+                pause = true;
+                menu.handle(*window, false);
+                break;
             }
 
             spawner.getTimer().refresher();
@@ -326,24 +323,22 @@ void Game::start() {
             for (auto& elem : spawner.soldierBullets) {
                 if (!elem->getCooldown().elapsed()) {
                     if (!level->checkBulletCollision(direction, elem.get())) {
-                        if (elem != spawner.soldierBullets[0]) {
-                            if (playerHandler.player.getShieldState()) {
-                                if (elem->getCollider().onCollision(playerHandler.player.getShieldCollider())) {
-                                    elem->hide();
-                                }
+                        //    if (elem != spawner.soldierBullets[0]) {
+                        if (playerHandler.player.getShieldState()) {
+                            if (elem->getCollider().onCollision(playerHandler.player.getShieldCollider())) {
+                                elem->hide();
                             }
-                            if (elem->hit(&playerHandler.player)) {
-                                playerHandler.player.setHealth(playerHandler.player.getHealth() - 1.5);
-                            }
+                        }
+                        if (elem->hit(&playerHandler.player)) {
+                            playerHandler.player.setHealth(playerHandler.player.getHealth() - 1.5);
                         }
                         elem->refresh();
                         window->draw(*elem);
                     }
                 }
+          
             }
-            for (auto& elem : spawner.soldiers) {
-                window->draw(*elem);
-            }
+
             window->draw(playerHandler.player);
             bonusBird.fly(level->checkCollision(direction, &bonusBird), shooted);
             window->draw(bonusBird);

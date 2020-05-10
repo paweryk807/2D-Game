@@ -1,10 +1,10 @@
 ﻿  Game.cpp
-B:\GitHub\2D-Game\SFML App1\Game.cpp(53,85): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-B:\GitHub\2D-Game\SFML App1\Game.cpp(55,85): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-B:\GitHub\2D-Game\SFML App1\Game.cpp(59,81): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-B:\GitHub\2D-Game\SFML App1\Game.cpp(98,88): warning C4305: "argument": obcięcie z "double" do "float"
-B:\GitHub\2D-Game\SFML App1\Game.cpp(172,14): warning C4244: "inicjowanie": konwersja z "float" do "int", możliwa utrata danych
-B:\GitHub\2D-Game\SFML App1\Game.cpp(173,32): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-B:\GitHub\2D-Game\SFML App1\Game.cpp(209,10): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
-B:\GitHub\2D-Game\SFML App1\Game.cpp(336,97): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(56,89): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(58,89): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(62,85): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(89,84): warning C4305: "argument": obcięcie z "double" do "float"
+B:\GitHub\2D-Game\SFML App1\Game.cpp(177,14): warning C4244: "inicjowanie": konwersja z "float" do "int", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(178,32): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(214,10): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
+B:\GitHub\2D-Game\SFML App1\Game.cpp(355,93): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
   SFML App1.vcxproj -> B:\GitHub\2D-Game\x64\Debug\2D-Game.exe

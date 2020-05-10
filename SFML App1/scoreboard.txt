@@ -2,9 +2,9 @@ Pawelek;58800
 elo;32580
 mistrz;28100
 elko;20540
+elo;17400
+s;9800
 Walczeseponocachzbosem;9020
-s;8840
-dop;5800
-ope;3900
- elo;3360
 Hurdur;8900
+s;8840
+s;10000

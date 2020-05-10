@@ -25,6 +25,8 @@ void EnemySpawner::spawnPlasmaDrone(int value, int round) {
             dronesBullets[i].push_back(std::unique_ptr<PlasmaBullet>(new PlasmaBullet(sf::Vector2f(2000, 2000), 3.f + 0.25f * y)));
         }
         drones.push_back(std::unique_ptr<PlasmaDrone>(new PlasmaDrone(dronesBullets[i])));
+        drones[i]->correctPosition(sf::Vector2f(utils::randomInt(0,1200), 570 + utils::randomInt(-100,0)));  //toSpawn[i]->getPosition().x - i * 2, toSpawn[i]->getPosition().y)
+
     }
     
     timer.start();
@@ -61,7 +63,7 @@ void EnemySpawner::spawnSoldiers(int value, int type)
             break;
         }
         soldiers.push_back(std::unique_ptr<Soldier>(new Soldier(tmp)));
-        soldiers[i]->correctPosition(sf::Vector2f(120 + rand() % 3, 570 + rand() % 5));  //toSpawn[i]->getPosition().x - i * 2, toSpawn[i]->getPosition().y)
+        soldiers[i]->correctPosition(sf::Vector2f(120 + utils::randomFloat(0,200), 570 + utils::randomFloat(-50,50)));  //toSpawn[i]->getPosition().x - i * 2, toSpawn[i]->getPosition().y)
         soldierBullets.push_back(std::unique_ptr<Bullet>(new Bullet(soldiers[i]->getPosition(), 11.f)));
         soldiers[i]->addAmmunition(*soldierBullets[soldierBullets.size() - 1]);
 

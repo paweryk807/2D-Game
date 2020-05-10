@@ -114,7 +114,7 @@ void Map::setPlatforms(const unsigned int sizeTab)
 				if (platforms[i]->getPosition().y - platforms[i - 1]->getPosition().y <= distance)  // Kolejny blok z danych
 				{
 					changed = true;
-					sf::Vector2f newSize(tmp.getSize().x , (tmp.getSize().y + platforms[i]->getBody().getSize().y));
+					sf::Vector2f newSize(tmp.getSize().x, (tmp.getSize().y + platforms[i]->getBody().getSize().y));
 					sf::Vector2f newPos((tmp.getPosition().x + platforms[i]->getBody().getPosition().x) / 2, tmp.getPosition().y + 8);
 					tmp.setSize(newSize);
 					tmp.setOrigin(newSize.x / 2, newSize.y / 2);
@@ -127,7 +127,7 @@ void Map::setPlatforms(const unsigned int sizeTab)
 		if (!changed)
 			break;
 		changed = false;
-	}
+	} 
 // KOLIDUJACE BLOKI :
 // 7,8,9,10,11,12,14
 // 24,25,26,27,28,29,30
@@ -158,6 +158,7 @@ bool Map::checkCollision(sf::Vector2f direction, Character* character) const {
 
 bool Map::checkBulletCollision(sf::Vector2f direction, Bullet* bullet) const {
 	for (auto iterator = platforms.begin(); iterator != platforms.end(); iterator++) {//for (auto platform : platforms) {
+		//if (std::abs(bullet->getSprite().getPosition().x - iterator->get()->getPosition().x) < 100 && std::abs(bullet->getSprite().getPosition().y - iterator->get()->getPosition().y) < 100)
 		if (iterator->get()->getCollider().checkCollision(bullet->getCollider(), direction, 1.f)) {
 			return true;
 		}

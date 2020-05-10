@@ -28,7 +28,7 @@ public:
 	Game();
 	bool addBonus(Bird bonusBird);
 	void soldierHandler(bool& killed);
-	void droneHandler();
+	void droneHandler(bool& killed);
 	void birdHandler(bool& shooted);
 	void restart();
 	void run();
