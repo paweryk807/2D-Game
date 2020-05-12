@@ -7,7 +7,7 @@ protected:
 	sf::IntRect rect;
 	Cooldown animationCooldown;
 public:
-	Animation() = default ;
+	Animation() = default;
 	Animation(sf::IntRect& rect, sf::Time time);
 
 	bool rotateSprite(sf::RectangleShape& sprite, const char& direction);
@@ -22,4 +22,3 @@ public:
 
 	~Animation();
 };
-

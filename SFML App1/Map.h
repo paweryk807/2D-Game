@@ -15,7 +15,7 @@ class Map : public sf::Drawable {
 	bool loadLevelToTab(const std::string& directory, unsigned int tabSize); // Podczas ladowania poziomu z pliku liczy jednostki wymagajace zaimplementowania kolizjii i dodaje je do ColliderTab
 	bool loadBackground(const std::string& texture);
 
-public: 
+public:
 	Map(unsigned int sizeParam, const std::string& lvlDirectory);
 
 	sf::Vector2f getSize() const;
@@ -30,4 +30,3 @@ public:
 
 	~Map();
 };
-

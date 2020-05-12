@@ -4,27 +4,24 @@ Bird::Bird() : Bird(utils::BonusType(utils::randomInt(0, 3)), sf::Vector2f(0.0, 
 
 Bird::Bird(sf::Vector2f start) : Bird(utils::BonusType(utils::randomInt(0, 3)), start) {};
 
-
-Bird::Bird(utils::BonusType type, sf::Vector2f start)
-{
+Bird::Bird(utils::BonusType type, sf::Vector2f start) {
 	try {
 		changeDirection = 0;
 		sprite.setPosition(start);
 		bonus = static_cast<utils::BonusType>(type);
 		texture.loadFromFile(BIRD_TEXTURE_PATH);
 		sprite.setTexture(&texture);
-		sf::IntRect rect(0,16,16,16);
+		sf::IntRect rect(0, 16, 16, 16);
 		sprite.setTextureRect(rect);
 		animation.setRect(rect);
-		sprite.setSize(sf::Vector2f(20, 20));
+		sprite.setSize(sf::Vector2f(24, 24));
 	}
 	catch (std::exception e) {
 		std::cerr << e.what();
 	}
 }
 
-float Bird::receiveBonus()
-{
+float Bird::receiveBonus() {
 	switch (bonus) {
 	case utils::BonusType::boost:
 		return 2.0f;
@@ -43,22 +40,20 @@ float Bird::receiveBonus()
 	}
 }
 
-utils::BonusType Bird::getBonusType()
-{
+utils::BonusType Bird::getBonusType() {
 	return bonus;
 }
 
-void Bird::fly(bool collision, bool shooted)
-{
+void Bird::fly(bool collision, bool shooted) {
 	if (!collision) {
 		if (shooted) {
-		if (sprite.getPosition().y < 1200)
+			if (sprite.getPosition().y < 1200)
 				velocity.y--;
 		}
-		else if(sprite.getPosition().y > 1200 || sprite.getPosition().y <= 450) {
+		else if (sprite.getPosition().y > 1200 || sprite.getPosition().y <= 450) {
 			velocity.y++;
 		}
-		if (changeDirection) { //&& sprite.getPosition().x <= 1264) { // w prawo
+		if (changeDirection) {
 			animation.rotateSprite(sprite, 'l');
 			velocity.x++;
 		}
@@ -67,26 +62,19 @@ void Bird::fly(bool collision, bool shooted)
 			velocity.x--;
 		}
 		if (sprite.getPosition().x <= 16) changeDirection = true;
-		else if(sprite.getPosition().x >= 1264) changeDirection = false;
+		else if (sprite.getPosition().x >= 1264) changeDirection = false;
 		animation.setAnimTime(sf::seconds(0.10));
 		animation.changeMove(16, 0, 128, 16, sprite);
 		sprite.move(velocity);
 		velocity.y = 0;
 		if (prevPos == sprite.getPosition()) {
 			velocity.y++;
-			//if(prevP)
 		}
 		velocity.x = 0;
 	}
 	else {
-		//velocity.x = 0;
-		//velocity.y = 0;
 		velocity.y++;
-		animation.setAnimTime(sf::seconds(0.10));
-
-	//	animation.changeMove(16, 0, 16, 0, sprite);
 		animation.setAnimTime(sf::seconds(0.5));
-
 	}
 	prevPos = sprite.getPosition();
 }
@@ -94,4 +82,3 @@ void Bird::fly(bool collision, bool shooted)
 void Bird::reset() {
 	bonus = static_cast<utils::BonusType>(utils::randomInt(0, 3));
 }
-

@@ -9,15 +9,14 @@
 class Bullet : public sf::Drawable
 {
 	void setVelocity(sf::Vector2f vel);
-protected:	
-	bool used; 
+protected:
+	bool used;
 	Cooldown cooldown;
 	sf::RectangleShape colid;
 	sf::Vector2f velocity;
-	sf::CircleShape sprite; 
+	sf::CircleShape sprite;
 
-
-public:	
+public:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates state) const;
 	Bullet() = default;
 	Bullet(sf::Vector2f startPos);
@@ -30,7 +29,7 @@ public:
 
 	void refresh();
 	void restart(sf::Vector2f pos);
-	bool hit(Character* character); 
+	bool hit(Character* character);
 	void hide();
 	void setUse(bool use);
 
@@ -42,4 +41,3 @@ public:
 
 	~Bullet() = default;
 };
-

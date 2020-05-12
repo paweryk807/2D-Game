@@ -20,7 +20,7 @@ class PlasmaDrone : public Character {
 	//void moveLeft();
 
 	//void moveUp();
-	
+
 	//void moveDown();
 
 	//void explode();
@@ -29,7 +29,6 @@ class PlasmaDrone : public Character {
 
 	void createBullets();
 
-
 public:
 	PlasmaDrone(std::vector<std::unique_ptr<PlasmaBullet>>& bullets);
 	bool refresh(Player* player, bool wall);
@@ -37,5 +36,4 @@ public:
 	void draw(sf::RenderTarget& target, sf::RenderStates state);
 	void reset();
 	//Collider getCollider();
-
 };

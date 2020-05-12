@@ -2,8 +2,7 @@
 #include "Player.h"
 //#include "Bullet.h"
 
-
-//Defaultowo na pozycji 0 Idle, 1 Run, 2 Jump, 3 Death 
+//Defaultowo na pozycji 0 Idle, 1 Run, 2 Jump, 3 Death
 class Soldier : public Character
 {
 	sf::Vector2f prevPos;
@@ -33,11 +32,11 @@ public:
 	void setStrength(float str);
 
 	void reset();
-	
+
 	void setSpeed(float temp, sf::Time tempAnim);
-	
+
 	void setAnimation(CharacterAnimation& a);
-	
+
 	void addAmmunition(Bullet& bullet);
 
 	void levelUp(int round);
@@ -46,5 +45,3 @@ public:
 
 	bool refresh(const Player& player, bool wall);
 };
-
-

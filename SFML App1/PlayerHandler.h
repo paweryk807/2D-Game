@@ -9,16 +9,14 @@ class PlayerHandler
 public:
 
 	Player player;
-	
+
 	PlayerHandler();
 	~PlayerHandler() = default;
 
 	//bool addBonus(Bird bonusBird);
 	void getActionFromUser();
-	
-	
+
 	//void addAmmo();
 
 	//void refresh();
-
 };

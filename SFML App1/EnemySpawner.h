@@ -6,7 +6,6 @@
 #include "bullet.h"
 #include "Timer.h"
 
-
 class EnemySpawner
 {
 private:

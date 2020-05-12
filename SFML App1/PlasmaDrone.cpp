@@ -1,8 +1,6 @@
 #include "PlasmaDrone.h"
 
-
-bool PlasmaDrone::loadTextures(std::vector<std::string>& textures)
-{
+bool PlasmaDrone::loadTextures(std::vector<std::string>& textures) {
 	for (auto elem : textures) {
 		sf::Texture tmp;
 		if (!tmp.loadFromFile(elem)) {
@@ -14,48 +12,26 @@ bool PlasmaDrone::loadTextures(std::vector<std::string>& textures)
 	return 1;
 }
 
-void PlasmaDrone::createBullets()
-{
-	//Bullet* tmp = nullptr;
+void PlasmaDrone::createBullets() {
 	for (int i = 0; i < 5; i++) {
-		Bullet tmp (sf::Vector2f(2000, 2000));//, texture[0]);
-	//	tmp->setIntRect(sf::IntRect(0, 0, 64, 64));
-		//tmp->setSize(32);
-		//bullets.push_back(tmp);
+		Bullet tmp(sf::Vector2f(2000, 2000));
 	}
 }
 
-void PlasmaDrone::levelUp(int round)
-{
-	setHealth(getHealth() +  (float)round * 0.1f * getHealth() / 5.f);
+void PlasmaDrone::levelUp(int round) {
+	setHealth(getHealth() + (float)round * 0.1f * getHealth() / 5.f);
 	strength += round * 0.1f * strength;
 }
-void PlasmaDrone::draw(sf::RenderTarget& target, sf::RenderStates state){
+void PlasmaDrone::draw(sf::RenderTarget& target, sf::RenderStates state) {
 	target.draw(sprite);
-	/*for (auto &elem : bullets) {
-		if (!elem->getCooldown().elapsed())
-			target.draw(*elem);
-	}*/
 }
 void PlasmaDrone::reset() {
+	/*
+		TODO
+	*/
 }
-/*
-Collider PlasmaDrone::getCollider() {
-	sf::Sprite tmp;
-	switch (state) {
-	case utils::PlasmaDroneState::fire:
-		return sprite;
-		break;
-	case utils::PlasmaDroneState::fly:
-		break;
-	case utils::PlasmaDroneState::explode:
-		break;
 
-	}
-}
-*/
-PlasmaDrone::PlasmaDrone(std::vector<std::unique_ptr<PlasmaBullet>>& bullets) : bullets(bullets)
-{
+PlasmaDrone::PlasmaDrone(std::vector<std::unique_ptr<PlasmaBullet>>& bullets) : bullets(bullets) {
 	try {
 		std::vector<std::string> fileNames = { "images/PlasmaDrone/explode_sheet.png","images/PlasmaDrone/fire_sheet.png","images/PlasmaDrone/idle_sheet.png" };
 		loadTextures(fileNames);
@@ -65,14 +41,13 @@ PlasmaDrone::PlasmaDrone(std::vector<std::unique_ptr<PlasmaBullet>>& bullets) : 
 		//createBullets();
 		velocity.y = 4.0;
 		sprite.setSize(sf::Vector2f(91, 92));
-		sprite.setPosition(sf::Vector2f(100, 100));
+		sprite.setPosition(sf::Vector2f(-100 + utils::randomFloat(-200,0), -100));
 		sf::IntRect rect(0, 0, 91, 92);
 		sprite.setTextureRect(rect);
 		animation.setRect(rect);
 		sprite.setTexture(&texture[2]);
 		sprite.setOrigin(sprite.getSize().x / 2, sprite.getSize().y / 2);
 		setHealth(1000);
-
 	}
 	catch (std::exception e) {
 		std::cerr << e.what();
@@ -87,7 +62,6 @@ void PlasmaDrone::prepareToFly() {
 	sprite.setTextureRect(rect);
 	animation.setRect(rect);
 	sprite.setOrigin(sprite.getSize().x / 2, sprite.getSize().y / 2);
-
 }
 
 void PlasmaDrone::prepareToExplode() {
@@ -98,7 +72,6 @@ void PlasmaDrone::prepareToExplode() {
 	sprite.setTextureRect(rect);
 	animation.setRect(rect);
 	sprite.setOrigin(sprite.getSize().x / 2, sprite.getSize().y / 2);
-
 }
 
 void PlasmaDrone::prepareToFire() {
@@ -109,15 +82,12 @@ void PlasmaDrone::prepareToFire() {
 	sprite.setTextureRect(rect);
 	animation.setRect(rect);
 	sprite.setOrigin(sprite.getSize().x / 2, sprite.getSize().y / 2);
-
 }
 
 bool PlasmaDrone::refresh(Player* player, bool wall) {
-
 	bool alive = true;
 
 	if (getHealth() > 0) {
-		
 		/* Sekcja odpowiedzialna za poruszanie sie po planszy*/
 		if (sprite.getSize().x != 92)  // IDLE
 			prepareToFly();
@@ -134,22 +104,21 @@ bool PlasmaDrone::refresh(Player* player, bool wall) {
 			velocity.x = -getSpeed();
 		}
 
-		if (sprite.getPosition().x <= 16 ) changeDirectionX = true;
+		if (sprite.getPosition().x <= 16) changeDirectionX = true;
 		else if (sprite.getPosition().x >= 1264) changeDirectionX = false;
 
 		if (sprite.getPosition().y >= 1080 || wall) changeDirectionY = true;
 		else if (sprite.getPosition().y <= 16) changeDirectionY = false;
 
-		
 		setSpeed(3.f);
 		animation.setAnimTime(sf::seconds(0.125));
-		
+
 		/* Sekcja odpowiedzialna za strzelanie drona */
 		if ((abs(player->getPosition().x - getPosition().x)) <= 520) {
 			if (sprite.getSize().x != 128) // FIREs
 				prepareToFire();
 			animation.changeMove(128, 0, 128 * 20, 0, sprite);
-			for(auto &bullet : bullets){
+			for (auto& bullet : bullets) {
 				if (bullet->getCooldown().elapsed()) {
 					bullet->countDirection(this, player);
 					bullet->restart(getPosition());
@@ -157,12 +126,11 @@ bool PlasmaDrone::refresh(Player* player, bool wall) {
 			}
 		}
 		else if (sprite.getSize().x != 91) { // IDLE
-				prepareToFly();
+			prepareToFly();
 		}
 
-
 		if (sprite.getSize().x == 91)
-		animation.changeMove(91, 0, 24 * 91, 0, sprite);
+			animation.changeMove(91, 0, 24 * 91, 0, sprite);
 		sprite.move(velocity.x, velocity.y);
 		velocity.x = 0.0f;
 		velocity.y = 0.0f;
@@ -182,5 +150,4 @@ bool PlasmaDrone::refresh(Player* player, bool wall) {
 		if (!alive) sprite.setPosition(2000, 2000);
 		return alive;
 	}
-
 }

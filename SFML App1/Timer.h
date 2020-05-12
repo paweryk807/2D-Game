@@ -6,12 +6,12 @@
 
 class Timer {
 	sf::String timeLeft;
-	std::chrono::seconds time; // Na runde 
+	std::chrono::seconds time; // Na runde
 	std::chrono::steady_clock::time_point begin;
 	bool disabled;
 	void setBegin();
 
-public:		
+public:
 
 	Timer() = delete;
 	Timer(std::chrono::seconds seconds);
@@ -25,4 +25,3 @@ public:
 	unsigned int getCountedTime();
 	~Timer() = default;
 };
-

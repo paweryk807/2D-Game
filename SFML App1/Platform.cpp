@@ -1,7 +1,6 @@
 #include "Platform.h"
 Platform::Platform(sf::RectangleShape& body) : body(body) {}
 
-
 void Platform::setPosition(sf::Vector2f pos) {
 	body.setPosition(pos);
 }
@@ -17,11 +16,9 @@ void Platform::setBody(sf::RectangleShape& body) {
 	this->body = body;
 }
 
-
 MapCollider Platform::getCollider() {
 	return MapCollider(body);
 }
 
 Platform::~Platform() {
-
 }

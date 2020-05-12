@@ -1,7 +1,6 @@
 #include "Character.h"
 
 Character::Character() {
-
 	sprite.setSize(sf::Vector2f(32.0f, 32.0f));
 	sprite.setOrigin(sprite.getSize() / 2.0f);
 	sprite.setPosition(600, 350);
@@ -46,7 +45,7 @@ float Character::getSpeed() {
 	return speed;
 }
 
-void Character::setJumpHeight(float height){
+void Character::setJumpHeight(float height) {
 	if (height >= 0) {
 		jumpHeight = height;
 	}
@@ -88,7 +87,7 @@ void Character::jump() {
 	if (canJump) {
 		velocity.y = -sqrtf(2.0f * 9.81f * jumpHeight);
 		canJump = false;
-	}	
+	}
 }
 
 void Character::moveDown() {
@@ -104,10 +103,9 @@ void Character::moveLeft() {
 }
 
 void Character::refresh() {
-	
 	sprite.move(velocity.x, velocity.y);
 
-	if(velocity.y  != 0.0f ) {
+	if (velocity.y != 0.0f) {
 		onAir = true;
 		canJump = false;
 	}
@@ -116,7 +114,7 @@ void Character::refresh() {
 	velocity.y += 0.9810f * 1.0f;
 	if (velocity.y > 17.0f) {
 		velocity.y = 9.81f;
-	}	
+	}
 }
 
 void Character::onCollision(sf::Vector2f direction) {
@@ -125,13 +123,11 @@ void Character::onCollision(sf::Vector2f direction) {
 	}
 	else if (direction.x > 0.0f) {
 		velocity.x = 0.0f;
-
 	}
 	if (direction.y < 0.0f) {
 		velocity.y = 0.0f;
 		onAir = false;
 		canJump = true;
-
 	}
 	else if (direction.y > 0.0f) {
 		velocity.y = 0.0f;
@@ -155,16 +151,15 @@ void Character::correctPosition(sf::Vector2f size) {
 	else if (x > size.x) {
 		sprite.setPosition(size.x, y);
 	}
-	if(y < 0) {
+	if (y < 0) {
 		sprite.setPosition(sprite.getPosition().x, 0);
 	}
-	else if(y > size.y) {
+	else if (y > size.y) {
 		sprite.setPosition(sprite.getPosition().x, size.y);
 	}
 }
 
-void Character::draw(sf::RenderTarget& target, sf::RenderStates state) const
-{
+void Character::draw(sf::RenderTarget& target, sf::RenderStates state) const {
 	target.draw(sprite);
 }
 

@@ -12,10 +12,9 @@ Menu::Menu() {
 			sf::Text object;
 			object.setFont(font);
 			object.setString(firstOptions[i]);
-			object.setPosition(sf::Vector2f(WIDTH * 0.5f - firstOptions[i].length()*10.f, (((HEIGHT   * 0.5f)/6.f) * (float)(i + 1)))); // /6 dla symetrii
+			object.setPosition(sf::Vector2f(WIDTH * 0.5f - firstOptions[i].length() * 10.f, (((HEIGHT * 0.5f) / 6.f) * (float)(i + 1)))); // /6 dla symetrii
 			object.setFillColor(sf::Color::White);
 			menu.push_back(object);
-
 		}
 		current = 1;
 		menu[current].setFillColor(sf::Color::Magenta);
@@ -48,15 +47,13 @@ void Menu::drawMenu(sf::RenderWindow& window) {
 }
 
 void Menu::drawInGameMenu(sf::RenderWindow& window) {
-	for(auto elem : menu){
+	for (auto elem : menu) {
 		window.draw(elem);
 	}
-
 }
 
 void Menu::gameStarted() {
 	if (!restart) {
-		
 	}
 }
 
@@ -65,8 +62,6 @@ void Menu::gameRunning() {
 
 void Menu::drawOptions(sf::RenderWindow& window) {
 	std::string optionsMenu = { };
-
-
 }
 
 bool Menu::loadScoreboard() {
@@ -85,14 +80,13 @@ bool Menu::loadScoreboard() {
 			std::getline(plik, line);
 			unsigned int pos = line.find(';');
 			std::string name = line.substr(0, pos);
-			std::string score = line.substr(pos + 1, (line.length()-1));
-  			tmp.setString(name + ' ');
+			std::string score = line.substr(pos + 1, (line.length() - 1));
+			tmp.setString(name + ' ');
 			scores.push_back(std::make_tuple(tmp, stoi(score)));
 			i--;
 		}
 		plik.close();
 		return true;
-
 	}
 }
 
@@ -109,9 +103,9 @@ bool Menu::saveScoreboard() {
 		for (auto& elem : scores) {
 			tmp = std::get<0>(elem).getString();
 			tmp.erase(tmp.length() - 1);
-			tmp+=";" + std::to_string(std::get<1>(elem));
+			tmp += ";" + std::to_string(std::get<1>(elem));
 			plik << tmp;
-			if(!(std::get<0>(elem).getString() == std::get<0>(scores[scores.size() -1]).getString() && std::get<1>(elem) == std::get<1>(scores[scores.size() - 1])))
+			if (!(std::get<0>(elem).getString() == std::get<0>(scores[scores.size() - 1]).getString() && std::get<1>(elem) == std::get<1>(scores[scores.size() - 1])))
 				plik << std::endl;
 		}
 		plik.close();
@@ -120,11 +114,11 @@ bool Menu::saveScoreboard() {
 }
 
 bool Menu::sortScores() {
-	if (scores.size()  > 0) {
+	if (scores.size() > 0) {
 		std::tuple<sf::Text, int> tmp;
 		sf::Vector2f pos;
 		for (int i = 0; i < scores.size(); i++)
-			for (int j = 0; j < scores.size() - 1; j++) 
+			for (int j = 0; j < scores.size() - 1; j++)
 				if (std::get<1>(scores[j]) < std::get<1>(scores[j + 1]))
 					std::swap(scores[j], scores[j + 1]);
 		return 1;
@@ -132,12 +126,11 @@ bool Menu::sortScores() {
 	return 0;
 }
 
-
 void Menu::drawScoreboard(sf::RenderWindow& window) {
 	sf::Text tmp;
 	sortScores();
 	unsigned int position = 1;
-	for (auto &elem : scores) {
+	for (auto& elem : scores) {
 		tmp = std::get<0>(elem);
 		tmp.setString(std::to_string(position) + ". " + tmp.getString() + std::to_string(std::get<1>(elem)));
 		tmp.setPosition(WIDTH * 0.5f - tmp.getString().getSize() * 10.f, 100.f + (float)position * 40.f);
@@ -146,7 +139,7 @@ void Menu::drawScoreboard(sf::RenderWindow& window) {
 	}
 }
 
-bool Menu::addToScores(sf::RenderWindow& window,unsigned int score) {
+bool Menu::addToScores(sf::RenderWindow& window, unsigned int score) {
 	bool dataSet = false;
 	sf::String input;
 	sf::Text userName;
@@ -169,7 +162,7 @@ bool Menu::addToScores(sf::RenderWindow& window,unsigned int score) {
 		{
 			sf::Event event;
 			while (window.pollEvent(event) && !dataSet)
-			{ 
+			{
 				if (event.key.code == sf::Keyboard::Escape) {
 					return false;
 				}
@@ -180,10 +173,9 @@ bool Menu::addToScores(sf::RenderWindow& window,unsigned int score) {
 					dataSet = true;
 				}
 				else if (event.type == sf::Event::TextEntered) {
-						input += event.text.unicode;
-						userName.setString(input);
+					input += event.text.unicode;
+					userName.setString(input);
 				}
-
 			}
 			window.clear();
 			window.draw(fieldToPrint);
@@ -194,34 +186,34 @@ bool Menu::addToScores(sf::RenderWindow& window,unsigned int score) {
 		return 1;
 	}
 	else {
-		sortScores(); // zeby byly posortowane; 
+		sortScores(); // zeby byly posortowane;
 		int pos = 0;
 		for (auto& elem : scores) {
 			if (std::get<1>(elem) < score) {
 				while (window.isOpen() && !dataSet) {
 					sf::Event event;
-				while (window.pollEvent(event) && !dataSet)
-				{
-					if (event.key.code == sf::Keyboard::Escape) {
-						return false;
+					while (window.pollEvent(event) && !dataSet)
+					{
+						if (event.key.code == sf::Keyboard::Escape) {
+							return false;
+						}
+						if (event.key.code == sf::Keyboard::BackSpace && input.getSize() > 0)
+							input.erase(input.getSize() - 1);
+						else if (event.key.code == sf::Keyboard::Enter) {
+							userName.setString(input + ' ');
+							dataSet = true;
+							scores.erase(scores.end() - 1);
+							scores.push_back(std::make_tuple(userName, score));
+						}
+						else if (event.type == sf::Event::TextEntered) {
+							input += event.text.unicode;
+							userName.setString(input);
+						}
 					}
-					if (event.key.code == sf::Keyboard::BackSpace && input.getSize() > 0)
-						input.erase(input.getSize() - 1);
-					else if (event.key.code == sf::Keyboard::Enter) {
-						userName.setString(input + ' ');
-						dataSet = true;
-						scores.erase(scores.end() - 1);
-						scores.push_back(std::make_tuple(userName, score));
-					}
-					else if (event.type == sf::Event::TextEntered) {
-						input += event.text.unicode;
-						userName.setString(input);
-					}
-				}
-				window.clear();
-				window.draw(fieldToPrint);
-				window.draw(userName);
-				window.display();
+					window.clear();
+					window.draw(fieldToPrint);
+					window.draw(userName);
+					window.display();
 				}
 
 				return 1;
@@ -248,7 +240,6 @@ bool Menu::moveUp(bool started) {
 		return true;
 	}
 	return false;
-	
 }
 
 bool Menu::moveDown() {
@@ -280,6 +271,9 @@ bool Menu::handle(sf::RenderWindow& window, bool started) {
 				case sf::Keyboard::S:
 					moveDown();
 					break;
+				case sf::Event::Resized:
+					window.setView(calcView(window.getSize(), sf::Vector2u(1280, 720)));
+					break;
 				case sf::Keyboard::W:
 					moveUp(started);
 					break;
@@ -300,7 +294,7 @@ bool Menu::handle(sf::RenderWindow& window, bool started) {
 				break;
 			case sf::Event::Closed:
 				window.close();
-            break;
+				break;
 			}
 		}
 		window.clear();
@@ -328,22 +322,24 @@ bool Menu::instruction(sf::RenderWindow& window) {
 	case 2:
 		while (!esc && window.isOpen()) {
 			sf::Event event;
-			while(window.pollEvent(event))
-			switch (event.type)
-			{
-			case sf::Event::KeyReleased:
-				if(event.key.code == sf::Keyboard::Escape)
-					esc = true;
-				break;
-			case sf::Event::Closed:
-				window.close();
-				break;
-
-			}
+			while (window.pollEvent(event))
+				switch (event.type)
+				{
+				case sf::Event::KeyReleased:
+					if (event.key.code == sf::Keyboard::Escape)
+						esc = true;
+					break;
+				case sf::Event::Closed:
+					window.close();
+					break;
+				case sf::Event::Resized:
+					window.setView(calcView(window.getSize(), sf::Vector2u(1280, 720)));
+					break;
+				}
 			window.clear();
-			drawOptions(window);	
+			drawOptions(window);
 			window.display();
-		}			
+		}
 		return false;
 		break;
 	case 3:
@@ -359,11 +355,14 @@ bool Menu::instruction(sf::RenderWindow& window) {
 				case sf::Event::Closed:
 					window.close();
 					break;
+				case sf::Event::Resized:
+					window.setView(calcView(window.getSize(), sf::Vector2u(1280, 720)));
+					break;
 				}
 			window.clear();
 			drawScoreboard(window);
 			window.display();
-		}	
+		}
 		return false;
 		break;
 	case 4:

@@ -1,7 +1,7 @@
 #include "HUD.h"
 
 HUD::HUD(float value) {
-	try{
+	try {
 		loadTexture(HEARTS_PATH);
 		this->value = value;
 		previous = value;
@@ -22,14 +22,14 @@ HUD::HUD(float value) {
 		time = playerStats;
 		time.setCharacterSize(35);
 
-		gameStats = playerStats; 
+		gameStats = playerStats;
 		time.setPosition(130.f, 620.f);
 		gameStats.setPosition(130, 40.0f);
 		gameStats.setCharacterSize(40);
-		gameStats.setFillColor(sf::Color::Color(12,12,31,123));
+		gameStats.setFillColor(sf::Color::Color(12, 12, 31, 123));
 		gameStats.setOutlineColor(sf::Color::Cyan);
 	}
-	catch(std::exception e) {
+	catch (std::exception e) {
 		std::cout << e.what() << std::endl;
 	}
 }
@@ -37,11 +37,11 @@ HUD::HUD(float value) {
 bool HUD::update(Player* player, Timer* timer, unsigned int round, unsigned int score)
 {
 	float current = player->getHealth();
-	playerStats.setString("Experience : " + std::to_string((int)player->getExp()) + 
-						"\nLevel : " + std::to_string(player->getLevel()) +
-						"\nHealth : " + std::to_string((int)current) + "/" + std::to_string((int)player->getMaxHP()) + 
-						"\nStrength : " + std::to_string(player->getStrength()).substr(0, 4) +
-						"\nSpeed : " + std::to_string(player->getSpeed()).substr(0, 4));
+	playerStats.setString("Experience : " + std::to_string((int)player->getExp()) +
+		"\nLevel : " + std::to_string(player->getLevel()) +
+		"\nHealth : " + std::to_string((int)current) + "/" + std::to_string((int)player->getMaxHP()) +
+		"\nStrength : " + std::to_string(player->getStrength()).substr(0, 4) +
+		"\nSpeed : " + std::to_string(player->getSpeed()).substr(0, 4));
 	playerStats.setCharacterSize(30);
 	time.setString(timer->getTimeString());
 	gameStats.setString("Round: " + std::to_string(round) + "\nScore: " + std::to_string(score));
@@ -78,7 +78,7 @@ bool HUD::loadTexture(std::string text) {
 }
 
 bool HUD::setValue(float v) {
-	if(v >= 0) {
+	if (v >= 0) {
 		value = v;
 	}
 	return (v >= 0);

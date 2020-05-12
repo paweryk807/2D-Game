@@ -5,13 +5,10 @@
 #include "Functions.h"
 #include<SFML/Graphics.hpp>
 
-
 #define FONT_PATH  "fonts/Schaeffer.ttf"
 #define SCOREBOARD_PATH "scoreboard.txt"
 #define WIDTH  1280//1920
 #define HEIGHT  720//1080
-
-
 
 class Menu
 {
@@ -47,4 +44,3 @@ public:
 	bool instruction(sf::RenderWindow& window);
 	~Menu() = default;
 };
-

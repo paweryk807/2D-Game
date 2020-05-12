@@ -10,6 +10,7 @@
 #include "HUD.h"
 #include "EnemySpawner.h"
 #include "PlayerHandler.h"
+#include "Functions.h"
 class Game {
 	std::unique_ptr<sf::RenderWindow> window;
 	std::unique_ptr<Map> level;

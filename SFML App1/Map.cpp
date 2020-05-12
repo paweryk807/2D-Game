@@ -2,7 +2,6 @@
 
 Map::Map(unsigned int sizeParam, const std::string& lvlDirectory) {
 	try {
-
 		background.setSize(sf::Vector2f(1280, 720));
 		loadBackground("images/bg.jpg");
 		background.setTexture(&(this->backgroundTexture));
@@ -11,10 +10,8 @@ Map::Map(unsigned int sizeParam, const std::string& lvlDirectory) {
 		loadLevelToTab(lvlDirectory, sizeParam);
 		tiles.load("images/sheet.png", sf::Vector2u(16, 16), tab, 80, 45);
 		setPlatforms(sizeParam);
-		
-
 	}
-	catch(std::exception e){
+	catch (std::exception e) {
 		std::cerr << e.what();
 	}
 }
@@ -58,7 +55,7 @@ void Map::setPlatforms(const unsigned int sizeTab)
 			add = true;
 		}
 		else if (tab[i] >= 24 && tab[i] <= 30) {
-		        	add = true;
+			add = true;
 		}
 		else if (tab[i] >= 41 && tab[i] <= 47) {
 			add = true;
@@ -78,7 +75,7 @@ void Map::setPlatforms(const unsigned int sizeTab)
 		}
 		w_param++;
 	}
-	// DODAWANIE PARAMI IDENTYCZNYCH BLOKOW W JEDNEJ PLASZCZYZNIE ___  NIE DZIALA IDEALNIE ALE REDUKUJE 1440 BLOKOW KOLIDERA DO 36 
+	// DODAWANIE PARAMI IDENTYCZNYCH BLOKOW W JEDNEJ PLASZCZYZNIE ___  NIE DZIALA IDEALNIE ALE REDUKUJE 1440 BLOKOW KOLIDERA DO 36
 	bool changed = false;
 	while (!changed)
 	{
@@ -89,8 +86,8 @@ void Map::setPlatforms(const unsigned int sizeTab)
 				if (platforms[i]->getPosition().x - platforms[i - 1]->getPosition().x <= distance)  // Kolejny blok z danych
 				{
 					changed = true;
-					sf::Vector2f newSize((tmp.getSize().x + platforms[i]->getBody().getSize().x) , tmp.getSize().y);
-					sf::Vector2f newPos((tmp.getPosition().x + platforms[i]->getBody().getPosition().x)/2, tmp.getPosition().y);
+					sf::Vector2f newSize((tmp.getSize().x + platforms[i]->getBody().getSize().x), tmp.getSize().y);
+					sf::Vector2f newPos((tmp.getPosition().x + platforms[i]->getBody().getPosition().x) / 2, tmp.getPosition().y);
 					tmp.setSize(newSize);
 					tmp.setOrigin(newSize.x / 2, newSize.y / 2);
 					tmp.setPosition(newPos);
@@ -103,7 +100,6 @@ void Map::setPlatforms(const unsigned int sizeTab)
 			break;
 		changed = false;
 	}
-
 
 	while (!changed)
 	{
@@ -127,31 +123,30 @@ void Map::setPlatforms(const unsigned int sizeTab)
 		if (!changed)
 			break;
 		changed = false;
-	} 
-// KOLIDUJACE BLOKI :
-// 7,8,9,10,11,12,14
-// 24,25,26,27,28,29,30
-// 41,42,43,44,45,46,47
-// 58,59,60,61,63,64
-
+	}
+	// KOLIDUJACE BLOKI :
+	// 7,8,9,10,11,12,14
+	// 24,25,26,27,28,29,30
+	// 41,42,43,44,45,46,47
+	// 58,59,60,61,63,64
 }
 
 bool Map::checkCollision(sf::Vector2f direction, Character* character) const {
 	bool collision = false;
 	sf::Vector2f characterPosition = character->getPosition();
-	for(auto iterator = platforms.begin(); iterator!= platforms.end(); iterator++) { //for (platforms platform : &platforms)
-		if(std::abs(characterPosition.x - iterator->get()->getPosition().x) < 700 && std::abs(characterPosition.y - iterator->get()->getPosition().y) < 100)
-		if (iterator->get()->getCollider().checkCollision(character->getCollider(), direction, 1.2f)) {
-			character->onCollision(direction);
-			if (direction.x != 0) {
-				character->setVelocity(sf::Vector2f(0, character->getVelocity().y));
-			}
-			if (direction.y != 0) {
-				character->setVelocity(sf::Vector2f(character->getVelocity().x, 0));
-			}
+	for (auto iterator = platforms.begin(); iterator != platforms.end(); iterator++) { //for (platforms platform : &platforms)
+		if (std::abs(characterPosition.x - iterator->get()->getPosition().x) < 700 && std::abs(characterPosition.y - iterator->get()->getPosition().y) < 100)
+			if (iterator->get()->getCollider().checkCollision(character->getCollider(), direction, 1.2f)) {
+				character->onCollision(direction);
+				if (direction.x != 0) {
+					character->setVelocity(sf::Vector2f(0, character->getVelocity().y));
+				}
+				if (direction.y != 0) {
+					character->setVelocity(sf::Vector2f(character->getVelocity().x, 0));
+				}
 
-			collision = true;
-		}
+				collision = true;
+			}
 	}
 	return collision;
 }
@@ -209,6 +204,6 @@ void Map::draw(sf::RenderTarget& target, sf::RenderStates state) const {
 }
 
 Map::~Map() {
-	delete tab; 
+	delete tab;
 	platforms.clear();
 }

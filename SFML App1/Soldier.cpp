@@ -1,4 +1,4 @@
-#include "Soldier.h" 
+#include "Soldier.h"
 
 Soldier::Soldier(std::vector<std::string>& textures)
 {
@@ -30,7 +30,6 @@ Soldier::Soldier(std::vector<std::string>& textures)
 	}
 }
 
-
 void Soldier::setStrength(float str) {
 	if (str > 0) {
 		strength = str;
@@ -41,13 +40,11 @@ void Soldier::setStrength(float str) {
 }
 
 void Soldier::reset() {
-
 }
 
 float Soldier::getStrength() {
 	return strength;
 }
-
 
 void Soldier::addAmmunition(Bullet& bullet) {
 	this->bullet = &bullet;
@@ -55,7 +52,7 @@ void Soldier::addAmmunition(Bullet& bullet) {
 
 bool Soldier::loadTextures(std::vector<std::string>& text) {
 	for (auto elem : text) {
-		sf::Texture tmp; 
+		sf::Texture tmp;
 		if (!tmp.loadFromFile(elem)) {
 			throw std::exception("Soldier Texture error!");
 			break;
@@ -63,7 +60,6 @@ bool Soldier::loadTextures(std::vector<std::string>& text) {
 		texture.push_back(sf::Texture(tmp));
 	}
 }
-
 
 void Soldier::moveRight() {
 	velocity.x = getSpeed();
@@ -113,17 +109,18 @@ bool Soldier::refresh(const Player& player, bool wall) {
 	bool changed = false;
 	if (getHealth() > 0) {
 		// AI SECTION
+		/*
 		if (getPosition().x < 0)
 			correctPosition(sf::Vector2f(5.1f, sprite.getPosition().y));
-		else if (getPosition().x > 1280) 
+		else if (getPosition().x > 1280)
 			correctPosition(sf::Vector2f(1274.1f, sprite.getPosition().y));
 		if (getPosition().y > 1070)
-				correctPosition(sf::Vector2f(getPosition().x, 0));
+			correctPosition(sf::Vector2f(getPosition().x, 0));
 		else if (getPosition().y < 0)
-				correctPosition(sf::Vector2f(getPosition().x, 5.f));
-
+			correctPosition(sf::Vector2f(getPosition().x, 5.f));
+		*/
 		if (velocity.y != 0.0f) {
-			setOnAir(true); 
+			setOnAir(true);
 			setCanJump(false);
 			sprite.setTexture(&texture[2]);
 			jump();
@@ -131,7 +128,7 @@ bool Soldier::refresh(const Player& player, bool wall) {
 		}
 		else if (getCanJump()) {
 			if (getCanJump()) {
-				if (wall) {
+				if (wall || abs(prevPos.x - sprite.getPosition().x) < 0.1) {
 					if (!changed) {
 						sprite.setTexture(&texture[2]);
 						changed = true;
@@ -146,10 +143,9 @@ bool Soldier::refresh(const Player& player, bool wall) {
 					jump();
 				}
 			}
-
 		}
 
-		if (player.getPosition().x - 1 >= getPosition().x) {
+		if (player.getPosition().x - 10 >= getPosition().x) {
 			velocity.x++;
 			sprite.setTexture(&texture[1]);
 			changed = true;
@@ -165,11 +161,10 @@ bool Soldier::refresh(const Player& player, bool wall) {
 		}
 		else if (velocity.x == 0 && velocity.y == 0) {
 			sprite.setTexture(&texture[0]);
+			idle();
 			changed = true;
-
-		}	
+		}
 		setSpeed(2.f, sf::seconds(2.2 * 0.125));
-
 
 		/*SEKCJA STRZELANIA*/
 		if ((abs(player.getPosition().x - getPosition().x)) <= 400) { // && (abs(player.getPosition().x) - abs(getPosition().x)) <= 400) {
@@ -178,8 +173,9 @@ bool Soldier::refresh(const Player& player, bool wall) {
 				bullet->setDirection(this);
 			}
 		}
+		prevPos = sprite.getPosition();
 
-		velocity.y += 0.9810f * 1.0f;	
+		velocity.y += 0.9810f * 1.0f;
 		sprite.move(velocity.x, velocity.y);
 		velocity.x = 0.0f;
 		if (velocity.y > 17.0f) {
@@ -196,11 +192,9 @@ bool Soldier::refresh(const Player& player, bool wall) {
 			velocity.y = 9.81 * 1.6f;
 		}
 		return 	animation.death(48, 0, 8 * 48, 0, sprite, velocity);
-
 	}
-
 }
 
 Soldier::~Soldier() {
 	bullet = nullptr;
-}																	 
+}

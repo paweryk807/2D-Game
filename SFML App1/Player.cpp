@@ -8,19 +8,15 @@ Player::Player(const std::string& temp) : bullets(bullets) {//, std::vector<std:
 	sprite.setTexture(&texture);
 	sprite.setTextureRect(r);
 	sf::Vector2f size(1.5 * sprite.getSize().x, 1.5 * sprite.getSize().y);
-	//sprite.setSize(size);
-	//sprite.setOrigin(sprite.getOrigin().x, sprite.getOrigin().y + 2.f);
 	setSpeed(4.20, sf::seconds(0.15));
 	walkSpeed = getSpeed();
 	sprintSpeed = getSpeed() * 1.25;
 	maxHP = 100;
 	setHealth(maxHP);
-	//setSpeed(1183.9, sf::seconds(1183.9 * 0.125));
 	setJumpHeight(14.20);
 	setCanJump(true);
 	setOnAir(false);
 	setCanClimb(false);
-
 
 	shieldShape.setSize(sf::Vector2f(4.f, 32.f));
 	shieldShape.setOrigin(shieldShape.getSize().x / 2, shieldShape.getSize().y / 2 + 5);
@@ -30,22 +26,19 @@ Player::Player(const std::string& temp) : bullets(bullets) {//, std::vector<std:
 	shieldShape.setOutlineThickness(1.5f);
 
 	shieldCollider.setSize(size);
-	//shieldCollider = shieldShape;
 	strength = 50.f;
 	prevLevel = 0;
 	level = 0;
 	exp = 0.0f;
 
-
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 8; i++)
 	{
 		bullets.push_back(Bullet(sf::Vector2f(2000, 2000)));
-		bullets[i].setTime(sf::seconds(2.f));
+		bullets[i].setTime(sf::seconds(4.f));
 	}
 
 	shotCooldown.setCooldown(sf::seconds(0.5));
 }
-
 
 float Player::getMaxHP() {
 	return maxHP;
@@ -97,7 +90,7 @@ bool Player::shot() {
 		}
 	return 0;
 }
-void Player::setSpeed(float temp, sf::Time tempAnim) //Sprint Speed
+void Player::setSpeed(float temp, sf::Time tempAnim) 
 {
 	Character::setSpeed(temp);
 	animation.setAnimTime(tempAnim);
@@ -137,7 +130,7 @@ float Player::getExp() {
 	return exp;
 }
 
-bool Player::getShieldState(){
+bool Player::getShieldState() {
 	return shield;
 }
 
@@ -157,15 +150,14 @@ sf::RectangleShape Player::getShield() {
 	return shieldShape;
 }
 
-Collider Player::getShieldCollider() {	
-	if (getSprite().getScale().x > 0) { // direction 
+Collider Player::getShieldCollider() {
+	if (getSprite().getScale().x > 0) { // direction
 		shieldCollider.setPosition(sf::Vector2f(getPosition().x + 32, getPosition().y));
 	}
 	else shieldCollider.setPosition(sf::Vector2f(getPosition().x - 32, getPosition().y));
 	return Collider(shieldCollider);
 }
 bool Player::leveled() {
-
 	if (level < 10) {
 		if (exp > 100) {
 			level += 1;
@@ -200,12 +192,16 @@ bool Player::leveled() {
 }
 
 void Player::reset() {
-	//Character::reset();
+//	Character::reset();
 	sprite.setPosition(600, 350);
 	setHealth(100.0);
+	setJumpHeight(10.20);
 	setCanJump(true);
 	setOnAir(false);
 	setCanClimb(false);
+	setSpeed(4.20, sf::seconds(0.15));
+	walkSpeed = getSpeed();
+	sprintSpeed = getSpeed() * 1.25;
 	strength = 50.f;
 	prevLevel = 0;
 	level = 0;
@@ -216,10 +212,10 @@ void Player::reset() {
 	for (auto& elem : bullets) {
 		if (elem.getCooldown().elapsed()) {
 			elem.restart(sf::Vector2f(2000, 2000));
-				elem.setUse(0);
+			elem.setUse(0);
 		}
 	}
-	while (bullets.size() > 4) {
+	while (bullets.size() > 8) {
 		bullets.pop_back();
 	}
 }
@@ -232,7 +228,7 @@ bool Player::refresh() {
 		}
 	}
 	if (shield) {
-		if (getSprite().getScale().x > 0) { // direction 
+		if (getSprite().getScale().x > 0) { // direction
 			shieldShape.setPosition(getPosition().x + 20, getPosition().y);
 		}
 		else shieldShape.setPosition(getPosition().x - 20, getPosition().y);
@@ -270,8 +266,8 @@ void Player::draw(sf::RenderTarget& target, sf::RenderStates state) const {
 	}
 	target.draw(sprite);
 	for (auto elem : bullets) {
-			if (!elem.getCooldown().elapsed())
-				target.draw(elem);
+		if (!elem.getCooldown().elapsed())
+			target.draw(elem);
 	}
 }
 

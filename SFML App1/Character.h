@@ -22,12 +22,11 @@ private:
 	void moveRight();
 
 protected:
-	sf::RectangleShape sprite; 
+	sf::RectangleShape sprite;
 	sf::Vector2f velocity;
 
-
-public:	
-	Character(); 
+public:
+	Character();
 	~Character() = default;
 
 	virtual void reset() = 0;
@@ -61,6 +60,4 @@ public:
 	void setSpeed(float temp);
 
 	Collider getCollider();
-
 };
-

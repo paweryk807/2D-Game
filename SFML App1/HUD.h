@@ -15,7 +15,7 @@ class HUD : public sf::Drawable
 	sf::Text gameStats;
 	sf::Text time;
 
-	float value; // poczatkowa wartosc zycia ew. ulepszona 
+	float value; // poczatkowa wartosc zycia ew. ulepszona
 	float previous;
 
 public:
@@ -35,4 +35,3 @@ public:
 
 	~HUD() = default;
 };
-

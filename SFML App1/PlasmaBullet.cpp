@@ -3,7 +3,7 @@
 PlasmaBullet::PlasmaBullet(sf::Vector2f pos, float seconds)
 {
 	texture.loadFromFile("images/PlasmaDrone/ball_sheet.png");
-	sprite.setTexture(&texture); 
+	sprite.setTexture(&texture);
 	sf::IntRect rect(0, 0, 64, 64);
 
 	sprite.setTextureRect(rect);
@@ -11,12 +11,12 @@ PlasmaBullet::PlasmaBullet(sf::Vector2f pos, float seconds)
 	sf::Time  cooldownTime = sf::seconds(seconds);
 	cooldown.setCooldown(cooldownTime);
 
-	sf::Time perFrame = sf::seconds(seconds/ 8);
+	sf::Time perFrame = sf::seconds(seconds / 8);
 	animation.setAnimTime(perFrame);
 
 	animation.setRect(rect);
-	sprite.setPosition(pos.x, pos.y);	
-	sf::Vector2f cSize(sprite.getRadius()/2, sprite.getRadius()/2);
+	sprite.setPosition(pos.x, pos.y);
+	sf::Vector2f cSize(sprite.getRadius() / 2, sprite.getRadius() / 2);
 
 	colid.setSize(cSize);
 	colid.setPosition(pos.x, pos.y);
@@ -27,19 +27,20 @@ void PlasmaBullet::countDirection(Character* shooter, Character* target)
 {
 	sf::Vector2f shooterPosition = shooter->getPosition();
 	sf::Vector2f targetPosition = target->getPosition();
-
-	velocity.x = (targetPosition.x - shooterPosition.x) / 65;
-	velocity.y = (targetPosition.y - shooterPosition.y) / 65;
-
-	if (abs(velocity.x) < 10) velocity.x * 3;
-	if (abs(velocity.x) < 10) velocity.x * 3;
-	if (abs(velocity.y) < 10) velocity.y * 3;
-	if (abs(velocity.y) < 10) velocity.y * 3;
 	
+	float deltaX = abs(targetPosition.x - shooterPosition.x);
+	float deltaY = abs(targetPosition.y - shooterPosition.y);
+	if (deltaX > 100 && deltaY > 100) {
+		velocity.x = (targetPosition.x - shooterPosition.x) * 0.0125;
+		velocity.y = (targetPosition.y - shooterPosition.y) * 0.0125;
+	}
+	else {
+		velocity.x = (targetPosition.x - shooterPosition.x) * 0.05;
+		velocity.y = (targetPosition.y - shooterPosition.y) * 0.05;
+	}
 }
 
 void PlasmaBullet::restart(sf::Vector2f pos) {
-
 	sf::IntRect rect(0, 0, 64, 64);
 	sprite.setTextureRect(rect);
 	animation.setRect(rect);

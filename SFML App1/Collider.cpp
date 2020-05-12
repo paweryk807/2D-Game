@@ -1,167 +1,163 @@
-#include "Collider.h" 
+#include "Collider.h"
 
-    Collider::Collider(sf::RectangleShape& body) : body(body) {}
+Collider::Collider(sf::RectangleShape& body) : body(body) {}
 
-	Collider::~Collider() {	
+Collider::~Collider() {
+}
 
+bool Collider::checkCollision(Collider other, sf::Vector2f& direction, float push) {
+	sf::Vector2f otherPos = other.getPosition();
+	sf::Vector2f otherHalfSize = other.getHalfSize();
+	sf::Vector2f thisPos = getPosition();
+	sf::Vector2f thisHalfSize = getHalfSize();
+
+	float deltaX = otherPos.x - thisPos.x;
+	float deltaY = otherPos.y - thisPos.y;
+
+	float intersectionX = abs(deltaX) - (otherHalfSize.x + thisHalfSize.x); // +12.5f;  // +12.5 aby zniwelowac wolne miejsce w teksturach :slight_smile:
+	float intersectionY = abs(deltaY) - (otherHalfSize.y + thisHalfSize.y); // +0.99;
+
+	if (intersectionX < 0.0f && intersectionY < 0.0f) {
+		push = std::min(std::max(push, 0.0f), 1.0f);
+
+		if (intersectionX > intersectionY) {
+			if (deltaX > 0.0f) {
+				move(intersectionX * (1.0f - push) * 0.5, 0.0f);
+				other.move(-intersectionX * push, 0.0f);
+
+				direction.x = 1.0f;
+				direction.y = 0.0f;
+			}
+			else {
+				move(-intersectionX * (1.0f - push) * 0.5, 0.0f);
+				other.move(intersectionX * push, 0.0f);
+
+				direction.x = -1.0f;
+				direction.y = 0.0f;
+			}
+		}
+		else {
+			if (deltaY > 0.0f) {
+				move(0.0f, intersectionY * (1.0f - push) * 0.5);
+				other.move(0.0f, -intersectionY * push);
+
+				direction.x = 0.0f;
+				direction.y = 1.0f;
+			}
+			else {
+				move(0.0f, -intersectionY * (1.0f - push) * 0.5);
+				other.move(0.0f, intersectionY * push);
+
+				direction.x = 0.0f;
+				direction.y = -1.0f;
+			}
+		}
+
+		return true;
 	}
 
-	bool Collider::checkCollision(Collider other, sf::Vector2f& direction, float push) {
-        sf::Vector2f otherPos = other.getPosition();
-        sf::Vector2f otherHalfSize = other.getHalfSize();
-        sf::Vector2f thisPos = getPosition();
-        sf::Vector2f thisHalfSize = getHalfSize();
+	return false;
+}
 
-        float deltaX = otherPos.x - thisPos.x;
-        float deltaY = otherPos.y - thisPos.y;
+bool Collider::onCollision(Collider other) {
+	sf::Vector2f otherPos = other.getPosition();
+	sf::Vector2f otherHalfSize = other.getHalfSize();
+	sf::Vector2f thisPos = getPosition();
+	sf::Vector2f thisHalfSize = getHalfSize();
 
-        float intersectionX = abs(deltaX) - (otherHalfSize.x + thisHalfSize.x); // +12.5f;  // +12.5 aby zniwelowac wolne miejsce w teksturach :slight_smile: 
-        float intersectionY = abs(deltaY) - (otherHalfSize.y + thisHalfSize.y); // +0.99;
+	float deltaX = otherPos.x - thisPos.x;
+	float deltaY = otherPos.y - thisPos.y;
 
-        if (intersectionX < 0.0f && intersectionY < 0.0f) {
-            push = std::min(std::max(push, 0.0f), 1.0f);
+	float intersectionX = abs(deltaX) - (otherHalfSize.x + thisHalfSize.x);
+	float intersectionY = abs(deltaY) - (otherHalfSize.y + thisHalfSize.y);
 
-            if (intersectionX > intersectionY) {
-                if (deltaX > 0.0f) {
-                    move(intersectionX * (1.0f - push)*0.5, 0.0f);
-                    other.move(-intersectionX * push, 0.0f);
+	return (intersectionX < 0.0f && intersectionY < 0.0f);
+}
 
-                    //direction.x = 1.0f;
-                    //direction.y = 0.0f;
-                }
-                else {
-                    move(-intersectionX * (1.0f - push )* 0.5, 0.0f);
-                    other.move(intersectionX * push, 0.0f);
+sf::Vector2f Collider::getPosition() {
+	return body.getPosition();
+}
 
-                    //direction.x = -1.0f;
-                    //direction.y = 0.0f;
-                }
-            }
-            else {
-                if (deltaY > 0.0f) {
-                    move(0.0f, intersectionY * (1.0f - push )* 0.5);
-                    other.move(0.0f, -intersectionY * push);
+sf::Vector2f Collider::getHalfSize() {
+	return (body.getSize() / 2.0f);
+}
 
-                    //direction.x = 0.0f;
-                    //direction.y = 1.0f;
-                }
-                else {
-                    move(0.0f, -intersectionY * (1.0f - push) * 0.5);
-                    other.move(0.0f, intersectionY * push);
+void Collider::move(float dx, float dy) {
+	body.move(dx, dy);
+}
 
-                    //direction.x = 0.0f;
-                    //direction.y = -1.0f;
+void Collider::setBody(sf::RectangleShape sh) {
+	body = sh;
+}
 
-                }
-            }
+sf::RectangleShape Collider::getBody() {
+	return body;
+}
 
-            return true;
-        }
+void Collider::setPosition(sf::Vector2f pos) {
+	body.setPosition(pos);
+}
 
-        return false;
-    }
+// MAP COLLIDER
 
-    bool Collider::onCollision(Collider other) {
-        sf::Vector2f otherPos = other.getPosition();
-        sf::Vector2f otherHalfSize = other.getHalfSize();
-        sf::Vector2f thisPos = getPosition();
-        sf::Vector2f thisHalfSize = getHalfSize();
+MapCollider::MapCollider(sf::RectangleShape& body) : Collider(body) { };
 
-        float deltaX = otherPos.x - thisPos.x;
-        float deltaY = otherPos.y - thisPos.y;
+bool MapCollider::checkCollision(Collider other, sf::Vector2f& direction, float push) {
+	sf::Vector2f otherPos = other.getPosition();
+	sf::Vector2f otherHalfSize = other.getHalfSize();
+	sf::Vector2f thisPos = getPosition();
+	sf::Vector2f thisHalfSize = getHalfSize();
 
-        float intersectionX = abs(deltaX) - (otherHalfSize.x + thisHalfSize.x);
-        float intersectionY = abs(deltaY) - (otherHalfSize.y + thisHalfSize.y);
+	float deltaX = otherPos.x - thisPos.x;
+	float deltaY = otherPos.y - thisPos.y;
 
-        return (intersectionX < 0.0f && intersectionY < 0.0f);
-    }
+	float intersectionX = abs(deltaX) - (otherHalfSize.x + thisHalfSize.x);// -8.f;  // +12.5 aby zniwelowac wolne miejsce w teksturach :slight_smile:
+	float intersectionY = abs(deltaY) - (otherHalfSize.y + thisHalfSize.y);// +4.f; // +0.99;
 
-	sf::Vector2f Collider::getPosition() {
-		return body.getPosition();
+	if (intersectionX < 0.0f && intersectionY < 0.0f) {
+		push = std::min(std::max(push, 0.0f), 10.0f);
+
+		if (intersectionX > intersectionY) {
+			if (deltaX > 0.0f) {
+				other.move(-intersectionX * push, 0.0f);
+
+				direction.x = 1.0f;
+				direction.y = 0.0f;
+			}
+			else {
+				other.move(intersectionX * push, 0.0f);
+
+				direction.x = -1.0f;
+				direction.y = 0.0f;
+			}
+		}
+		else {
+			if (deltaY > 0.0f) {
+				other.move(0.0f, -intersectionY * push);
+
+				direction.x = 0.0f;
+				direction.y = 1.0f;
+			}
+			else {
+				other.move(0.0f, intersectionY * push);
+
+				direction.x = 0.0f;
+				direction.y = -1.0f;
+			}
+		}
+
+		return true;
 	}
 
-	sf::Vector2f Collider::getHalfSize() {
-		return (body.getSize() / 2.0f);
-	}
+	return false;
+}
 
-	void Collider::move(float dx, float dy) {
-		body.move(dx, dy);
-	}
+bool MapCollider::wallCollision(Collider other) {
+	float deltaX = other.getPosition().x - getPosition().x;
+	float deltaY = other.getPosition().y - getPosition().y;
 
-    void Collider::setBody(sf::RectangleShape sh) {
-        body = sh;
-    }
+	float intersectionX = abs(deltaX) - (other.getHalfSize().x + getHalfSize().x);
+	float intersectionY = abs(deltaY) - (other.getHalfSize().y + getHalfSize().y);
 
-    sf::RectangleShape Collider::getBody() {
-        return body;
-    }
-
-	void Collider::setPosition(sf::Vector2f pos) {
-        body.setPosition(pos);
-	}
-
-    // MAP COLLIDER 
-
-    MapCollider::MapCollider(sf::RectangleShape& body): Collider(body){ };
-
-
-    bool MapCollider::checkCollision(Collider other, sf::Vector2f& direction, float push) {
-        sf::Vector2f otherPos = other.getPosition();
-        sf::Vector2f otherHalfSize = other.getHalfSize();
-        sf::Vector2f thisPos = getPosition();
-        sf::Vector2f thisHalfSize = getHalfSize();
-
-        float deltaX = otherPos.x - thisPos.x;
-        float deltaY = otherPos.y - thisPos.y;
-
-        float intersectionX = abs(deltaX) - (otherHalfSize.x + thisHalfSize.x);// -8.f;  // +12.5 aby zniwelowac wolne miejsce w teksturach :slight_smile: 
-            float intersectionY = abs(deltaY) - (otherHalfSize.y + thisHalfSize.y);// +4.f; // +0.99;
-
-        if (intersectionX < 0.0f && intersectionY < 0.0f) {
-            push = std::min(std::max(push, 0.0f), 10.0f);
-
-            if (intersectionX > intersectionY) {
-                if (deltaX > 0.0f) {
-                    other.move(-intersectionX * push, 0.0f);
-
-                    direction.x = 1.0f;
-                    direction.y = 0.0f;
-                }
-                else {
-                    other.move(intersectionX * push, 0.0f);
-
-                    direction.x = -1.0f;
-                    direction.y = 0.0f;
-                }
-            }
-            else {
-                if (deltaY > 0.0f) {
-                    other.move(0.0f, -intersectionY * push);
-
-                    direction.x = 0.0f;
-                    direction.y = 1.0f;
-                }
-                else {
-                    other.move(0.0f, intersectionY * push);
-
-                    direction.x = 0.0f;
-                    direction.y = -1.0f;
-
-                }
-            }
-
-            return true;
-        }
-
-        return false;
-    }
-
-    bool MapCollider::wallCollision(Collider other) {
-        float deltaX = other.getPosition().x - getPosition().x;
-        float deltaY = other.getPosition().y - getPosition().y;
-
-        float intersectionX = abs(deltaX) - (other.getHalfSize().x + getHalfSize().x);
-        float intersectionY = abs(deltaY) - (other.getHalfSize().y + getHalfSize().y);
-
-        return (intersectionX < 0.0f && intersectionY < 0.0f);
-    }
+	return (intersectionX < 0.0f && intersectionY < 0.0f);
+}

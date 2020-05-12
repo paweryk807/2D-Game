@@ -9,7 +9,7 @@
 class Player : public Character
 {
 private:
-	float sprintSpeed; 
+	float sprintSpeed;
 	float walkSpeed;
 
 	float exp;
@@ -20,14 +20,14 @@ private:
 	bool shield;
 	sf::Texture texture;
 	CharacterAnimation animation;
-    sf::RectangleShape shieldShape;
+	sf::RectangleShape shieldShape;
 	sf::RectangleShape shieldCollider;
 	Cooldown shotCooldown;
 
 	void setSpeed(float temp, sf::Time tempAnim);
 	void setAnimation(CharacterAnimation& a);
 
-public:	
+public:
 	std::vector<Bullet> bullets;
 
 	/* Sterowanie */
@@ -43,7 +43,7 @@ public:
 
 	/* Resetowanie postaci */
 	void reset();
-	/* Aktualizacja */	
+	/* Aktualizacja */
 	bool refresh();
 	/* Rysowanie */
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates state) const;
@@ -69,6 +69,4 @@ public:
 	Player() = delete;
 	Player(const std::string& temp);//, std::vector<std::unique_ptr<Bullet>> bullets);//, std::vector< std::pair < Bullet, bool >> bullets);
 	~Player() = default;
-
 };
-
