@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Animation">
+    <Position X="1.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEQAAAAACAAQgAAgAAAIAAAAAAAAAAAAAAEAQQAAAE=</HashCode>
+      <FileName>Animation.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bird">
+    <Position X="1.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAECAAAAAAAAAECAACAIAEAAgAAAAAAAAAAAQA=</HashCode>
+      <FileName>Bird.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bullet">
+    <Position X="9.25" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAFAAAAAABggABBIAABAgIDAACIAGAARAQAQQAAA=</HashCode>
+      <FileName>bullet.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Character">
+    <Position X="4.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gCAKIEAFgAAABAAAQRIIIIEAAxAQAQADYARADGAAKIg=</HashCode>
+      <FileName>Character.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Cooldown">
+    <Position X="18.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABARAgAAAAAAAAAAAAQAAAAAAAAAAAAgAAACAAEAAAg=</HashCode>
+      <FileName>Cooldown.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemySpawner">
+    <Position X="13.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEkAAAAAAAAAUCAAAACAAAgAAAAAAAQAAAAACQAAA=</HashCode>
+      <FileName>EnemySpawner.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HUD">
+    <Position X="20.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQIBAAQABAAAAAAAAAIACAAAADAAAiAAAAAgAAAEBAA=</HashCode>
+      <FileName>HUD.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Map">
+    <Position X="11.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAJAAAAAACAIQAAAAAoIAABAEAAAMABgAIAA=</HashCode>
+      <FileName>Map.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Menu">
+    <Position X="22" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEoAABBBAABAAAAAAAQIBAgAgSAIAAAoCAACSWAAIAA=</HashCode>
+      <FileName>Menu.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CharacterAnimation">
+    <Position X="3.25" Y="18" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAACAIAAIABAAAA=</HashCode>
+      <FileName>CharacterAnimation.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Collider">
+    <Position X="7.25" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAEQAgCAAAAAAAACAYAAAAAQAAAAACQAAAA=</HashCode>
+      <FileName>Collider.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapCollider">
+    <Position X="5" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAAAAAIAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Collider.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game">
+    <Position X="16.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABhwABJAAAAAgAAIIAggAAAmAAAAIAgAAAAAAIJA=</HashCode>
+      <FileName>Game.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlasmaBullet">
+    <Position X="11.5" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAHAAAAAAEAAAAAAAAIAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>PlasmaBullet.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlasmaBulletAnimation">
+    <Position X="1" Y="18" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>PlasmaBulletAnimation.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlasmaDrone">
+    <Position X="1.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgQAEAEBLAAAAAEAAIAAgAAAAAAAwAEQAAAAAAIAAA=</HashCode>
+      <FileName>PlasmaDrone.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Platform">
+    <Position X="15" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAEQABAAABAAAAACAQAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Platform.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Player">
+    <Position X="8.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAmAEAFAIAACBMVAAcAAAQIABEUEgAQSAAQiURAAhA=</HashCode>
+      <FileName>Player.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerHandler">
+    <Position X="20.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAIABAAIAAABAAAAAAAAAAA=</HashCode>
+      <FileName>PlayerHandler.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soldier">
+    <Position X="6.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAEAEDAAAQAAEAgAAAAAAAgAQAwAAQFAACEBAAAA=</HashCode>
+      <FileName>Soldier.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TileMap">
+    <Position X="13.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAIAAAAAAAAQAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>TileMap.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Timer">
+    <Position X="15" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAEAAAAIAgAAQAAAAQAAAgIAAIAAQAAEEUAAE=</HashCode>
+      <FileName>Timer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="utils::BonusType">
+    <Position X="18.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAABAAAAAAAAAAAAAQAAAAAAAAAg=</HashCode>
+      <FileName>Utils.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="utils::PlasmaDroneState">
+    <Position X="18.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAABAAAAAAAAQA=</HashCode>
+      <FileName>Utils.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

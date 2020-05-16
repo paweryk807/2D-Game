@@ -1,9 +1,11 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "CharacterAnimation.h"
-#include "Collider.h"
 #include<string>
 #include<iostream>
+#include "CharacterAnimation.h"
+#include "Collider.h"
+#include "CharacterAnimation.h"
+
 class Character : public sf::Drawable
 {
 private:
@@ -16,16 +18,18 @@ private:
 	bool canClimb;
 
 	void moveUp();
-	void jump();
 	void moveDown();
+	void jump();
 	void moveLeft();
 	void moveRight();
 
 protected:
 	sf::RectangleShape sprite;
 	sf::Vector2f velocity;
+	CharacterAnimation animation;
+	void setAnimation(CharacterAnimation& a);
 
-public:
+public:	
 	Character();
 	~Character() = default;
 
@@ -45,6 +49,7 @@ public:
 	sf::Vector2f getVelocity() const;
 
 	void setSprite(sf::RectangleShape& sprite);
+	/* Metoda ustawiaj¹ca pozycjê w wyznaczonym obszarze (w parametrze przekazywany ma byc wektor z maksymalna szerokoscia x i y) */
 	void correctPosition(sf::Vector2f);
 	void setVelocity(sf::Vector2f vel);
 
@@ -54,7 +59,7 @@ public:
 
 	void setCanJump(bool jump);
 	void setOnAir(bool air);
-
+	/* Metoda odswiezajaca   */
 	void refresh();
 	void onCollision(sf::Vector2f direction);
 	void setSpeed(float temp);

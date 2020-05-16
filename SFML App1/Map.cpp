@@ -106,7 +106,7 @@ void Map::setPlatforms(const unsigned int sizeTab)
 		for (int i = 1; i < platforms.size(); i++) {
 			sf::RectangleShape tmp = platforms[i - 1]->getBody();
 			if (platforms[i]->getPosition().x == tmp.getPosition().x && platforms[i]->getBody().getSize() == tmp.getSize()) {
-				float distance = platforms[i]->getCollider().getHalfSize().y + platforms[i - 1]->getCollider().getHalfSize().y;
+				float distance = platforms[i]->getCollider().getHalfSize().y + platforms[i - 1]->getCollider().getHalfSize().y; // d³ugoœæ sumy po³ówek szerokoœci sprawdzanych bloków
 				if (platforms[i]->getPosition().y - platforms[i - 1]->getPosition().y <= distance)  // Kolejny blok z danych
 				{
 					changed = true;
@@ -152,8 +152,7 @@ bool Map::checkCollision(sf::Vector2f direction, Character* character) const {
 }
 
 bool Map::checkBulletCollision(sf::Vector2f direction, Bullet* bullet) const {
-	for (auto iterator = platforms.begin(); iterator != platforms.end(); iterator++) {//for (auto platform : platforms) {
-		//if (std::abs(bullet->getSprite().getPosition().x - iterator->get()->getPosition().x) < 100 && std::abs(bullet->getSprite().getPosition().y - iterator->get()->getPosition().y) < 100)
+	for (auto iterator = platforms.begin(); iterator != platforms.end(); iterator++) {
 		if (iterator->get()->getCollider().checkCollision(bullet->getCollider(), direction, 1.f)) {
 			return true;
 		}

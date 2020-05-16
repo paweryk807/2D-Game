@@ -12,12 +12,6 @@ bool PlasmaDrone::loadTextures(std::vector<std::string>& textures) {
 	return 1;
 }
 
-void PlasmaDrone::createBullets() {
-	for (int i = 0; i < 5; i++) {
-		Bullet tmp(sf::Vector2f(2000, 2000));
-	}
-}
-
 void PlasmaDrone::levelUp(int round) {
 	setHealth(getHealth() + (float)round * 0.1f * getHealth() / 5.f);
 	strength += round * 0.1f * strength;
@@ -27,7 +21,7 @@ void PlasmaDrone::draw(sf::RenderTarget& target, sf::RenderStates state) {
 }
 void PlasmaDrone::reset() {
 	/*
-		TODO
+		Do zaimplementowania gdyby dron musial zmienic parametry na domyslne
 	*/
 }
 
@@ -38,10 +32,9 @@ PlasmaDrone::PlasmaDrone(std::vector<std::unique_ptr<PlasmaBullet>>& bullets) : 
 		state = static_cast<utils::PlasmaDroneState>(1);
 		changeDirectionX = false;
 		changeDirectionY = false;
-		//createBullets();
 		velocity.y = 4.0;
 		sprite.setSize(sf::Vector2f(91, 92));
-		sprite.setPosition(sf::Vector2f(-100 + utils::randomFloat(-200,0), -100));
+		sprite.setPosition(sf::Vector2f(-100 + utils::randomFloat(-20,0), -5));
 		sf::IntRect rect(0, 0, 91, 92);
 		sprite.setTextureRect(rect);
 		animation.setRect(rect);

@@ -5,6 +5,15 @@
 #include "Utils.h"
 class PlayerHandler
 {
+	/* 
+	Klasa odpowiedzialna za obsluge postaci gracza 
+	Odbierane jest rowniez tutaj 
+	sterowanie postacia - zapewnia obsluge postaci przez uzytkownika 
+	*/
+
+	/*
+	W planach jest rozwiniecie mozliwosci tej klasy 
+	*/
 	void playerUpdater();
 public:
 
@@ -13,7 +22,7 @@ public:
 	PlayerHandler();
 	~PlayerHandler() = default;
 
-	//bool addBonus(Bird bonusBird);
+
 	void getActionFromUser();
 
 	//void addAmmo();

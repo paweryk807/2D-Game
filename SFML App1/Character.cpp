@@ -159,6 +159,10 @@ void Character::correctPosition(sf::Vector2f size) {
 	}
 }
 
+void Character::setAnimation(CharacterAnimation& a) {
+	animation = a;
+}
+
 void Character::draw(sf::RenderTarget& target, sf::RenderStates state) const {
 	target.draw(sprite);
 }

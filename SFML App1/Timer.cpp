@@ -12,6 +12,9 @@ void Timer::setTime(std::chrono::seconds seconds) noexcept {
 	timeLeft = ("Left :\n" + std::to_string(time.count()) + " seconds\nto kill all enemies");
 }
 
+std::chrono::seconds Timer::getTime() {
+	return time;
+}
 void Timer::refresher() noexcept {
 	if (!disabled) {
 		std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();

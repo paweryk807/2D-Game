@@ -26,10 +26,12 @@ bool CharacterAnimation::jump(int width, int leftStart, int leftEnd, int startHe
 		rect.top = startHeight;
 		if (animationCooldown.elapsed()) {
 			if (rect.left <= leftEnd) {
-				if (velocity.y > 0.0f) { // wznosi sie
+				/* Postac bedzie sie wznosic */
+				if (velocity.y > 0.0f) { 
 					rect.left = leftStart;
 				}
-				else if (velocity.y == 0.0f) { // bedzie zaraz opadac
+				/* Gdy postac bedzie opadac */
+				else if (velocity.y == 0.0f) { 
 					rect.left += width;
 				}
 				else {

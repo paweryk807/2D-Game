@@ -19,6 +19,7 @@ public:
 	void stop() noexcept;
 	void start() noexcept;
 	sf::String getTimeString();
+	std::chrono::seconds getTime();
 	void refresher() noexcept;
 	bool elapsed() noexcept;
 

@@ -1,10 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-
-static const float VIEW_HEIGHT = 512.0f;
-
+/* Funkcja bedzie sprawdzala czy w otoczeniu gracza znajduje sie obiekt pozwalajacy na wspinanie sie
+   ewentualnie zostanie ona przerobiona na metode klasy mapy */
 bool isLadder(sf::Vector2f vct);
-
-void ResizeView(const sf::RenderWindow& window, sf::View& view);
-
+/* Funkcja utrzymujaca skale wyswietlanego obrazu w proporcjach takich jak zaprojektowany rozmiar przekazywany jako parametr */
 sf::View calcView(const sf::Vector2u& windowsize, const sf::Vector2u& designedsize);

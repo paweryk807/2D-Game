@@ -7,6 +7,10 @@
 #define FONT_PATH  "fonts/Schaeffer.ttf"
 class HUD : public sf::Drawable
 {
+	/*
+	Klasa odpowiedzialna za wyswietlanie na ekranie statystyk postaci gracza, statystyk gry, 
+	osiagnietego wyniku oraz czasu pozostalego do konca rundy.
+	*/
 	sf::Texture texture;
 	sf::Sprite sprite;
 	sf::Font font;
@@ -20,11 +24,11 @@ class HUD : public sf::Drawable
 
 public:
 	HUD(float value);
-
+	/* Metoda odpowiedzialna za aktualizacje wyswietlanych parametrow */
 	bool update(Player* player, Timer* time, unsigned int round, unsigned int score);
-
+	/* Wczytywanie textury serduszka obrazujacego stan zdrowia postaci gracza */
 	bool loadTexture(std::string text);
-
+	/* Metoda ustawiajaca wartosc zycia gracza wyswietlana na ekranie <- od niej zalezny jest obraz wyswietlanego serduszka */
 	bool setValue(float v);
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates state) const;

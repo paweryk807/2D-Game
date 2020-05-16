@@ -18,9 +18,9 @@ Bullet::Bullet(sf::Vector2f startPos, float speed) {
 	sprite.setOutlineThickness(1.5f);
 	sprite.setPosition(startPos.x, startPos.y - 5.f);
 	velocity = sf::Vector2f(speed, 0.0f);
-	cooldown.setCooldown(sf::seconds(utils::randomFloat(0.55, 1.05)));  // Randomowy cooldown
+	/* Ten konstruktor wykorzystywany jest przy tworzeniu pociskow dla graczy, w ceu urozmaicenia rozgrywki dodana jest randomizacja dlugosci czasu zycia pocisku */
+	cooldown.setCooldown(sf::seconds(utils::randomFloat(0.55, 1.05)));  
 	sf::Vector2f cSize(sprite.getRadius(), sprite.getRadius());
-
 	colid.setSize(cSize);
 	colid.setPosition(startPos.x, startPos.y - 5.f);
 	colid.setOrigin(cSize / 2.0f);
@@ -60,7 +60,6 @@ void Bullet::upgrade(int lvl) {
 	if (lvl < 10) {
 		sprite.setFillColor(sf::Color::Yellow);
 		sprite.setOutlineColor(sf::Color::Red);
-		//cooldown.setCooldown(sf::seconds(0.5f));
 	}
 
 	else if (lvl < 20) {

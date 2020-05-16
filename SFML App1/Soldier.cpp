@@ -94,10 +94,6 @@ void Soldier::setSpeed(float temp, sf::Time tempAnim) //Sprint Speed
 	animation.setAnimTime(tempAnim);
 }
 
-void Soldier::setAnimation(CharacterAnimation& a) {
-	animation = a;
-}
-
 void Soldier::levelUp(int round)
 {
 	setHealth(getHealth() + round * 0.15 * getHealth() / 5);
@@ -105,37 +101,26 @@ void Soldier::levelUp(int round)
 }
 
 bool Soldier::refresh(const Player& player, bool wall) {
-	//sprite.setPosition(colid.getPosition());
 	bool changed = false;
 	if (getHealth() > 0) {
 		// AI SECTION
-		/*
-		if (getPosition().x < 0)
-			correctPosition(sf::Vector2f(5.1f, sprite.getPosition().y));
-		else if (getPosition().x > 1280)
-			correctPosition(sf::Vector2f(1274.1f, sprite.getPosition().y));
-		if (getPosition().y > 1070)
-			correctPosition(sf::Vector2f(getPosition().x, 0));
-		else if (getPosition().y < 0)
-			correctPosition(sf::Vector2f(getPosition().x, 5.f));
-		*/
 		if (velocity.y != 0.0f) {
 			setOnAir(true);
 			setCanJump(false);
 			sprite.setTexture(&texture[2]);
 			jump();
 			changed = true;
-		}
+		} // Jesli soldier moze skoczyc 
 		else if (getCanJump()) {
 			if (getCanJump()) {
-				if (wall || abs(prevPos.x - sprite.getPosition().x) < 0.1) {
+				if (wall || abs(prevPos.x - sprite.getPosition().x) < 0.1) { // Jesli zablokowal sie 
 					if (!changed) {
 						sprite.setTexture(&texture[2]);
 						changed = true;
 					}
 					jump();
 				}
-				else if ((abs(player.getPosition().x - getPosition().x) < 30 && (player.getPosition().y < getPosition().y))) {
+				else if ((abs(player.getPosition().x - getPosition().x) < 30 && (player.getPosition().y < getPosition().y))) { // Jesli jest blisko gracza ale gracz jest nad soldier'em to niech skoczy
 					if (!changed) {
 						sprite.setTexture(&texture[2]);
 						changed = true;
@@ -144,7 +129,7 @@ bool Soldier::refresh(const Player& player, bool wall) {
 				}
 			}
 		}
-
+		/* Podazanie za postacia gracza */
 		if (player.getPosition().x - 10 >= getPosition().x) {
 			velocity.x++;
 			sprite.setTexture(&texture[1]);
@@ -159,7 +144,7 @@ bool Soldier::refresh(const Player& player, bool wall) {
 			animation.rotateSprite(sprite, 'l');
 			moveLeft();
 		}
-		else if (velocity.x == 0 && velocity.y == 0) {
+		else if (velocity.x == 0 && velocity.y == 0) { // jesli postac sie nie porusza 
 			sprite.setTexture(&texture[0]);
 			idle();
 			changed = true;
@@ -167,7 +152,7 @@ bool Soldier::refresh(const Player& player, bool wall) {
 		setSpeed(2.f, sf::seconds(2.2 * 0.125));
 
 		/*SEKCJA STRZELANIA*/
-		if ((abs(player.getPosition().x - getPosition().x)) <= 400) { // && (abs(player.getPosition().x) - abs(getPosition().x)) <= 400) {
+		if ((abs(player.getPosition().x - getPosition().x)) <= 400) {
 			if (bullet->getCooldown().elapsed()) {
 				bullet->restart(getPosition());
 				bullet->setDirection(this);

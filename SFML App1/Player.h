@@ -2,9 +2,6 @@
 #include <SFML/Graphics.hpp>
 #include "Character.h"
 #include "bullet.h"
-//#include <memory>
-
-//#define DEFAULT_PATH "images/Hero Knight/Sprites/Hero"//"images/characters.png"
 
 class Player : public Character
 {
@@ -19,13 +16,12 @@ private:
 	float maxHP;
 	bool shield;
 	sf::Texture texture;
-	CharacterAnimation animation;
 	sf::RectangleShape shieldShape;
 	sf::RectangleShape shieldCollider;
 	Cooldown shotCooldown;
-
+	/* Zmiana predkosci poruszania sie postaci gracza */
 	void setSpeed(float temp, sf::Time tempAnim);
-	void setAnimation(CharacterAnimation& a);
+
 
 public:
 	std::vector<Bullet> bullets;
@@ -57,7 +53,6 @@ public:
 	/* Pobieranie stanu postaic */
 	float getMaxHP();
 	sf::RectangleShape getShield();
-
 	Collider getShieldCollider();
 	bool leveled();
 	float getStrength();
@@ -67,6 +62,6 @@ public:
 	int getLevel();
 	/* c-tory, d-tor */
 	Player() = delete;
-	Player(const std::string& temp);//, std::vector<std::unique_ptr<Bullet>> bullets);//, std::vector< std::pair < Bullet, bool >> bullets);
+	Player(const std::string& temp);
 	~Player() = default;
 };

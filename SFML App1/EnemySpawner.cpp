@@ -13,7 +13,8 @@ void EnemySpawner::setTime(std::chrono::seconds seconds) {
 }
 
 void EnemySpawner::spawnPlasmaDrone(int value, int round) {
-	int enemiesToSpawn = round / 5; // 1 ekstra co 5 rund
+	/* Zwiekszanie ilosci wrogow co 5 rund */
+	int enemiesToSpawn = round / 5; 
 	drones.clear();
 	dronesBullets.clear();
 	for (int i = 0; i < enemiesToSpawn; i++) {
@@ -22,7 +23,6 @@ void EnemySpawner::spawnPlasmaDrone(int value, int round) {
 			dronesBullets[i].push_back(std::unique_ptr<PlasmaBullet>(new PlasmaBullet(sf::Vector2f(2000, 2000), 3.f + 0.25f * y)));
 		}
 		drones.push_back(std::unique_ptr<PlasmaDrone>(new PlasmaDrone(dronesBullets[i])));
-		//drones[i]->correctPosition(sf::Vector2f(utils::randomInt(0, 1200), 570 + utils::randomInt(-100, 0))); 
 	}
 
 	timer.start();
@@ -36,7 +36,6 @@ void EnemySpawner::spawnSoldiers(int value, int type)
 	for (int i = 0; i < value; i++) {
 		tmp.clear();
 		/*  RANDOM TYPE SET  */
-		//int type = std::rand() % 4;
 		switch (type) {
 		case 0: //BLUE
 			tmp = { "images/Blue/Gunner_Blue_Idle.png", "images/Blue/Gunner_Blue_Run.png", "images/Blue/Gunner_Blue_Jump.png", "images/Blue/Gunner_Blue_Death.png" };

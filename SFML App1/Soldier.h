@@ -7,18 +7,17 @@ class Soldier : public Character
 {
 	sf::Vector2f prevPos;
 	std::vector<sf::Texture> texture;
-	CharacterAnimation animation;
 	Bullet* bullet;
 	float strength;
-
-	void moveRight();
+	/* Poruszanie sie i animacja postaci */
+	void moveRight(); 
 
 	void moveLeft();
 
 	void idle();
 
 	void jump();
-
+	/* Wczytywanie tekstur */
 	bool loadTextures(std::vector<std::string>& textures);
 
 public:
@@ -35,13 +34,11 @@ public:
 
 	void setSpeed(float temp, sf::Time tempAnim);
 
-	void setAnimation(CharacterAnimation& a);
-
 	void addAmmunition(Bullet& bullet);
 
 	void levelUp(int round);
 
 	float getStrength();
-
+	/* Aktualizacja stanu postaci i AI */
 	bool refresh(const Player& player, bool wall);
 };

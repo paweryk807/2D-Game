@@ -1,6 +1,6 @@
 #include "Player.h"
 
-Player::Player(const std::string& temp) : bullets(bullets) {//, std::vector<std::pair<Bullet&,bool>> &bullets) : shield(false), bullets(bullets){
+Player::Player(const std::string& temp) : bullets(bullets) {
 	sf::IntRect r(64, 32, 32, 32);
 	animation.setRect(r);
 	animation.setAnimTime(sf::seconds(0.125));
@@ -96,9 +96,6 @@ void Player::setSpeed(float temp, sf::Time tempAnim)
 	animation.setAnimTime(tempAnim);
 }
 
-void Player::setAnimation(CharacterAnimation& a) {
-	animation = a;
-}
 void Player::setWalkSpeed(float speed)
 {
 	walkSpeed = speed;
@@ -192,10 +189,9 @@ bool Player::leveled() {
 }
 
 void Player::reset() {
-//	Character::reset();
 	sprite.setPosition(600, 350);
 	setHealth(100.0);
-	setJumpHeight(10.20);
+	setJumpHeight(15.20);
 	setCanJump(true);
 	setOnAir(false);
 	setCanClimb(false);

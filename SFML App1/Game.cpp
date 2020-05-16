@@ -22,7 +22,7 @@ bool Game::addBonus(Bird bonusBird)
 {
 	switch (bonusBird.getBonusType()) {
 	case utils::BonusType::boost:
-		playerHandler.player.setWalkSpeed(playerHandler.player.getSpeed() + bonusBird.receiveBonus()); // A BIT STATIC
+		playerHandler.player.setWalkSpeed(playerHandler.player.getSpeed() + bonusBird.receiveBonus());
 		break;
 	case utils::BonusType::health:
 		playerHandler.player.setHealth(playerHandler.player.getHealth() + bonusBird.receiveBonus());
@@ -31,7 +31,7 @@ bool Game::addBonus(Bird bonusBird)
 		playerHandler.player.setStrength(playerHandler.player.getStrength() + bonusBird.receiveBonus());
 		break;
 	case utils::BonusType::time:
-		spawner.setTime(std::chrono::seconds(spawner.getTimer().getCountedTime() + (int)bonusBird.receiveBonus()));
+		spawner.setTime(spawner.getTimer().getTime() - std::chrono::seconds(spawner.getTimer().getCountedTime() + (int)bonusBird.receiveBonus()));
 		break;
 	default:
 		return 0.0f;
@@ -66,12 +66,12 @@ void Game::soldierHandler(bool& killed) {
 				}
 
 				/* Czy Player trafil Soldier'a */
-				for (auto& elem : playerHandler.player.bullets) {
+				for (auto& elem : playerHandler.player.bullets) { 
 					if (!elem.getCooldown().elapsed() && elem.isUsed()) {
 						if (!level->checkBulletCollision(direction, &elem)) {
 							if (elem.hit(spawner.soldiers[i].get())) {
 								elem.hide();
-								spawner.soldiers[i]->setHealth(spawner.soldiers[i]->getHealth() - playerHandler.player.getStrength()); // metoda dekrementuj zdrowie(wartosc o ile)
+								spawner.soldiers[i]->setHealth(spawner.soldiers[i]->getHealth() - playerHandler.player.getStrength());
 							}
 						}
 						else elem.hide();
@@ -81,12 +81,11 @@ void Game::soldierHandler(bool& killed) {
 				/*      Sprawdzenie kolizji soldier'ow      */
 				for (int n = i; n < spawner.soldiers.size(); n++) {
 					if (n != i) {
-						if (spawner.soldiers[n]->getHealth() > 0)  // jesli ktorys inny
+						if (spawner.soldiers[n]->getHealth() > 0)  // jesli ktorys inny ma jeszcze punkty zdrowia to sprawdzane jest czy wchodzi w kolizje 
 							if (spawner.soldiers[i]->getCollider().checkCollision(spawner.soldiers[n]->getCollider(), direction, 0.75f)) {
 								spawner.soldiers[n]->setSpeed(0.5, sf::seconds(0.51));
 								if (direction.y == -1) {
 									spawner.soldiers[n]->setVelocity(sf::Vector2f(spawner.soldiers[n]->getVelocity().x, 0));
-									//spawner.soldiers[i]->setVelocity(sf::Vector2f(spawner.soldiers[i]->getVelocity().x, 0));
 								}
 							}
 					}
@@ -178,6 +177,7 @@ void Game::gameOver()
 }
 
 void Game::restart() {
+	/* Restart gry */
 	playerHandler.player.reset();
 	spawner.drones.clear();
 	for (auto& elem : spawner.dronesBullets)
@@ -217,9 +217,8 @@ void Game::start() {
 	window->setView(calcView(window->getSize(), sf::Vector2u(1280, 720)));
 	sf::View view(window->getView());
 	sst.create(window.get()->getSize().x, window.get()->getSize().y);
-
 	round = 1;
-	//generateLevel(); //             <------ Zrobic predefiniowane levele w switchu
+	//generateLevel();  w planach predefiniowane levele 
 
 	bool shooted = false;
 	bool killed = false;
@@ -305,7 +304,7 @@ void Game::start() {
 					spawner.levelUpEnemies(round);
 					s = std::chrono::seconds(5 * round + 25);
 				}
-				round++;
+				round+=5;
 
 				spawner.getTimer().setTime(s);
 				spawner.getTimer().start();
@@ -334,11 +333,9 @@ void Game::start() {
 			hud.update(&playerHandler.player, &spawner.getTimer(), round, score);
 			window->draw(hud);
 
-
 			for (auto& elem : spawner.soldierBullets) {
 				if (!elem->getCooldown().elapsed()) {
 					if (!level->checkBulletCollision(direction, elem.get())) {
-						//    if (elem != spawner.soldierBullets[0]) {
 						if (playerHandler.player.getShieldState()) {
 							if (elem->getCollider().onCollision(playerHandler.player.getShieldCollider())) {
 								elem->hide();
@@ -358,8 +355,6 @@ void Game::start() {
 						elem.hide();
 				}
 			}
-
-
 
 			window->draw(playerHandler.player);
 			bonusBird.fly(level->checkCollision(direction, &bonusBird), shooted);

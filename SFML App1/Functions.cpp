@@ -4,11 +4,6 @@ bool isLadder(sf::Vector2f vct) {
 	return 0; // uzaleznic to cudo od wspolrzednych x,y
 }
 
-void ResizeView(const sf::RenderWindow& window, sf::View& view) {
-	float aspectRatio = 16 / 9;
-	view.setSize(VIEW_HEIGHT * aspectRatio, VIEW_HEIGHT * aspectRatio);
-}
-
 sf::View calcView(const sf::Vector2u& windowsize, const sf::Vector2u& designedsize)
 {
     sf::FloatRect viewport(0.f, 0.f, 1.f, 1.f);

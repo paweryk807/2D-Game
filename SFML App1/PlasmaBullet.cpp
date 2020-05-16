@@ -56,8 +56,3 @@ void PlasmaBullet::refresh() {
 		sprite.setPosition(2000, 2000);
 	Bullet::refresh();
 }
-
-//Collider PlasmaBullets::getCollider() {
-//	colid.setPosition(sprite.getPosition());
-//	return Collider(colid);
-//}

@@ -12,7 +12,7 @@ Menu::Menu() {
 			sf::Text object;
 			object.setFont(font);
 			object.setString(firstOptions[i]);
-			object.setPosition(sf::Vector2f(WIDTH * 0.5f - firstOptions[i].length() * 10.f, (((HEIGHT * 0.5f) / 6.f) * (float)(i + 1)))); // /6 dla symetrii
+			object.setPosition(sf::Vector2f(WIDTH * 0.5f - firstOptions[i].length() * 10.f, (((HEIGHT * 0.5f) / 6.f) * (float)(i + 1)))); 
 			object.setFillColor(sf::Color::White);
 			menu.push_back(object);
 		}
@@ -50,14 +50,6 @@ void Menu::drawInGameMenu(sf::RenderWindow& window) {
 	for (auto elem : menu) {
 		window.draw(elem);
 	}
-}
-
-void Menu::gameStarted() {
-	if (!restart) {
-	}
-}
-
-void Menu::gameRunning() {
 }
 
 void Menu::drawOptions(sf::RenderWindow& window) {
