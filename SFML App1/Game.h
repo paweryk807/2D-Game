@@ -39,7 +39,7 @@ public:
 	/* Metoda ma za zadanie obsluzyc wszystkie zdarzenia zwiazane z przeciwnikiem drona */
 	void droneHandler(bool& killed);
 	/* Obsluga obiektu latajacego na ekranie ptaka */
-	void birdHandler(bool& shooted);
+	void birdHandler(bool& shot);
 	/* Metoda odpowiedzialna na ustawienie odpowiednich parametrow obiektow, gdy gra jest zrestartowana */
 	void restart();
 	/* Metoda wykonywana do inicjacji gry */

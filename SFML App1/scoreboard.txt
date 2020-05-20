@@ -1,10 +1,10 @@
 Pawelek;58800
 elo;32580
 mistrz;28100
+ Testing ;22900
 elko;20540
 e;19100
 elo;17400
+Testing;15500
 testing;15040
-d;10800
- w;10700
-A;12520
+TestING2;28500

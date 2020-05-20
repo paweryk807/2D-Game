@@ -44,9 +44,9 @@ utils::BonusType Bird::getBonusType() {
 	return bonus;
 }
 
-void Bird::fly(bool collision, bool shooted) {
+void Bird::fly(bool collision, bool shot) {
 	if (!collision) {
-		if (shooted) {
+		if (shot) {
 			if (sprite.getPosition().y < 1200)
 				velocity.y--;
 		}

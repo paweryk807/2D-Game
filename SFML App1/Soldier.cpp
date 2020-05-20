@@ -1,16 +1,15 @@
 #include "Soldier.h"
 
-Soldier::Soldier(std::vector<std::string>& textures)
+Soldier::Soldier(std::vector<sf::Texture>& textures) : texture(textures)
 {
 	try {
-		loadTextures(textures);
 		bullet = nullptr;
 		sf::IntRect r(48, 0, 48, 48);
 		animation.setRect(r);
 		animation.setAnimTime(sf::seconds(0.075));
 
 		sprite.setSize(sf::Vector2f(48.0f, 48.0f));
-		sprite.setOrigin(32.0f / 2.0f, 30.0f / 2.0f);  // Aby nie bylo odstepow od podloza
+		sprite.setOrigin(32.0f / 2.0f, 30.0f / 2.0f);  // Aby nie bylo o dstepow od podloza
 		sprite.setTexture(&texture[0]);
 		sprite.setTextureRect(animation.getRect());
 		sprite.setPosition(800, 350);
@@ -48,17 +47,6 @@ float Soldier::getStrength() {
 
 void Soldier::addAmmunition(Bullet& bullet) {
 	this->bullet = &bullet;
-}
-
-bool Soldier::loadTextures(std::vector<std::string>& text) {
-	for (auto elem : text) {
-		sf::Texture tmp;
-		if (!tmp.loadFromFile(elem)) {
-			throw std::exception("Soldier Texture error!");
-			break;
-		}
-		texture.push_back(sf::Texture(tmp));
-	}
 }
 
 void Soldier::moveRight() {

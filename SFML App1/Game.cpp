@@ -1,6 +1,6 @@
 #include "Game.h"
 
-Game::Game() : hud(100), spawner(std::chrono::seconds(45)), bonusBird(sf::Vector2f(400, 450)) {
+Game::Game() : hud(100), spawner(std::chrono::seconds(3600)), bonusBird(sf::Vector2f(400, 450)) {
 	try {
 		sf::View view(sf::Vector2f(1280.0 / 2, 720.0 / 2), sf::Vector2f(1280, 720));
 		view.setCenter(view.getSize().x / 2, view.getSize().y / 2);
@@ -143,14 +143,14 @@ void Game::droneHandler(bool& killed)
 	}
 }
 
-void Game::birdHandler(bool& shooted) {
+void Game::birdHandler(bool& shot) {
 	sf::Vector2f direction;
 	/*      Gracz trafil ptaka      */
 	for (auto& elem : playerHandler.player.bullets)
 		if (!elem.getCooldown().elapsed() && elem.isUsed())
 			if (elem.getCollider().checkCollision(bonusBird.getCollider(), direction, 1.0f)) {
 				elem.hide();
-				shooted = true;
+				shot = true;
 				addBonus(bonusBird);
 			}
 }
@@ -220,7 +220,7 @@ void Game::start() {
 	round = 1;
 	//generateLevel();  w planach predefiniowane levele 
 
-	bool shooted = false;
+	bool shot = false;
 	bool killed = false;
 
 	while (window->isOpen())
@@ -285,7 +285,7 @@ void Game::start() {
 
 			soldierHandler(killed);
 
-			birdHandler(shooted);
+			birdHandler(shot);
 
 			if (killed) {
 				spawner.soldiers.clear();
@@ -304,12 +304,12 @@ void Game::start() {
 					spawner.levelUpEnemies(round);
 					s = std::chrono::seconds(5 * round + 25);
 				}
-				round+=5;
+				round+=1;
 
 				spawner.getTimer().setTime(s);
 				spawner.getTimer().start();
 				if (utils::randomFloat(0, 100) < 25.f) {
-					shooted = false;
+					shot = false;
 					bonusBird.reset();
 				}
 				killed = false;
@@ -357,7 +357,7 @@ void Game::start() {
 			}
 
 			window->draw(playerHandler.player);
-			bonusBird.fly(level->checkCollision(direction, &bonusBird), shooted);
+			bonusBird.fly(level->checkCollision(direction, &bonusBird), shot);
 			window->draw(bonusBird);
 		}
 

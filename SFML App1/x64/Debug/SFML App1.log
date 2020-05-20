@@ -1,4 +1,5 @@
-﻿  Game.cpp
+﻿  EnemySpawner.cpp
+  Game.cpp
 B:\GitHub\2D-Game\SFML App1\Game.cpp(54,71): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
 B:\GitHub\2D-Game\SFML App1\Game.cpp(61,71): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
 B:\GitHub\2D-Game\SFML App1\Game.cpp(65,70): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
@@ -7,106 +8,24 @@ B:\GitHub\2D-Game\SFML App1\Game.cpp(166,11): warning C4244: "inicjowanie": konw
 B:\GitHub\2D-Game\SFML App1\Game.cpp(167,29): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
 B:\GitHub\2D-Game\SFML App1\Game.cpp(203,7): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
 B:\GitHub\2D-Game\SFML App1\Game.cpp(345,72): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-  Map.cpp
   Soldier.cpp
-B:\GitHub\2D-Game\SFML App1\Soldier.cpp(10,42): warning C4305: "argument": obcięcie z "double" do "float"
-B:\GitHub\2D-Game\SFML App1\Soldier.cpp(22,40): warning C4305: "argument": obcięcie z "double" do "float"
-B:\GitHub\2D-Game\SFML App1\Soldier.cpp(23,22): warning C4305: "argument": obcięcie z "double" do "float"
-B:\GitHub\2D-Game\SFML App1\Soldier.cpp(99,24): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-B:\GitHub\2D-Game\SFML App1\Soldier.cpp(100,41): warning C4244: "+=": konwersja z "double" do "float", możliwa utrata danych
-B:\GitHub\2D-Game\SFML App1\Soldier.cpp(152,40): warning C4305: "argument": obcięcie z "double" do "float"
-B:\GitHub\2D-Game\SFML App1\Soldier.cpp(167,28): warning C4305: "=": obcięcie z "double" do "T"
+B:\GitHub\2D-Game\SFML App1\Soldier.cpp(9,42): warning C4305: "argument": obcięcie z "double" do "float"
+B:\GitHub\2D-Game\SFML App1\Soldier.cpp(21,40): warning C4305: "argument": obcięcie z "double" do "float"
+B:\GitHub\2D-Game\SFML App1\Soldier.cpp(22,22): warning C4305: "argument": obcięcie z "double" do "float"
+B:\GitHub\2D-Game\SFML App1\Soldier.cpp(87,24): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Soldier.cpp(88,41): warning C4244: "+=": konwersja z "double" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Soldier.cpp(140,40): warning C4305: "argument": obcięcie z "double" do "float"
+B:\GitHub\2D-Game\SFML App1\Soldier.cpp(155,28): warning C4305: "=": obcięcie z "double" do "T"
           with
           [
               T=float
           ]
-B:\GitHub\2D-Game\SFML App1\Soldier.cpp(173,21): warning C4305: "*=": obcięcie z "double" do "T"
+B:\GitHub\2D-Game\SFML App1\Soldier.cpp(161,21): warning C4305: "*=": obcięcie z "double" do "T"
           with
           [
               T=float
           ]
-B:\GitHub\2D-Game\SFML App1\Soldier.cpp(177,28): warning C4305: "=": obcięcie z "double" do "T"
-          with
-          [
-              T=float
-          ]
-  TileMap.cpp
-B:\GitHub\2D-Game\SFML App1\TileMap.cpp(25,54): warning C4244: "argument": konwersja z "unsigned int" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-B:\GitHub\2D-Game\SFML App1\TileMap.cpp(25,38): warning C4244: "argument": konwersja z "unsigned int" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-B:\GitHub\2D-Game\SFML App1\TileMap.cpp(26,60): warning C4244: "argument": konwersja z "unsigned int" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-B:\GitHub\2D-Game\SFML App1\TileMap.cpp(26,44): warning C4244: "argument": konwersja z "unsigned int" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-B:\GitHub\2D-Game\SFML App1\TileMap.cpp(27,66): warning C4244: "argument": konwersja z "unsigned int" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-B:\GitHub\2D-Game\SFML App1\TileMap.cpp(27,44): warning C4244: "argument": konwersja z "unsigned int" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-B:\GitHub\2D-Game\SFML App1\TileMap.cpp(28,60): warning C4244: "argument": konwersja z "unsigned int" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-B:\GitHub\2D-Game\SFML App1\TileMap.cpp(28,38): warning C4244: "argument": konwersja z "unsigned int" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-B:\GitHub\2D-Game\SFML App1\TileMap.cpp(30,57): warning C4244: "argument": konwersja z "unsigned int" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-B:\GitHub\2D-Game\SFML App1\TileMap.cpp(30,40): warning C4244: "argument": konwersja z "unsigned int" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-B:\GitHub\2D-Game\SFML App1\TileMap.cpp(31,63): warning C4244: "argument": konwersja z "unsigned int" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-B:\GitHub\2D-Game\SFML App1\TileMap.cpp(31,46): warning C4244: "argument": konwersja z "unsigned int" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-B:\GitHub\2D-Game\SFML App1\TileMap.cpp(32,69): warning C4244: "argument": konwersja z "unsigned int" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-B:\GitHub\2D-Game\SFML App1\TileMap.cpp(32,46): warning C4244: "argument": konwersja z "unsigned int" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-B:\GitHub\2D-Game\SFML App1\TileMap.cpp(33,63): warning C4244: "argument": konwersja z "unsigned int" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-B:\GitHub\2D-Game\SFML App1\TileMap.cpp(33,40): warning C4244: "argument": konwersja z "unsigned int" do "T", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Soldier.cpp(165,28): warning C4305: "=": obcięcie z "double" do "T"
           with
           [
               T=float
@@ -114,5 +33,4 @@ B:\GitHub\2D-Game\SFML App1\TileMap.cpp(33,40): warning C4244: "argument": konwe
   main.cpp
 B:\GitHub\2D-Game\SFML App1\main.cpp(41,25): warning C4101: "e": lokalna zmienna, do której nie istnieje odwołanie
   Generowanie kodu...
-B:\GitHub\2D-Game\SFML App1\Soldier.cpp(62): warning C4715: "Soldier::loadTextures”: niewszystkie ścieżki kodu zwracają wartość
   SFML App1.vcxproj -> B:\GitHub\2D-Game\x64\Debug\2D-Game.exe

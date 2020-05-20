@@ -4,7 +4,7 @@
 
 class PlasmaDrone : public Character {
 	std::vector <std::unique_ptr<PlasmaBullet>>& bullets;
-	std::vector<sf::Texture> texture;
+	std::vector<sf::Texture>& texture;
 	utils::PlasmaDroneState state;
 	float strength;
 	bool changeDirectionX;
@@ -14,11 +14,9 @@ class PlasmaDrone : public Character {
 	void prepareToFly();
 	void prepareToExplode();
 	void prepareToFire();
-	/* Wczytanie textur drona z plikow */
-	bool loadTextures(std::vector<std::string>& textures);
 
 public:
-	PlasmaDrone(std::vector<std::unique_ptr<PlasmaBullet>>& bullets);
+	PlasmaDrone(std::vector<std::unique_ptr<PlasmaBullet>>& bullets, std::vector<sf::Texture>& textures);
 	/* Aktualizowanie postaci drona i jego AI */
 	bool refresh(Player* player, bool wall);
 	/* Inkrementowanie parametrow punktow zycia i sily postaci w zaleznosci od rundy gry przekazanej jako parametr */

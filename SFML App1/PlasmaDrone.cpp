@@ -1,17 +1,5 @@
 #include "PlasmaDrone.h"
 
-bool PlasmaDrone::loadTextures(std::vector<std::string>& textures) {
-	for (auto elem : textures) {
-		sf::Texture tmp;
-		if (!tmp.loadFromFile(elem)) {
-			throw std::exception("PlasmaDrone Texture error!");
-			break;
-		}
-		texture.push_back(sf::Texture(tmp));
-	}
-	return 1;
-}
-
 void PlasmaDrone::levelUp(int round) {
 	setHealth(getHealth() + (float)round * 0.1f * getHealth() / 5.f);
 	strength += round * 0.1f * strength;
@@ -25,10 +13,8 @@ void PlasmaDrone::reset() {
 	*/
 }
 
-PlasmaDrone::PlasmaDrone(std::vector<std::unique_ptr<PlasmaBullet>>& bullets) : bullets(bullets) {
+PlasmaDrone::PlasmaDrone(std::vector<std::unique_ptr<PlasmaBullet>>& bullets, std::vector<sf::Texture>& textures) : bullets(bullets), texture(textures) {
 	try {
-		std::vector<std::string> fileNames = { "images/PlasmaDrone/explode_sheet.png","images/PlasmaDrone/fire_sheet.png","images/PlasmaDrone/idle_sheet.png" };
-		loadTextures(fileNames);
 		state = static_cast<utils::PlasmaDroneState>(1);
 		changeDirectionX = false;
 		changeDirectionY = false;
@@ -41,6 +27,7 @@ PlasmaDrone::PlasmaDrone(std::vector<std::unique_ptr<PlasmaBullet>>& bullets) : 
 		sprite.setTexture(&texture[2]);
 		sprite.setOrigin(sprite.getSize().x / 2, sprite.getSize().y / 2);
 		setHealth(1000);
+		strength = 1;
 	}
 	catch (std::exception e) {
 		std::cerr << e.what();

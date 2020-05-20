@@ -23,7 +23,7 @@ public:
 	/*Metoda zwracajaca typ bonusu*/
 	utils::BonusType getBonusType();
 	/*Metoda odpowiedzialna za poruszanie sie ptaka*/
-	void fly(bool collision, bool shooted); 
+	void fly(bool collision, bool shot); 
 	/*Metoda ustawiajaca losowy bonus dawany przez ptaka*/
 	void reset();
 	
