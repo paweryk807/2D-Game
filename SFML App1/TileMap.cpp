@@ -8,6 +8,7 @@ void TileMap::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 
 bool TileMap::load(const std::string& tileSet, sf::Vector2u tileSize, const unsigned int* tiles, unsigned int width, unsigned int height) {
 	if (!tileset.loadFromFile(tileSet)) {
+		throw std::exception("TileSet file error");
 		return false;
 	}
 

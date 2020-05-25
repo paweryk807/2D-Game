@@ -165,8 +165,10 @@ bool Menu::addToScores(sf::RenderWindow& window, unsigned int score) {
 					dataSet = true;
 				}
 				else if (event.type == sf::Event::TextEntered) {
-					input += event.text.unicode;
-					userName.setString(input);
+					if (input.getSize() < 6 && event.text.unicode != ';') {
+						input += event.text.unicode;
+						userName.setString(input);
+					}
 				}
 			}
 			window.clear();
@@ -198,8 +200,10 @@ bool Menu::addToScores(sf::RenderWindow& window, unsigned int score) {
 							scores.push_back(std::make_tuple(userName, score));
 						}
 						else if (event.type == sf::Event::TextEntered) {
-							input += event.text.unicode;
-							userName.setString(input);
+							if (input.getSize() < 6) {
+								input += event.text.unicode;
+								userName.setString(input);
+							}
 						}
 					}
 					window.clear();

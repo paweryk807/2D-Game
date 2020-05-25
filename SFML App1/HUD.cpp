@@ -31,6 +31,7 @@ HUD::HUD(float value) {
 	}
 	catch (std::exception e) {
 		std::cout << e.what() << std::endl;
+		throw e;
 	}
 }
 

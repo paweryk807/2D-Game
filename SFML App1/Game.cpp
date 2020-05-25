@@ -12,6 +12,7 @@ Game::Game() : hud(100), spawner(std::chrono::seconds(3600)), bonusBird(sf::Vect
 		window->setView(view);
 		started = false;
 		pause = false;
+		run();
 	}
 	catch (std::exception e) {
 		std::cerr << e.what();

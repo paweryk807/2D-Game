@@ -36,7 +36,6 @@ int main()
 	std::unique_ptr<Game> giera;
 	try {
 		giera = std::unique_ptr<Game>{ new Game() };
-		giera->run();
 	}
 	catch (std::exception& e) {
 		std::cerr << "Cos poszlo nie tak ;(\n";

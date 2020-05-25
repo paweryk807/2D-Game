@@ -1,19 +1,15 @@
 #include "Map.h"
 
 Map::Map(unsigned int sizeParam, const std::string& lvlDirectory) {
-	try {
-		background.setSize(sf::Vector2f(1280, 720));
-		loadBackground("images/bg.jpg");
-		background.setTexture(&(this->backgroundTexture));
+	background.setSize(sf::Vector2f(1280, 720));
+	loadBackground("images/bg.jpg");
+	background.setTexture(&(this->backgroundTexture));
 
-		tab = new unsigned int[sizeParam];
-		loadLevelToTab(lvlDirectory, sizeParam);
-		tiles.load("images/sheet.png", sf::Vector2u(16, 16), tab, 80, 45);
-		setPlatforms(sizeParam);
-	}
-	catch (std::exception e) {
-		std::cerr << e.what();
-	}
+	tab = new unsigned int[sizeParam];
+	loadLevelToTab(lvlDirectory, sizeParam);
+	tiles.load("images/sheet.png", sf::Vector2u(16, 16), tab, 80, 45);
+	setPlatforms(sizeParam);
+
 }
 
 bool Map::loadLevelToTab(const std::string& directory, unsigned int tabSize) {

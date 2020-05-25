@@ -4,8 +4,7 @@ Player::Player(const std::string& temp) : bullets(bullets) {
 	sf::IntRect r(64, 32, 32, 32);
 	animation.setRect(r);
 	animation.setAnimTime(sf::seconds(0.125));
-	texture.loadFromFile(temp);
-	sprite.setTexture(&texture);
+	loadTexture(temp);
 	sprite.setTextureRect(r);
 	sf::Vector2f size(1.5 * sprite.getSize().x, 1.5 * sprite.getSize().y);
 	setSpeed(4.20, sf::seconds(0.15));
@@ -38,6 +37,12 @@ Player::Player(const std::string& temp) : bullets(bullets) {
 	}
 
 	shotCooldown.setCooldown(sf::seconds(0.5));
+}
+
+void Player::loadTexture(const std::string& path) {
+	if (!texture.loadFromFile(path))
+		throw(std::exception("Player Texture error"));
+	sprite.setTexture(&texture);
 }
 
 float Player::getMaxHP() {

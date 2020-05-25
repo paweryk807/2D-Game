@@ -1,16 +1,62 @@
 ﻿  EnemySpawner.cpp
   Game.cpp
-B:\GitHub\2D-Game\SFML App1\Game.cpp(54,71): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-B:\GitHub\2D-Game\SFML App1\Game.cpp(61,71): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-B:\GitHub\2D-Game\SFML App1\Game.cpp(65,70): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-B:\GitHub\2D-Game\SFML App1\Game.cpp(86,60): warning C4305: "argument": obcięcie z "double" do "float"
-B:\GitHub\2D-Game\SFML App1\Game.cpp(166,11): warning C4244: "inicjowanie": konwersja z "float" do "int", możliwa utrata danych
-B:\GitHub\2D-Game\SFML App1\Game.cpp(167,29): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-B:\GitHub\2D-Game\SFML App1\Game.cpp(203,7): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
-B:\GitHub\2D-Game\SFML App1\Game.cpp(345,72): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-  Map.cpp
+B:\GitHub\2D-Game\SFML App1\Game.cpp(55,71): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(62,71): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(66,70): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(87,60): warning C4305: "argument": obcięcie z "double" do "float"
+B:\GitHub\2D-Game\SFML App1\Game.cpp(167,11): warning C4244: "inicjowanie": konwersja z "float" do "int", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(168,29): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Game.cpp(204,7): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
+B:\GitHub\2D-Game\SFML App1\Game.cpp(346,72): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+  HUD.cpp
   PlasmaDrone.cpp
+  Player.cpp
+B:\GitHub\2D-Game\SFML App1\Player.cpp(9,50): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+B:\GitHub\2D-Game\SFML App1\Player.cpp(9,24): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+B:\GitHub\2D-Game\SFML App1\Player.cpp(10,33): warning C4305: "argument": obcięcie z "double" do "float"
+B:\GitHub\2D-Game\SFML App1\Player.cpp(10,34): warning C4305: "argument": obcięcie z "double" do "float"
+B:\GitHub\2D-Game\SFML App1\Player.cpp(12,27): warning C4244: "=": konwersja z "double" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Player.cpp(15,21): warning C4305: "argument": obcięcie z "double" do "float"
+B:\GitHub\2D-Game\SFML App1\Player.cpp(107,21): warning C4244: "=": konwersja z "double" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Player.cpp(167,19): warning C4305: "*=": obcięcie z "double" do "float"
+B:\GitHub\2D-Game\SFML App1\Player.cpp(199,21): warning C4305: "argument": obcięcie z "double" do "float"
+B:\GitHub\2D-Game\SFML App1\Player.cpp(203,33): warning C4305: "argument": obcięcie z "double" do "float"
+B:\GitHub\2D-Game\SFML App1\Player.cpp(203,34): warning C4305: "argument": obcięcie z "double" do "float"
+B:\GitHub\2D-Game\SFML App1\Player.cpp(205,27): warning C4244: "=": konwersja z "double" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Player.cpp(241,40): warning C4305: "argument": obcięcie z "double" do "float"
+B:\GitHub\2D-Game\SFML App1\Player.cpp(280,38): warning C4305: "argument": obcięcie z "double" do "float"
+  PlayerHandler.cpp
+  Soldier.cpp
+B:\GitHub\2D-Game\SFML App1\Soldier.cpp(9,42): warning C4305: "argument": obcięcie z "double" do "float"
+B:\GitHub\2D-Game\SFML App1\Soldier.cpp(21,40): warning C4305: "argument": obcięcie z "double" do "float"
+B:\GitHub\2D-Game\SFML App1\Soldier.cpp(22,22): warning C4305: "argument": obcięcie z "double" do "float"
+B:\GitHub\2D-Game\SFML App1\Soldier.cpp(87,24): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Soldier.cpp(88,41): warning C4244: "+=": konwersja z "double" do "float", możliwa utrata danych
+B:\GitHub\2D-Game\SFML App1\Soldier.cpp(140,40): warning C4305: "argument": obcięcie z "double" do "float"
+B:\GitHub\2D-Game\SFML App1\Soldier.cpp(155,28): warning C4305: "=": obcięcie z "double" do "T"
+          with
+          [
+              T=float
+          ]
+B:\GitHub\2D-Game\SFML App1\Soldier.cpp(161,21): warning C4305: "*=": obcięcie z "double" do "T"
+          with
+          [
+              T=float
+          ]
+B:\GitHub\2D-Game\SFML App1\Soldier.cpp(165,28): warning C4305: "=": obcięcie z "double" do "T"
+          with
+          [
+              T=float
+          ]
   main.cpp
-B:\GitHub\2D-Game\SFML App1\main.cpp(41,25): warning C4101: "e": lokalna zmienna, do której nie istnieje odwołanie
+B:\GitHub\2D-Game\SFML App1\main.cpp(40,25): warning C4101: "e": lokalna zmienna, do której nie istnieje odwołanie
   Generowanie kodu...
   SFML App1.vcxproj -> B:\GitHub\2D-Game\x64\Debug\2D-Game.exe

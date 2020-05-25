@@ -63,5 +63,6 @@ public:
 	/* c-tory, d-tor */
 	Player() = delete;
 	Player(const std::string& temp);
+	void loadTexture(const std::string& path);
 	~Player() = default;
 };
