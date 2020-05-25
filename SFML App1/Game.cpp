@@ -118,7 +118,7 @@ void Game::droneHandler(bool& killed)
 				}
 			}
 
-			if (!elem.get()->refresh(&playerHandler.player, level->checkCollision(direction, elem.get()))) {
+			if (!elem.get()->refresh(playerHandler.player, level->checkCollision(direction, elem.get()))) {
 				spawner.drones.erase(spawner.drones.begin() + position);
 				position--;
 				if (spawner.drones.empty()) killed = true;

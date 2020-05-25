@@ -18,7 +18,7 @@ class PlasmaDrone : public Character {
 public:
 	PlasmaDrone(std::vector<std::unique_ptr<PlasmaBullet>>& bullets, std::vector<sf::Texture>& textures);
 	/* Aktualizowanie postaci drona i jego AI */
-	bool refresh(Player* player, bool wall);
+	bool refresh(Player& player, bool wall);
 	/* Inkrementowanie parametrow punktow zycia i sily postaci w zaleznosci od rundy gry przekazanej jako parametr */
 	void levelUp(int round);
 

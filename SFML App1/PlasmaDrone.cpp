@@ -64,7 +64,7 @@ void PlasmaDrone::prepareToFire() {
 	sprite.setOrigin(sprite.getSize().x / 2, sprite.getSize().y / 2);
 }
 
-bool PlasmaDrone::refresh(Player* player, bool wall) {
+bool PlasmaDrone::refresh(Player& player, bool wall) {
 	bool alive = true;
 
 	if (getHealth() > 0) {
@@ -94,13 +94,13 @@ bool PlasmaDrone::refresh(Player* player, bool wall) {
 		animation.setAnimTime(sf::seconds(0.125));
 
 		/* Sekcja odpowiedzialna za strzelanie drona */
-		if ((abs(player->getPosition().x - getPosition().x)) <= 520) {
+		if ((abs(player.getPosition().x - getPosition().x)) <= 520) {
 			if (sprite.getSize().x != 128) // FIREs
 				prepareToFire();
 			animation.changeMove(128, 0, 128 * 20, 0, sprite);
 			for (auto& bullet : bullets) {
 				if (bullet->getCooldown().elapsed()) {
-					bullet->countDirection(this, player);
+					bullet->countDirection(this, &player);
 					bullet->restart(getPosition());
 				}
 			}

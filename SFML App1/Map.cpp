@@ -68,8 +68,8 @@ void Map::setPlatforms(const unsigned int sizeTab)
 		}
 		if (add) {
 			sf::RectangleShape tmp(sf::Vector2f(size_param, size_param));
-			width = w_param * size_param + half_size;// + 8.f;
-			height = h_param * size_param + half_size;/// /+ 8.f;
+			width = w_param * size_param + half_size;
+			height = h_param * size_param + half_size;
 			tmp.setPosition(sf::Vector2f(width, height));
 			platforms.push_back(std::unique_ptr<Platform>(new Platform(tmp)));
 		}
